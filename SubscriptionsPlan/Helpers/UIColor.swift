@@ -1,6 +1,9 @@
 import UIKit
 
 extension UIColor {
+    
+    /// Перевод HEX-кода в UIColor
+    /// - Parameter hex: HEX-код, должен начинаться с #
     public convenience init?(hex: String) {
         let r, g, b: CGFloat
 

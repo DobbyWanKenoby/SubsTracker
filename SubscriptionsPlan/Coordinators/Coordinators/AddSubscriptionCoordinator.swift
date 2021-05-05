@@ -7,7 +7,9 @@
 
 import UIKit
 
-class AddSubscriptionCoordinator: BaseCoordinator {
+protocol AddSubscriptionCoordinatorProtocol: BasePresenter {}
+
+class AddSubscriptionCoordinator: BasePresenter, AddSubscriptionCoordinatorProtocol {
     private var navigationPresenter: UINavigationController? {
         return presenter as? UINavigationController
     }
@@ -23,6 +25,13 @@ class AddSubscriptionCoordinator: BaseCoordinator {
     
     private func getServiceListConfiguredController() -> UIViewController {
         let servicesListController = ControllerFactory.getServiceListController()
+        
+        let loadRequest = LoadServicesRequest(type: .all)
+        let transmittedData = [loadRequest]
+        let response = self.transmit(data: transmittedData, sourceCoordinator: self)
+        print(response)
+        
+        
         childControllers.append(servicesListController)
         servicesListController.onSelectService = { [self] (service, selectedCell) in
             // Настройки анимации перехода
@@ -93,6 +102,7 @@ class AddSubscriptionCoordinator: BaseCoordinator {
             transmit(data: transmittingData, sourceCoordinator: self)
 //            let transferData = UpdateDataSubscriptionListInstance(updatedData: actualSubscriptions)
 //            transferUpdatedData(transferData, from: self)
+      
         }
 
         return addSubController

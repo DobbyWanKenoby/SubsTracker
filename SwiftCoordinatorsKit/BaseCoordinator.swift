@@ -1,8 +1,23 @@
 import UIKit
 
-// MARK: - Kit Coordinator
+// MARK: - Template Coordinators
 
-class BaseCoordinator: Coordinator, Presenter {
+class BaseCoordinator: Coordinator {
+    var rootCoordinator: Coordinator? = nil
+    var childCoordinators: [Coordinator] = []
+    var childControllers: [UIViewController] = []
+    required init(rootCoordinator: Coordinator? = nil) {
+        if let rootCoordinator = rootCoordinator {
+            self.rootCoordinator = rootCoordinator
+            self.rootCoordinator?.childCoordinators.append(self)
+        }
+    }
+    
+    func startFlow() {}
+    func finishFlow() {}
+}
+
+class BasePresenter: Coordinator, Presenter {
     var rootCoordinator: Coordinator? = nil
     var childCoordinators: [Coordinator] = []
     var childControllers: [UIViewController] = []
@@ -13,6 +28,7 @@ class BaseCoordinator: Coordinator, Presenter {
         }
         if let rootCoordinator = rootCoordinator {
             self.rootCoordinator = rootCoordinator
+            self.rootCoordinator?.childCoordinators.append(self)
         }
     }
     

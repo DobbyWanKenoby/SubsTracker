@@ -10,7 +10,7 @@ import UIKit
 protocol AddSubscriptionControllerProtocol where Self: UIViewController {}
 
 class AddSubscriptionNavigationController: UINavigationController, AddSubscriptionControllerProtocol {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarItem = getBarIcon()

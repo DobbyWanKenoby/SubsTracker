@@ -1,13 +1,17 @@
 class CoordinatorFactory {
    
-    static func getApplicationCoordinator() -> ApplicationCoordinator {
+    static func getApplicationCoordinator() -> ApplicationCoordinatorProtocol {
         let controller = ControllerFactory.getDefaultController(byType: .tabBar)
         return ApplicationCoordinator(presenter: controller)
     }
     
-    static func getAddSubscriptionCoordinator(rootCoordinator: Coordinator?) -> AddSubscriptionCoordinator {
+    static func getAddSubscriptionCoordinator(rootCoordinator: Coordinator?) -> AddSubscriptionCoordinatorProtocol {
         let controller = ControllerFactory.getAddSubscriptionNavigationController()
         return AddSubscriptionCoordinator(presenter: controller, rootCoordinator: rootCoordinator)
+    }
+    
+    static func getServiceStorageCoordinator(rootCoordinator: Coordinator?) -> ServiceStorageCoordinatorProtocol {
+        return ServiceStorageCoordinator(rootCoordinator: rootCoordinator)
     }
     
 //    private func getNotificationAlertCoordinator() -> NotificationAlertCoordinator {

@@ -7,8 +7,10 @@
 
 import UIKit
 
-final class ApplicationCoordinator: BaseCoordinator {
+protocol ApplicationCoordinatorProtocol: BasePresenter, Transmitter {}
 
+final class ApplicationCoordinator: BasePresenter, ApplicationCoordinatorProtocol {
+    
     // координатор ориентирован на работу с TabBar
     // поэтому сделаем вспомогательное свойства
     private var tabBarPresenter: UITabBarController? {
@@ -16,6 +18,9 @@ final class ApplicationCoordinator: BaseCoordinator {
     }
 
     override func startFlow() {
+        
+        // МикроСервис для работы с сущностью Service
+        let _ = ServiceStorageCoordinator(rootCoordinator: self)
 
 //        // Upcoming
 //        let upcomingCoordinator = CoordinatorFactory.getCoordinator(type: .Upcoming)
@@ -25,18 +30,10 @@ final class ApplicationCoordinator: BaseCoordinator {
 //
         // Flow Создания подписки на сервисы
         let addSubsCoordinator = CoordinatorFactory.getAddSubscriptionCoordinator(rootCoordinator: self)
-        childCoordinators.append(addSubsCoordinator)
         addSubsCoordinator.startFlow()
-
+        
         tabBarPresenter?.viewControllers = [
             addSubsCoordinator.presenter ?? UIViewController(),
         ]
     }
 }
-
-extension ApplicationCoordinator: Transmitter {
-    func useInThisTransmitter(data: TransmittedData) {
-        //print("Use transmitted data \(data) in AppCoordinator")
-    }
-}
-
