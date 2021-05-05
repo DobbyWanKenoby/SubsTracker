@@ -20,7 +20,6 @@ protocol Coordinator: AnyObject {
 protocol Presenter where Self: Coordinator {
     var childControllers: [UIViewController] { get set }
     var presenter: UIViewController? { get set }
-    init(presenter: UIViewController?, rootCoordinator: Coordinator?)
 }
 
 // MARK: - Data Transmitter
