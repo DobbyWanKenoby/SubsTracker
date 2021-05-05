@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Rounded-Semibold.otf">
+            <string>SFProRounded-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="113" id="KGk-i7-Jjw" customClass="ServiceCell" customModule="SubscriptionsPlan" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="113"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="113"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y58-nu-utZ">
+                        <rect key="frame" x="15" y="7" width="290" height="80"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Qax-M2-g8l">
+                                <rect key="frame" x="15" y="15" width="260" height="50"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kx4-9Z-qfw">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="cCh-lM-jeV"/>
+                                            <constraint firstAttribute="height" constant="50" id="xZt-pC-ilF"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmb-vP-Z2s">
+                                        <rect key="frame" x="65" y="0.0" width="195" height="50"/>
+                                        <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="30"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                        <constraints>
+                            <constraint firstItem="Qax-M2-g8l" firstAttribute="leading" secondItem="Y58-nu-utZ" secondAttribute="leading" constant="15" id="Y1P-Qm-VkN"/>
+                            <constraint firstAttribute="bottom" secondItem="Qax-M2-g8l" secondAttribute="bottom" constant="15" id="aFd-LP-ima"/>
+                            <constraint firstAttribute="trailing" secondItem="Qax-M2-g8l" secondAttribute="trailing" constant="15" id="c14-8m-BQa"/>
+                            <constraint firstItem="Qax-M2-g8l" firstAttribute="top" secondItem="Y58-nu-utZ" secondAttribute="top" constant="15" id="peG-u1-u4y"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Y58-nu-utZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="6RZ-Ed-h71"/>
+                    <constraint firstItem="Y58-nu-utZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="6dU-Ii-ySP"/>
+                    <constraint firstAttribute="trailing" secondItem="Y58-nu-utZ" secondAttribute="trailing" constant="15" id="b4f-18-lAR"/>
+                    <constraint firstAttribute="bottom" secondItem="Y58-nu-utZ" secondAttribute="bottom" constant="7" id="cQ5-jh-OJb"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="baseColorView" destination="Y58-nu-utZ" id="Cww-QI-YAZ"/>
+                <outlet property="logoImageView" destination="kx4-9Z-qfw" id="DOn-2B-MKH"/>
+                <outlet property="titleLabel" destination="mmb-vP-Z2s" id="2Jh-d6-JL4"/>
+            </connections>
+            <point key="canvasLocation" x="73.913043478260875" y="128.90625"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

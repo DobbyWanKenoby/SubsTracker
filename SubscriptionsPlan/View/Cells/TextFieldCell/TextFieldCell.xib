@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Rounded-Semibold.otf">
+            <string>SFProRounded-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextFieldCell" id="KGk-i7-Jjw" customClass="TextFieldCell" customModule="SubscriptionsPlan" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="НАЗВАНИЕ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tos-Lz-eG6" customClass="CellTitleLabel" customModule="SubscriptionsPlan" customModuleProvider="target">
+                        <rect key="frame" x="16" y="15" width="288" height="16"/>
+                        <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="PLACEHOLDER" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hfT-5v-TEQ">
+                        <rect key="frame" x="16" y="46" width="288" height="29"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                        <connections>
+                            <action selector="textFieldEditingEnded:" destination="KGk-i7-Jjw" eventType="editingChanged" id="ns5-aR-dgU"/>
+                        </connections>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="Tos-Lz-eG6" secondAttribute="trailing" id="KfA-rI-Agr"/>
+                    <constraint firstAttribute="bottom" secondItem="hfT-5v-TEQ" secondAttribute="bottom" constant="25" id="MLl-91-4Xe"/>
+                    <constraint firstItem="hfT-5v-TEQ" firstAttribute="top" secondItem="Tos-Lz-eG6" secondAttribute="bottom" constant="15" id="h9m-rd-o8C"/>
+                    <constraint firstItem="Tos-Lz-eG6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="jy9-Tf-bZE"/>
+                    <constraint firstItem="hfT-5v-TEQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="kqr-XB-Z0k"/>
+                    <constraint firstItem="Tos-Lz-eG6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="rkb-4F-3XF"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="hfT-5v-TEQ" secondAttribute="trailing" id="yNT-yv-Hqp"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cellTitleLabel" destination="Tos-Lz-eG6" id="ieY-xb-QM4"/>
+                <outlet property="cellValueTextField" destination="hfT-5v-TEQ" id="daO-M1-Kj8"/>
+            </connections>
+            <point key="canvasLocation" x="57.971014492753625" y="134.59821428571428"/>
+        </tableViewCell>
+    </objects>
+</document>

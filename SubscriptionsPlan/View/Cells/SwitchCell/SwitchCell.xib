@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Rounded-Semibold.otf">
+            <string>SFProRounded-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCell" rowHeight="79" id="KGk-i7-Jjw" customClass="SwitchCell" customModule="SubscriptionsPlan" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="НАЗВАНИЕ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMI-l3-2nz" customClass="CellTitleLabel" customModule="SubscriptionsPlan" customModuleProvider="target">
+                        <rect key="frame" x="16" y="15" width="304" height="29"/>
+                        <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="srX-eX-yu0">
+                        <rect key="frame" x="255" y="15" width="51" height="31"/>
+                    </switch>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="srX-eX-yu0" secondAttribute="trailing" id="AjU-By-n6b"/>
+                    <constraint firstAttribute="trailing" secondItem="GMI-l3-2nz" secondAttribute="trailing" id="Ane-T1-auC"/>
+                    <constraint firstItem="GMI-l3-2nz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="JgA-zC-KpS"/>
+                    <constraint firstItem="GMI-l3-2nz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="aQB-rc-wAK"/>
+                    <constraint firstItem="GMI-l3-2nz" firstAttribute="height" secondItem="srX-eX-yu0" secondAttribute="height" multiplier="0.935484" id="sNX-z6-CX8"/>
+                    <constraint firstAttribute="bottom" secondItem="GMI-l3-2nz" secondAttribute="bottom" constant="35" id="st6-YO-bwt"/>
+                    <constraint firstItem="srX-eX-yu0" firstAttribute="top" secondItem="GMI-l3-2nz" secondAttribute="top" id="ufB-Fs-AkY"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cellSwitch" destination="srX-eX-yu0" id="oEs-Oa-9Ex"/>
+                <outlet property="cellTitleLabel" destination="GMI-l3-2nz" id="kZY-Fa-DZk"/>
+            </connections>
+            <point key="canvasLocation" x="-314.49275362318843" y="144.97767857142856"/>
+        </tableViewCell>
+    </objects>
+</document>

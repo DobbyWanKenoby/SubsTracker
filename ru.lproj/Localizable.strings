@@ -1,0 +1,25 @@
+/* 
+  Localization.strings
+  SubscriptionsPlan
+
+  Created by Vasily Usov on 06.01.2021.
+  
+*/
+
+"next_payment" = "Следующий платеж";
+"currency" = "Валюта";
+"amount" = "Стоимость";
+"notice" = "Заметка";
+"payment period" = "Период оплаты";
+"every" = "Каждый";
+"day" = "День";
+"week" = "Неделя";
+"month" = "Месяц";
+"year" = "Год";
+"back" = "Назад";
+"save" = "Сохранить";
+"notify" = "Уведомлять";
+"notification period" = "Период уведомлений";
+"in %d days" = "За %d дн.";
+"sub created" = "Подписка создана";
+"service_mts" = "МТС";

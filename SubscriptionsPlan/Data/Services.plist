@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>identifier</key>
+		<string>MTS</string>
+		<key>isLocalizable</key>
+		<string>1</string>
+		<key>color</key>
+		<string>#e30613</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>Amediateka</string>
+		<key>isLocalizable</key>
+		<string>0</string>
+		<key>color</key>
+		<string>#191a1d</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>1Password</string>
+		<key>isLocalizable</key>
+		<string>0</string>
+		<key>color</key>
+		<string>#0572ec</string>
+	</dict>
+</array>
+</plist>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Rounded-Semibold.otf">
+            <string>SFProRounded-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="PickerCell" customModule="SubscriptionsPlan" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="НАЗВАНИЕ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nus-qc-qWx" customClass="CellTitleLabel" customModule="SubscriptionsPlan" customModuleProvider="target">
+                        <rect key="frame" x="16" y="15" width="288" height="16"/>
+                        <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ЗНАЧЕНИЕ" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0k8-Q4-3Ez">
+                        <rect key="frame" x="16" y="46" width="288" height="29"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Nus-qc-qWx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="0r0-I7-oSu"/>
+                    <constraint firstItem="Nus-qc-qWx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="54i-dM-VlQ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="0k8-Q4-3Ez" secondAttribute="trailing" id="6sU-EK-CAQ"/>
+                    <constraint firstAttribute="bottom" secondItem="0k8-Q4-3Ez" secondAttribute="bottom" constant="25" id="Eqg-dn-1LY"/>
+                    <constraint firstItem="0k8-Q4-3Ez" firstAttribute="top" secondItem="Nus-qc-qWx" secondAttribute="bottom" constant="15" id="aof-vm-sjk"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Nus-qc-qWx" secondAttribute="trailing" id="o7v-ZU-Od0"/>
+                    <constraint firstItem="0k8-Q4-3Ez" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="sYi-Yy-hP7"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cellTitleLabel" destination="Nus-qc-qWx" id="wXp-cr-7FB"/>
+                <outlet property="cellValueTextField" destination="0k8-Q4-3Ez" id="vr5-Ab-5Tz"/>
+            </connections>
+            <point key="canvasLocation" x="57.971014492753625" y="133.92857142857142"/>
+        </tableViewCell>
+    </objects>
+</document>
