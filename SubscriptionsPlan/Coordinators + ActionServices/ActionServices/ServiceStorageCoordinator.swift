@@ -1,23 +1,22 @@
-//
-//  ServiceAppData.swift
-//  SubscriptionsPlan
-//
-//  Created by Vasily Usov on 01.01.2021.
-//
+// Сервис, обеспечивающий работу с сущностью "Сервис/Service"
 
 import UIKit
 
-// MARK: - Service Storage Data Layer
+protocol ServiceStorageCoordinatorProtocol: BaseCoordinator, ActionService {}
 
-/// Протокол, описывающий реализацию хранилища сущностей "Сервис", работающую с конкретным типом хранилища
-protocol ServiceStorageDataLayerProtocol {
-    func getAll(withCustoms: Bool) -> [ServiceProtocol]
+class ServiceStorageCoordinator: BaseCoordinator, ServiceStorageCoordinatorProtocol {
+    func handle(data: Any) -> Any? {
+        if case ServiceAction.load(let type) = data {
+            //let loadCustomsServices: Bool = (type == .all) ? true : false
+            return self.getDefaultServices()
+        }
+        return nil
+    }
 }
 
-/// Локальное хранилище сущностей "Сервис"
-class ServiceLocalStorage: ServiceStorageDataLayerProtocol {
-    private lazy  var defaultServices: [ServiceProtocol] = getDefaultServices()
-    
+// MARK: Работа с хранилищем Сервисов
+
+extension ServiceStorageCoordinator {
     private func getDefaultServices() -> [ServiceProtocol] {
         // загрузка стандартных сервисов из Plist-файла
         let servicesDictionary: [[String:String]]
@@ -43,17 +42,4 @@ class ServiceLocalStorage: ServiceStorageDataLayerProtocol {
         }
         return services
     }
-    
-    func getAll(withCustoms: Bool = false) -> [ServiceProtocol] {
-        return defaultServices
-    }
-}
-
-// MARK: - Service Storage Front Layer
-
-class ServiceStorage {
-    static var `default`: ServiceStorageDataLayerProtocol {
-        self.local
-    }
-    static var local: ServiceStorageDataLayerProtocol  = ServiceLocalStorage()
 }

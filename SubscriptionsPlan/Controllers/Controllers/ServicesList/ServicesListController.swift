@@ -1,8 +1,14 @@
 import UIKit
 
 protocol ServicesListControllerProtocol where Self: UIViewController {
+    // Input Data
     var services: [ServiceProtocol] { get set }
+    
+    // Output callbacks
     var onSelectService: ((ServiceProtocol, UITableViewCell) -> Void)? { get set }
+    
+    // Helpers
+    func getSelectedCell() -> UITableViewCell?
 }
 
 class ServicesListController: UITableViewController, ServicesListControllerProtocol {
@@ -21,6 +27,12 @@ class ServicesListController: UITableViewController, ServicesListControllerProto
         self.navigationItem.title = "Новая подписка"
         self.navigationItem.largeTitleDisplayMode = .always
         self.tableView.separatorStyle = .none
+    }
+    func getSelectedCell() -> UITableViewCell? {
+        guard let indexPath = self.tableView.indexPathForSelectedRow else {
+            return nil
+        }
+        return self.tableView.cellForRow(at: indexPath)
     }
 
 }

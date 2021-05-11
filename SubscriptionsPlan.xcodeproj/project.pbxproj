@@ -12,6 +12,9 @@
 		E01EDEC325A9F394009E1B36 /* AddSubscriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01EDEC225A9F394009E1B36 /* AddSubscriptionController.swift */; };
 		E01EDEC825A9FA35009E1B36 /* OverlayPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01EDEC725A9FA35009E1B36 /* OverlayPresentationController.swift */; };
 		E01EDECD25AA0487009E1B36 /* AddSubAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01EDECC25AA0487009E1B36 /* AddSubAnimationController.swift */; };
+		E0205B5326445DC700A355E6 /* ServiceAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0205B5226445DC700A355E6 /* ServiceAction.swift */; };
+		E0205B5526445DF200A355E6 /* SubscriptionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0205B5426445DF200A355E6 /* SubscriptionAction.swift */; };
+		E0205B5726445F3E00A355E6 /* SubscriptionStorageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0205B5626445F3E00A355E6 /* SubscriptionStorageCoordinator.swift */; };
 		E022C29126405BDC0051C90E /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022C29026405BDC0051C90E /* Helpers.swift */; };
 		E022C294264067CE0051C90E /* Coordinators Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022C293264067CE0051C90E /* Coordinators Protocols.swift */; };
 		E022C2982640700B0051C90E /* ControllersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022C2972640700B0051C90E /* ControllersList.swift */; };
@@ -19,30 +22,29 @@
 		E022C29E264124E00051C90E /* Services.plist in Resources */ = {isa = PBXBuildFile; fileRef = E022C29D264124E00051C90E /* Services.plist */; };
 		E022C2A0264125440051C90E /* Services.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E022C29F264125440051C90E /* Services.xcassets */; };
 		E022C2A226412A970051C90E /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022C2A126412A970051C90E /* UIColor.swift */; };
-		E022C2A526413C230051C90E /* NewSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022C2A426413C230051C90E /* NewSubscription.swift */; };
+		E0349F232645AFCC007DD2CD /* CurrencyStorageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0349F222645AFCC007DD2CD /* CurrencyStorageCoordinator.swift */; };
+		E0349F252645B044007DD2CD /* Currencies.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0349F242645B044007DD2CD /* Currencies.plist */; };
+		E0349F272645B262007DD2CD /* CurrencyAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0349F262645B262007DD2CD /* CurrencyAction.swift */; };
 		E039B93125A1D42F0096B23A /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E039B93025A1D42F0096B23A /* ApplicationCoordinator.swift */; };
 		E039B93625A1D5EE0096B23A /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E039B93525A1D5EE0096B23A /* BaseCoordinator.swift */; };
 		E03AB4102642A33D00869617 /* ServiceStorageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03AB40F2642A33D00869617 /* ServiceStorageCoordinator.swift */; };
-		E044E21325A1EBBB00267459 /* UpcomingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E21225A1EBBB00267459 /* UpcomingNavigationController.swift */; };
+		E044E21325A1EBBB00267459 /* SubscriptionsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E21225A1EBBB00267459 /* SubscriptionsNavigationController.swift */; };
 		E044E21825A1ED3300267459 /* ServicesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E21725A1ED3300267459 /* ServicesListController.swift */; };
 		E044E22325A1EFA000267459 /* ServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E22125A1EFA000267459 /* ServiceCell.swift */; };
 		E044E22425A1EFA000267459 /* ServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E044E22225A1EFA000267459 /* ServiceCell.xib */; };
 		E044E22725A1F36C00267459 /* AddSubscriptionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E22625A1F36C00267459 /* AddSubscriptionCoordinator.swift */; };
-		E044E22A25A1F3C800267459 /* AddSubscriptionNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E22925A1F3C800267459 /* AddSubscriptionNavigationController.swift */; };
+		E044E22A25A1F3C800267459 /* AddSubscriptionBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E22925A1F3C800267459 /* AddSubscriptionBaseController.swift */; };
 		E044E23E25A4715500267459 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E23C25A4715500267459 /* TextFieldCell.swift */; };
 		E044E23F25A4715500267459 /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E044E23D25A4715500267459 /* TextFieldCell.xib */; };
 		E044E24325A4785000267459 /* CellTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E24225A4785000267459 /* CellTitleLabel.swift */; };
 		E044E24725A4B80B00267459 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E24625A4B80B00267459 /* Currency.swift */; };
-		E044E24D25A4B87E00267459 /* CurrencyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E24C25A4B87E00267459 /* CurrencyStorage.swift */; };
 		E044E25225A4BAA800267459 /* PickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E25025A4BAA800267459 /* PickerCell.swift */; };
 		E044E25325A4BAA800267459 /* PickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E044E25125A4BAA800267459 /* PickerCell.xib */; };
 		E044E25625A4BF6100267459 /* CellWithBottomLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E25525A4BF6100267459 /* CellWithBottomLine.swift */; };
 		E044E25B25A4C83E00267459 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E25A25A4C83E00267459 /* Settings.swift */; };
 		E044E26C25A62BE800267459 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E26A25A62BE800267459 /* DatePickerCell.swift */; };
 		E044E26D25A62BE800267459 /* DatePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E044E26B25A62BE800267459 /* DatePickerCell.xib */; };
-		E044E29E25A6345000267459 /* Upcoming.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E044E29D25A6345000267459 /* Upcoming.storyboard */; };
 		E044E2A625A634E200267459 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E044E2A825A634E200267459 /* Localizable.strings */; };
-		E044E2AF25A70A1600267459 /* AddSubTransferProtocol + Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E2AE25A70A1600267459 /* AddSubTransferProtocol + Instance.swift */; };
 		E044E2B525A7103D00267459 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E2B425A7103D00267459 /* Localization.swift */; };
 		E06D59D425AF493A00CA8394 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06D59D225AF493A00CA8394 /* SwitchCell.swift */; };
 		E06D59D525AF493A00CA8394 /* SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E06D59D325AF493A00CA8394 /* SwitchCell.xib */; };
@@ -52,7 +54,6 @@
 		E06D59FB25B06FD300CA8394 /* NotificationAlertPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06D59FA25B06FD300CA8394 /* NotificationAlertPresentationController.swift */; };
 		E06D59FF25B0705800CA8394 /* NotificationAlertTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06D59FE25B0705800CA8394 /* NotificationAlertTransitionManager.swift */; };
 		E06D5A0225B0742500CA8394 /* NotificationAlertAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06D5A0125B0742500CA8394 /* NotificationAlertAnimationController.swift */; };
-		E0AEC17125B4B403009231C3 /* UpcomingTransferProtocol + Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AEC17025B4B403009231C3 /* UpcomingTransferProtocol + Instance.swift */; };
 		E0AEC18A25B4DA9A009231C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0AEC18925B4DA9A009231C3 /* Main.storyboard */; };
 		E0C12420259DFA9400ABC79F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C1241F259DFA9400ABC79F /* AppDelegate.swift */; };
 		E0C12422259DFA9400ABC79F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C12421259DFA9400ABC79F /* SceneDelegate.swift */; };
@@ -60,15 +61,14 @@
 		E0C1242F259DFA9500ABC79F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0C1242D259DFA9500ABC79F /* LaunchScreen.storyboard */; };
 		E0C12439259DFAC200ABC79F /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C12438259DFAC200ABC79F /* Service.swift */; };
 		E0C1243D259DFB8400ABC79F /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C1243C259DFB8400ABC79F /* Subscription.swift */; };
-		E0C12441259F66A000ABC79F /* ServicesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C12440259F66A000ABC79F /* ServicesStorage.swift */; };
 		E0C1244A259F739400ABC79F /* SubscriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C12448259F739400ABC79F /* SubscriptionCell.swift */; };
 		E0C12451259F758700ABC79F /* SF-Pro-Rounded-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0C12450259F758700ABC79F /* SF-Pro-Rounded-Semibold.otf */; };
 		E0C12456259F782A00ABC79F /* SF-Pro-Rounded-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0C12453259F782A00ABC79F /* SF-Pro-Rounded-Bold.otf */; };
 		E0C12457259F782A00ABC79F /* SF-Pro-Rounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0C12454259F782A00ABC79F /* SF-Pro-Rounded-Medium.otf */; };
 		E0C12458259F782A00ABC79F /* SF-Pro-Rounded-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0C12455259F782A00ABC79F /* SF-Pro-Rounded-Regular.otf */; };
-		E0C12460259F792B00ABC79F /* UpcomingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C1245F259F792B00ABC79F /* UpcomingController.swift */; };
+		E0C12460259F792B00ABC79F /* SubscriptionsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C1245F259F792B00ABC79F /* SubscriptionsListController.swift */; };
 		E0C7D71525A1E07600E71476 /* CoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C7D71425A1E07600E71476 /* CoordinatorFactory.swift */; };
-		E0C7D71B25A1E85A00E71476 /* UpcomingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C7D71A25A1E85A00E71476 /* UpcomingCoordinator.swift */; };
+		E0C7D71B25A1E85A00E71476 /* SubscriptionsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C7D71A25A1E85A00E71476 /* SubscriptionsCoordinator.swift */; };
 		E0EE4307259F7A3800CA0F6F /* ControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EE4306259F7A3800CA0F6F /* ControllerFactory.swift */; };
 		E0EE432525A0B12D00CA0F6F /* SubscriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0EE432425A0B12D00CA0F6F /* SubscriptionCell.xib */; };
 /* End PBXBuildFile section */
@@ -79,6 +79,9 @@
 		E01EDEC225A9F394009E1B36 /* AddSubscriptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionController.swift; sourceTree = "<group>"; };
 		E01EDEC725A9FA35009E1B36 /* OverlayPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayPresentationController.swift; sourceTree = "<group>"; };
 		E01EDECC25AA0487009E1B36 /* AddSubAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubAnimationController.swift; sourceTree = "<group>"; };
+		E0205B5226445DC700A355E6 /* ServiceAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAction.swift; sourceTree = "<group>"; };
+		E0205B5426445DF200A355E6 /* SubscriptionAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionAction.swift; sourceTree = "<group>"; };
+		E0205B5626445F3E00A355E6 /* SubscriptionStorageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionStorageCoordinator.swift; sourceTree = "<group>"; };
 		E022C29026405BDC0051C90E /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		E022C293264067CE0051C90E /* Coordinators Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coordinators Protocols.swift"; sourceTree = "<group>"; };
 		E022C2972640700B0051C90E /* ControllersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllersList.swift; sourceTree = "<group>"; };
@@ -86,21 +89,22 @@
 		E022C29D264124E00051C90E /* Services.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Services.plist; sourceTree = "<group>"; };
 		E022C29F264125440051C90E /* Services.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Services.xcassets; sourceTree = "<group>"; };
 		E022C2A126412A970051C90E /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		E022C2A426413C230051C90E /* NewSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubscription.swift; sourceTree = "<group>"; };
+		E0349F222645AFCC007DD2CD /* CurrencyStorageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyStorageCoordinator.swift; sourceTree = "<group>"; };
+		E0349F242645B044007DD2CD /* Currencies.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Currencies.plist; sourceTree = "<group>"; };
+		E0349F262645B262007DD2CD /* CurrencyAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyAction.swift; sourceTree = "<group>"; };
 		E039B93025A1D42F0096B23A /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		E039B93525A1D5EE0096B23A /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		E03AB40F2642A33D00869617 /* ServiceStorageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceStorageCoordinator.swift; sourceTree = "<group>"; };
-		E044E21225A1EBBB00267459 /* UpcomingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingNavigationController.swift; sourceTree = "<group>"; };
+		E044E21225A1EBBB00267459 /* SubscriptionsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsNavigationController.swift; sourceTree = "<group>"; };
 		E044E21725A1ED3300267459 /* ServicesListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesListController.swift; sourceTree = "<group>"; };
 		E044E22125A1EFA000267459 /* ServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCell.swift; sourceTree = "<group>"; };
 		E044E22225A1EFA000267459 /* ServiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceCell.xib; sourceTree = "<group>"; };
 		E044E22625A1F36C00267459 /* AddSubscriptionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionCoordinator.swift; sourceTree = "<group>"; };
-		E044E22925A1F3C800267459 /* AddSubscriptionNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionNavigationController.swift; sourceTree = "<group>"; };
+		E044E22925A1F3C800267459 /* AddSubscriptionBaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionBaseController.swift; sourceTree = "<group>"; };
 		E044E23C25A4715500267459 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		E044E23D25A4715500267459 /* TextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldCell.xib; sourceTree = "<group>"; };
 		E044E24225A4785000267459 /* CellTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTitleLabel.swift; sourceTree = "<group>"; };
 		E044E24625A4B80B00267459 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
-		E044E24C25A4B87E00267459 /* CurrencyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyStorage.swift; sourceTree = "<group>"; };
 		E044E25025A4BAA800267459 /* PickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerCell.swift; sourceTree = "<group>"; };
 		E044E25125A4BAA800267459 /* PickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerCell.xib; sourceTree = "<group>"; };
 		E044E25525A4BF6100267459 /* CellWithBottomLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithBottomLine.swift; sourceTree = "<group>"; };
@@ -109,11 +113,9 @@
 		E044E26A25A62BE800267459 /* DatePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
 		E044E26B25A62BE800267459 /* DatePickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerCell.xib; sourceTree = "<group>"; };
 		E044E27625A630CA00267459 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E044E29D25A6345000267459 /* Upcoming.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Upcoming.storyboard; sourceTree = "<group>"; };
 		E044E2A425A634DA00267459 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		E044E2A725A634E200267459 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E044E2AA25A634E700267459 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		E044E2AE25A70A1600267459 /* AddSubTransferProtocol + Instance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddSubTransferProtocol + Instance.swift"; sourceTree = "<group>"; };
 		E044E2B425A7103D00267459 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		E06D59D225AF493A00CA8394 /* SwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		E06D59D325AF493A00CA8394 /* SwitchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
@@ -123,7 +125,6 @@
 		E06D59FA25B06FD300CA8394 /* NotificationAlertPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAlertPresentationController.swift; sourceTree = "<group>"; };
 		E06D59FE25B0705800CA8394 /* NotificationAlertTransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAlertTransitionManager.swift; sourceTree = "<group>"; };
 		E06D5A0125B0742500CA8394 /* NotificationAlertAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAlertAnimationController.swift; sourceTree = "<group>"; };
-		E0AEC17025B4B403009231C3 /* UpcomingTransferProtocol + Instance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpcomingTransferProtocol + Instance.swift"; sourceTree = "<group>"; };
 		E0AEC18925B4DA9A009231C3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E0C1241C259DFA9400ABC79F /* SubscriptionsPlan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubscriptionsPlan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0C1241F259DFA9400ABC79F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,15 +133,14 @@
 		E0C12430259DFA9500ABC79F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0C12438259DFAC200ABC79F /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		E0C1243C259DFB8400ABC79F /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
-		E0C12440259F66A000ABC79F /* ServicesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesStorage.swift; sourceTree = "<group>"; };
 		E0C12448259F739400ABC79F /* SubscriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionCell.swift; sourceTree = "<group>"; };
 		E0C12450259F758700ABC79F /* SF-Pro-Rounded-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Semibold.otf"; sourceTree = "<group>"; };
 		E0C12453259F782A00ABC79F /* SF-Pro-Rounded-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Bold.otf"; sourceTree = "<group>"; };
 		E0C12454259F782A00ABC79F /* SF-Pro-Rounded-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Medium.otf"; sourceTree = "<group>"; };
 		E0C12455259F782A00ABC79F /* SF-Pro-Rounded-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Regular.otf"; sourceTree = "<group>"; };
-		E0C1245F259F792B00ABC79F /* UpcomingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingController.swift; sourceTree = "<group>"; };
+		E0C1245F259F792B00ABC79F /* SubscriptionsListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsListController.swift; sourceTree = "<group>"; };
 		E0C7D71425A1E07600E71476 /* CoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFactory.swift; sourceTree = "<group>"; };
-		E0C7D71A25A1E85A00E71476 /* UpcomingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingCoordinator.swift; sourceTree = "<group>"; };
+		E0C7D71A25A1E85A00E71476 /* SubscriptionsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsCoordinator.swift; sourceTree = "<group>"; };
 		E0EE4306259F7A3800CA0F6F /* ControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerFactory.swift; sourceTree = "<group>"; };
 		E0EE432425A0B12D00CA0F6F /* SubscriptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubscriptionCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,6 +156,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E0205B5826445F5800A355E6 /* ActionServices */ = {
+			isa = PBXGroup;
+			children = (
+				E03AB40F2642A33D00869617 /* ServiceStorageCoordinator.swift */,
+				E0205B5626445F3E00A355E6 /* SubscriptionStorageCoordinator.swift */,
+				E0349F222645AFCC007DD2CD /* CurrencyStorageCoordinator.swift */,
+			);
+			path = ActionServices;
+			sourceTree = "<group>";
+		};
 		E022C28F26405AAD0051C90E /* SwiftCoordinatorsKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,12 +180,12 @@
 		E022C29B264072B90051C90E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E0AEC18525B4D9FC009231C3 /* AddSubscriptionNavigationContainer */,
+				E0AEC18525B4D9FC009231C3 /* AddSubscriptionBaseController */,
 				E044E21625A1ED0E00267459 /* ServicesList */,
 				E044E22C25A2211900267459 /* AddSubscription */,
 				E06D59EE25B0619C00CA8394 /* NotificationAlert */,
-				E0AEC18125B4D9CB009231C3 /* UpcomingNavigationContainer */,
-				E0EE432B25A1155B00CA0F6F /* UpcomingController */,
+				E0AEC18125B4D9CB009231C3 /* SubscriptionsBaseContoller */,
+				E0EE432B25A1155B00CA0F6F /* SubscriptionsListController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -184,16 +194,19 @@
 			isa = PBXGroup;
 			children = (
 				E022C29D264124E00051C90E /* Services.plist */,
+				E0349F242645B044007DD2CD /* Currencies.plist */,
 			);
 			path = Data;
 			sourceTree = "<group>";
 		};
-		E022C2A326413C130051C90E /* TransmittedData (передаваемые данные) */ = {
+		E022C2A326413C130051C90E /* Transmitted Actions */ = {
 			isa = PBXGroup;
 			children = (
-				E022C2A426413C230051C90E /* NewSubscription.swift */,
+				E0205B5226445DC700A355E6 /* ServiceAction.swift */,
+				E0205B5426445DF200A355E6 /* SubscriptionAction.swift */,
+				E0349F262645B262007DD2CD /* CurrencyAction.swift */,
 			);
-			path = "TransmittedData (передаваемые данные)";
+			path = "Transmitted Actions";
 			sourceTree = "<group>";
 		};
 		E03AB40E2642A04C00869617 /* Coordinators */ = {
@@ -201,9 +214,8 @@
 			children = (
 				E039B93025A1D42F0096B23A /* ApplicationCoordinator.swift */,
 				E044E22625A1F36C00267459 /* AddSubscriptionCoordinator.swift */,
-				E0C7D71A25A1E85A00E71476 /* UpcomingCoordinator.swift */,
+				E0C7D71A25A1E85A00E71476 /* SubscriptionsCoordinator.swift */,
 				E06D59F625B0640E00CA8394 /* NotificationAlertCoordinator.swift */,
-				E03AB40F2642A33D00869617 /* ServiceStorageCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -230,7 +242,6 @@
 			children = (
 				E01EDEBF25A9F22B009E1B36 /* AddSubscriptionController.xib */,
 				E01EDEC225A9F394009E1B36 /* AddSubscriptionController.swift */,
-				E044E2AE25A70A1600267459 /* AddSubTransferProtocol + Instance.swift */,
 			);
 			path = AddSubscription;
 			sourceTree = "<group>";
@@ -262,24 +273,6 @@
 			path = Elements;
 			sourceTree = "<group>";
 		};
-		E044E24925A4B85A00267459 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				E0C12438259DFAC200ABC79F /* Service.swift */,
-				E0C12440259F66A000ABC79F /* ServicesStorage.swift */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
-		E044E24A25A4B86400267459 /* Currency */ = {
-			isa = PBXGroup;
-			children = (
-				E044E24625A4B80B00267459 /* Currency.swift */,
-				E044E24C25A4B87E00267459 /* CurrencyStorage.swift */,
-			);
-			path = Currency;
-			sourceTree = "<group>";
-		};
 		E044E24F25A4BA5800267459 /* PickerCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,14 +280,6 @@
 				E044E25125A4BAA800267459 /* PickerCell.xib */,
 			);
 			path = PickerCell;
-			sourceTree = "<group>";
-		};
-		E044E25825A4C45F00267459 /* Subscription */ = {
-			isa = PBXGroup;
-			children = (
-				E0C1243C259DFB8400ABC79F /* Subscription.swift */,
-			);
-			path = Subscription;
 			sourceTree = "<group>";
 		};
 		E044E26925A62BC000267459 /* DatePickerCell */ = {
@@ -353,20 +338,20 @@
 			path = AddSubPresentation;
 			sourceTree = "<group>";
 		};
-		E0AEC18125B4D9CB009231C3 /* UpcomingNavigationContainer */ = {
+		E0AEC18125B4D9CB009231C3 /* SubscriptionsBaseContoller */ = {
 			isa = PBXGroup;
 			children = (
-				E044E21225A1EBBB00267459 /* UpcomingNavigationController.swift */,
+				E044E21225A1EBBB00267459 /* SubscriptionsNavigationController.swift */,
 			);
-			path = UpcomingNavigationContainer;
+			path = SubscriptionsBaseContoller;
 			sourceTree = "<group>";
 		};
-		E0AEC18525B4D9FC009231C3 /* AddSubscriptionNavigationContainer */ = {
+		E0AEC18525B4D9FC009231C3 /* AddSubscriptionBaseController */ = {
 			isa = PBXGroup;
 			children = (
-				E044E22925A1F3C800267459 /* AddSubscriptionNavigationController.swift */,
+				E044E22925A1F3C800267459 /* AddSubscriptionBaseController.swift */,
 			);
-			path = AddSubscriptionNavigationContainer;
+			path = AddSubscriptionBaseController;
 			sourceTree = "<group>";
 		};
 		E0C12413259DFA9400ABC79F = {
@@ -392,7 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				E044E23725A4682000267459 /* Transitions+Presentations+Animations */,
-				E0C7D71D25A1E88800E71476 /* Coordinators */,
+				E0C7D71D25A1E88800E71476 /* Coordinators + ActionServices */,
 				E0EE432A25A1154C00CA0F6F /* Controllers */,
 				E0C12444259F72E300ABC79F /* View */,
 				E0C12437259DFAB000ABC79F /* Model */,
@@ -410,10 +395,10 @@
 			isa = PBXGroup;
 			children = (
 				E022C29C264124860051C90E /* Data */,
-				E022C2A326413C130051C90E /* TransmittedData (передаваемые данные) */,
-				E044E24925A4B85A00267459 /* Service */,
-				E044E25825A4C45F00267459 /* Subscription */,
-				E044E24A25A4B86400267459 /* Currency */,
+				E022C2A326413C130051C90E /* Transmitted Actions */,
+				E0C12438259DFAC200ABC79F /* Service.swift */,
+				E0C1243C259DFB8400ABC79F /* Subscription.swift */,
+				E044E24625A4B80B00267459 /* Currency.swift */,
 				E044E25A25A4C83E00267459 /* Settings.swift */,
 			);
 			path = Model;
@@ -472,13 +457,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		E0C7D71D25A1E88800E71476 /* Coordinators */ = {
+		E0C7D71D25A1E88800E71476 /* Coordinators + ActionServices */ = {
 			isa = PBXGroup;
 			children = (
 				E0C7D71425A1E07600E71476 /* CoordinatorFactory.swift */,
 				E03AB40E2642A04C00869617 /* Coordinators */,
+				E0205B5826445F5800A355E6 /* ActionServices */,
 			);
-			path = Coordinators;
+			path = "Coordinators + ActionServices";
 			sourceTree = "<group>";
 		};
 		E0EE432A25A1154C00CA0F6F /* Controllers */ = {
@@ -491,14 +477,12 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		E0EE432B25A1155B00CA0F6F /* UpcomingController */ = {
+		E0EE432B25A1155B00CA0F6F /* SubscriptionsListController */ = {
 			isa = PBXGroup;
 			children = (
-				E0C1245F259F792B00ABC79F /* UpcomingController.swift */,
-				E044E29D25A6345000267459 /* Upcoming.storyboard */,
-				E0AEC17025B4B403009231C3 /* UpcomingTransferProtocol + Instance.swift */,
+				E0C1245F259F792B00ABC79F /* SubscriptionsListController.swift */,
 			);
-			path = UpcomingController;
+			path = SubscriptionsListController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -564,13 +548,13 @@
 				E06D59F125B0620600CA8394 /* NotificationAlert.xib in Resources */,
 				E0C12457259F782A00ABC79F /* SF-Pro-Rounded-Medium.otf in Resources */,
 				E0C1242C259DFA9500ABC79F /* Assets.xcassets in Resources */,
+				E0349F252645B044007DD2CD /* Currencies.plist in Resources */,
 				E0C12456259F782A00ABC79F /* SF-Pro-Rounded-Bold.otf in Resources */,
 				E06D59D525AF493A00CA8394 /* SwitchCell.xib in Resources */,
 				E044E2A625A634E200267459 /* Localizable.strings in Resources */,
 				E044E22425A1EFA000267459 /* ServiceCell.xib in Resources */,
 				E01EDEC025A9F22B009E1B36 /* AddSubscriptionController.xib in Resources */,
 				E0EE432525A0B12D00CA0F6F /* SubscriptionCell.xib in Resources */,
-				E044E29E25A6345000267459 /* Upcoming.storyboard in Resources */,
 				E044E25325A4BAA800267459 /* PickerCell.xib in Resources */,
 				E022C2A0264125440051C90E /* Services.xcassets in Resources */,
 				E0C12458259F782A00ABC79F /* SF-Pro-Rounded-Regular.otf in Resources */,
@@ -588,14 +572,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E044E2AF25A70A1600267459 /* AddSubTransferProtocol + Instance.swift in Sources */,
+				E0205B5326445DC700A355E6 /* ServiceAction.swift in Sources */,
 				E022C29A264072410051C90E /* ViewControllerLoader.swift in Sources */,
-				E0C7D71B25A1E85A00E71476 /* UpcomingCoordinator.swift in Sources */,
+				E0C7D71B25A1E85A00E71476 /* SubscriptionsCoordinator.swift in Sources */,
 				E044E2B525A7103D00267459 /* Localization.swift in Sources */,
-				E022C2A526413C230051C90E /* NewSubscription.swift in Sources */,
 				E0C1243D259DFB8400ABC79F /* Subscription.swift in Sources */,
 				E039B93125A1D42F0096B23A /* ApplicationCoordinator.swift in Sources */,
-				E0C12460259F792B00ABC79F /* UpcomingController.swift in Sources */,
+				E0C12460259F792B00ABC79F /* SubscriptionsListController.swift in Sources */,
 				E06D59FF25B0705800CA8394 /* NotificationAlertTransitionManager.swift in Sources */,
 				E06D5A0225B0742500CA8394 /* NotificationAlertAnimationController.swift in Sources */,
 				E06D59FB25B06FD300CA8394 /* NotificationAlertPresentationController.swift in Sources */,
@@ -607,12 +590,11 @@
 				E044E26C25A62BE800267459 /* DatePickerCell.swift in Sources */,
 				E039B93625A1D5EE0096B23A /* BaseCoordinator.swift in Sources */,
 				E022C2982640700B0051C90E /* ControllersList.swift in Sources */,
-				E0C12441259F66A000ABC79F /* ServicesStorage.swift in Sources */,
 				E0C12420259DFA9400ABC79F /* AppDelegate.swift in Sources */,
 				E01EDEBC25A9ECED009E1B36 /* AddSubsTransitionManager.swift in Sources */,
 				E0C1244A259F739400ABC79F /* SubscriptionCell.swift in Sources */,
 				E044E24725A4B80B00267459 /* Currency.swift in Sources */,
-				E044E22A25A1F3C800267459 /* AddSubscriptionNavigationController.swift in Sources */,
+				E044E22A25A1F3C800267459 /* AddSubscriptionBaseController.swift in Sources */,
 				E01EDEC825A9FA35009E1B36 /* OverlayPresentationController.swift in Sources */,
 				E044E23E25A4715500267459 /* TextFieldCell.swift in Sources */,
 				E044E21825A1ED3300267459 /* ServicesListController.swift in Sources */,
@@ -621,18 +603,20 @@
 				E0C12422259DFA9400ABC79F /* SceneDelegate.swift in Sources */,
 				E044E25225A4BAA800267459 /* PickerCell.swift in Sources */,
 				E044E25B25A4C83E00267459 /* Settings.swift in Sources */,
-				E0AEC17125B4B403009231C3 /* UpcomingTransferProtocol + Instance.swift in Sources */,
 				E022C294264067CE0051C90E /* Coordinators Protocols.swift in Sources */,
-				E044E21325A1EBBB00267459 /* UpcomingNavigationController.swift in Sources */,
+				E0205B5526445DF200A355E6 /* SubscriptionAction.swift in Sources */,
+				E044E21325A1EBBB00267459 /* SubscriptionsNavigationController.swift in Sources */,
 				E044E25625A4BF6100267459 /* CellWithBottomLine.swift in Sources */,
 				E044E24325A4785000267459 /* CellTitleLabel.swift in Sources */,
+				E0349F232645AFCC007DD2CD /* CurrencyStorageCoordinator.swift in Sources */,
 				E0C7D71525A1E07600E71476 /* CoordinatorFactory.swift in Sources */,
+				E0205B5726445F3E00A355E6 /* SubscriptionStorageCoordinator.swift in Sources */,
 				E044E22725A1F36C00267459 /* AddSubscriptionCoordinator.swift in Sources */,
+				E0349F272645B262007DD2CD /* CurrencyAction.swift in Sources */,
 				E03AB4102642A33D00869617 /* ServiceStorageCoordinator.swift in Sources */,
 				E06D59D425AF493A00CA8394 /* SwitchCell.swift in Sources */,
 				E06D59F425B063E700CA8394 /* NotificationAlertController.swift in Sources */,
 				E044E22325A1EFA000267459 /* ServiceCell.swift in Sources */,
-				E044E24D25A4B87E00267459 /* CurrencyStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

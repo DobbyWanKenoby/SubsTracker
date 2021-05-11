@@ -7,11 +7,13 @@
 
 import UIKit
 
-class UpcomingViewController: UITableViewController, StoryboardBasedViewController, UpcomingTransferInterface {
-    var viewControllerIdentifier: String  = "Upcoming"
-    var storyboardFileName: String  = "Upcoming"
+protocol SubscriptionsListControllerProtocol: UIViewController {
+    var subscriptions: [SubscriptionProtocol]! { get set }
+}
+
+class SubscriptionsListController: UITableViewController, SubscriptionsListControllerProtocol {
     
-    var inputData: UpcomingControllerInputDataElements! {
+    var subscriptions: [SubscriptionProtocol]! {
         didSet {
             tableView.reloadData()
         }
@@ -29,14 +31,15 @@ class UpcomingViewController: UITableViewController, StoryboardBasedViewControll
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return inputData.subscriptions.count
+        return subscriptions.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let currentSubscription = inputData.subscriptions[indexPath.row]
+        let currentSubscription = subscriptions[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "SubscriptionCell") as! SubscriptionCell
         cell.baseColorView.backgroundColor = currentSubscription.service.color
         cell.titleLabel.text = currentSubscription.service.title
+        cell.logoImageView.image = currentSubscription.service.logo
         return cell
     }
 }

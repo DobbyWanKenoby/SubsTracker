@@ -4,6 +4,7 @@ import UIKit
 
 class ControllerFactory {
     
+    // Дефолтные контроллеры без особых настроек
     static func getDefaultController(byType type: ControllerType) -> UIViewController {
         switch type {
         case .tabBar:
@@ -13,35 +14,34 @@ class ControllerFactory {
         }
     }
     
-    static func getAddSubscriptionNavigationController() -> AddSubscriptionControllerProtocol {
+    // Базовый контроллер для созданяи подписки
+    static func getAddSubscriptionBaseController() -> AddSubscriptionBaseControllerProtocol {
         return AddSubscriptionNavigationController.getInstance()
     }
     
+    // Контроллер для отображения предустановленных сервисов
     static func getServiceListController() -> ServicesListControllerProtocol {
         return ServicesListController.getInstance()
     }
     
-    static func getAddSubscriptionController() -> AddSubscriptionProtocol {
+    // Контроллер для создания подписки
+    static func getAddSubscriptionController() -> AddSubscriptionControllerProtocol {
         return AddSubscriptionController.getInstance()
     }
     
+    // Контроллер нотификаций
     static func getNotificationAlertController() -> NotificationAlertController {
         return NotificationAlertController.getInstance()
     }
     
-//    static func getUpcomingNavigationController() -> UpcomingNavigationController {
-//        return UpcomingNavigationController.getInstance()
-//    }
-//    
-//    static func getUpcomingController() -> UpcomingTransferInterface {
-//        return UpcomingViewController.getInstance()
-//    }
-//    
-
-//    
-
-//    
-
-//    
+    // Базовый контроллер для отображения списка подписок
+    static func getSubscriptionsBaseController() -> SubscriptionsBaseControllerProtocol {
+        return SubscriptionsNavigationController.getInstance()
+    }
+    
+    // Контроллер для отображенния списка созданных подписок
+    static func getSubscriptionsListController() -> SubscriptionsListControllerProtocol {
+        return SubscriptionsListController.getInstance()
+    }
 
 }

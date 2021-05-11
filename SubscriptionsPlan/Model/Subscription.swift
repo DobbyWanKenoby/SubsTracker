@@ -35,14 +35,13 @@ protocol SubscriptionProtocol {
     var nextPaymentDate: Date { get set }
     /// Как часто платить по подписке
     var paymentPeriod: (Int, PeriodType) { get set }
+    /// Используется ли нотификация
+    var isNotificationable: Bool { get set }
+    /// За сколько дней до оплаты уведомлять
+    var notificationDaysPeriod: Int { get set }
 }
 
-protocol SubscriptionStorageProtocol {
-    static func save(_ subscription: SubscriptionProtocol)
-    static func load() -> [SubscriptionProtocol]
-}
-
-struct Subscription: SubscriptionProtocol, SubscriptionStorageProtocol {
+struct Subscription: SubscriptionProtocol {
     var identifier: Int?
     var service: ServiceProtocol
     var amount: Float
@@ -50,12 +49,22 @@ struct Subscription: SubscriptionProtocol, SubscriptionStorageProtocol {
     var description: String
     var nextPaymentDate: Date
     var paymentPeriod: (Int, PeriodType)
-    
-    static func save(_ subscription: SubscriptionProtocol) {
-        (UIApplication.shared.delegate as! AppDelegate).subscriptions.append(subscription)
-    }
-    
-    static func load() -> [SubscriptionProtocol] {
-        return (UIApplication.shared.delegate as! AppDelegate).subscriptions
-    }
+    var isNotificationable: Bool
+    var notificationDaysPeriod: Int
+}
+
+// возвращает стандартный экземпляр подписки
+// используется на экране создания новой подписки
+func getDefaultSubscription(for service: ServiceProtocol) -> SubscriptionProtocol {
+    return Subscription(
+        identifier: nil,
+        service: service,
+        amount: 0,
+        currency: Settings.shared.defaultCurrency,
+        description: "",
+        nextPaymentDate: Date(),
+        paymentPeriod: (5,.week),
+        isNotificationable: true,
+        notificationDaysPeriod: 1
+    )
 }

@@ -7,14 +7,27 @@
 
 import UIKit
 
-class AddSubscriptionController: UIViewController, AddSubscriptionProtocol {
+protocol AddSubscriptionControllerProtocol: UIViewController {
+    // Input Data
+    var subscription: SubscriptionProtocol! { get set }
+    var currencies: [CurrencyProtocol]! { get set }
+    var isNewService: Bool! { get set }
+    
+    // Output Callbacks
+    var onCancelScene: ((SubscriptionProtocol?) -> Void)? { get set }
+    var onSaveSubscription: ((SubscriptionProtocol) -> Void)? { get set }
+}
 
+class AddSubscriptionController: UIViewController, AddSubscriptionControllerProtocol {
+    
     // MARK: Input Data
-    var subscription: AddSubscriptionElement!
+    var subscription: SubscriptionProtocol!
+    var currencies: [CurrencyProtocol]!
+    var isNewService: Bool!
     
     // MARK: Output Callbacks
-    var onCancelScene: ((AddSubscriptionElement?) -> Void)?
-    var onSaveSubscription: ((AddSubscriptionElement) -> Void)?
+    var onCancelScene: ((SubscriptionProtocol?) -> Void)?
+    var onSaveSubscription: ((SubscriptionProtocol) -> Void)?
     
     // MARK: Helpers
     // редактируемое текстовое поле
@@ -139,7 +152,7 @@ extension AddSubscriptionController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UITableViewCell!
         
-        switch (subscription.isCustomService, indexPath.row) {
+        switch (isNewService, indexPath.row) {
         case (let isCustom, let numRow) where (isCustom == false && numRow == 0) || (isCustom == true && numRow == 2):
             cell = getAmounCell()
         case (let isCustom, let numRow) where (isCustom == false && numRow == 1) || (isCustom == true && numRow == 3):
@@ -254,11 +267,11 @@ extension AddSubscriptionController: UITableViewDataSource {
         cell.cellTitleLabel.text = NSLocalizedString("next_payment", comment: "")
         cell.isSetBottomLine = true
         cell.doneToolbarButtonColor = subscription.service.color
-        cell.datePicker.date = subscription.date
-        cell.cellValueTextField.text = getDateLocaleFormat(subscription.date)
+        cell.datePicker.date = subscription.nextPaymentDate
+        cell.cellValueTextField.text = getDateLocaleFormat(subscription.nextPaymentDate)
         cell.onValueChange = { pickerView in
-            self.subscription.date = pickerView.date
-            cell.cellValueTextField.text = getDateLocaleFormat(self.subscription.date)
+            self.subscription.nextPaymentDate = pickerView.date
+            cell.cellValueTextField.text = getDateLocaleFormat(self.subscription.nextPaymentDate)
         }
         cell.cellValueTextField.delegate = self
         return cell
@@ -272,13 +285,13 @@ extension AddSubscriptionController: UITableViewDataSource {
     private func configureCurrencyCell(_ cell: PickerCell) -> PickerCell {
         cell.cellTitleLabel.text = NSLocalizedString("currency", comment: "")
         cell.pickerComponentsCount = 1
-        cell.pickerViewDataItems = [CurrencyStorage.default.getAll()]
+        cell.pickerViewDataItems = [currencies]
         cell.titleForRowInDataItems = { _, row in
             let resultString = "\((cell.pickerViewDataItems[0][row] as! CurrencyProtocol).title) (\((cell.pickerViewDataItems[0][row] as! CurrencyProtocol).symbol))"
             return resultString
         }
         cell.isSetBottomLine = true
-        let indexOfDefaultValue = CurrencyStorage.default.getAll().firstIndex(where: {$0.identifier == Settings.shared.defaultCurrency.identifier})!
+        let indexOfDefaultValue = currencies.firstIndex(where: {$0.identifier == Settings.shared.defaultCurrency.identifier})!
         cell.pickerView.selectRow(Int(indexOfDefaultValue), inComponent: 0, animated: false)
         cell.cellValueTextField.text = "\(self.subscription.currency.title) (\(self.subscription.currency.symbol))"
         cell.doneToolbarButtonColor = subscription.service.color
@@ -335,10 +348,10 @@ extension AddSubscriptionController: UITableViewDataSource {
         cell.cellValueTextField.delegate = self
         cell.onValueChange = { textField in
             guard let textNotice = textField.text else {
-                self.subscription.notice = ""
+                self.subscription.description = ""
                 return
             }
-            self.subscription.notice = textNotice
+            self.subscription.description = textNotice
         }
         return cell
     }

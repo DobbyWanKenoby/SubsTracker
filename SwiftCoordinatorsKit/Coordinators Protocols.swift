@@ -50,11 +50,8 @@ extension Transmitter {
     private func transmitAndHandleDataInCoordinator(data: TransmittedData, coordinator: Coordinator, sourceCoordinator: Coordinator) -> [Any] {
         var response: [Any] = []
         
-        print( "\(self) - \(coordinator)" )
-        
         guard coordinator !== sourceCoordinator else {
-            print("coordinator is source")
-            return []
+            return response
         }
         
         // передача данных в трансмиттер
@@ -68,10 +65,10 @@ extension Transmitter {
         
         // передача данных в сервис для обработки
         // если он конечно сервис
-        if let service = coordinator as? DataService {
+        if let service = coordinator as? ActionService {
             // каждые данные передаются отдельно
             data.forEach { dataItem in
-                if let dataRequest = dataItem as? DataRequest {
+                if let dataRequest = dataItem as? ActionData {
                     let serviceResponse = service.handle(data: dataRequest)
                     if serviceResponse != nil {
                         response.append(serviceResponse!)
@@ -111,15 +108,10 @@ protocol TransmittedDataHandler where Self: UIViewController {
 
 // MARK: - DataHandler
 
-
-/// Запрос на получение каких-либо данных
-/// Запросы передаются трансмиттерами и обрабатываются сервисами
-protocol DataRequest {}
-
-/// Ответ на запрос
-protocol DataResponse {}
+// Данные, которые принимает Сервис, должны быть подпсианы на данный протокол
+protocol ActionData {}
 
 /// Сервис обработки данных
-protocol DataService where Self: Coordinator {
-    func handle(data: DataRequest) -> DataResponse?
+protocol ActionService where Self: Coordinator {
+    func handle(data: Any) -> Any?
 }

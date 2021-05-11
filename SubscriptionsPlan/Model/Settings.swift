@@ -7,12 +7,26 @@
 
 import Foundation
 
-class Settings {
-    static var shared: Settings = Settings()
-    var defaultCurrency: CurrencyProtocol = CurrencyStorage.default.getAll().first!
+class Settings: BaseCoordinator, Transmitter {
+
+    static var shared: Settings!
     
-    // Загрузка всех настроек приложения
-    init() {
-        
+    lazy var defaultCurrency: CurrencyProtocol = getDefaultCurrency()
+    var nilCurrency = Currency(identifier: "nil", symbol: "nil", title: "nil")
+    
+    func getDefaultCurrency() -> CurrencyProtocol {
+        let currenciesLoadAction = CurrencyAction.load
+        let responsesArray = self.transmit(data: [currenciesLoadAction], sourceCoordinator: self)
+        guard responsesArray.count > 0 else {
+            return nilCurrency
+        }
+        guard let currenciesResponseItem = responsesArray.first as? [CurrencyProtocol] else {
+            return nilCurrency
+        }
+        guard let currencyItem = currenciesResponseItem.first else {
+            return nilCurrency
+        }
+        return currencyItem
     }
+    
 }

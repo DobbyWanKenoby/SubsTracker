@@ -6,7 +6,7 @@ class CoordinatorFactory {
     }
     
     static func getAddSubscriptionCoordinator(rootCoordinator: Coordinator?) -> AddSubscriptionCoordinatorProtocol {
-        let controller = ControllerFactory.getAddSubscriptionNavigationController()
+        let controller = ControllerFactory.getAddSubscriptionBaseController()
         return AddSubscriptionCoordinator(presenter: controller, rootCoordinator: rootCoordinator)
     }
     
@@ -14,16 +14,9 @@ class CoordinatorFactory {
         return ServiceStorageCoordinator(rootCoordinator: rootCoordinator)
     }
     
-//    private func getNotificationAlertCoordinator() -> NotificationAlertCoordinator {
-//        let controller = UIViewController()
-//        return NotificationAlertCoordinator(presenter: controller)
-//    }
-//
-//    private func getUpcomingCoordinator() -> UpcomingCoordinator {
-//        let rootController = ControllerFactory.getUpcomingNavigationController()
-//        return UpcomingCoordinator(presenter: rootController)
-//    }
-//
+    static func getSubscriptionsCoordinator(rootCoordinator: Coordinator?) -> SubscriptionsCoordinatorProtocol {
+        let сontroller = ControllerFactory.getSubscriptionsBaseController()
+        return SubscriptionsCoordinator(presenter: сontroller, rootCoordinator: rootCoordinator)
+    }
 
-    
 }

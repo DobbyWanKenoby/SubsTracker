@@ -23,3 +23,5 @@
 "in %d days" = "In %d day(s)";
 "sub created" = "Subscription created";
 "service_mts" = "MTS";
+"currency_eur" = "Euro";
+"currency_rub" = "Russian ruble";

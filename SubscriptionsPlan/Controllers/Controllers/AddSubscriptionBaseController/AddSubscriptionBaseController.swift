@@ -7,9 +7,9 @@
 
 import UIKit
 
-protocol AddSubscriptionControllerProtocol where Self: UIViewController {}
+protocol AddSubscriptionBaseControllerProtocol where Self: UIViewController {}
 
-class AddSubscriptionNavigationController: UINavigationController, AddSubscriptionControllerProtocol {
+class AddSubscriptionNavigationController: UINavigationController, AddSubscriptionBaseControllerProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
