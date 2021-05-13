@@ -39,7 +39,11 @@ class AddSubscriptionCoordinator: BasePresenter, AddSubscriptionCoordinatorProto
             // будут использоваться для корректной анимации кастомного перехода к экрану создания подписки
             let globalPoint = selectedCell.contentView.superview?.convert(selectedCell.contentView.frame.origin, to: nil)
             let transitionManager = AddSubsTransitionManager()
-            transitionManager.startPoint = globalPoint
+            transitionManager.startGlobalPoint = globalPoint
+            transitionManager.startLocalPoint = selectedCell.frame.origin
+            transitionManager.startSize = selectedCell.frame.size
+            transitionManager.cellView = selectedCell
+            transitionManager.cellRootView = selectedCell.superview
             self.transitionManagers.append(transitionManager)
             // контроллер, к которому будет происходить переход
             let nextController = getAddSubConfiguredController(service: service, transitionManager: transitionManager)

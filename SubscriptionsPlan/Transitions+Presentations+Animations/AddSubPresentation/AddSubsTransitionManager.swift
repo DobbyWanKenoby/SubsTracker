@@ -9,7 +9,11 @@ import UIKit
 
 class AddSubsTransitionManager: NSObject, UIViewControllerTransitioningDelegate {
     
-    var startPoint: CGPoint!
+    var startGlobalPoint: CGPoint!
+    var startLocalPoint: CGPoint!
+    var startSize: CGSize!
+    var cellView: UIView!
+    var cellRootView: UIView!
     
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         return OverlayPresentationController(presentedViewController: presented, presenting: presenting)
@@ -17,13 +21,18 @@ class AddSubsTransitionManager: NSObject, UIViewControllerTransitioningDelegate 
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let controller = AddSubsAnimationDismissController()
-        controller.finishPoint = startPoint
+        controller.cellFinishGlobalPoint = startGlobalPoint
+        controller.cellFinishLocalPoint = startLocalPoint
+        controller.cellFinishSize = startSize
+        controller.cellView = cellView
+        controller.cellRootView = cellRootView
         return controller
     }
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let controller = AddSubsAnimationPresentationController()
-        controller.startPoint = startPoint
+        controller.cellView = cellView
+        controller.cellStartPoint = startGlobalPoint
         return controller
     }
 }

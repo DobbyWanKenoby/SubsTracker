@@ -54,6 +54,7 @@
 		E06D59FB25B06FD300CA8394 /* NotificationAlertPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06D59FA25B06FD300CA8394 /* NotificationAlertPresentationController.swift */; };
 		E06D59FF25B0705800CA8394 /* NotificationAlertTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06D59FE25B0705800CA8394 /* NotificationAlertTransitionManager.swift */; };
 		E06D5A0225B0742500CA8394 /* NotificationAlertAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06D5A0125B0742500CA8394 /* NotificationAlertAnimationController.swift */; };
+		E08E993A264B0D3300F112FD /* ServicesListController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E08E9939264B0D3300F112FD /* ServicesListController.storyboard */; };
 		E0AEC18A25B4DA9A009231C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0AEC18925B4DA9A009231C3 /* Main.storyboard */; };
 		E0C12420259DFA9400ABC79F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C1241F259DFA9400ABC79F /* AppDelegate.swift */; };
 		E0C12422259DFA9400ABC79F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C12421259DFA9400ABC79F /* SceneDelegate.swift */; };
@@ -125,6 +126,7 @@
 		E06D59FA25B06FD300CA8394 /* NotificationAlertPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAlertPresentationController.swift; sourceTree = "<group>"; };
 		E06D59FE25B0705800CA8394 /* NotificationAlertTransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAlertTransitionManager.swift; sourceTree = "<group>"; };
 		E06D5A0125B0742500CA8394 /* NotificationAlertAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAlertAnimationController.swift; sourceTree = "<group>"; };
+		E08E9939264B0D3300F112FD /* ServicesListController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServicesListController.storyboard; sourceTree = "<group>"; };
 		E0AEC18925B4DA9A009231C3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E0C1241C259DFA9400ABC79F /* SubscriptionsPlan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubscriptionsPlan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0C1241F259DFA9400ABC79F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				E044E21725A1ED3300267459 /* ServicesListController.swift */,
+				E08E9939264B0D3300F112FD /* ServicesListController.storyboard */,
 			);
 			path = ServicesList;
 			sourceTree = "<group>";
@@ -549,6 +552,7 @@
 				E0C12457259F782A00ABC79F /* SF-Pro-Rounded-Medium.otf in Resources */,
 				E0C1242C259DFA9500ABC79F /* Assets.xcassets in Resources */,
 				E0349F252645B044007DD2CD /* Currencies.plist in Resources */,
+				E08E993A264B0D3300F112FD /* ServicesListController.storyboard in Resources */,
 				E0C12456259F782A00ABC79F /* SF-Pro-Rounded-Bold.otf in Resources */,
 				E06D59D525AF493A00CA8394 /* SwitchCell.xib in Resources */,
 				E044E2A625A634E200267459 /* Localizable.strings in Resources */,

@@ -12,7 +12,7 @@ class OverlayPresentationController: UIPresentationController {
     private var visualEffectView: UIVisualEffectView!
     
     override var frameOfPresentedViewInContainerView: CGRect {
-        CGRect(x: 0, y: 50, width: containerView!.frame.width, height: containerView!.frame.height - 50)
+        CGRect(x: 0, y: 0, width: containerView!.frame.width, height: containerView!.frame.height)
     }
     
     override func presentationTransitionWillBegin() {
@@ -22,13 +22,13 @@ class OverlayPresentationController: UIPresentationController {
         visualEffectView.frame = frame
         visualEffectView.layer.opacity = 0
         containerView?.addSubview(visualEffectView)
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.8, animations: {
             self.visualEffectView.layer.opacity = 1
         })
     }
     
     override func dismissalTransitionWillBegin() {
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.8, animations: {
             self.visualEffectView.layer.opacity = 0
         }, completion: { _ in
             self.visualEffectView.removeFromSuperview()

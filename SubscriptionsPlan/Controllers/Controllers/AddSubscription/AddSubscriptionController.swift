@@ -38,9 +38,9 @@ class AddSubscriptionController: UIViewController, AddSubscriptionControllerProt
     private var originPoint: CGPoint!
     
     // MARK: Outlets
-    @IBOutlet var serviceImage: UIImageView!
-    @IBOutlet var serviceTitle: UILabel!
-    @IBOutlet var headerView: UIView!
+    //@IBOutlet var serviceImage: UIImageView!
+    //@IBOutlet var serviceTitle: UILabel!
+    //@IBOutlet var headerView: UIView!
     @IBOutlet var backButton: UIButton!
     @IBOutlet var saveButton: UIButton!
     @IBOutlet var tableView: UITableView!
@@ -91,6 +91,7 @@ class AddSubscriptionController: UIViewController, AddSubscriptionControllerProt
         tableView.register(UINib(nibName: "PickerCell", bundle: nil), forCellReuseIdentifier: "PickerCell")
         tableView.register(UINib(nibName: "DatePickerCell", bundle: nil), forCellReuseIdentifier: "DatePickerCell")
         tableView.register(UINib(nibName: "SwitchCell", bundle: nil), forCellReuseIdentifier: "SwitchCell")
+        tableView.register(UINib(nibName: "ServiceCell", bundle: nil), forCellReuseIdentifier: "ServiceCell")
     }
     
     // отодвигаем текстовое поле, чтобы его было видно над клавиатурой
@@ -111,10 +112,10 @@ class AddSubscriptionController: UIViewController, AddSubscriptionControllerProt
     }
     
     private func configureHeader() {
-        headerView.backgroundColor = subscription.service.color
-        serviceImage.image = subscription.service.logo
-        serviceImage.layer.cornerRadius = 10
-        serviceTitle.text = subscription.service.title
+        //headerView.backgroundColor = subscription.service.color
+        //serviceImage.image = subscription.service.logo
+        //serviceImage.layer.cornerRadius = 10
+        //serviceTitle.text = subscription.service.title
     }
     
     private func configureButtons() {
@@ -146,7 +147,15 @@ extension AddSubscriptionController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 9
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 150
+        } else {
+            return UITableView().estimatedRowHeight
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -154,18 +163,20 @@ extension AddSubscriptionController: UITableViewDataSource {
         
         switch (isNewService, indexPath.row) {
         case (let isCustom, let numRow) where (isCustom == false && numRow == 0) || (isCustom == true && numRow == 2):
+            cell = getServiceCell()
+        case (let isCustom, let numRow) where (isCustom == false && numRow == 1) || (isCustom == true && numRow == 2):
             cell = getAmounCell()
-        case (let isCustom, let numRow) where (isCustom == false && numRow == 1) || (isCustom == true && numRow == 3):
+        case (let isCustom, let numRow) where (isCustom == false && numRow == 2) || (isCustom == true && numRow == 3):
             cell = getCurrencyCell()
-        case (let isCustom, let numRow) where (isCustom == false && numRow == 2) || (isCustom == true && numRow == 4):
+        case (let isCustom, let numRow) where (isCustom == false && numRow == 3) || (isCustom == true && numRow == 4):
             cell = getDateCell()
-        case (let isCustom, let numRow) where (isCustom == false && numRow == 3) || (isCustom == true && numRow == 5):
+        case (let isCustom, let numRow) where (isCustom == false && numRow == 4) || (isCustom == true && numRow == 5):
             cell = getPeriodCell()
-        case (let isCustom, let numRow) where (isCustom == false && numRow == 4) || (isCustom == true && numRow == 6):
+        case (let isCustom, let numRow) where (isCustom == false && numRow == 5) || (isCustom == true && numRow == 6):
             cell = getNoticeCell()
-        case (let isCustom, let numRow) where (isCustom == false && numRow == 5) || (isCustom == true && numRow == 7):
+        case (let isCustom, let numRow) where (isCustom == false && numRow == 6) || (isCustom == true && numRow == 7):
             cell = getNotificationCell()
-        case (let isCustom, let numRow) where (isCustom == false && numRow == 6) || (isCustom == true && numRow == 8):
+        case (let isCustom, let numRow) where (isCustom == false && numRow == 7) || (isCustom == true && numRow == 8):
             cell = getNotificationPeriodCell()
         default:
             cell = UITableViewCell(style: .default, reuseIdentifier: nil)
@@ -173,6 +184,16 @@ extension AddSubscriptionController: UITableViewDataSource {
         }
         
         cell.selectionStyle = .none
+        return cell
+    }
+    
+    private func getServiceCell() -> ServiceCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ServiceCell") as! ServiceCell
+        cell.logoImageView.image = subscription.service.logo ?? nil
+        cell.titleLabel.text = subscription.service.title
+        cell.contentView.backgroundColor = subscription.service.color
+        // скрываем первую ячейку
+        cell.contentView.layer.opacity = 0
         return cell
     }
     

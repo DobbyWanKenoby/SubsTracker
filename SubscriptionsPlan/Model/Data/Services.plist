@@ -26,5 +26,45 @@
 		<key>color</key>
 		<string>#0572ec</string>
 	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>1Password</string>
+		<key>isLocalizable</key>
+		<string>0</string>
+		<key>color</key>
+		<string>#0572ec</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>1Password</string>
+		<key>isLocalizable</key>
+		<string>0</string>
+		<key>color</key>
+		<string>#0572ec</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>1Password</string>
+		<key>isLocalizable</key>
+		<string>0</string>
+		<key>color</key>
+		<string>#0572ec</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>1Password</string>
+		<key>isLocalizable</key>
+		<string>0</string>
+		<key>color</key>
+		<string>#0572ec</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>1Password</string>
+		<key>isLocalizable</key>
+		<string>0</string>
+		<key>color</key>
+		<string>#0572ec</string>
+	</dict>
 </array>
 </plist>
