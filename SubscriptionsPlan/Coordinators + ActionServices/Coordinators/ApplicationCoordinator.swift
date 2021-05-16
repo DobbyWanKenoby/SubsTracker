@@ -22,11 +22,11 @@ final class ApplicationCoordinator: BasePresenter, ApplicationCoordinatorProtoco
         // Подключение Микросервисов
         
         // МикроСервис для работы с сущностью Currency
-        let _ = CurrencyStorageCoordinator(rootCoordinator: self)
+        let _ = CoordinatorFactory.getCurrencyStorageActionService(rootCoordinator: self)
         // МикроСервис для работы с сущностью Service
-        let _ = ServiceStorageCoordinator(rootCoordinator: self)
+        let _ = CoordinatorFactory.getServiceStorageActionService(rootCoordinator: self)
         // МикроСервис для работы с сущностью Subscription
-        let _ = SubscriptionStorageCoordinator(rootCoordinator: self)
+        let _ = CoordinatorFactory.getSubscriptionStorageActionService(rootCoordinator: self)
         
         // Микросервис-Синглтон для доступа к важным базовым настройкам
         Settings.shared = Settings(rootCoordinator: self)

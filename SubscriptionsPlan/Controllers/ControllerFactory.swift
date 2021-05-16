@@ -24,9 +24,15 @@ class ControllerFactory {
         return ServicesListController.getInstance()
     }
     
+    // Экземпляр AddSubscriptionController
+    // В связи с неисправленным retain cycle используется данное свойство
+    private static var addSubscriptionController: AddSubscriptionControllerProtocol!
     // Контроллер для создания подписки
     static func getAddSubscriptionController() -> AddSubscriptionControllerProtocol {
-        return AddSubscriptionController.getInstance()
+        if addSubscriptionController == nil {
+            addSubscriptionController = AddSubscriptionController.getInstance()
+        }
+        return addSubscriptionController
     }
     
     // Контроллер нотификаций

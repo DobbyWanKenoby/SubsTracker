@@ -10,13 +10,21 @@ class CoordinatorFactory {
         return AddSubscriptionCoordinator(presenter: controller, rootCoordinator: rootCoordinator)
     }
     
-    static func getServiceStorageCoordinator(rootCoordinator: Coordinator?) -> ServiceStorageCoordinatorProtocol {
-        return ServiceStorageCoordinator(rootCoordinator: rootCoordinator)
-    }
-    
     static func getSubscriptionsCoordinator(rootCoordinator: Coordinator?) -> SubscriptionsCoordinatorProtocol {
         let сontroller = ControllerFactory.getSubscriptionsBaseController()
         return SubscriptionsCoordinator(presenter: сontroller, rootCoordinator: rootCoordinator)
+    }
+    
+    static func getCurrencyStorageActionService(rootCoordinator: Coordinator?) -> CurrencyStorageCoordinatorProtocol {
+        return CurrencyStorageCoordinator(rootCoordinator: rootCoordinator)
+    }
+    
+    static func getServiceStorageActionService(rootCoordinator: Coordinator?) -> ServiceStorageCoordinatorProtocol {
+        return ServiceStorageCoordinator(rootCoordinator: rootCoordinator)
+    }
+    
+    static func getSubscriptionStorageActionService(rootCoordinator: Coordinator?) -> SubscriptionStorageCoordinatorProtocol {
+        return SubscriptionStorageCoordinator(rootCoordinator: rootCoordinator)
     }
 
 }

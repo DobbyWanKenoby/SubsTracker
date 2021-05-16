@@ -16,7 +16,7 @@
 		E0205B5526445DF200A355E6 /* SubscriptionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0205B5426445DF200A355E6 /* SubscriptionAction.swift */; };
 		E0205B5726445F3E00A355E6 /* SubscriptionStorageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0205B5626445F3E00A355E6 /* SubscriptionStorageCoordinator.swift */; };
 		E022C29126405BDC0051C90E /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022C29026405BDC0051C90E /* Helpers.swift */; };
-		E022C294264067CE0051C90E /* Coordinators Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022C293264067CE0051C90E /* Coordinators Protocols.swift */; };
+		E022C294264067CE0051C90E /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022C293264067CE0051C90E /* Protocols.swift */; };
 		E022C2982640700B0051C90E /* ControllersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022C2972640700B0051C90E /* ControllersList.swift */; };
 		E022C29A264072410051C90E /* ViewControllerLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022C299264072410051C90E /* ViewControllerLoader.swift */; };
 		E022C29E264124E00051C90E /* Services.plist in Resources */ = {isa = PBXBuildFile; fileRef = E022C29D264124E00051C90E /* Services.plist */; };
@@ -26,7 +26,7 @@
 		E0349F252645B044007DD2CD /* Currencies.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0349F242645B044007DD2CD /* Currencies.plist */; };
 		E0349F272645B262007DD2CD /* CurrencyAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0349F262645B262007DD2CD /* CurrencyAction.swift */; };
 		E039B93125A1D42F0096B23A /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E039B93025A1D42F0096B23A /* ApplicationCoordinator.swift */; };
-		E039B93625A1D5EE0096B23A /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E039B93525A1D5EE0096B23A /* BaseCoordinator.swift */; };
+		E039B93625A1D5EE0096B23A /* Implementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E039B93525A1D5EE0096B23A /* Implementations.swift */; };
 		E03AB4102642A33D00869617 /* ServiceStorageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03AB40F2642A33D00869617 /* ServiceStorageCoordinator.swift */; };
 		E044E21325A1EBBB00267459 /* SubscriptionsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E21225A1EBBB00267459 /* SubscriptionsNavigationController.swift */; };
 		E044E21825A1ED3300267459 /* ServicesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E21725A1ED3300267459 /* ServicesListController.swift */; };
@@ -84,7 +84,7 @@
 		E0205B5426445DF200A355E6 /* SubscriptionAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionAction.swift; sourceTree = "<group>"; };
 		E0205B5626445F3E00A355E6 /* SubscriptionStorageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionStorageCoordinator.swift; sourceTree = "<group>"; };
 		E022C29026405BDC0051C90E /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		E022C293264067CE0051C90E /* Coordinators Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coordinators Protocols.swift"; sourceTree = "<group>"; };
+		E022C293264067CE0051C90E /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		E022C2972640700B0051C90E /* ControllersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllersList.swift; sourceTree = "<group>"; };
 		E022C299264072410051C90E /* ViewControllerLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerLoader.swift; sourceTree = "<group>"; };
 		E022C29D264124E00051C90E /* Services.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Services.plist; sourceTree = "<group>"; };
@@ -94,7 +94,7 @@
 		E0349F242645B044007DD2CD /* Currencies.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Currencies.plist; sourceTree = "<group>"; };
 		E0349F262645B262007DD2CD /* CurrencyAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyAction.swift; sourceTree = "<group>"; };
 		E039B93025A1D42F0096B23A /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
-		E039B93525A1D5EE0096B23A /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		E039B93525A1D5EE0096B23A /* Implementations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Implementations.swift; sourceTree = "<group>"; };
 		E03AB40F2642A33D00869617 /* ServiceStorageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceStorageCoordinator.swift; sourceTree = "<group>"; };
 		E044E21225A1EBBB00267459 /* SubscriptionsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsNavigationController.swift; sourceTree = "<group>"; };
 		E044E21725A1ED3300267459 /* ServicesListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesListController.swift; sourceTree = "<group>"; };
@@ -171,8 +171,8 @@
 		E022C28F26405AAD0051C90E /* SwiftCoordinatorsKit */ = {
 			isa = PBXGroup;
 			children = (
-				E022C293264067CE0051C90E /* Coordinators Protocols.swift */,
-				E039B93525A1D5EE0096B23A /* BaseCoordinator.swift */,
+				E022C293264067CE0051C90E /* Protocols.swift */,
+				E039B93525A1D5EE0096B23A /* Implementations.swift */,
 				E022C299264072410051C90E /* ViewControllerLoader.swift */,
 				E022C29026405BDC0051C90E /* Helpers.swift */,
 			);
@@ -592,7 +592,7 @@
 				E0EE4307259F7A3800CA0F6F /* ControllerFactory.swift in Sources */,
 				E022C29126405BDC0051C90E /* Helpers.swift in Sources */,
 				E044E26C25A62BE800267459 /* DatePickerCell.swift in Sources */,
-				E039B93625A1D5EE0096B23A /* BaseCoordinator.swift in Sources */,
+				E039B93625A1D5EE0096B23A /* Implementations.swift in Sources */,
 				E022C2982640700B0051C90E /* ControllersList.swift in Sources */,
 				E0C12420259DFA9400ABC79F /* AppDelegate.swift in Sources */,
 				E01EDEBC25A9ECED009E1B36 /* AddSubsTransitionManager.swift in Sources */,
@@ -607,7 +607,7 @@
 				E0C12422259DFA9400ABC79F /* SceneDelegate.swift in Sources */,
 				E044E25225A4BAA800267459 /* PickerCell.swift in Sources */,
 				E044E25B25A4C83E00267459 /* Settings.swift in Sources */,
-				E022C294264067CE0051C90E /* Coordinators Protocols.swift in Sources */,
+				E022C294264067CE0051C90E /* Protocols.swift in Sources */,
 				E0205B5526445DF200A355E6 /* SubscriptionAction.swift in Sources */,
 				E044E21325A1EBBB00267459 /* SubscriptionsNavigationController.swift in Sources */,
 				E044E25625A4BF6100267459 /* CellWithBottomLine.swift in Sources */,
