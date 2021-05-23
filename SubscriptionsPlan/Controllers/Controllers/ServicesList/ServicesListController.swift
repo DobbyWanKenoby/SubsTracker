@@ -1,6 +1,6 @@
 import UIKit
 
-protocol ServicesListControllerProtocol where Self: UIViewController {
+protocol ServicesListControllerProtocol: Receiver where Self: UIViewController {
     // Input Data
     var services: [ServiceProtocol] { get set }
     
@@ -92,5 +92,14 @@ extension ServicesListController: UITableViewDelegate {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
         headerView.backgroundColor = UIColor.clear
         return headerView
+    }
+}
+
+extension ServicesListController: Receiver {
+    func receive(signal: Signal) -> Signal? {
+        if case ServiceSignal.actualServices(let servicesList) = signal {
+            services = servicesList
+        }
+        return nil
     }
 }

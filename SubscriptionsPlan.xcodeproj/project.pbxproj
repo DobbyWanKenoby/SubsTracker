@@ -24,7 +24,7 @@
 		E022C2A226412A970051C90E /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022C2A126412A970051C90E /* UIColor.swift */; };
 		E0349F232645AFCC007DD2CD /* CurrencyStorageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0349F222645AFCC007DD2CD /* CurrencyStorageCoordinator.swift */; };
 		E0349F252645B044007DD2CD /* Currencies.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0349F242645B044007DD2CD /* Currencies.plist */; };
-		E0349F272645B262007DD2CD /* CurrencyAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0349F262645B262007DD2CD /* CurrencyAction.swift */; };
+		E0349F272645B262007DD2CD /* CurrencySignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0349F262645B262007DD2CD /* CurrencySignal.swift */; };
 		E039B93125A1D42F0096B23A /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E039B93025A1D42F0096B23A /* ApplicationCoordinator.swift */; };
 		E039B93625A1D5EE0096B23A /* Implementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E039B93525A1D5EE0096B23A /* Implementations.swift */; };
 		E03AB4102642A33D00869617 /* ServiceStorageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03AB40F2642A33D00869617 /* ServiceStorageCoordinator.swift */; };
@@ -41,7 +41,7 @@
 		E044E25225A4BAA800267459 /* PickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E25025A4BAA800267459 /* PickerCell.swift */; };
 		E044E25325A4BAA800267459 /* PickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E044E25125A4BAA800267459 /* PickerCell.xib */; };
 		E044E25625A4BF6100267459 /* CellWithBottomLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E25525A4BF6100267459 /* CellWithBottomLine.swift */; };
-		E044E25B25A4C83E00267459 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E25A25A4C83E00267459 /* Settings.swift */; };
+		E044E25B25A4C83E00267459 /* SettingsSharedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E25A25A4C83E00267459 /* SettingsSharedCoordinator.swift */; };
 		E044E26C25A62BE800267459 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E26A25A62BE800267459 /* DatePickerCell.swift */; };
 		E044E26D25A62BE800267459 /* DatePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E044E26B25A62BE800267459 /* DatePickerCell.xib */; };
 		E044E2A625A634E200267459 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E044E2A825A634E200267459 /* Localizable.strings */; };
@@ -55,6 +55,9 @@
 		E06D59FF25B0705800CA8394 /* NotificationAlertTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06D59FE25B0705800CA8394 /* NotificationAlertTransitionManager.swift */; };
 		E06D5A0225B0742500CA8394 /* NotificationAlertAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06D5A0125B0742500CA8394 /* NotificationAlertAnimationController.swift */; };
 		E08E993A264B0D3300F112FD /* ServicesListController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E08E9939264B0D3300F112FD /* ServicesListController.storyboard */; };
+		E09CAED1265A94860042099B /* InitializatorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09CAED0265A94860042099B /* InitializatorCoordinator.swift */; };
+		E09CAED5265A95410042099B /* InitializatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09CAED3265A95410042099B /* InitializatorController.swift */; };
+		E09CAED6265A95410042099B /* InitializatorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E09CAED4265A95410042099B /* InitializatorController.xib */; };
 		E0AEC18A25B4DA9A009231C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0AEC18925B4DA9A009231C3 /* Main.storyboard */; };
 		E0C12420259DFA9400ABC79F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C1241F259DFA9400ABC79F /* AppDelegate.swift */; };
 		E0C12422259DFA9400ABC79F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C12421259DFA9400ABC79F /* SceneDelegate.swift */; };
@@ -92,7 +95,7 @@
 		E022C2A126412A970051C90E /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		E0349F222645AFCC007DD2CD /* CurrencyStorageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyStorageCoordinator.swift; sourceTree = "<group>"; };
 		E0349F242645B044007DD2CD /* Currencies.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Currencies.plist; sourceTree = "<group>"; };
-		E0349F262645B262007DD2CD /* CurrencyAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyAction.swift; sourceTree = "<group>"; };
+		E0349F262645B262007DD2CD /* CurrencySignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySignal.swift; sourceTree = "<group>"; };
 		E039B93025A1D42F0096B23A /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		E039B93525A1D5EE0096B23A /* Implementations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Implementations.swift; sourceTree = "<group>"; };
 		E03AB40F2642A33D00869617 /* ServiceStorageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceStorageCoordinator.swift; sourceTree = "<group>"; };
@@ -109,7 +112,7 @@
 		E044E25025A4BAA800267459 /* PickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerCell.swift; sourceTree = "<group>"; };
 		E044E25125A4BAA800267459 /* PickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerCell.xib; sourceTree = "<group>"; };
 		E044E25525A4BF6100267459 /* CellWithBottomLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithBottomLine.swift; sourceTree = "<group>"; };
-		E044E25A25A4C83E00267459 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		E044E25A25A4C83E00267459 /* SettingsSharedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSharedCoordinator.swift; sourceTree = "<group>"; };
 		E044E26725A62B3900267459 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E044E26A25A62BE800267459 /* DatePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
 		E044E26B25A62BE800267459 /* DatePickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerCell.xib; sourceTree = "<group>"; };
@@ -127,6 +130,9 @@
 		E06D59FE25B0705800CA8394 /* NotificationAlertTransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAlertTransitionManager.swift; sourceTree = "<group>"; };
 		E06D5A0125B0742500CA8394 /* NotificationAlertAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAlertAnimationController.swift; sourceTree = "<group>"; };
 		E08E9939264B0D3300F112FD /* ServicesListController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServicesListController.storyboard; sourceTree = "<group>"; };
+		E09CAED0265A94860042099B /* InitializatorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializatorCoordinator.swift; sourceTree = "<group>"; };
+		E09CAED3265A95410042099B /* InitializatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializatorController.swift; sourceTree = "<group>"; };
+		E09CAED4265A95410042099B /* InitializatorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InitializatorController.xib; sourceTree = "<group>"; };
 		E0AEC18925B4DA9A009231C3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E0C1241C259DFA9400ABC79F /* SubscriptionsPlan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubscriptionsPlan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0C1241F259DFA9400ABC79F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -158,14 +164,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E0205B5826445F5800A355E6 /* ActionServices */ = {
+		E0205B5826445F5800A355E6 /* MicroServices */ = {
 			isa = PBXGroup;
 			children = (
+				E0349F222645AFCC007DD2CD /* CurrencyStorageCoordinator.swift */,
 				E03AB40F2642A33D00869617 /* ServiceStorageCoordinator.swift */,
 				E0205B5626445F3E00A355E6 /* SubscriptionStorageCoordinator.swift */,
-				E0349F222645AFCC007DD2CD /* CurrencyStorageCoordinator.swift */,
 			);
-			path = ActionServices;
+			path = MicroServices;
 			sourceTree = "<group>";
 		};
 		E022C28F26405AAD0051C90E /* SwiftCoordinatorsKit */ = {
@@ -182,6 +188,7 @@
 		E022C29B264072B90051C90E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E09CAED2265A95280042099B /* Initializator */,
 				E0AEC18525B4D9FC009231C3 /* AddSubscriptionBaseController */,
 				E044E21625A1ED0E00267459 /* ServicesList */,
 				E044E22C25A2211900267459 /* AddSubscription */,
@@ -206,7 +213,7 @@
 			children = (
 				E0205B5226445DC700A355E6 /* ServiceAction.swift */,
 				E0205B5426445DF200A355E6 /* SubscriptionAction.swift */,
-				E0349F262645B262007DD2CD /* CurrencyAction.swift */,
+				E0349F262645B262007DD2CD /* CurrencySignal.swift */,
 			);
 			path = "Transmitted Actions";
 			sourceTree = "<group>";
@@ -215,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				E039B93025A1D42F0096B23A /* ApplicationCoordinator.swift */,
+				E09CAED0265A94860042099B /* InitializatorCoordinator.swift */,
 				E044E22625A1F36C00267459 /* AddSubscriptionCoordinator.swift */,
 				E0C7D71A25A1E85A00E71476 /* SubscriptionsCoordinator.swift */,
 				E06D59F625B0640E00CA8394 /* NotificationAlertCoordinator.swift */,
@@ -341,6 +349,23 @@
 			path = AddSubPresentation;
 			sourceTree = "<group>";
 		};
+		E09CAED2265A95280042099B /* Initializator */ = {
+			isa = PBXGroup;
+			children = (
+				E09CAED3265A95410042099B /* InitializatorController.swift */,
+				E09CAED4265A95410042099B /* InitializatorController.xib */,
+			);
+			path = Initializator;
+			sourceTree = "<group>";
+		};
+		E09CAED7265AAEA60042099B /* SharedMicroServices */ = {
+			isa = PBXGroup;
+			children = (
+				E044E25A25A4C83E00267459 /* SettingsSharedCoordinator.swift */,
+			);
+			path = SharedMicroServices;
+			sourceTree = "<group>";
+		};
 		E0AEC18125B4D9CB009231C3 /* SubscriptionsBaseContoller */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,7 +427,6 @@
 				E0C12438259DFAC200ABC79F /* Service.swift */,
 				E0C1243C259DFB8400ABC79F /* Subscription.swift */,
 				E044E24625A4B80B00267459 /* Currency.swift */,
-				E044E25A25A4C83E00267459 /* Settings.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -465,7 +489,8 @@
 			children = (
 				E0C7D71425A1E07600E71476 /* CoordinatorFactory.swift */,
 				E03AB40E2642A04C00869617 /* Coordinators */,
-				E0205B5826445F5800A355E6 /* ActionServices */,
+				E0205B5826445F5800A355E6 /* MicroServices */,
+				E09CAED7265AAEA60042099B /* SharedMicroServices */,
 			);
 			path = "Coordinators + ActionServices";
 			sourceTree = "<group>";
@@ -547,6 +572,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E022C29E264124E00051C90E /* Services.plist in Resources */,
+				E09CAED6265A95410042099B /* InitializatorController.xib in Resources */,
 				E0C1242F259DFA9500ABC79F /* LaunchScreen.storyboard in Resources */,
 				E06D59F125B0620600CA8394 /* NotificationAlert.xib in Resources */,
 				E0C12457259F782A00ABC79F /* SF-Pro-Rounded-Medium.otf in Resources */,
@@ -606,7 +632,7 @@
 				E01EDEC325A9F394009E1B36 /* AddSubscriptionController.swift in Sources */,
 				E0C12422259DFA9400ABC79F /* SceneDelegate.swift in Sources */,
 				E044E25225A4BAA800267459 /* PickerCell.swift in Sources */,
-				E044E25B25A4C83E00267459 /* Settings.swift in Sources */,
+				E044E25B25A4C83E00267459 /* SettingsSharedCoordinator.swift in Sources */,
 				E022C294264067CE0051C90E /* Protocols.swift in Sources */,
 				E0205B5526445DF200A355E6 /* SubscriptionAction.swift in Sources */,
 				E044E21325A1EBBB00267459 /* SubscriptionsNavigationController.swift in Sources */,
@@ -616,11 +642,13 @@
 				E0C7D71525A1E07600E71476 /* CoordinatorFactory.swift in Sources */,
 				E0205B5726445F3E00A355E6 /* SubscriptionStorageCoordinator.swift in Sources */,
 				E044E22725A1F36C00267459 /* AddSubscriptionCoordinator.swift in Sources */,
-				E0349F272645B262007DD2CD /* CurrencyAction.swift in Sources */,
+				E09CAED1265A94860042099B /* InitializatorCoordinator.swift in Sources */,
+				E0349F272645B262007DD2CD /* CurrencySignal.swift in Sources */,
 				E03AB4102642A33D00869617 /* ServiceStorageCoordinator.swift in Sources */,
 				E06D59D425AF493A00CA8394 /* SwitchCell.swift in Sources */,
 				E06D59F425B063E700CA8394 /* NotificationAlertController.swift in Sources */,
 				E044E22325A1EFA000267459 /* ServiceCell.swift in Sources */,
+				E09CAED5265A95410042099B /* InitializatorController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -779,6 +807,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.swiftme.SubsTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -2,13 +2,13 @@
 
 import UIKit
 
-protocol ServiceStorageCoordinatorProtocol: BaseCoordinator, ActionService {}
+protocol ServiceStorageCoordinatorProtocol: BaseCoordinator, Receiver {}
 
 class ServiceStorageCoordinator: BaseCoordinator, ServiceStorageCoordinatorProtocol {
-    func handle(data: Any) -> Any? {
-        if case ServiceAction.load(let type) = data {
+    func receive(signal: Signal) -> Signal? {
+        if case ServiceSignal.load(let type) = signal {
             //let loadCustomsServices: Bool = (type == .all) ? true : false
-            return self.getDefaultServices()
+            return ServiceSignal.actualServices(services: self.getDefaultServices())
         }
         return nil
     }

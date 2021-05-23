@@ -3,19 +3,30 @@ import UIKit
 // MARK: - Coordinator
 // Координаторы предназначены для управления приложением.
 // В их задачу входит
-// - хранение иерархии координаторов (структура данных Деерво) (см. protocol Coordinator)
+// - хранение иерархии координаторов (структура данных Дерево) (см. protocol Coordinator)
 // - управление потоками (flow) (см. protocol Coordinator)
 // - создают и отображают экраны (см. protocol Presenter)
 // - передают данные между друг другом (см. protocol Transmitter)
 // - передают данные в зависимые экраны (см. protocol Transmitter)
-// - орабатывают поступившие данные  (см. protocol DataService)
-// - обрабатывают запросы и отвечают на них (см. protocol DataService)
+// - орабатывают поступившие данные и отвечают на них (см. protocol Receiver)
 
 protocol Coordinator: AnyObject {
     var rootCoordinator: Coordinator? { get set }
     var childCoordinators: [Coordinator] { get set }
-    func startFlow()
+    func startFlow(finishCompletion: (() -> Void)?)
     func finishFlow()
+    func removeChild(coordinator: Coordinator)
+}
+
+extension Coordinator {
+    func removeChild(coordinator: Coordinator) {
+        for (index, child) in childCoordinators.enumerated() {
+            if child === coordinator {
+                child.rootCoordinator = nil
+                childCoordinators.remove(at: index)
+            }
+        }
+    }
 }
 
 // MARK: - Presenter
@@ -26,92 +37,88 @@ protocol Presenter where Self: Coordinator {
     var presenter: UIViewController? { get set }
 }
 
-// MARK: - Transmitter
+// MARK: - Signal Transmitter & Receiver
+
 // Координаторы-трансмиттеры образуют сеть передачи данных.
 // Они обеспечивают церкуляцию данных в приложении
 
-// Алиас типа передаваемых данных
-// Массив может содержать сразу много различных данных
-// каждые из которых могут быть приняты и обработаны своим координатором-сервисом (DataService)
-typealias TransmittedData = [Any]
+// Координаторы-ресиверы могут принимать и обрабатывать передаваемые данные
 
-/// Координатор-трансмиттер может передавать данные дальше в цепочке трансмиттеров.
-/// Данные передаются родительскому и дочерним координаторам
-protocol Transmitter where Self: Coordinator{
-    /// Передача данных во всех связанные координаторы и контроллеры
-    /// - Parameters:
-    ///   - data: передаваемые данные
-    ///   - sourceCoordinator: координатор-источник
-    func transmit(data : TransmittedData, sourceCoordinator: Coordinator) -> [Any]
+// Передаваемые (transmit) и принимаемые/обрабатываемые (receive) данные должны быть подписаны на данный протокол
+protocol Signal {}
+
+
+// Координатор-трансмиттер может передавать данные дальше в цепочке трансмиттеров.
+// Данные передаются родительскому и дочерним координаторам
+// Ответ отправляется в координатор, отправивший сигнал (source)
+protocol Transmitter where Self: Coordinator {
+    // Передача данных в связанные координаторы и контроллеры
+    // При таком запросе координатор не ожидает ответ
+    // а если ответ все же будет , то он будет обработан в методе receive источника запроса
+    //   - signal: передаваемые данные
+    //   - answerReceiver: приемник ответа. В него будет отправляться ответ
+    func broadcast(signal: Signal, answerReceiver: Receiver?)
+    
+    // Передача данных в связанные координаторы и контроллеры
+    // При таком запросе координатор ожидает и обабатывает полученный ответ inline
+    func broadcast(signal: Signal) -> [Signal]
 }
 
 extension Transmitter {
     
-    private func transmitAndHandleDataInCoordinator(data: TransmittedData, coordinator: Coordinator, sourceCoordinator: Coordinator) -> [Any] {
-        var response: [Any] = []
-        
-        guard coordinator !== sourceCoordinator else {
-            return response
-        }
-        
-        // передача данных в трансмиттер
-        // если он конечно трансмиттер
-        if let transmitter = coordinator as? Transmitter {
-            let transmitResponse = transmitter.transmit(data: data, sourceCoordinator: self)
-            if transmitResponse.count > 0 {
-                response += transmitResponse
-            }
-        }
-        
-        // передача данных в сервис для обработки
-        // если он конечно сервис
-        if let service = coordinator as? ActionService {
-            // каждые данные передаются отдельно
-            data.forEach { dataItem in
-                if let dataRequest = dataItem as? ActionData {
-                    let serviceResponse = service.handle(data: dataRequest)
-                    if serviceResponse != nil {
-                        response.append(serviceResponse!)
-                    }
-                }
-            }
-        }
-        
-        return response
+    func broadcast(signal: Signal) -> [Signal] {
+        var coordinators: [Coordinator] = []
+        var resultSignals: [Signal] = []
+        self.send(signal: signal, handledCoordinators: &coordinators, resultSignals: &resultSignals)
+        return resultSignals
     }
     
-    /// Передача данных в связанные координаторы
-    /// - Parameters:
-    ///   - data: передаваемые данные
-    ///   - sourceCoordinator: координатор - источник передачи. Используется для исключения передачи данных в обратном направлении
-    func transmit(data: TransmittedData, sourceCoordinator source: Coordinator) -> [Any] {
+    func broadcast(signal: Signal, answerReceiver receiver: Receiver?) {
+        var coordinators: [Coordinator] = []
+        var resultSignals: [Signal] = []
+        self.send(signal: signal, handledCoordinators: &coordinators, resultSignals: &resultSignals)
+        resultSignals.forEach { oneSignalAnswer in
+            receiver?.receive(signal: oneSignalAnswer)
+        }
+    }
+    
+    // Дальнейшая передача данных, но с учетом списка координаторов, которые уже обработали данный сигнал
+    // Используется, чтобы исключить повторную обратную передачу
+    private func send(signal: Signal, handledCoordinators: inout [Coordinator], resultSignals: inout [Signal]) {
         
-        var response: [Any] = []
+        guard handledCoordinators.firstIndex(where: { $0 === self }) == nil else {
+            return
+        }
+        handledCoordinators.append(self)
         
-        if let root = rootCoordinator {
-            response += transmitAndHandleDataInCoordinator(data: data, coordinator: root, sourceCoordinator: source)
+        // передача в дочерние контроллеры
+        if let presenter = self as? Presenter {
+            presenter.childControllers.forEach { childController in
+                (childController as? Receiver)?.receive(signal: signal)
+            }
         }
         
+        if let root = rootCoordinator as? Transmitter {
+            root.send(signal: signal, handledCoordinators: &handledCoordinators, resultSignals: &resultSignals)
+        }
         childCoordinators.forEach { child in
-            response += transmitAndHandleDataInCoordinator(data: data, coordinator: child, sourceCoordinator: source)
+            if let childReciever = child as? Receiver {
+                if let answer = childReciever.receive(signal: signal) {
+                    // отправляем ответ обратно
+                   // answerReceiver?.receive(signal: answer)
+                    resultSignals.append(answer)
+                }
+            }
+            
+            if let childTransmitter = child as? Transmitter {
+                childTransmitter.send(signal: signal, handledCoordinators: &handledCoordinators, resultSignals: &resultSignals)
+            }
         }
-        return response
     }
 }
 
-
-/// Наделяет вью контроллер возможность обрабатывать передаваемые Координаторами данные
-/// Если контроллер должен принимать хоть какие-то данные для обработки, то его необходимо подписать на данный протокол
-protocol TransmittedDataHandler where Self: UIViewController {
-    func handle(transmittedData: TransmittedData)
-}
-
-// MARK: - DataHandler
-
-// Данные, которые принимает Сервис, должны быть подпсианы на данный протокол
-protocol ActionData {}
-
-/// Сервис обработки данных
-protocol ActionService where Self: Coordinator {
-    func handle(data: Any) -> Any?
+// Координатор-ресивер может обрабатывать принимаемые сигналы
+protocol Receiver {
+    @discardableResult
+    func receive(signal: Signal) -> Signal?
 }

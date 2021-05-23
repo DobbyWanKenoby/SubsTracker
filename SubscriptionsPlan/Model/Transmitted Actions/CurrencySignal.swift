@@ -2,6 +2,7 @@
 // Данные о действиях над сущностью "Валюта"
 //
 
-enum CurrencyAction: ActionData {
+enum CurrencySignal: Signal {
     case load
+    case actualCurrencies (currencies: [CurrencyProtocol])
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol AddSubscriptionCoordinatorProtocol: BasePresenter {}
+protocol AddSubscriptionCoordinatorProtocol: BasePresenter, Transmitter {}
 
 class AddSubscriptionCoordinator: BasePresenter, AddSubscriptionCoordinatorProtocol {
     
@@ -23,7 +23,8 @@ class AddSubscriptionCoordinator: BasePresenter, AddSubscriptionCoordinatorProto
     // и случайно или специально его закрыл
     var addedSubscriptionData: SubscriptionProtocol?
     
-    override func startFlow() {
+    override func startFlow(finishCompletion: (() -> Void)? = nil) {
+        super.startFlow(finishCompletion: finishCompletion)
         navigationPresenter?.navigationBar.prefersLargeTitles = true
         navigationPresenter?.pushViewController(getServiceListConfiguredController(), animated: false)
     }
@@ -50,12 +51,10 @@ class AddSubscriptionCoordinator: BasePresenter, AddSubscriptionCoordinatorProto
             presenter!.present(nextController, animated: true, completion: nil)
         }
         
-        // Загрузка сервисов и их передача в контроллер
-        let serviceRequest = ServiceAction.load(type: .all)
-        let response = self.transmit(data: [serviceRequest], sourceCoordinator: self)
-        if let services = response.first as? [ServiceProtocol] {
-            servicesListController.services = services
-        }
+        // Загрузка сервисов
+        // обрабатываются полученные сервисы в методе receive контроллера со списком сервисов
+        let serviceRequest = ServiceSignal.load(type: .all)
+        self.broadcast(signal: serviceRequest, answerReceiver: servicesListController)
         
         return servicesListController
     }
@@ -83,8 +82,8 @@ class AddSubscriptionCoordinator: BasePresenter, AddSubscriptionCoordinatorProto
         
         
         // загружаем валюты и передаем в контроллер для отображения
-        let currenciesLoadAction = CurrencyAction.load
-        addSubController.currencies = (self.transmit(data: [currenciesLoadAction], sourceCoordinator: self).first as! [CurrencyProtocol])
+//        let currenciesLoadAction = CurrencyAction.load
+//        addSubController.currencies = (self.broadcast(data: [currenciesLoadAction], sourceCoordinator: self).first as! [CurrencyProtocol])
 
         if let transition = transitionManager {
             addSubController.transitioningDelegate = transition
@@ -115,20 +114,11 @@ class AddSubscriptionCoordinator: BasePresenter, AddSubscriptionCoordinatorProto
             // чтобы новая подписка вводилась со стандартными данными
             self.addedSubscriptionData = getDefaultSubscription(for: subscriptionForService)
             
-            let actionSubscription = SubscriptionAction.new(subscription: newSubscription)
-            let _ = transmit(data: [actionSubscription], sourceCoordinator: self)
+//            let actionSubscription = SubscriptionAction.new(subscription: newSubscription)
+//            let _ = broadcast(data: [actionSubscription], sourceCoordinator: self)
       
         }
 
         return addSubController
     }
 }
-
-// MARK: - Transmitter
-
-extension AddSubscriptionCoordinator: Transmitter {
-    func useInThisTransmitter(data: TransmittedData) {
-        return
-    }
-}
-

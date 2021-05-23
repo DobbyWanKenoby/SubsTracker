@@ -2,12 +2,12 @@
 
 import UIKit
 
-protocol CurrencyStorageCoordinatorProtocol: BaseCoordinator, ActionService {}
+protocol CurrencyStorageCoordinatorProtocol: BaseCoordinator, Receiver {}
 
 class CurrencyStorageCoordinator: BaseCoordinator, CurrencyStorageCoordinatorProtocol {
-    func handle(data: Any) -> Any? {
-        if case CurrencyAction.load = data {
-            return self.getCurrencies()
+    func receive(signal: Signal) -> Signal? {
+        if case CurrencySignal.load = signal {
+            return CurrencySignal.actualCurrencies(currencies: self.getCurrencies())
         }
         return nil
     }

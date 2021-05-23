@@ -312,7 +312,8 @@ extension AddSubscriptionController: UITableViewDataSource {
             return resultString
         }
         cell.isSetBottomLine = true
-        let indexOfDefaultValue = currencies.firstIndex(where: {$0.identifier == Settings.shared.defaultCurrency.identifier})!
+        //let indexOfDefaultValue = currencies.firstIndex(where: {$0.identifier == Settings.shared.defaultCurrency.identifier})!
+        let indexOfDefaultValue = 0
         cell.pickerView.selectRow(Int(indexOfDefaultValue), inComponent: 0, animated: false)
         cell.cellValueTextField.text = "\(self.subscription.currency.title) (\(self.subscription.currency.symbol))"
         cell.doneToolbarButtonColor = subscription.service.color

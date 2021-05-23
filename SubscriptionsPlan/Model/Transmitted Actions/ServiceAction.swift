@@ -2,12 +2,10 @@
 // Данные о действиях над сущностью "Сервис"
 //
 
-protocol ServiceActionProtocol: ActionData {}
-
-enum ServiceAction: ServiceActionProtocol {
+enum ServiceSignal: Signal {
     
     case load(type: ServiceType)
-    case result(service: [ServiceProtocol])
+    case actualServices(services: [ServiceProtocol])
     
     enum ServiceType {
         case all

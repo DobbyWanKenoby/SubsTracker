@@ -14,6 +14,12 @@ class ControllerFactory {
         }
     }
     
+    // Контроллер инициализатора приложения
+    // Запускается и отображается первым и производит различные первичные операции, вроде загрузки данных из сети, сохранения данных в базу и т.д.
+    static func getInitializatorController() -> InitializatorControllerProtocol {
+        return InitializatorController.getInstance()
+    }
+    
     // Базовый контроллер для созданяи подписки
     static func getAddSubscriptionBaseController() -> AddSubscriptionBaseControllerProtocol {
         return AddSubscriptionNavigationController.getInstance()
@@ -39,15 +45,15 @@ class ControllerFactory {
     static func getNotificationAlertController() -> NotificationAlertController {
         return NotificationAlertController.getInstance()
     }
-    
-    // Базовый контроллер для отображения списка подписок
-    static func getSubscriptionsBaseController() -> SubscriptionsBaseControllerProtocol {
-        return SubscriptionsNavigationController.getInstance()
-    }
-    
-    // Контроллер для отображенния списка созданных подписок
-    static func getSubscriptionsListController() -> SubscriptionsListControllerProtocol {
-        return SubscriptionsListController.getInstance()
-    }
+//    
+//    // Базовый контроллер для отображения списка подписок
+//    static func getSubscriptionsBaseController() -> SubscriptionsBaseControllerProtocol {
+//        return SubscriptionsNavigationController.getInstance()
+//    }
+//    
+//    // Контроллер для отображенния списка созданных подписок
+//    static func getSubscriptionsListController() -> SubscriptionsListControllerProtocol {
+//        return SubscriptionsListController.getInstance()
+//    }
 
 }

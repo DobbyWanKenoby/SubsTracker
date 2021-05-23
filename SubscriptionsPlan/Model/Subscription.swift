@@ -14,7 +14,7 @@ enum PeriodType: String, CaseIterable {
     case week
     case month
     case year
-    
+
     func getLocaleTitle() -> String {
         return NSLocalizedString(self.rawValue, comment: "")
     }
@@ -60,7 +60,7 @@ func getDefaultSubscription(for service: ServiceProtocol) -> SubscriptionProtoco
         identifier: nil,
         service: service,
         amount: 0,
-        currency: Settings.shared.defaultCurrency,
+        currency: Currency(identifier: "eur", symbol: "ee", title: "evra"),
         description: "",
         nextPaymentDate: Date(),
         paymentPeriod: (5,.week),

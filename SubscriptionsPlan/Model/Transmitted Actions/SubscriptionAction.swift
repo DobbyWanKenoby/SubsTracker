@@ -1,8 +1,8 @@
+////
+//// Данные о действиях над сущностью "Подписка"
+////
 //
-// Данные о действиях над сущностью "Подписка"
-//
-
-enum SubscriptionAction: ActionData {    
-    case new(subscription: SubscriptionProtocol)
-    case loadAll
-}
+//enum SubscriptionAction: Signal {    
+//    case new(subscription: SubscriptionProtocol)
+//    case loadAll
+//}
