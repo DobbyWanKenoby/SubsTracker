@@ -22,10 +22,12 @@ final class ApplicationCoordinator: BasePresenter, ApplicationCoordinatorProtoco
         
         // Подключение Приемников (МикроСервисов)
         
+        // МикроСервис для работы с CoreData
+        CoordinatorFactory.getCoreDataMicroService(rootCoordinator: self)
         // МикроСервис для работы с сущностью Currency
-        CoordinatorFactory.getCurrencyStorageActionService(rootCoordinator: self)
+        CoordinatorFactory.getCurrencyStorageMicroService(rootCoordinator: self)
         // МикроСервис для работы с сущностью Service
-        CoordinatorFactory.getServiceStorageActionService(rootCoordinator: self)
+        CoordinatorFactory.getServiceStorageMicroService(rootCoordinator: self)
         // МикроСервис для работы с сущностью Subscription
 //        CoordinatorFactory.getSubscriptionStorageActionService(rootCoordinator: self)
         

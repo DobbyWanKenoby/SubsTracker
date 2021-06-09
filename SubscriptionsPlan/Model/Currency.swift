@@ -13,8 +13,8 @@ protocol CurrencyProtocol {
     var title: String { get set }
 }
 
-struct Currency: CurrencyProtocol {
-    var identifier: String
-    var symbol: String
-    var title: String
-}
+//struct Currency: CurrencyProtocol {
+//    var identifier: String
+//    var symbol: String
+//    var title: String
+//}

@@ -10,6 +10,9 @@ import Foundation
 protocol InitializatorCoordinatorProtocol: BasePresenter {}
 
 class InitializatorCoordinator: BasePresenter, InitializatorCoordinatorProtocol {
+    
+    // необходим
+    
     override func startFlow(finishCompletion: (() -> Void)? = nil) {
         super.startFlow(finishCompletion: finishCompletion)
         (self.presenter as? InitializatorControllerProtocol)?.initializationDidEnd = {

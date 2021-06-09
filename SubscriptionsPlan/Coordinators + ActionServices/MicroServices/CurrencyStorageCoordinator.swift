@@ -34,7 +34,7 @@ extension CurrencyStorageCoordinator {
             }
             let symbol = (serviceItemFromPlistFile["symbol"]!).uppercased()
             
-            currencies.append(Currency(identifier: identifier, symbol: symbol, title: title))
+            //currencies.append(Currency(identifier: identifier, symbol: symbol, title: title))
         }
         return currencies
     }

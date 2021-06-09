@@ -55,16 +55,16 @@ struct Subscription: SubscriptionProtocol {
 
 // возвращает стандартный экземпляр подписки
 // используется на экране создания новой подписки
-func getDefaultSubscription(for service: ServiceProtocol) -> SubscriptionProtocol {
-    return Subscription(
-        identifier: nil,
-        service: service,
-        amount: 0,
-        currency: Currency(identifier: "eur", symbol: "ee", title: "evra"),
-        description: "",
-        nextPaymentDate: Date(),
-        paymentPeriod: (5,.week),
-        isNotificationable: true,
-        notificationDaysPeriod: 1
-    )
-}
+//func getDefaultSubscription(for service: ServiceProtocol) -> SubscriptionProtocol {
+//    return Subscription(
+//        identifier: nil,
+//        service: service,
+//        amount: 0,
+//        currency: Currency(identifier: "eur", symbol: "ee", title: "evra"),
+//        description: "",
+//        nextPaymentDate: Date(),
+//        paymentPeriod: (5,.week),
+//        isNotificationable: true,
+//        notificationDaysPeriod: 1
+//    )
+//}

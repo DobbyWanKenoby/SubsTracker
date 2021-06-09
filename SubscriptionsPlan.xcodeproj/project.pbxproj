@@ -12,8 +12,8 @@
 		E01EDEC325A9F394009E1B36 /* AddSubscriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01EDEC225A9F394009E1B36 /* AddSubscriptionController.swift */; };
 		E01EDEC825A9FA35009E1B36 /* OverlayPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01EDEC725A9FA35009E1B36 /* OverlayPresentationController.swift */; };
 		E01EDECD25AA0487009E1B36 /* AddSubAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01EDECC25AA0487009E1B36 /* AddSubAnimationController.swift */; };
-		E0205B5326445DC700A355E6 /* ServiceAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0205B5226445DC700A355E6 /* ServiceAction.swift */; };
-		E0205B5526445DF200A355E6 /* SubscriptionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0205B5426445DF200A355E6 /* SubscriptionAction.swift */; };
+		E0205B5326445DC700A355E6 /* ServiceSignals.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0205B5226445DC700A355E6 /* ServiceSignals.swift */; };
+		E0205B5526445DF200A355E6 /* SubscriptionSignals.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0205B5426445DF200A355E6 /* SubscriptionSignals.swift */; };
 		E0205B5726445F3E00A355E6 /* SubscriptionStorageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0205B5626445F3E00A355E6 /* SubscriptionStorageCoordinator.swift */; };
 		E022C29126405BDC0051C90E /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022C29026405BDC0051C90E /* Helpers.swift */; };
 		E022C294264067CE0051C90E /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022C293264067CE0051C90E /* Protocols.swift */; };
@@ -24,7 +24,7 @@
 		E022C2A226412A970051C90E /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022C2A126412A970051C90E /* UIColor.swift */; };
 		E0349F232645AFCC007DD2CD /* CurrencyStorageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0349F222645AFCC007DD2CD /* CurrencyStorageCoordinator.swift */; };
 		E0349F252645B044007DD2CD /* Currencies.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0349F242645B044007DD2CD /* Currencies.plist */; };
-		E0349F272645B262007DD2CD /* CurrencySignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0349F262645B262007DD2CD /* CurrencySignal.swift */; };
+		E0349F272645B262007DD2CD /* CurrencySignals.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0349F262645B262007DD2CD /* CurrencySignals.swift */; };
 		E039B93125A1D42F0096B23A /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E039B93025A1D42F0096B23A /* ApplicationCoordinator.swift */; };
 		E039B93625A1D5EE0096B23A /* Implementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E039B93525A1D5EE0096B23A /* Implementations.swift */; };
 		E03AB4102642A33D00869617 /* ServiceStorageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03AB40F2642A33D00869617 /* ServiceStorageCoordinator.swift */; };
@@ -46,6 +46,9 @@
 		E044E26D25A62BE800267459 /* DatePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E044E26B25A62BE800267459 /* DatePickerCell.xib */; };
 		E044E2A625A634E200267459 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E044E2A825A634E200267459 /* Localizable.strings */; };
 		E044E2B525A7103D00267459 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E2B425A7103D00267459 /* Localization.swift */; };
+		E047DF87265EDBBD00187E38 /* SubsTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E047DF85265EDBBD00187E38 /* SubsTracker.xcdatamodeld */; };
+		E0668973265EE25700CB8386 /* Service+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0668971265EE24E00CB8386 /* Service+CoreDataClass.swift */; };
+		E0668976265EE2EE00CB8386 /* Service+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0668975265EE2EB00CB8386 /* Service+CoreDataProperties.swift */; };
 		E06D59D425AF493A00CA8394 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06D59D225AF493A00CA8394 /* SwitchCell.swift */; };
 		E06D59D525AF493A00CA8394 /* SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E06D59D325AF493A00CA8394 /* SwitchCell.xib */; };
 		E06D59F125B0620600CA8394 /* NotificationAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = E06D59F025B0620600CA8394 /* NotificationAlert.xib */; };
@@ -59,11 +62,13 @@
 		E09CAED5265A95410042099B /* InitializatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09CAED3265A95410042099B /* InitializatorController.swift */; };
 		E09CAED6265A95410042099B /* InitializatorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E09CAED4265A95410042099B /* InitializatorController.xib */; };
 		E0AEC18A25B4DA9A009231C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0AEC18925B4DA9A009231C3 /* Main.storyboard */; };
+		E0BAFC77265EBCAC0042CFAD /* CoreDataCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BAFC76265EBCAC0042CFAD /* CoreDataCoordinator.swift */; };
+		E0BAFC79265EBD810042CFAD /* CoreDataSignals.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BAFC78265EBD810042CFAD /* CoreDataSignals.swift */; };
 		E0C12420259DFA9400ABC79F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C1241F259DFA9400ABC79F /* AppDelegate.swift */; };
 		E0C12422259DFA9400ABC79F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C12421259DFA9400ABC79F /* SceneDelegate.swift */; };
 		E0C1242C259DFA9500ABC79F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0C1242B259DFA9500ABC79F /* Assets.xcassets */; };
 		E0C1242F259DFA9500ABC79F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0C1242D259DFA9500ABC79F /* LaunchScreen.storyboard */; };
-		E0C12439259DFAC200ABC79F /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C12438259DFAC200ABC79F /* Service.swift */; };
+		E0C12439259DFAC200ABC79F /* ServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C12438259DFAC200ABC79F /* ServiceProtocol.swift */; };
 		E0C1243D259DFB8400ABC79F /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C1243C259DFB8400ABC79F /* Subscription.swift */; };
 		E0C1244A259F739400ABC79F /* SubscriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C12448259F739400ABC79F /* SubscriptionCell.swift */; };
 		E0C12451259F758700ABC79F /* SF-Pro-Rounded-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0C12450259F758700ABC79F /* SF-Pro-Rounded-Semibold.otf */; };
@@ -83,8 +88,8 @@
 		E01EDEC225A9F394009E1B36 /* AddSubscriptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionController.swift; sourceTree = "<group>"; };
 		E01EDEC725A9FA35009E1B36 /* OverlayPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayPresentationController.swift; sourceTree = "<group>"; };
 		E01EDECC25AA0487009E1B36 /* AddSubAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubAnimationController.swift; sourceTree = "<group>"; };
-		E0205B5226445DC700A355E6 /* ServiceAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAction.swift; sourceTree = "<group>"; };
-		E0205B5426445DF200A355E6 /* SubscriptionAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionAction.swift; sourceTree = "<group>"; };
+		E0205B5226445DC700A355E6 /* ServiceSignals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceSignals.swift; sourceTree = "<group>"; };
+		E0205B5426445DF200A355E6 /* SubscriptionSignals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionSignals.swift; sourceTree = "<group>"; };
 		E0205B5626445F3E00A355E6 /* SubscriptionStorageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionStorageCoordinator.swift; sourceTree = "<group>"; };
 		E022C29026405BDC0051C90E /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		E022C293264067CE0051C90E /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
@@ -95,7 +100,7 @@
 		E022C2A126412A970051C90E /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		E0349F222645AFCC007DD2CD /* CurrencyStorageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyStorageCoordinator.swift; sourceTree = "<group>"; };
 		E0349F242645B044007DD2CD /* Currencies.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Currencies.plist; sourceTree = "<group>"; };
-		E0349F262645B262007DD2CD /* CurrencySignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySignal.swift; sourceTree = "<group>"; };
+		E0349F262645B262007DD2CD /* CurrencySignals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySignals.swift; sourceTree = "<group>"; };
 		E039B93025A1D42F0096B23A /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		E039B93525A1D5EE0096B23A /* Implementations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Implementations.swift; sourceTree = "<group>"; };
 		E03AB40F2642A33D00869617 /* ServiceStorageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceStorageCoordinator.swift; sourceTree = "<group>"; };
@@ -121,6 +126,9 @@
 		E044E2A725A634E200267459 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E044E2AA25A634E700267459 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E044E2B425A7103D00267459 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		E047DF86265EDBBD00187E38 /* SubsTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SubsTracker.xcdatamodel; sourceTree = "<group>"; };
+		E0668971265EE24E00CB8386 /* Service+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Service+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E0668975265EE2EB00CB8386 /* Service+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Service+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E06D59D225AF493A00CA8394 /* SwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		E06D59D325AF493A00CA8394 /* SwitchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
 		E06D59F025B0620600CA8394 /* NotificationAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationAlert.xib; sourceTree = "<group>"; };
@@ -134,12 +142,14 @@
 		E09CAED3265A95410042099B /* InitializatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializatorController.swift; sourceTree = "<group>"; };
 		E09CAED4265A95410042099B /* InitializatorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InitializatorController.xib; sourceTree = "<group>"; };
 		E0AEC18925B4DA9A009231C3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		E0BAFC76265EBCAC0042CFAD /* CoreDataCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCoordinator.swift; sourceTree = "<group>"; };
+		E0BAFC78265EBD810042CFAD /* CoreDataSignals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSignals.swift; sourceTree = "<group>"; };
 		E0C1241C259DFA9400ABC79F /* SubscriptionsPlan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubscriptionsPlan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0C1241F259DFA9400ABC79F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0C12421259DFA9400ABC79F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E0C1242B259DFA9500ABC79F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E0C12430259DFA9500ABC79F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E0C12438259DFAC200ABC79F /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		E0C12438259DFAC200ABC79F /* ServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocol.swift; sourceTree = "<group>"; };
 		E0C1243C259DFB8400ABC79F /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 		E0C12448259F739400ABC79F /* SubscriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionCell.swift; sourceTree = "<group>"; };
 		E0C12450259F758700ABC79F /* SF-Pro-Rounded-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Semibold.otf"; sourceTree = "<group>"; };
@@ -167,9 +177,10 @@
 		E0205B5826445F5800A355E6 /* MicroServices */ = {
 			isa = PBXGroup;
 			children = (
-				E0349F222645AFCC007DD2CD /* CurrencyStorageCoordinator.swift */,
 				E03AB40F2642A33D00869617 /* ServiceStorageCoordinator.swift */,
+				E0349F222645AFCC007DD2CD /* CurrencyStorageCoordinator.swift */,
 				E0205B5626445F3E00A355E6 /* SubscriptionStorageCoordinator.swift */,
+				E0BAFC76265EBCAC0042CFAD /* CoreDataCoordinator.swift */,
 			);
 			path = MicroServices;
 			sourceTree = "<group>";
@@ -204,18 +215,20 @@
 			children = (
 				E022C29D264124E00051C90E /* Services.plist */,
 				E0349F242645B044007DD2CD /* Currencies.plist */,
+				E047DF85265EDBBD00187E38 /* SubsTracker.xcdatamodeld */,
 			);
 			path = Data;
 			sourceTree = "<group>";
 		};
-		E022C2A326413C130051C90E /* Transmitted Actions */ = {
+		E022C2A326413C130051C90E /* Signals */ = {
 			isa = PBXGroup;
 			children = (
-				E0205B5226445DC700A355E6 /* ServiceAction.swift */,
-				E0205B5426445DF200A355E6 /* SubscriptionAction.swift */,
-				E0349F262645B262007DD2CD /* CurrencySignal.swift */,
+				E0205B5226445DC700A355E6 /* ServiceSignals.swift */,
+				E0205B5426445DF200A355E6 /* SubscriptionSignals.swift */,
+				E0349F262645B262007DD2CD /* CurrencySignals.swift */,
+				E0BAFC78265EBD810042CFAD /* CoreDataSignals.swift */,
 			);
-			path = "Transmitted Actions";
+			path = Signals;
 			sourceTree = "<group>";
 		};
 		E03AB40E2642A04C00869617 /* Coordinators */ = {
@@ -309,6 +322,24 @@
 				E022C2A126412A970051C90E /* UIColor.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E0668977265EE5E800CB8386 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				E0668978265EE60700CB8386 /* Service */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		E0668978265EE60700CB8386 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				E0C12438259DFAC200ABC79F /* ServiceProtocol.swift */,
+				E0668971265EE24E00CB8386 /* Service+CoreDataClass.swift */,
+				E0668975265EE2EB00CB8386 /* Service+CoreDataProperties.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		E06D59D125AF491700CA8394 /* SwitchCell */ = {
@@ -422,9 +453,9 @@
 		E0C12437259DFAB000ABC79F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E0668977265EE5E800CB8386 /* Entities */,
 				E022C29C264124860051C90E /* Data */,
-				E022C2A326413C130051C90E /* Transmitted Actions */,
-				E0C12438259DFAC200ABC79F /* Service.swift */,
+				E022C2A326413C130051C90E /* Signals */,
 				E0C1243C259DFB8400ABC79F /* Subscription.swift */,
 				E044E24625A4B80B00267459 /* Currency.swift */,
 			);
@@ -602,26 +633,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0205B5326445DC700A355E6 /* ServiceAction.swift in Sources */,
+				E0205B5326445DC700A355E6 /* ServiceSignals.swift in Sources */,
 				E022C29A264072410051C90E /* ViewControllerLoader.swift in Sources */,
 				E0C7D71B25A1E85A00E71476 /* SubscriptionsCoordinator.swift in Sources */,
 				E044E2B525A7103D00267459 /* Localization.swift in Sources */,
 				E0C1243D259DFB8400ABC79F /* Subscription.swift in Sources */,
 				E039B93125A1D42F0096B23A /* ApplicationCoordinator.swift in Sources */,
+				E0668976265EE2EE00CB8386 /* Service+CoreDataProperties.swift in Sources */,
 				E0C12460259F792B00ABC79F /* SubscriptionsListController.swift in Sources */,
 				E06D59FF25B0705800CA8394 /* NotificationAlertTransitionManager.swift in Sources */,
 				E06D5A0225B0742500CA8394 /* NotificationAlertAnimationController.swift in Sources */,
 				E06D59FB25B06FD300CA8394 /* NotificationAlertPresentationController.swift in Sources */,
 				E01EDECD25AA0487009E1B36 /* AddSubAnimationController.swift in Sources */,
-				E0C12439259DFAC200ABC79F /* Service.swift in Sources */,
+				E0C12439259DFAC200ABC79F /* ServiceProtocol.swift in Sources */,
 				E06D59F725B0640E00CA8394 /* NotificationAlertCoordinator.swift in Sources */,
 				E0EE4307259F7A3800CA0F6F /* ControllerFactory.swift in Sources */,
 				E022C29126405BDC0051C90E /* Helpers.swift in Sources */,
 				E044E26C25A62BE800267459 /* DatePickerCell.swift in Sources */,
 				E039B93625A1D5EE0096B23A /* Implementations.swift in Sources */,
+				E0BAFC79265EBD810042CFAD /* CoreDataSignals.swift in Sources */,
 				E022C2982640700B0051C90E /* ControllersList.swift in Sources */,
 				E0C12420259DFA9400ABC79F /* AppDelegate.swift in Sources */,
 				E01EDEBC25A9ECED009E1B36 /* AddSubsTransitionManager.swift in Sources */,
+				E047DF87265EDBBD00187E38 /* SubsTracker.xcdatamodeld in Sources */,
 				E0C1244A259F739400ABC79F /* SubscriptionCell.swift in Sources */,
 				E044E24725A4B80B00267459 /* Currency.swift in Sources */,
 				E044E22A25A1F3C800267459 /* AddSubscriptionBaseController.swift in Sources */,
@@ -634,8 +668,9 @@
 				E044E25225A4BAA800267459 /* PickerCell.swift in Sources */,
 				E044E25B25A4C83E00267459 /* SettingsSharedCoordinator.swift in Sources */,
 				E022C294264067CE0051C90E /* Protocols.swift in Sources */,
-				E0205B5526445DF200A355E6 /* SubscriptionAction.swift in Sources */,
+				E0205B5526445DF200A355E6 /* SubscriptionSignals.swift in Sources */,
 				E044E21325A1EBBB00267459 /* SubscriptionsNavigationController.swift in Sources */,
+				E0668973265EE25700CB8386 /* Service+CoreDataClass.swift in Sources */,
 				E044E25625A4BF6100267459 /* CellWithBottomLine.swift in Sources */,
 				E044E24325A4785000267459 /* CellTitleLabel.swift in Sources */,
 				E0349F232645AFCC007DD2CD /* CurrencyStorageCoordinator.swift in Sources */,
@@ -643,8 +678,9 @@
 				E0205B5726445F3E00A355E6 /* SubscriptionStorageCoordinator.swift in Sources */,
 				E044E22725A1F36C00267459 /* AddSubscriptionCoordinator.swift in Sources */,
 				E09CAED1265A94860042099B /* InitializatorCoordinator.swift in Sources */,
-				E0349F272645B262007DD2CD /* CurrencySignal.swift in Sources */,
+				E0349F272645B262007DD2CD /* CurrencySignals.swift in Sources */,
 				E03AB4102642A33D00869617 /* ServiceStorageCoordinator.swift in Sources */,
+				E0BAFC77265EBCAC0042CFAD /* CoreDataCoordinator.swift in Sources */,
 				E06D59D425AF493A00CA8394 /* SwitchCell.swift in Sources */,
 				E06D59F425B063E700CA8394 /* NotificationAlertController.swift in Sources */,
 				E044E22325A1EFA000267459 /* ServiceCell.swift in Sources */,
@@ -857,6 +893,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E047DF85265EDBBD00187E38 /* SubsTracker.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E047DF86265EDBBD00187E38 /* SubsTracker.xcdatamodel */,
+			);
+			currentVersion = E047DF86265EDBBD00187E38 /* SubsTracker.xcdatamodel */;
+			path = SubsTracker.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E0C12414259DFA9400ABC79F /* Project object */;
 }

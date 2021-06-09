@@ -29,5 +29,12 @@ var count = 0
 searchMaxSequenceLength(inputArray: [1,23,4,5,1,4,57,23,4,1,23,6,7,1,2,4], firstIndex:0, maxSequenceCount: &count)
 
 
+protocol aa {
+    var a: String { get }
+}
 
+class bb: aa {
+    var a: String { return "asd" }
+    
+}
 

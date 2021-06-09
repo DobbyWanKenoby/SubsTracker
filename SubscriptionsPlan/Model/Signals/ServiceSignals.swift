@@ -2,6 +2,8 @@
 // Данные о действиях над сущностью "Сервис"
 //
 
+import UIKit
+
 enum ServiceSignal: Signal {
     
     case load(type: ServiceType)
@@ -12,3 +14,9 @@ enum ServiceSignal: Signal {
         case `default`
     }
 }
+
+extension UIColor: NSSecureCoding {
+    
+}
+
+extension UIImage: NSSecureCoding {}

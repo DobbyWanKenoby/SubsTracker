@@ -57,27 +57,28 @@ protocol Transmitter where Self: Coordinator {
     // а если ответ все же будет , то он будет обработан в методе receive источника запроса
     //   - signal: передаваемые данные
     //   - answerReceiver: приемник ответа. В него будет отправляться ответ
-    func broadcast(signal: Signal, answerReceiver: Receiver?)
+    func broadcast(signal: Signal, withAnswerToReceiver: Receiver?)
     
     // Передача данных в связанные координаторы и контроллеры
     // При таком запросе координатор ожидает и обабатывает полученный ответ inline
-    func broadcast(signal: Signal) -> [Signal]
+    func broadcast(signalWithReturnAnswer: Signal) -> [Signal]
 }
 
 extension Transmitter {
     
-    func broadcast(signal: Signal) -> [Signal] {
+    func broadcast(signalWithReturnAnswer signal: Signal) -> [Signal] {
         var coordinators: [Coordinator] = []
         var resultSignals: [Signal] = []
         self.send(signal: signal, handledCoordinators: &coordinators, resultSignals: &resultSignals)
         return resultSignals
     }
     
-    func broadcast(signal: Signal, answerReceiver receiver: Receiver?) {
+    func broadcast(signal: Signal, withAnswerToReceiver receiver: Receiver?) {
         var coordinators: [Coordinator] = []
         var resultSignals: [Signal] = []
         self.send(signal: signal, handledCoordinators: &coordinators, resultSignals: &resultSignals)
         resultSignals.forEach { oneSignalAnswer in
+            print(6)
             receiver?.receive(signal: oneSignalAnswer)
         }
     }
@@ -85,7 +86,6 @@ extension Transmitter {
     // Дальнейшая передача данных, но с учетом списка координаторов, которые уже обработали данный сигнал
     // Используется, чтобы исключить повторную обратную передачу
     private func send(signal: Signal, handledCoordinators: inout [Coordinator], resultSignals: inout [Signal]) {
-        
         guard handledCoordinators.firstIndex(where: { $0 === self }) == nil else {
             return
         }
@@ -103,6 +103,7 @@ extension Transmitter {
         }
         childCoordinators.forEach { child in
             if let childReciever = child as? Receiver {
+                print(childReciever)
                 if let answer = childReciever.receive(signal: signal) {
                     // отправляем ответ обратно
                    // answerReceiver?.receive(signal: answer)

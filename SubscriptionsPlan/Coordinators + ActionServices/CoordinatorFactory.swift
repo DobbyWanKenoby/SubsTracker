@@ -32,13 +32,18 @@ class CoordinatorFactory {
     // MARK: - MicroServices Coordinators
     
     @discardableResult
-    static func getCurrencyStorageActionService(rootCoordinator: Coordinator?) -> CurrencyStorageCoordinatorProtocol {
+    static func getCurrencyStorageMicroService(rootCoordinator: Coordinator?) -> CurrencyStorageCoordinatorProtocol {
         return CurrencyStorageCoordinator(rootCoordinator: rootCoordinator)
     }
     
     @discardableResult
-    static func getServiceStorageActionService(rootCoordinator: Coordinator?) -> ServiceStorageCoordinatorProtocol {
+    static func getServiceStorageMicroService(rootCoordinator: Coordinator?) -> ServiceStorageCoordinatorProtocol {
         return ServiceStorageCoordinator(rootCoordinator: rootCoordinator)
+    }
+    
+    @discardableResult
+    static func getCoreDataMicroService(rootCoordinator: Coordinator?) -> CoreDataCoordinatorProtocol {
+        return CoreDataCoordinator(rootCoordinator: rootCoordinator)
     }
     
 //    @discardableResult

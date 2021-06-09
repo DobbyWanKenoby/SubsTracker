@@ -54,7 +54,7 @@ class AddSubscriptionCoordinator: BasePresenter, AddSubscriptionCoordinatorProto
         // Загрузка сервисов
         // обрабатываются полученные сервисы в методе receive контроллера со списком сервисов
         let serviceRequest = ServiceSignal.load(type: .all)
-        self.broadcast(signal: serviceRequest, answerReceiver: servicesListController)
+        self.broadcast(signal: serviceRequest, withAnswerToReceiver: servicesListController)
         
         return servicesListController
     }
@@ -66,16 +66,16 @@ class AddSubscriptionCoordinator: BasePresenter, AddSubscriptionCoordinatorProto
         var subscriptionForService: ServiceProtocol
         if service == nil {
             addSubController.isNewService = true
-            subscriptionForService = Service(identifier: "own", title: "Новый сервис", logo: nil, color: .gray)
+            //subscriptionForService = Service(identifier: "own", title: "Новый сервис", logo: nil, color: .gray)
         } else {
             addSubController.isNewService = false
             subscriptionForService = service!
         }
         
         if self.addedSubscriptionData == nil {
-            self.addedSubscriptionData = getDefaultSubscription(for: subscriptionForService)
+            //self.addedSubscriptionData = getDefaultSubscription(for: subscriptionForService)
         } else {
-            self.addedSubscriptionData!.service = subscriptionForService
+            //self.addedSubscriptionData!.service = subscriptionForService
         }
 
         addSubController.subscription = addedSubscriptionData!
@@ -112,7 +112,7 @@ class AddSubscriptionCoordinator: BasePresenter, AddSubscriptionCoordinatorProto
 
             // стирает введенные данные
             // чтобы новая подписка вводилась со стандартными данными
-            self.addedSubscriptionData = getDefaultSubscription(for: subscriptionForService)
+            //self.addedSubscriptionData = getDefaultSubscription(for: subscriptionForService)
             
 //            let actionSubscription = SubscriptionAction.new(subscription: newSubscription)
 //            let _ = broadcast(data: [actionSubscription], sourceCoordinator: self)

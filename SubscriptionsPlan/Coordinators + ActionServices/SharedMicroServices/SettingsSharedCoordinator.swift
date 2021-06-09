@@ -12,7 +12,7 @@ class Settings: BaseCoordinator, Transmitter {
     static var shared: Settings!
     
 //    lazy var defaultCurrency: CurrencyProtocol = getDefaultCurrency()
-    var nilCurrency = Currency(identifier: "nil", symbol: "nil", title: "nil")
+    //var nilCurrency = Currency(identifier: "nil", symbol: "nil", title: "nil")
     
 //    func getDefaultCurrency() -> CurrencyProtocol {
 //        let currenciesLoadAction = CurrencyAction.load
