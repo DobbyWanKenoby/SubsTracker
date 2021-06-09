@@ -6,17 +6,23 @@ import UIKit
 
 enum ServiceSignal: Signal {
     
-    case load(type: ServiceType)
-    case actualServices(services: [ServiceProtocol])
+    // загрузка сервисов
+    case getServiceByIdentifier(String)
+    case load(type: ServicesLoadingType)
     
-    enum ServiceType {
-        case all
-        case `default`
-    }
+    // передача сервисов
+    case service(ServiceProtocol)
+    case services([ServiceProtocol])
+    
+    // сохранение сервисов в долговременно хранилище
+    // создание нового или обновление существующего сервиса
+    case createUpdateIfNeeded(services: [ServiceProtocol])
+    
 }
 
-extension UIColor: NSSecureCoding {
-    
+@frozen
+enum ServicesLoadingType {
+    case all
+    case `default`
+    case custom
 }
-
-extension UIImage: NSSecureCoding {}

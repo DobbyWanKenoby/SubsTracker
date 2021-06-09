@@ -3,20 +3,28 @@
 <plist version="1.0">
 <array>
 	<dict>
-		<key>isLocalizable</key>
-		<string>1</string>
+		<key>isLocalizableTitle</key>
+		<true/>
+		<key>identifier</key>
+		<string>rub</string>
+		<key>symbol</key>
+		<string>₽</string>
+	</dict>
+	<dict>
+		<key>isLocalizableTitle</key>
+		<true/>
 		<key>identifier</key>
 		<string>eur</string>
 		<key>symbol</key>
 		<string>€</string>
 	</dict>
 	<dict>
-		<key>isLocalizable</key>
-		<string>1</string>
+		<key>isLocalizableTitle</key>
+		<false/>
 		<key>identifier</key>
-		<string>rub</string>
+		<string>eur3</string>
 		<key>symbol</key>
-		<string>₽</string>
+		<string>€</string>
 	</dict>
 </array>
 </plist>

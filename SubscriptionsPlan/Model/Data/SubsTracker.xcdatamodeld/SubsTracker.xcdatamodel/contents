@@ -1,12 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20E232" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Service" representedClassName="Service" syncable="YES">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CurrencyEntity" representedClassName="CurrencyEntity" syncable="YES" codeGenerationType="category">
+        <attribute name="identifier" attributeType="String"/>
+        <attribute name="isCurrent" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="symbol" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="subscriptions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SubscriptionEntity" inverseName="currency" inverseEntity="SubscriptionEntity"/>
+    </entity>
+    <entity name="ServiceEntity" representedClassName="ServiceEntity" syncable="YES" codeGenerationType="category">
         <attribute name="colorHEX" attributeType="String"/>
         <attribute name="identifier" attributeType="String"/>
-        <attribute name="logoURI" attributeType="URI"/>
+        <attribute name="isCustom" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="logoFileName" attributeType="String"/>
         <attribute name="title" attributeType="String"/>
+        <relationship name="subscriptions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SubscriptionEntity" inverseName="service" inverseEntity="SubscriptionEntity"/>
+    </entity>
+    <entity name="SubscriptionEntity" representedClassName="SubscriptionEntity" syncable="YES" codeGenerationType="category">
+        <attribute name="about" optional="YES" attributeType="String"/>
+        <attribute name="amount" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="identifier" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isNotificationable" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="nextPaymentDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="notificationDaysPeriod" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="paymentPeriodInt" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="paymentPeriodType" attributeType="String"/>
+        <relationship name="currency" maxCount="1" deletionRule="Nullify" destinationEntity="CurrencyEntity" inverseName="subscriptions" inverseEntity="CurrencyEntity"/>
+        <relationship name="service" maxCount="1" deletionRule="Nullify" destinationEntity="ServiceEntity" inverseName="subscriptions" inverseEntity="ServiceEntity"/>
     </entity>
     <elements>
-        <element name="Service" positionX="-63" positionY="-18" width="128" height="89"/>
+        <element name="CurrencyEntity" positionX="-63" positionY="18" width="128" height="118"/>
+        <element name="ServiceEntity" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="SubscriptionEntity" positionX="-63" positionY="27" width="128" height="193"/>
     </elements>
 </model>

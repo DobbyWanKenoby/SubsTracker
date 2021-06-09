@@ -19,7 +19,7 @@ class AddSubscriptionNavigationController: UINavigationController, AddSubscripti
     private func getBarIcon() -> UITabBarItem {
         let symbolConfigaration = UIImage.SymbolConfiguration(weight: .heavy)
         let icon = UIImage(systemName: "plus.square.fill", withConfiguration: symbolConfigaration)
-        let iconTabBarItem = UITabBarItem(title: "Новая подписка", image: icon, tag: 0)
+        let iconTabBarItem = UITabBarItem(title: NSLocalizedString("new_subscription", comment: ""), image: icon, tag: 0)
         return iconTabBarItem
     }
 }

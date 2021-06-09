@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol AddSubscriptionCoordinatorProtocol: BasePresenter, Transmitter {}
+protocol AddSubscriptionCoordinatorProtocol: BasePresenter, Transmitter, Receiver {}
 
 class AddSubscriptionCoordinator: BasePresenter, AddSubscriptionCoordinatorProtocol {
     
@@ -17,11 +17,6 @@ class AddSubscriptionCoordinator: BasePresenter, AddSubscriptionCoordinatorProto
     
     // strong ссылки на менеджеры перехода
     var transitionManagers: [UIViewControllerTransitioningDelegate] = []
-    
-    // используется для сохранения данных
-    // если пользователь ввел данные в окне создания подписки
-    // и случайно или специально его закрыл
-    var addedSubscriptionData: SubscriptionProtocol?
     
     override func startFlow(finishCompletion: (() -> Void)? = nil) {
         super.startFlow(finishCompletion: finishCompletion)
@@ -53,9 +48,8 @@ class AddSubscriptionCoordinator: BasePresenter, AddSubscriptionCoordinatorProto
         
         // Загрузка сервисов
         // обрабатываются полученные сервисы в методе receive контроллера со списком сервисов
-        let serviceRequest = ServiceSignal.load(type: .all)
-        self.broadcast(signal: serviceRequest, withAnswerToReceiver: servicesListController)
-        
+        let servicesSignal = ServiceSignal.load(type: .all)
+        self.broadcast(signal: servicesSignal, withAnswerToReceiver: servicesListController)
         return servicesListController
     }
 
@@ -63,27 +57,12 @@ class AddSubscriptionCoordinator: BasePresenter, AddSubscriptionCoordinatorProto
     private func getAddSubConfiguredController(service: ServiceProtocol?, transitionManager: UIViewControllerTransitioningDelegate?) -> UIViewController {
         let addSubController = ControllerFactory.getAddSubscriptionController()
         
-        var subscriptionForService: ServiceProtocol
-        if service == nil {
-            addSubController.isNewService = true
-            //subscriptionForService = Service(identifier: "own", title: "Новый сервис", logo: nil, color: .gray)
-        } else {
-            addSubController.isNewService = false
-            subscriptionForService = service!
+        if service != nil {
+            addSubController.service = service!
         }
         
-        if self.addedSubscriptionData == nil {
-            //self.addedSubscriptionData = getDefaultSubscription(for: subscriptionForService)
-        } else {
-            //self.addedSubscriptionData!.service = subscriptionForService
-        }
-
-        addSubController.subscription = addedSubscriptionData!
-        
-        
-        // загружаем валюты и передаем в контроллер для отображения
-//        let currenciesLoadAction = CurrencyAction.load
-//        addSubController.currencies = (self.broadcast(data: [currenciesLoadAction], sourceCoordinator: self).first as! [CurrencyProtocol])
+        let currenciesSignal = CurrencySignal.getCurrencies
+        self.broadcast(signal: currenciesSignal, withAnswerToReceiver: addSubController)
 
         if let transition = transitionManager {
             addSubController.transitioningDelegate = transition
@@ -92,12 +71,9 @@ class AddSubscriptionCoordinator: BasePresenter, AddSubscriptionCoordinatorProto
 
         addSubController.onCancelScene = { inputData in
             addSubController.dismiss(animated: true, completion: nil)
-            // используется для сохранения введенных данных
-            // чтобы они вновь отображались после скрытия/открытия экрана создания подписки
-            self.addedSubscriptionData = inputData
         }
-
-        addSubController.onSaveSubscription = { [self] newSubscription in
+        //addSubController.onSaveSubscription(
+        addSubController.onSaveSubscription = { [self] newSubscription, isNewService in
             addSubController.dismiss(animated: true, completion: nil)
 
             // Уведомление

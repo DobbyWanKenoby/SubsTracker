@@ -29,7 +29,7 @@ class ServicesListController: UIViewController, ServicesListControllerProtocol, 
     }
     
     private func configureView() {
-        self.navigationItem.title = "Новая подписка"
+        self.navigationItem.title = NSLocalizedString("new_subscription", comment: "")
         self.navigationItem.largeTitleDisplayMode = .always
         self.tableView.separatorStyle = .none
         self.tableView.tableHeaderView = UIView()
@@ -97,7 +97,7 @@ extension ServicesListController: UITableViewDelegate {
 
 extension ServicesListController: Receiver {
     func receive(signal: Signal) -> Signal? {
-        if case ServiceSignal.actualServices(let servicesList) = signal {
+        if case ServiceSignal.services(let servicesList) = signal {
             services = servicesList
         }
         return nil

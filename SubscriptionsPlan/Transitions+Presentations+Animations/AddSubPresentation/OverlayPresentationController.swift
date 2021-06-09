@@ -41,7 +41,7 @@ class OverlayPresentationController: UIPresentationController {
     
     override func containerViewWillLayoutSubviews() {
         super.containerViewWillLayoutSubviews()
-        presentedView!.layer.cornerRadius = 10
+        presentedView!.layer.cornerRadius = 0
         presentedView!.frame = frameOfPresentedViewInContainerView
     }
 }

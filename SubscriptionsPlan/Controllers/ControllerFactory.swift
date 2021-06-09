@@ -35,10 +35,15 @@ class ControllerFactory {
     private static var addSubscriptionController: AddSubscriptionControllerProtocol!
     // Контроллер для создания подписки
     static func getAddSubscriptionController() -> AddSubscriptionControllerProtocol {
-        if addSubscriptionController == nil {
-            addSubscriptionController = AddSubscriptionController.getInstance()
-        }
-        return addSubscriptionController
+        // Вариант без перерасхода памяти
+//        if addSubscriptionController == nil {
+//            addSubscriptionController = AddSubscriptionController.getInstance()
+//        }
+//        return addSubscriptionController
+        // Вариант с перерасходом памяти
+        // и без сохранения значений на форме создания подписки
+        // Логически более верный, но перерасход памяти
+        return AddSubscriptionController.getInstance()
     }
     
     // Контроллер нотификаций

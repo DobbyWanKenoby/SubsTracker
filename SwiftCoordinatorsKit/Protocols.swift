@@ -78,7 +78,6 @@ extension Transmitter {
         var resultSignals: [Signal] = []
         self.send(signal: signal, handledCoordinators: &coordinators, resultSignals: &resultSignals)
         resultSignals.forEach { oneSignalAnswer in
-            print(6)
             receiver?.receive(signal: oneSignalAnswer)
         }
     }
@@ -103,7 +102,6 @@ extension Transmitter {
         }
         childCoordinators.forEach { child in
             if let childReciever = child as? Receiver {
-                print(childReciever)
                 if let answer = childReciever.receive(signal: signal) {
                     // отправляем ответ обратно
                    // answerReceiver?.receive(signal: answer)
@@ -122,4 +120,10 @@ extension Transmitter {
 protocol Receiver {
     @discardableResult
     func receive(signal: Signal) -> Signal?
+}
+
+extension Receiver {
+    func receive(signal: Signal) -> Signal? {
+        return nil
+    }
 }

@@ -1,6 +1,8 @@
 import UIKit
 
 
+
+
 func searchMaxSequenceLength(inputArray: [Int], firstIndex: Int, maxSequenceCount: inout Int) -> Int {
     
     guard inputArray.count > 0 else {

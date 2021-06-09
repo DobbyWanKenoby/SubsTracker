@@ -19,7 +19,8 @@ class InitializatorController: UIViewController, InitializatorControllerProtocol
         super.viewDidLoad()
     }
     
-    @IBAction func buttonTapped(_ sender: UIButton) {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         initializationDidEnd?()
     }
 }

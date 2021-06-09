@@ -22,7 +22,8 @@ enum PeriodType: String, CaseIterable {
 
 protocol SubscriptionProtocol {
     /// Уникальный числовой идентификатор подписки
-    var identifier: Int? { get set }
+    /// Если nil, то создается новая подписка
+    var identifier: UUID? { get set }
     /// На какой сервис осуществляется подписка
     var service: ServiceProtocol { get set }
     /// Сумма подписки
@@ -42,7 +43,7 @@ protocol SubscriptionProtocol {
 }
 
 struct Subscription: SubscriptionProtocol {
-    var identifier: Int?
+    var identifier: UUID?
     var service: ServiceProtocol
     var amount: Float
     var currency: CurrencyProtocol
@@ -52,19 +53,3 @@ struct Subscription: SubscriptionProtocol {
     var isNotificationable: Bool
     var notificationDaysPeriod: Int
 }
-
-// возвращает стандартный экземпляр подписки
-// используется на экране создания новой подписки
-//func getDefaultSubscription(for service: ServiceProtocol) -> SubscriptionProtocol {
-//    return Subscription(
-//        identifier: nil,
-//        service: service,
-//        amount: 0,
-//        currency: Currency(identifier: "eur", symbol: "ee", title: "evra"),
-//        description: "",
-//        nextPaymentDate: Date(),
-//        paymentPeriod: (5,.week),
-//        isNotificationable: true,
-//        notificationDaysPeriod: 1
-//    )
-//}

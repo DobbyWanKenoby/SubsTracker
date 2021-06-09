@@ -71,7 +71,7 @@ class AddSubsAnimationPresentationController: NSObject, UIViewControllerAnimated
         // Этап 2 анимации
         animators.append( UIViewPropertyAnimator(duration: 0.4, curve: .easeInOut) {
             self.cellView.transform = CGAffineTransform(scaleX: 1, y: 1)
-            self.cellView.frame.origin = CGPoint(x: 0, y: -30)
+            self.cellView.frame.origin = CGPoint(x: 0, y: -45)
             self.cellView.frame.size.height = 150
             self.cellView.frame.size.width = UIScreen.main.bounds.width
             
@@ -87,7 +87,7 @@ class AddSubsAnimationPresentationController: NSObject, UIViewControllerAnimated
         
         // Этап 3 анимации
         animators.append( UIViewPropertyAnimator(duration: 0.2, curve: .easeInOut) {
-            self.cellView.frame.origin = CGPoint(x: 0, y: 0)
+            self.cellView.frame.origin = CGPoint(x: 0, y: -10)
         })
         animators[2].addCompletion { _ in
             animators[3].startAnimation()

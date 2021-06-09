@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		842F02612667824500EB14C9 /* ServiceEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842F025E2667823E00EB14C9 /* ServiceEntity+CoreDataClass.swift */; };
+		8451419B266625A400F4345B /* SubsTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84514199266625A400F4345B /* SubsTracker.xcdatamodeld */; };
+		845294872668B32C0086148F /* CurrencyEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845294852668B3190086148F /* CurrencyEntity+CoreDataClass.swift */; };
+		84A3102D2670D91200F822DC /* SubscriptionEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A3102B2670D90600F822DC /* SubscriptionEntity+CoreDataClass.swift */; };
 		E01EDEBC25A9ECED009E1B36 /* AddSubsTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01EDEBB25A9ECED009E1B36 /* AddSubsTransitionManager.swift */; };
 		E01EDEC025A9F22B009E1B36 /* AddSubscriptionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E01EDEBF25A9F22B009E1B36 /* AddSubscriptionController.xib */; };
 		E01EDEC325A9F394009E1B36 /* AddSubscriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01EDEC225A9F394009E1B36 /* AddSubscriptionController.swift */; };
@@ -46,9 +50,6 @@
 		E044E26D25A62BE800267459 /* DatePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E044E26B25A62BE800267459 /* DatePickerCell.xib */; };
 		E044E2A625A634E200267459 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E044E2A825A634E200267459 /* Localizable.strings */; };
 		E044E2B525A7103D00267459 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E2B425A7103D00267459 /* Localization.swift */; };
-		E047DF87265EDBBD00187E38 /* SubsTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E047DF85265EDBBD00187E38 /* SubsTracker.xcdatamodeld */; };
-		E0668973265EE25700CB8386 /* Service+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0668971265EE24E00CB8386 /* Service+CoreDataClass.swift */; };
-		E0668976265EE2EE00CB8386 /* Service+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0668975265EE2EB00CB8386 /* Service+CoreDataProperties.swift */; };
 		E06D59D425AF493A00CA8394 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06D59D225AF493A00CA8394 /* SwitchCell.swift */; };
 		E06D59D525AF493A00CA8394 /* SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E06D59D325AF493A00CA8394 /* SwitchCell.xib */; };
 		E06D59F125B0620600CA8394 /* NotificationAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = E06D59F025B0620600CA8394 /* NotificationAlert.xib */; };
@@ -68,7 +69,7 @@
 		E0C12422259DFA9400ABC79F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C12421259DFA9400ABC79F /* SceneDelegate.swift */; };
 		E0C1242C259DFA9500ABC79F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0C1242B259DFA9500ABC79F /* Assets.xcassets */; };
 		E0C1242F259DFA9500ABC79F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0C1242D259DFA9500ABC79F /* LaunchScreen.storyboard */; };
-		E0C12439259DFAC200ABC79F /* ServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C12438259DFAC200ABC79F /* ServiceProtocol.swift */; };
+		E0C12439259DFAC200ABC79F /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C12438259DFAC200ABC79F /* Service.swift */; };
 		E0C1243D259DFB8400ABC79F /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C1243C259DFB8400ABC79F /* Subscription.swift */; };
 		E0C1244A259F739400ABC79F /* SubscriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C12448259F739400ABC79F /* SubscriptionCell.swift */; };
 		E0C12451259F758700ABC79F /* SF-Pro-Rounded-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0C12450259F758700ABC79F /* SF-Pro-Rounded-Semibold.otf */; };
@@ -83,6 +84,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		842F025E2667823E00EB14C9 /* ServiceEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8451419A266625A400F4345B /* SubsTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SubsTracker.xcdatamodel; sourceTree = "<group>"; };
+		845294852668B3190086148F /* CurrencyEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		84A3102B2670D90600F822DC /* SubscriptionEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubscriptionEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E01EDEBB25A9ECED009E1B36 /* AddSubsTransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubsTransitionManager.swift; sourceTree = "<group>"; };
 		E01EDEBF25A9F22B009E1B36 /* AddSubscriptionController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubscriptionController.xib; sourceTree = "<group>"; };
 		E01EDEC225A9F394009E1B36 /* AddSubscriptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionController.swift; sourceTree = "<group>"; };
@@ -126,9 +131,6 @@
 		E044E2A725A634E200267459 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E044E2AA25A634E700267459 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E044E2B425A7103D00267459 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
-		E047DF86265EDBBD00187E38 /* SubsTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SubsTracker.xcdatamodel; sourceTree = "<group>"; };
-		E0668971265EE24E00CB8386 /* Service+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Service+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E0668975265EE2EB00CB8386 /* Service+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Service+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E06D59D225AF493A00CA8394 /* SwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		E06D59D325AF493A00CA8394 /* SwitchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
 		E06D59F025B0620600CA8394 /* NotificationAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationAlert.xib; sourceTree = "<group>"; };
@@ -149,7 +151,7 @@
 		E0C12421259DFA9400ABC79F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E0C1242B259DFA9500ABC79F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E0C12430259DFA9500ABC79F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E0C12438259DFAC200ABC79F /* ServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocol.swift; sourceTree = "<group>"; };
+		E0C12438259DFAC200ABC79F /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		E0C1243C259DFB8400ABC79F /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 		E0C12448259F739400ABC79F /* SubscriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionCell.swift; sourceTree = "<group>"; };
 		E0C12450259F758700ABC79F /* SF-Pro-Rounded-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Semibold.otf"; sourceTree = "<group>"; };
@@ -174,6 +176,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		840588BC2668AD9C006351B7 /* Currency */ = {
+			isa = PBXGroup;
+			children = (
+				E044E24625A4B80B00267459 /* Currency.swift */,
+				845294852668B3190086148F /* CurrencyEntity+CoreDataClass.swift */,
+			);
+			path = Currency;
+			sourceTree = "<group>";
+		};
+		84A3102A2670D72300F822DC /* Subscription */ = {
+			isa = PBXGroup;
+			children = (
+				E0C1243C259DFB8400ABC79F /* Subscription.swift */,
+				84A3102B2670D90600F822DC /* SubscriptionEntity+CoreDataClass.swift */,
+			);
+			path = Subscription;
+			sourceTree = "<group>";
+		};
 		E0205B5826445F5800A355E6 /* MicroServices */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,7 +222,7 @@
 				E09CAED2265A95280042099B /* Initializator */,
 				E0AEC18525B4D9FC009231C3 /* AddSubscriptionBaseController */,
 				E044E21625A1ED0E00267459 /* ServicesList */,
-				E044E22C25A2211900267459 /* AddSubscription */,
+				E044E22C25A2211900267459 /* AddSubscriptionForm */,
 				E06D59EE25B0619C00CA8394 /* NotificationAlert */,
 				E0AEC18125B4D9CB009231C3 /* SubscriptionsBaseContoller */,
 				E0EE432B25A1155B00CA0F6F /* SubscriptionsListController */,
@@ -215,7 +235,7 @@
 			children = (
 				E022C29D264124E00051C90E /* Services.plist */,
 				E0349F242645B044007DD2CD /* Currencies.plist */,
-				E047DF85265EDBBD00187E38 /* SubsTracker.xcdatamodeld */,
+				84514199266625A400F4345B /* SubsTracker.xcdatamodeld */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -224,8 +244,8 @@
 			isa = PBXGroup;
 			children = (
 				E0205B5226445DC700A355E6 /* ServiceSignals.swift */,
-				E0205B5426445DF200A355E6 /* SubscriptionSignals.swift */,
 				E0349F262645B262007DD2CD /* CurrencySignals.swift */,
+				E0205B5426445DF200A355E6 /* SubscriptionSignals.swift */,
 				E0BAFC78265EBD810042CFAD /* CoreDataSignals.swift */,
 			);
 			path = Signals;
@@ -261,13 +281,13 @@
 			path = ServiceCell;
 			sourceTree = "<group>";
 		};
-		E044E22C25A2211900267459 /* AddSubscription */ = {
+		E044E22C25A2211900267459 /* AddSubscriptionForm */ = {
 			isa = PBXGroup;
 			children = (
 				E01EDEBF25A9F22B009E1B36 /* AddSubscriptionController.xib */,
 				E01EDEC225A9F394009E1B36 /* AddSubscriptionController.swift */,
 			);
-			path = AddSubscription;
+			path = AddSubscriptionForm;
 			sourceTree = "<group>";
 		};
 		E044E23725A4682000267459 /* Transitions+Presentations+Animations */ = {
@@ -327,6 +347,8 @@
 		E0668977265EE5E800CB8386 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				84A3102A2670D72300F822DC /* Subscription */,
+				840588BC2668AD9C006351B7 /* Currency */,
 				E0668978265EE60700CB8386 /* Service */,
 			);
 			path = Entities;
@@ -335,9 +357,8 @@
 		E0668978265EE60700CB8386 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				E0C12438259DFAC200ABC79F /* ServiceProtocol.swift */,
-				E0668971265EE24E00CB8386 /* Service+CoreDataClass.swift */,
-				E0668975265EE2EB00CB8386 /* Service+CoreDataProperties.swift */,
+				E0C12438259DFAC200ABC79F /* Service.swift */,
+				842F025E2667823E00EB14C9 /* ServiceEntity+CoreDataClass.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -436,7 +457,7 @@
 			isa = PBXGroup;
 			children = (
 				E044E23725A4682000267459 /* Transitions+Presentations+Animations */,
-				E0C7D71D25A1E88800E71476 /* Coordinators + ActionServices */,
+				E0C7D71D25A1E88800E71476 /* Coordinators + MicroServices */,
 				E0EE432A25A1154C00CA0F6F /* Controllers */,
 				E0C12444259F72E300ABC79F /* View */,
 				E0C12437259DFAB000ABC79F /* Model */,
@@ -456,8 +477,6 @@
 				E0668977265EE5E800CB8386 /* Entities */,
 				E022C29C264124860051C90E /* Data */,
 				E022C2A326413C130051C90E /* Signals */,
-				E0C1243C259DFB8400ABC79F /* Subscription.swift */,
-				E044E24625A4B80B00267459 /* Currency.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -515,7 +534,7 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		E0C7D71D25A1E88800E71476 /* Coordinators + ActionServices */ = {
+		E0C7D71D25A1E88800E71476 /* Coordinators + MicroServices */ = {
 			isa = PBXGroup;
 			children = (
 				E0C7D71425A1E07600E71476 /* CoordinatorFactory.swift */,
@@ -523,7 +542,7 @@
 				E0205B5826445F5800A355E6 /* MicroServices */,
 				E09CAED7265AAEA60042099B /* SharedMicroServices */,
 			);
-			path = "Coordinators + ActionServices";
+			path = "Coordinators + MicroServices";
 			sourceTree = "<group>";
 		};
 		E0EE432A25A1154C00CA0F6F /* Controllers */ = {
@@ -634,20 +653,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0205B5326445DC700A355E6 /* ServiceSignals.swift in Sources */,
+				84A3102D2670D91200F822DC /* SubscriptionEntity+CoreDataClass.swift in Sources */,
 				E022C29A264072410051C90E /* ViewControllerLoader.swift in Sources */,
 				E0C7D71B25A1E85A00E71476 /* SubscriptionsCoordinator.swift in Sources */,
 				E044E2B525A7103D00267459 /* Localization.swift in Sources */,
 				E0C1243D259DFB8400ABC79F /* Subscription.swift in Sources */,
 				E039B93125A1D42F0096B23A /* ApplicationCoordinator.swift in Sources */,
-				E0668976265EE2EE00CB8386 /* Service+CoreDataProperties.swift in Sources */,
 				E0C12460259F792B00ABC79F /* SubscriptionsListController.swift in Sources */,
 				E06D59FF25B0705800CA8394 /* NotificationAlertTransitionManager.swift in Sources */,
 				E06D5A0225B0742500CA8394 /* NotificationAlertAnimationController.swift in Sources */,
+				845294872668B32C0086148F /* CurrencyEntity+CoreDataClass.swift in Sources */,
 				E06D59FB25B06FD300CA8394 /* NotificationAlertPresentationController.swift in Sources */,
 				E01EDECD25AA0487009E1B36 /* AddSubAnimationController.swift in Sources */,
-				E0C12439259DFAC200ABC79F /* ServiceProtocol.swift in Sources */,
+				E0C12439259DFAC200ABC79F /* Service.swift in Sources */,
 				E06D59F725B0640E00CA8394 /* NotificationAlertCoordinator.swift in Sources */,
 				E0EE4307259F7A3800CA0F6F /* ControllerFactory.swift in Sources */,
+				842F02612667824500EB14C9 /* ServiceEntity+CoreDataClass.swift in Sources */,
 				E022C29126405BDC0051C90E /* Helpers.swift in Sources */,
 				E044E26C25A62BE800267459 /* DatePickerCell.swift in Sources */,
 				E039B93625A1D5EE0096B23A /* Implementations.swift in Sources */,
@@ -655,7 +676,7 @@
 				E022C2982640700B0051C90E /* ControllersList.swift in Sources */,
 				E0C12420259DFA9400ABC79F /* AppDelegate.swift in Sources */,
 				E01EDEBC25A9ECED009E1B36 /* AddSubsTransitionManager.swift in Sources */,
-				E047DF87265EDBBD00187E38 /* SubsTracker.xcdatamodeld in Sources */,
+				8451419B266625A400F4345B /* SubsTracker.xcdatamodeld in Sources */,
 				E0C1244A259F739400ABC79F /* SubscriptionCell.swift in Sources */,
 				E044E24725A4B80B00267459 /* Currency.swift in Sources */,
 				E044E22A25A1F3C800267459 /* AddSubscriptionBaseController.swift in Sources */,
@@ -670,7 +691,6 @@
 				E022C294264067CE0051C90E /* Protocols.swift in Sources */,
 				E0205B5526445DF200A355E6 /* SubscriptionSignals.swift in Sources */,
 				E044E21325A1EBBB00267459 /* SubscriptionsNavigationController.swift in Sources */,
-				E0668973265EE25700CB8386 /* Service+CoreDataClass.swift in Sources */,
 				E044E25625A4BF6100267459 /* CellWithBottomLine.swift in Sources */,
 				E044E24325A4785000267459 /* CellTitleLabel.swift in Sources */,
 				E0349F232645AFCC007DD2CD /* CurrencyStorageCoordinator.swift in Sources */,
@@ -895,12 +915,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E047DF85265EDBBD00187E38 /* SubsTracker.xcdatamodeld */ = {
+		84514199266625A400F4345B /* SubsTracker.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				E047DF86265EDBBD00187E38 /* SubsTracker.xcdatamodel */,
+				8451419A266625A400F4345B /* SubsTracker.xcdatamodel */,
 			);
-			currentVersion = E047DF86265EDBBD00187E38 /* SubsTracker.xcdatamodel */;
+			currentVersion = 8451419A266625A400F4345B /* SubsTracker.xcdatamodel */;
 			path = SubsTracker.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
