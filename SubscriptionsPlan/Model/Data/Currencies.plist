@@ -6,25 +6,17 @@
 		<key>isLocalizableTitle</key>
 		<true/>
 		<key>identifier</key>
-		<string>rub</string>
-		<key>symbol</key>
-		<string>₽</string>
-	</dict>
-	<dict>
-		<key>isLocalizableTitle</key>
-		<true/>
-		<key>identifier</key>
 		<string>eur</string>
 		<key>symbol</key>
 		<string>€</string>
 	</dict>
 	<dict>
 		<key>isLocalizableTitle</key>
-		<false/>
+		<true/>
 		<key>identifier</key>
-		<string>eur3</string>
+		<string>rub</string>
 		<key>symbol</key>
-		<string>€</string>
+		<string>₽</string>
 	</dict>
 </array>
 </plist>

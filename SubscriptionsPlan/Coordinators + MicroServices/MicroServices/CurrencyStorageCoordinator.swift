@@ -31,11 +31,6 @@ class CurrencyStorageCoordinator: BaseCoordinator, CurrencyStorageCoordinatorPro
     
     // MARK: - Receiver
     
-    private func createUpdateIfNeeded(from currency: CurrencyProtocol) {
-        let a = CurrencyEntity.getEntity(from: currency, context: context)
-        savePersistance()
-    }
-    
     func receive(signal: Signal) -> Signal? {
         switch signal {
         
@@ -43,11 +38,6 @@ class CurrencyStorageCoordinator: BaseCoordinator, CurrencyStorageCoordinatorPro
         case CurrencySignal.createUpdateIfNeeded(let currencies):
             currencies.forEach{ currency in
                 createUpdateIfNeeded(from: currency)
-//                if getCurrencyEntityBy(identifier: currency.identifier) == nil {
-//                    self.create(currency: currency)
-//                } else {
-//                    self.update(currency: currency)
-//                }
             }
             
         // запрос списка валют
@@ -71,6 +61,11 @@ class CurrencyStorageCoordinator: BaseCoordinator, CurrencyStorageCoordinatorPro
         return nil
     }
     
+    private func createUpdateIfNeeded(from currency: CurrencyProtocol) {
+        CurrencyEntity.getEntity(from: currency, context: context, updateEntityPropertiesIfNeeded: true)
+        savePersistance()
+    }
+    
     // получение списка Валюты
     private func loadCurrencies() -> [CurrencyProtocol] {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CurrencyEntity")
@@ -79,7 +74,7 @@ class CurrencyStorageCoordinator: BaseCoordinator, CurrencyStorageCoordinatorPro
             let currencies = try context.fetch(fetchRequest)
             var resultCurrenciesArray = [Currency]()
             for currency in currencies {
-                guard let newCurrency = (currency as? CurrencyEntity)?.convertToCurrencyInstance() as? Currency else {
+                guard let newCurrency = (currency as? CurrencyEntity)?.convertEntityToInstance() as? Currency else {
                     continue
                 }
                 resultCurrenciesArray.append(newCurrency)
@@ -90,30 +85,9 @@ class CurrencyStorageCoordinator: BaseCoordinator, CurrencyStorageCoordinatorPro
         }
     }
     
-    // создание Валюты
-    private func create(currency: CurrencyProtocol) {
-        let _ = CurrencyEntity.createInstance(from: currency, context: context)
-        savePersistance()
-    }
-    
-    // обновление Валюты
-    // поиск происходит по идентификатору (identifier)
-    private func update(currency: CurrencyProtocol) {
-        // если у валюты стоит флаг isCurrent, то необходимо обеспечить его уникальность
-        if currency.isCurrent {
-            while let currentCurrencyEntity = getCurrentCurrencyEntity() {
-                currentCurrencyEntity.isCurrent = false
-            }
-        }
-        // далее обновляем текущую валюту
-        let currencyEntity = getCurrencyEntityBy(identifier: currency.identifier)
-        currencyEntity?.updateProperties(withCurrency: currency)
-        savePersistance()
-    }
-    
     // MARK: Поиск Валюты
     private func getCurrencyBy(identifier: String) -> CurrencyProtocol? {
-        return getCurrencyEntityBy(identifier: identifier)?.convertToCurrencyInstance()
+        return getCurrencyEntityBy(identifier: identifier)?.convertEntityToInstance()
     }
     
     private func getCurrencyEntityBy(identifier: String) -> CurrencyEntity? {
@@ -132,7 +106,7 @@ class CurrencyStorageCoordinator: BaseCoordinator, CurrencyStorageCoordinatorPro
     
     // MARK: Получение Дефолтной Валюты
     private func getCurrentCurrency() -> CurrencyProtocol? {
-        return getCurrentCurrencyEntity()?.convertToCurrencyInstance()
+        return getCurrentCurrencyEntity()?.convertEntityToInstance()
     }
     
     private func getCurrentCurrencyEntity() -> CurrencyEntity? {

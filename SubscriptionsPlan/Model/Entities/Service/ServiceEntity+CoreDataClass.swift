@@ -10,31 +10,40 @@ import Foundation
 import CoreData
 
 @objc(ServiceEntity)
-public class ServiceEntity: NSManagedObject {
+public class ServiceEntity: NSManagedObject, EntityInstanceProvider {
     
-    static func createInstance(from service: ServiceProtocol, context: NSManagedObjectContext) -> ServiceEntity {
-        let serviceEntity = ServiceEntity(context: context)
-        serviceEntity.identifier = service.identifier
-        serviceEntity.colorHEX = service.colorHEX
-        serviceEntity.title = service.title
-        serviceEntity.logoFileName = service.logoFileName
-        serviceEntity.isCustom = service.isCustom
-        return serviceEntity
+    typealias AssociatedInstanceType = ServiceProtocol
+    
+    @discardableResult
+    static func getEntity(from service: ServiceProtocol, context: NSManagedObjectContext, updateEntityPropertiesIfNeeded: Bool = false) -> Self {
+        let fetch = NSFetchRequest<ServiceEntity>(entityName: "ServiceEntity")
+        fetch.predicate = NSPredicate(format: "identifier = %@", service.identifier)
+        fetch.fetchBatchSize = 1
+        guard let servicesFromStorage = try? context.fetch(fetch),
+              let serviceFromStorage = servicesFromStorage.first else {
+            let serviceEntity = ServiceEntity(context: context)
+            serviceEntity.updateEntity(from: service)
+            return serviceEntity as! Self
+        }
+        if updateEntityPropertiesIfNeeded {
+            serviceFromStorage.updateEntity(from: service)
+        }
+        return serviceFromStorage as! Self
     }
     
-    func updateProperties(withService service: ServiceProtocol) {
+    func updateEntity(from service: ServiceProtocol) {
         self.identifier = service.identifier
-        self.title = service.title
-        self.isCustom = service.isCustom
-        self.logoFileName = service.logoFileName
         self.colorHEX = service.colorHEX
+        self.title = service.title
+        self.logoFileName = service.logoFileName
+        self.isCustom = service.isCustom
     }
     
-    func convertToServiceInstance() -> ServiceProtocol {
+    func convertEntityToInstance() -> ServiceProtocol {
         var service = Service(identifier: self.identifier!,
-                              title: self.title!,
-                              colorHEX: self.colorHEX!,
-                              customLogoImage: self.logoFileName)
+                                      title: self.title!,
+                                      colorHEX: self.colorHEX!,
+                                      customLogoImage: self.logoFileName)
         service.isCustom = self.isCustom
         return service
     }

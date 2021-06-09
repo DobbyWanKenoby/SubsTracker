@@ -42,11 +42,7 @@ class ServiceStorageCoordinator: BaseCoordinator, ServiceStorageCoordinatorProto
         // создание/обновление Сервиса
         case ServiceSignal.createUpdateIfNeeded(let services):
             services.forEach{ service in
-                if getServiceBy(identifier: service.identifier) == nil {
-                    self.create(service: service)
-                } else {
-                    self.update(service: service)
-                }
+                createUpdateIfNeeded(from: service)
             }
             
         // загрузка Сервисов
@@ -62,6 +58,11 @@ class ServiceStorageCoordinator: BaseCoordinator, ServiceStorageCoordinatorProto
         return nil
     }
     
+    private func createUpdateIfNeeded(from service: ServiceProtocol) {
+        ServiceEntity.getEntity(from: service, context: context, updateEntityPropertiesIfNeeded: true)
+        savePersistance()
+    }
+    
     // получение списка сервисов
     private func loadServices(withType servicesType: ServicesLoadingType) -> [ServiceProtocol] {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "ServiceEntity")
@@ -74,7 +75,7 @@ class ServiceStorageCoordinator: BaseCoordinator, ServiceStorageCoordinatorProto
             let services = try context.fetch(fetchRequest)
             var resultServicesArray = [Service]()
             for service in services {
-                guard let newService = (service as? ServiceEntity)?.convertToServiceInstance() as? Service else {
+                guard let newService = (service as? ServiceEntity)?.convertEntityToInstance() as? Service else {
                     continue
                 }
                 resultServicesArray.append(newService)
@@ -85,23 +86,9 @@ class ServiceStorageCoordinator: BaseCoordinator, ServiceStorageCoordinatorProto
         }
     }
     
-    // создание сервиса
-    private func create(service: ServiceProtocol) {
-        let _ = ServiceEntity.createInstance(from: service, context: context)
-        savePersistance()
-    }
-    
-    // обновление сервиса
-    // поиск происходит по идентификатору (identifier)
-    private func update(service: ServiceProtocol) {
-        let serviceEntity = getServiceEntityBy(identifier: service.identifier)
-        serviceEntity?.updateProperties(withService: service)
-        savePersistance()
-    }
-    
     // поиск сервиса
     private func getServiceBy(identifier: String) -> ServiceProtocol? {
-        return getServiceEntityBy(identifier: identifier)?.convertToServiceInstance()
+        return getServiceEntityBy(identifier: identifier)?.convertEntityToInstance()
     }
     
     // поиск сервиса

@@ -58,6 +58,7 @@
 		E06D59FB25B06FD300CA8394 /* NotificationAlertPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06D59FA25B06FD300CA8394 /* NotificationAlertPresentationController.swift */; };
 		E06D59FF25B0705800CA8394 /* NotificationAlertTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06D59FE25B0705800CA8394 /* NotificationAlertTransitionManager.swift */; };
 		E06D5A0225B0742500CA8394 /* NotificationAlertAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06D5A0125B0742500CA8394 /* NotificationAlertAnimationController.swift */; };
+		E08ACDB126712D3E003FB1C9 /* EntityInstanceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08ACDB026712D3E003FB1C9 /* EntityInstanceProvider.swift */; };
 		E08E993A264B0D3300F112FD /* ServicesListController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E08E9939264B0D3300F112FD /* ServicesListController.storyboard */; };
 		E09CAED1265A94860042099B /* InitializatorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09CAED0265A94860042099B /* InitializatorCoordinator.swift */; };
 		E09CAED5265A95410042099B /* InitializatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09CAED3265A95410042099B /* InitializatorController.swift */; };
@@ -139,6 +140,7 @@
 		E06D59FA25B06FD300CA8394 /* NotificationAlertPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAlertPresentationController.swift; sourceTree = "<group>"; };
 		E06D59FE25B0705800CA8394 /* NotificationAlertTransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAlertTransitionManager.swift; sourceTree = "<group>"; };
 		E06D5A0125B0742500CA8394 /* NotificationAlertAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAlertAnimationController.swift; sourceTree = "<group>"; };
+		E08ACDB026712D3E003FB1C9 /* EntityInstanceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityInstanceProvider.swift; sourceTree = "<group>"; };
 		E08E9939264B0D3300F112FD /* ServicesListController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServicesListController.storyboard; sourceTree = "<group>"; };
 		E09CAED0265A94860042099B /* InitializatorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializatorCoordinator.swift; sourceTree = "<group>"; };
 		E09CAED3265A95410042099B /* InitializatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializatorController.swift; sourceTree = "<group>"; };
@@ -401,6 +403,14 @@
 			path = AddSubPresentation;
 			sourceTree = "<group>";
 		};
+		E08ACDAF26712D2D003FB1C9 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E08ACDB026712D3E003FB1C9 /* EntityInstanceProvider.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		E09CAED2265A95280042099B /* Initializator */ = {
 			isa = PBXGroup;
 			children = (
@@ -474,6 +484,7 @@
 		E0C12437259DFAB000ABC79F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E08ACDAF26712D2D003FB1C9 /* Protocols */,
 				E0668977265EE5E800CB8386 /* Entities */,
 				E022C29C264124860051C90E /* Data */,
 				E022C2A326413C130051C90E /* Signals */,
@@ -666,6 +677,7 @@
 				E06D59FB25B06FD300CA8394 /* NotificationAlertPresentationController.swift in Sources */,
 				E01EDECD25AA0487009E1B36 /* AddSubAnimationController.swift in Sources */,
 				E0C12439259DFAC200ABC79F /* Service.swift in Sources */,
+				E08ACDB126712D3E003FB1C9 /* EntityInstanceProvider.swift in Sources */,
 				E06D59F725B0640E00CA8394 /* NotificationAlertCoordinator.swift in Sources */,
 				E0EE4307259F7A3800CA0F6F /* ControllerFactory.swift in Sources */,
 				842F02612667824500EB14C9 /* ServiceEntity+CoreDataClass.swift in Sources */,
