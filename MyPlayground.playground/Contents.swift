@@ -1,6 +1,22 @@
 import UIKit
 
-
+//1
+typealias Coordinates = (alpha: Character?, num: Int?)
+//2
+typealias Chessman = [String:Coordinates]
+//3
+var figures:Chessman = [:]
+figures["White King"] = (alpha: "B", num: 1)
+figures["White Queen"] = (alpha: nil, num: nil)
+figures["Black King"] = (alpha: "F", num: 6)
+//4
+for oneFigure in figures {
+    if oneFigure.value.0 != nil && oneFigure.value.1 != nil {
+        print("Фигура на поле")
+    }else{
+        print("Фигура не на поле")
+    }
+}
 
 
 func searchMaxSequenceLength(inputArray: [Int], firstIndex: Int, maxSequenceCount: inout Int) -> Int {

@@ -33,7 +33,7 @@ struct Service: ServiceProtocol {
     var identifier: String
     var title: String
     var logo: UIImage {
-        guard let image = UIImage(named: "\(logoFileName)") else {
+        guard let image = UIImage(named: "\(logoFileName.lowercased())") else {
             return UIImage()
         }
         return image

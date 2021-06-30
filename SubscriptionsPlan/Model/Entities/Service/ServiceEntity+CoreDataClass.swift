@@ -22,16 +22,16 @@ public class ServiceEntity: NSManagedObject, EntityInstanceProvider {
         guard let servicesFromStorage = try? context.fetch(fetch),
               let serviceFromStorage = servicesFromStorage.first else {
             let serviceEntity = ServiceEntity(context: context)
-            serviceEntity.updateEntity(from: service)
+            serviceEntity.updateEntity(from: service, context: context)
             return serviceEntity as! Self
         }
         if updateEntityPropertiesIfNeeded {
-            serviceFromStorage.updateEntity(from: service)
+            serviceFromStorage.updateEntity(from: service, context: context)
         }
         return serviceFromStorage as! Self
     }
     
-    func updateEntity(from service: ServiceProtocol) {
+    func updateEntity(from service: ServiceProtocol, context: NSManagedObjectContext) {
         self.identifier = service.identifier
         self.colorHEX = service.colorHEX
         self.title = service.title

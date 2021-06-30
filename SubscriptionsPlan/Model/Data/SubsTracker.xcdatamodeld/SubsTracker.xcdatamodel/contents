@@ -18,9 +18,9 @@
     <entity name="SubscriptionEntity" representedClassName="SubscriptionEntity" syncable="YES" codeGenerationType="category">
         <attribute name="about" optional="YES" attributeType="String"/>
         <attribute name="amount" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="firstPaymentDate" attributeType="Date" defaultDateTimeInterval="662677200" usesScalarValueType="NO"/>
         <attribute name="identifier" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isNotificationable" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="nextPaymentDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="notificationDaysPeriod" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="paymentPeriodInt" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="paymentPeriodType" attributeType="String"/>

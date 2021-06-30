@@ -5,12 +5,12 @@ import UIKit
 // В их задачу входит
 // - хранение иерархии координаторов (структура данных Дерево) (см. protocol Coordinator)
 // - управление потоками (flow) (см. protocol Coordinator)
-// - создают и отображают экраны (см. protocol Presenter)
+// - создают и отображают сцены, обеспечивают переходы между ними (см. protocol Presenter)
 // - передают данные между друг другом (см. protocol Transmitter)
 // - передают данные в зависимые экраны (см. protocol Transmitter)
 // - орабатывают поступившие данные и отвечают на них (см. protocol Receiver)
 
-protocol Coordinator: AnyObject {
+public protocol Coordinator: AnyObject {
     var rootCoordinator: Coordinator? { get set }
     var childCoordinators: [Coordinator] { get set }
     func startFlow(finishCompletion: (() -> Void)?)
@@ -35,6 +35,68 @@ extension Coordinator {
 protocol Presenter where Self: Coordinator {
     var childControllers: [UIViewController] { get set }
     var presenter: UIViewController? { get set }
+    // Переход к экрану
+    func route(from: UIViewController, to: UIViewController, method: RouteMethod, completion: (() -> Void)?)
+    // Обратный переход с экрана
+    func disroute(controller: UIViewController, method: DisrouteMethod, completion: (() -> Void)?)
+}
+
+extension Presenter {
+    func route(from sourceController: UIViewController, to destinationController: UIViewController, method: RouteMethod, completion: (() -> Void)? = nil) {
+        switch method {
+        case .custom(let transitionDelegate):
+            destinationController.transitioningDelegate = transitionDelegate
+            destinationController.modalPresentationStyle = .custom
+            sourceController.present(destinationController, animated: true, completion: completion)
+        case .presentCard:
+            sourceController.transitioningDelegate = nil
+            sourceController.modalPresentationStyle = .none
+            sourceController.modalTransitionStyle = .coverVertical
+            sourceController.present(destinationController, animated: true, completion: completion)
+        case .navigationPush:
+            (sourceController as! UINavigationController).pushViewController(destinationController, animated: true)
+            completion?()
+        }
+    }
+    
+    func disroute(controller: UIViewController, method: DisrouteMethod, completion: (() -> Void)? = nil) {
+        switch method {
+        
+        case .dismiss:
+            controller.dismiss(animated: true, completion: completion)
+        case .navigationPop:
+            (controller as! UINavigationController).popViewController(animated: true)
+            completion?()
+        }
+    }
+}
+
+// MARK: TransitionDelegate
+
+protocol SCKTransitionDelegate: UIViewControllerTransitioningDelegate {
+    init(transitionData: TransitionData?)
+}
+
+extension SCKTransitionDelegate {
+    init(transitionData: TransitionData? = nil) {
+        fatalError("This initializator can not used in \(Self.self) type")
+    }
+}
+
+// Данные для UIViewControllerTransitioningDelegate, обеспечивающие кастомный переход
+// Тут могут находиться произвольные данные, которые необходимо передать в UIViewControllerTransitioningDelegate
+protocol TransitionData {}
+
+// Типы переходов между вью контроллерами
+enum RouteMethod {
+    case presentCard
+    case navigationPush
+    case custom(SCKTransitionDelegate)
+}
+
+enum DisrouteMethod {
+    case dismiss
+    case navigationPop
 }
 
 // MARK: - Signal Transmitter & Receiver

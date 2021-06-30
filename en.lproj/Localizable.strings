@@ -22,7 +22,15 @@
 "notification period" = "Notifications period";
 "in %d days" = "In %d day(s)";
 "sub created" = "Subscription created";
+"sub updated" = "Subscription updated";
 "service_mts" = "MTS";
 "currency_eur" = "Euro";
 "currency_rub" = "Russian ruble";
 "new_subscription" = "New subscription";
+"subscriptions" = "Subscriptions";
+"today" = "Today";
+"tomorrow" = "Tomorrow";
+"day after tomorrow" = "Day after tomorrow";
+"in %d weeks" = "In %d week(s)";
+"in %d months" = "In %d month(s)";
+"in %d years" = "In %d years(s)";

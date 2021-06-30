@@ -42,16 +42,7 @@ class InitializatorCoordinator: BasePresenter, InitializatorCoordinatorProtocol 
             transitionServicesToStorage()
             transitionCurrenciesToStorage()
         }
-        
-//        let signal = ServiceSignal.load(type: .all)
-//        let a = self.broadcast(signalWithReturnAnswer: signal)
-//        print(a)
-//
-//        let signal2 = CurrencySignal.getCurrencies
-//        let b = self.broadcast(signalWithReturnAnswer: signal2)
-//        print(b)
-//
-//        print(Locale.current.identifier)
+
     }
     
     // перенос данных о Валютах из временного хранилища в основное

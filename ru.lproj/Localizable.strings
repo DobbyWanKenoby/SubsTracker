@@ -22,7 +22,15 @@
 "notification period" = "Период уведомлений";
 "in %d days" = "За %d дн.";
 "sub created" = "Подписка создана";
+"sub updated" = "Подписка обновлена";
 "service_mts" = "МТС";
 "currency_eur" = "Евро";
 "currency_rub" = "Российский рубль";
 "new_subscription" = "Новая подписка";
+"subscriptions" = "Подписки";
+"today" = "Сегодня";
+"tomorrow" = "Завтра";
+"day after tomorrow" = "Послезавтра";
+"in %d weeks" = "Через %d нед.)";
+"in %d months" = "Через %d мес.";
+"in %d years" = "Через %d год.";

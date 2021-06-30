@@ -34,16 +34,17 @@ class AddSubscriptionCoordinator: BasePresenter, AddSubscriptionCoordinatorProto
             // глобальные координаты выбранной ячейки
             // будут использоваться для корректной анимации кастомного перехода к экрану создания подписки
             let globalPoint = selectedCell.contentView.superview?.convert(selectedCell.contentView.frame.origin, to: nil)
-            let transitionManager = AddSubsTransitionManager()
-            transitionManager.startGlobalPoint = globalPoint
-            transitionManager.startLocalPoint = selectedCell.frame.origin
-            transitionManager.startSize = selectedCell.frame.size
-            transitionManager.cellView = selectedCell
-            transitionManager.cellRootView = selectedCell.superview
+            
+            let routeTransitionData = AddSubsTransitionData(startGlobalPoint: globalPoint,
+                                                          startLocalPoint: selectedCell.frame.origin,
+                                                          startSize: selectedCell.frame.size,
+                                                          cellView: selectedCell,
+                                                          cellRootView: selectedCell.superview)
+            let transitionManager = AddSubsTransitionManager(transitionData: routeTransitionData)
             self.transitionManagers.append(transitionManager)
             // контроллер, к которому будет происходить переход
             let nextController = getAddSubConfiguredController(service: service, transitionManager: transitionManager)
-            presenter!.present(nextController, animated: true, completion: nil)
+            self.route(from: presenter!, to: nextController, method: .custom(transitionManager))
         }
         
         // Загрузка сервисов
@@ -57,12 +58,25 @@ class AddSubscriptionCoordinator: BasePresenter, AddSubscriptionCoordinatorProto
     private func getAddSubConfiguredController(service: ServiceProtocol?, transitionManager: UIViewControllerTransitioningDelegate?) -> UIViewController {
         let addSubController = ControllerFactory.getAddSubscriptionController()
         
+        // Сервис, для которого создается подписка
         if service != nil {
             addSubController.service = service!
         }
         
+        // Список валют
         let currenciesSignal = CurrencySignal.getCurrencies
-        self.broadcast(signal: currenciesSignal, withAnswerToReceiver: addSubController)
+        if let answer = self.broadcast(signalWithReturnAnswer: currenciesSignal).first as? CurrencySignal, case CurrencySignal.currencies(let currencies) = answer {
+            addSubController.currencies = currencies
+        }
+        
+        // Дефолтная фвалюта
+        let defaultCurrencySignal = CurrencySignal.getDefaultCurrency
+        if let answer = self.broadcast(signalWithReturnAnswer: defaultCurrencySignal).first as? CurrencySignal, case CurrencySignal.currency(let currency) = answer {
+            addSubController.currentCurrency = currency
+        }
+        
+        // выбранная валюта
+        addSubController.currentCurrency = addSubController.currencies.first!
 
         if let transition = transitionManager {
             addSubController.transitioningDelegate = transition
@@ -70,11 +84,10 @@ class AddSubscriptionCoordinator: BasePresenter, AddSubscriptionCoordinatorProto
         }
 
         addSubController.onCancelScene = { inputData in
-            addSubController.dismiss(animated: true, completion: nil)
+            self.disroute(controller: addSubController, method: .dismiss)
         }
-        //addSubController.onSaveSubscription(
         addSubController.onSaveSubscription = { [self] newSubscription, isNewService in
-            addSubController.dismiss(animated: true, completion: nil)
+            self.disroute(controller: addSubController, method: .dismiss)
 
             // Уведомление
             let controller = ControllerFactory.getNotificationAlertController()
@@ -82,16 +95,16 @@ class AddSubscriptionCoordinator: BasePresenter, AddSubscriptionCoordinatorProto
             controller.image = UIImage(systemName: "checkmark.circle.fill")!
             let localTransitionManager = NotificationAlertTransitionManager()
             transitionManagers.append(localTransitionManager)
-            controller.transitioningDelegate = localTransitionManager
-            controller.modalPresentationStyle = .custom
-            presenter!.present(controller, animated: true, completion: nil)
+            self.route(from: presenter!, to: controller, method: .custom(localTransitionManager))
+            
+            //presenter!.present(controller, animated: true, completion: nil)
 
             // стирает введенные данные
             // чтобы новая подписка вводилась со стандартными данными
             //self.addedSubscriptionData = getDefaultSubscription(for: subscriptionForService)
             
-//            let actionSubscription = SubscriptionAction.new(subscription: newSubscription)
-//            let _ = broadcast(data: [actionSubscription], sourceCoordinator: self)
+            let signal = SubscriptionSignal.createUpdate(subscriptions: [newSubscription], broadcastActualSubscriptionsList: true)
+            self.broadcast(signal: signal, withAnswerToReceiver: nil)
       
         }
 

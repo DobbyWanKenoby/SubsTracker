@@ -17,17 +17,23 @@ class CoordinatorFactory {
     }
     
     @discardableResult
+    static func getIFunctionalCoordinator(rootCoordinator: Coordinator?) -> FunctionalCoordinatorProtocol {
+        let controller = ControllerFactory.getFunctionalController()
+        return FunctionalCoordinator(presenter: controller, rootCoordinator: rootCoordinator)
+    }
+    
+    @discardableResult
     static func getAddSubscriptionCoordinator(rootCoordinator: Coordinator?) -> AddSubscriptionCoordinatorProtocol {
         let controller = ControllerFactory.getAddSubscriptionBaseController()
         return AddSubscriptionCoordinator(presenter: controller, rootCoordinator: rootCoordinator)
     }
-//    
-//    @discardableResult
-//    static func getSubscriptionsCoordinator(rootCoordinator: Coordinator?) -> SubscriptionsCoordinatorProtocol {
-//        let сontroller = ControllerFactory.getSubscriptionsBaseController()
-//        return SubscriptionsCoordinator(presenter: сontroller, rootCoordinator: rootCoordinator)
-//    }
-//
+    
+    @discardableResult
+    static func getSubscriptionListCoordinator(rootCoordinator: Coordinator?) -> SubscriptionListCoordinatorProtocol {
+        let сontroller = ControllerFactory.getSubscriptionListBaseController()
+        return SubscriptionListCoordinator(presenter: сontroller, rootCoordinator: rootCoordinator)
+    }
+
     
     // MARK: - MicroServices Coordinators
     
@@ -46,9 +52,9 @@ class CoordinatorFactory {
         return CoreDataCoordinator(rootCoordinator: rootCoordinator)
     }
     
-//    @discardableResult
-//    static func getSubscriptionStorageActionService(rootCoordinator: Coordinator?) -> SubscriptionStorageCoordinatorProtocol {
-//        return SubscriptionStorageCoordinator(rootCoordinator: rootCoordinator)
-//    }
+    @discardableResult
+    static func getSubscriptionStorageMicroService(rootCoordinator: Coordinator?) -> SubscriptionStorageCoordinatorProtocol {
+        return SubscriptionStorageCoordinator(rootCoordinator: rootCoordinator)
+    }
 
 }

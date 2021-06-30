@@ -16,7 +16,7 @@ protocol EntityInstanceProvider {
     @discardableResult
     static func getEntity(from: AssociatedInstanceType, context: NSManagedObjectContext, updateEntityPropertiesIfNeeded: Bool) -> Self
     /// обновить все свойства Entity в соответствии с Instances
-    func updateEntity(from: AssociatedInstanceType)
+    func updateEntity(from: AssociatedInstanceType, context: NSManagedObjectContext)
     /// преобразовать Entity в Instance
     func convertEntityToInstance() -> AssociatedInstanceType
 }

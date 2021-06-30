@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NotificationAlertTransitionManager: NSObject, UIViewControllerTransitioningDelegate {
+class NotificationAlertTransitionManager: NSObject, SCKTransitionDelegate {
     
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         return NotificationAlertPresentationController(presentedViewController: presented, presenting: presenting)

@@ -22,16 +22,16 @@ public final class CurrencyEntity: NSManagedObject, EntityInstanceProvider {
         guard let currenciesFromStorage = try? context.fetch(fetch),
               let currencyFromStorage = currenciesFromStorage.first else {
             let currencyEntity = CurrencyEntity(context: context)
-            currencyEntity.updateEntity(from: currency)
+            currencyEntity.updateEntity(from: currency, context: context)
             return currencyEntity as! Self
         }
         if updateEntityPropertiesIfNeeded {
-            currencyFromStorage.updateEntity(from: currency)
+            currencyFromStorage.updateEntity(from: currency, context: context)
         }
         return currencyFromStorage as! Self
     }
     
-    func updateEntity(from currency: CurrencyProtocol) {
+    func updateEntity(from currency: CurrencyProtocol, context: NSManagedObjectContext) {
         self.identifier = currency.identifier
         self.title = currency.title
         self.symbol = currency.symbol

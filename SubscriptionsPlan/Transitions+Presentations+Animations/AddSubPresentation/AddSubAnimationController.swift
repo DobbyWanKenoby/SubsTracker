@@ -166,7 +166,7 @@ class AddSubsAnimationDismissController: NSObject, UIViewControllerAnimatedTrans
             animators[2].startAnimation()
         }
         
-        animators.append( UIViewPropertyAnimator(duration: 0.5, curve: .easeInOut) {
+        animators.append( UIViewPropertyAnimator(duration: 0.4, curve: .easeInOut) {
             self.cellView.frame = CGRect(origin: self.cellFinishGlobalPoint, size: self.cellFinishSize)
             self.whiteBackgroundView.frame = CGRect(origin: self.cellFinishGlobalPoint, size: self.cellFinishSize)
             self.whiteBackgroundView.layer.shadowOpacity = 0
