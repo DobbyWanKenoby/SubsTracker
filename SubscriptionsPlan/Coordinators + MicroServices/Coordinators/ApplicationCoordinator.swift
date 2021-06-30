@@ -22,6 +22,9 @@ final class ApplicationCoordinator: BasePresenter, ApplicationCoordinatorProtoco
         
         // Подключение Приемников (МикроСервисов)
         
+        // МикроСервис с настройками приложения
+        // Настройки пользователя + Системные настройки
+        CoordinatorFactory.getSettingCoordinator(rootCoordinator: self)
         // МикроСервис для работы с CoreData
         CoordinatorFactory.getCoreDataMicroService(rootCoordinator: self)
         // МикроСервис для работы с сущностью Currency

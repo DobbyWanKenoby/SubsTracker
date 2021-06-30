@@ -63,6 +63,9 @@
 		E06D5A0225B0742500CA8394 /* NotificationAlertAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06D5A0125B0742500CA8394 /* NotificationAlertAnimationController.swift */; };
 		E08ACDB126712D3E003FB1C9 /* EntityInstanceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08ACDB026712D3E003FB1C9 /* EntityInstanceProvider.swift */; };
 		E08E993A264B0D3300F112FD /* ServicesListController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E08E9939264B0D3300F112FD /* ServicesListController.storyboard */; };
+		E090F3B1268CE03F00C7AEE4 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E090F3B0268CE03F00C7AEE4 /* TextField.swift */; };
+		E090F3B3268CE9B400C7AEE4 /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E090F3B2268CE9B400C7AEE4 /* SettingCoordinator.swift */; };
+		E090F3B5268CE9FE00C7AEE4 /* SettingSignals.swift in Sources */ = {isa = PBXBuildFile; fileRef = E090F3B4268CE9FE00C7AEE4 /* SettingSignals.swift */; };
 		E09CAED1265A94860042099B /* InitializatorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09CAED0265A94860042099B /* InitializatorCoordinator.swift */; };
 		E09CAED5265A95410042099B /* InitializatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09CAED3265A95410042099B /* InitializatorController.swift */; };
 		E09CAED6265A95410042099B /* InitializatorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E09CAED4265A95410042099B /* InitializatorController.xib */; };
@@ -148,6 +151,9 @@
 		E06D5A0125B0742500CA8394 /* NotificationAlertAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAlertAnimationController.swift; sourceTree = "<group>"; };
 		E08ACDB026712D3E003FB1C9 /* EntityInstanceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityInstanceProvider.swift; sourceTree = "<group>"; };
 		E08E9939264B0D3300F112FD /* ServicesListController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServicesListController.storyboard; sourceTree = "<group>"; };
+		E090F3B0268CE03F00C7AEE4 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		E090F3B2268CE9B400C7AEE4 /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
+		E090F3B4268CE9FE00C7AEE4 /* SettingSignals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSignals.swift; sourceTree = "<group>"; };
 		E09CAED0265A94860042099B /* InitializatorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializatorCoordinator.swift; sourceTree = "<group>"; };
 		E09CAED3265A95410042099B /* InitializatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializatorController.swift; sourceTree = "<group>"; };
 		E09CAED4265A95410042099B /* InitializatorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InitializatorController.xib; sourceTree = "<group>"; };
@@ -209,6 +215,7 @@
 				E0349F222645AFCC007DD2CD /* CurrencyStorageCoordinator.swift */,
 				E0205B5626445F3E00A355E6 /* SubscriptionStorageCoordinator.swift */,
 				E0BAFC76265EBCAC0042CFAD /* CoreDataCoordinator.swift */,
+				E090F3B2268CE9B400C7AEE4 /* SettingCoordinator.swift */,
 			);
 			path = MicroServices;
 			sourceTree = "<group>";
@@ -255,6 +262,7 @@
 				E0349F262645B262007DD2CD /* CurrencySignals.swift */,
 				E0205B5426445DF200A355E6 /* SubscriptionSignals.swift */,
 				E0BAFC78265EBD810042CFAD /* CoreDataSignals.swift */,
+				E090F3B4268CE9FE00C7AEE4 /* SettingSignals.swift */,
 			);
 			path = Signals;
 			sourceTree = "<group>";
@@ -322,6 +330,7 @@
 			children = (
 				E044E24225A4785000267459 /* CellTitleLabel.swift */,
 				E044E25525A4BF6100267459 /* CellWithBottomLine.swift */,
+				E090F3B0268CE03F00C7AEE4 /* TextField.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -674,6 +683,7 @@
 			files = (
 				E0205B5326445DC700A355E6 /* ServiceSignals.swift in Sources */,
 				84A3102D2670D91200F822DC /* SubscriptionEntity+CoreDataClass.swift in Sources */,
+				E090F3B5268CE9FE00C7AEE4 /* SettingSignals.swift in Sources */,
 				E022C29A264072410051C90E /* ViewControllerLoader.swift in Sources */,
 				E0C7D71B25A1E85A00E71476 /* SubscriptionListCoordinator.swift in Sources */,
 				E044E2B525A7103D00267459 /* Localization.swift in Sources */,
@@ -705,6 +715,7 @@
 				E01EDEC825A9FA35009E1B36 /* OverlayPresentationController.swift in Sources */,
 				E044E23E25A4715500267459 /* TextFieldCell.swift in Sources */,
 				E044E21825A1ED3300267459 /* ServicesListController.swift in Sources */,
+				E090F3B3268CE9B400C7AEE4 /* SettingCoordinator.swift in Sources */,
 				E022C2A226412A970051C90E /* UIColor.swift in Sources */,
 				E01EDEC325A9F394009E1B36 /* AddSubscriptionController.swift in Sources */,
 				E0C12422259DFA9400ABC79F /* SceneDelegate.swift in Sources */,
@@ -723,6 +734,7 @@
 				E09CAED1265A94860042099B /* InitializatorCoordinator.swift in Sources */,
 				E0349F272645B262007DD2CD /* CurrencySignals.swift in Sources */,
 				E03AB4102642A33D00869617 /* ServiceStorageCoordinator.swift in Sources */,
+				E090F3B1268CE03F00C7AEE4 /* TextField.swift in Sources */,
 				E0BAFC77265EBCAC0042CFAD /* CoreDataCoordinator.swift in Sources */,
 				E06D59D425AF493A00CA8394 /* SwitchCell.swift in Sources */,
 				E0238DD7267BE65900158E5C /* Errors.swift in Sources */,
@@ -887,6 +899,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.2.2;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.swiftme.SubsTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -908,6 +921,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.swiftme.SubsTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

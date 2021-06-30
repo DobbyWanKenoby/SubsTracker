@@ -10,7 +10,7 @@ import UIKit
 class TextFieldCell: CellWithBottomLine {
     
     @IBOutlet var cellTitleLabel: UILabel!
-    @IBOutlet var cellValueTextField: UITextField!
+    @IBOutlet var cellValueTextField: TextField!
     
     var onValueChange: ((UITextField) -> Void)?
     

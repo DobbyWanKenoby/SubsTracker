@@ -10,7 +10,7 @@ import UIKit
 class DatePickerCell: CellWithBottomLine {
     
     @IBOutlet var cellTitleLabel: UILabel!
-    @IBOutlet var cellValueTextField: UITextField!
+    @IBOutlet var cellValueTextField: TextField!
     var datePicker = UIDatePicker()
     
     // Замыкание выполняется после выбора значения в PickerView

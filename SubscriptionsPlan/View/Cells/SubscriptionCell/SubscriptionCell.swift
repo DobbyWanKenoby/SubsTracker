@@ -17,6 +17,7 @@ class SubscriptionCell: UITableViewCell {
     @IBOutlet var headerView: UIView!
     @IBOutlet var logoImageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var timeRemain: UILabel!
     @IBOutlet var priceLabel: UILabel!
     

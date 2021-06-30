@@ -74,9 +74,6 @@ class AddSubscriptionCoordinator: BasePresenter, AddSubscriptionCoordinatorProto
         if let answer = self.broadcast(signalWithReturnAnswer: defaultCurrencySignal).first as? CurrencySignal, case CurrencySignal.currency(let currency) = answer {
             addSubController.currentCurrency = currency
         }
-        
-        // выбранная валюта
-        addSubController.currentCurrency = addSubController.currencies.first!
 
         if let transition = transitionManager {
             addSubController.transitioningDelegate = transition

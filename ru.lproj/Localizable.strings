@@ -20,7 +20,11 @@
 "save" = "Сохранить";
 "notify" = "Уведомлять";
 "notification period" = "Период уведомлений";
-"in %d days" = "За %d дн.";
+"in %d days (notify)" = "За %d дн.";
+"in %d days (pay)" = "Через %d дн.";
+"in %d weeks (pay)" = "Через %d нед.";
+"in %d months (pay)" = "Через %d мес.";
+"in %d years (pay)" = "Через %d год.";
 "sub created" = "Подписка создана";
 "sub updated" = "Подписка обновлена";
 "service_mts" = "МТС";
@@ -31,6 +35,3 @@
 "today" = "Сегодня";
 "tomorrow" = "Завтра";
 "day after tomorrow" = "Послезавтра";
-"in %d weeks" = "Через %d нед.)";
-"in %d months" = "Через %d мес.";
-"in %d years" = "Через %d год.";

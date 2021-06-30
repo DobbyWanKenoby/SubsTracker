@@ -38,6 +38,11 @@ class CoordinatorFactory {
     // MARK: - MicroServices Coordinators
     
     @discardableResult
+    static func getSettingCoordinator(rootCoordinator: Coordinator?) -> SettingCoordinatorProtocol {
+        return SettingCoordinator(rootCoordinator: rootCoordinator)
+    }
+    
+    @discardableResult
     static func getCurrencyStorageMicroService(rootCoordinator: Coordinator?) -> CurrencyStorageCoordinatorProtocol {
         return CurrencyStorageCoordinator(rootCoordinator: rootCoordinator)
     }

@@ -12,6 +12,10 @@ protocol InitializatorCoordinatorProtocol: BasePresenter, Transmitter {}
 
 class InitializatorCoordinator: BasePresenter, InitializatorCoordinatorProtocol {
     
+    lazy private var currentAppVersion: String = {
+        Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String ?? "unknownVersion"
+    }()
+    
     // дефолтная валюта
     // свойство используется, чтобы сохранить ранее установленную дефолтную валюту
     lazy private var defaultCurrency: CurrencyProtocol? = {
@@ -26,7 +30,15 @@ class InitializatorCoordinator: BasePresenter, InitializatorCoordinatorProtocol 
     
     // флаг необходимости проведения инициализации
     lazy var isInitializationNeed: Bool = {
-       return true
+        let signal = SettingSignal.getLastInitializationAppVersion
+        let answerSignal = self.broadcast(signalWithReturnAnswer: signal)
+        guard let answerSignal = self.broadcast(signalWithReturnAnswer: signal).first as? SettingSignal, case SettingSignal.lastInitializationAppVersion(let version) = answerSignal else {
+            return true
+        }
+        if version == currentAppVersion {
+            return false
+        }
+        return true
     }()
     
     // MARK: - Coordinator Life Cycle
@@ -36,13 +48,18 @@ class InitializatorCoordinator: BasePresenter, InitializatorCoordinatorProtocol 
         (self.presenter as? InitializatorControllerProtocol)?.initializationDidEnd = {
             self.finishFlow()
         }
-        
         // проводим инициализацию
-        if isInitializationNeed {
+        //if isInitializationNeed {
             transitionServicesToStorage()
             transitionCurrenciesToStorage()
-        }
+            updateLastInitializationAppVersion()
+        //}
 
+    }
+    
+    private func updateLastInitializationAppVersion() {
+        let signal = SettingSignal.updateLastInitializationAppVersion(currentAppVersion)
+        _ = self.broadcast(signalWithReturnAnswer: signal)
     }
     
     // перенос данных о Валютах из временного хранилища в основное
@@ -70,13 +87,13 @@ class InitializatorCoordinator: BasePresenter, InitializatorCoordinatorProtocol 
                 return defaultCurrencyItem["identifier"] as! String
             }()
             
-            var isDefault: Bool = false
-            if let defaultCurrency = self.defaultCurrency, defaultCurrency.identifier == identifier {
-                isDefault = true
-            }
-            
             var addedCurrency = Currency(identifier: identifier, symbol: symbol, title: title)
-            addedCurrency.isCurrent = isDefault
+            
+            if isDefaultUserCurrency(addedCurrency) {
+                addedCurrency.isCurrent = true
+                defaultCurrency = addedCurrency
+            }
+
             currencies.append(addedCurrency)
         }
         if defaultCurrency == nil {
@@ -84,6 +101,14 @@ class InitializatorCoordinator: BasePresenter, InitializatorCoordinatorProtocol 
         }
         let signalForSaveCurrencies = CurrencySignal.createUpdateIfNeeded(currencies: currencies)
         self.broadcast(signal: signalForSaveCurrencies, withAnswerToReceiver: nil)
+    }
+    
+    private func isDefaultUserCurrency(_ currency: CurrencyProtocol) -> Bool {
+        if let _defaultCurrency = defaultCurrency {
+            return currency.identifier == _defaultCurrency.identifier
+        } else {
+            return Locale.current.currencySymbol == currency.symbol
+        }
     }
     
     

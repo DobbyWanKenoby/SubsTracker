@@ -20,7 +20,11 @@
 "save" = "Save";
 "notify" = "Notify";
 "notification period" = "Notifications period";
-"in %d days" = "In %d day(s)";
+"in %d days (notify)" = "In %d day(s)";
+"in %d days (pay)" = "In %d day(s)";
+"in %d weeks (pay)" = "In %d week(s)";
+"in %d months (pay)" = "In %d month(s)";
+"in %d years (pay)" = "In %d years(s)";
 "sub created" = "Subscription created";
 "sub updated" = "Subscription updated";
 "service_mts" = "MTS";
@@ -31,6 +35,3 @@
 "today" = "Today";
 "tomorrow" = "Tomorrow";
 "day after tomorrow" = "Day after tomorrow";
-"in %d weeks" = "In %d week(s)";
-"in %d months" = "In %d month(s)";
-"in %d years" = "In %d years(s)";

@@ -28,7 +28,7 @@ class PickerCell: CellWithBottomLine {
 
     
     @IBOutlet var cellTitleLabel: UILabel!
-    @IBOutlet var cellValueTextField: UITextField!
+    @IBOutlet var cellValueTextField: TextField!
     var pickerView = UIPickerView()
 
     override func awakeFromNib() {

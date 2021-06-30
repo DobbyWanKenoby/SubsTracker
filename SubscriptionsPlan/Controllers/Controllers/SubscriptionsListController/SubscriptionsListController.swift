@@ -68,6 +68,7 @@ class SubscriptionsListController: UITableViewController, SubscriptionsListContr
         cell.logoImageView.image = currentSubscription.service.logo
         cell.priceLabel.text = "\(currentSubscription.currency.symbol) \(currentSubscription.amount)"
         cell.timeRemain.text = timeRemainText(toRemainDays: currentSubscription.nextPayment.daysRemain)
+        cell.descriptionLabel.text = currentSubscription.description
         return cell
     }
     
@@ -81,25 +82,25 @@ class SubscriptionsListController: UITableViewController, SubscriptionsListContr
         case 2:
             text = NSLocalizedString("day after tomorrow", comment: "")
         case _ where days > 5 && days < 10 :
-            text = String(format: NSLocalizedString("in %d weeks", comment: ""), 1)
+            text = String(format: NSLocalizedString("in %d weeks (pay)", comment: ""), 1)
         case _ where days >= 11 && days < 17 :
-            text = String(format: NSLocalizedString("in %d weeks", comment: ""), 2)
+            text = String(format: NSLocalizedString("in %d weeks (pay)", comment: ""), 2)
         case _ where days >= 18 && days < 23 :
-            text = String(format: NSLocalizedString("in %d weeks", comment: ""), 3)
+            text = String(format: NSLocalizedString("in %d weeks (pay)", comment: ""), 3)
         case _ where days >= 24 && days < 29 :
-            text = String(format: NSLocalizedString("in %d weeks", comment: ""), 4)
+            text = String(format: NSLocalizedString("in %d weeks (pay)", comment: ""), 4)
         case _ where days >= 30 && days < 45 :
-            text = String(format: NSLocalizedString("in %d months", comment: ""), 1)
+            text = String(format: NSLocalizedString("in %d months (pay)", comment: ""), 1)
         case _ where days >= 46 && days < 70 :
-            text = String(format: NSLocalizedString("in %d months", comment: ""), 2)
+            text = String(format: NSLocalizedString("in %d months (pay)", comment: ""), 2)
         case _ where days >= 71 && days < 300 :
-            text = String(format: NSLocalizedString("in %d months", comment: ""), days/30)
+            text = String(format: NSLocalizedString("in %d months (pay)", comment: ""), days/30)
         case _ where days >= 301 && days < 380 :
-            text = String(format: NSLocalizedString("in %d years", comment: ""), 1)
+            text = String(format: NSLocalizedString("in %d years (pay)", comment: ""), 1)
         case _ where days >= 381 :
-            text = String(format: NSLocalizedString("in %d years", comment: ""), days/365)
+            text = String(format: NSLocalizedString("in %d years (pay)", comment: ""), days/365)
         default:
-            text = String(format: NSLocalizedString("in %d days", comment: ""), days)
+            text = String(format: NSLocalizedString("in %d days (pay)", comment: ""), days)
         }
         
         return text

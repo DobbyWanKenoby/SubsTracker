@@ -206,6 +206,9 @@ class AddSubscriptionController: UIViewController, AddSubscriptionControllerProt
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
+        //toDo: Разобраться, почему прозрачность bar не меняется плавно в соответсвии с opacityIndex
+        // а вместо этого меняется самостоятельно
+        
         let currentTableViewOffset = scrollView.contentOffset.y
         last = currentTableViewOffset
 
@@ -218,7 +221,14 @@ class AddSubscriptionController: UIViewController, AddSubscriptionControllerProt
         
         let opacityIndex = (1 / (minOpacityWhenHeightIs - maxOpacityWhenHeightIs) ) * (currentTableViewOffset + 150)
         
-        navigationController?.navigationBar.layer.opacity = Float(opacityIndex)
+        if opacityIndex <= 0 {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.navigationController?.navigationBar.layer.opacity = 0
+            })
+            
+        } else {
+            navigationController?.navigationBar.layer.opacity = 1
+        }
 
         return
     }
@@ -296,6 +306,9 @@ class AddSubscriptionController: UIViewController, AddSubscriptionControllerProt
     }
     
     @IBAction func dismissControllerWithSuccess() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.navigationController?.navigationBar.layer.opacity = 1
+        })
         let newSubscription = getSubscriptionObject()
         onSaveSubscription?(newSubscription, false)
         //self.dismiss(animated: true, completion: nil)
@@ -303,7 +316,7 @@ class AddSubscriptionController: UIViewController, AddSubscriptionControllerProt
     
     private func getSubscriptionObject() -> SubscriptionProtocol {
         let subscriptionService = service ?? Service(identifier: UUID().uuidString, title: "empty", colorHEX: "#fff")
-        let newSubscription = Subscription(identifier: UUID(),
+        let newSubscription = Subscription(identifier: subscription?.identifier ?? UUID(),
                                         service: subscriptionService ,
                                         amount: subscriptionAmount,
                                         currency: subscriptionCurrency,
@@ -394,6 +407,7 @@ extension AddSubscriptionController: UITableViewDataSource {
     
     private func configureNotificationPeriodCell(_ cell: PickerCell) -> PickerCell {
         cell.cellTitleLabel.text = NSLocalizedString("notification period", comment: "")
+        cell.cellValueTextField.disableAllActions()
         cell.pickerComponentsCount = 1
         cell.pickerViewDataItems = [Array(1...31)]
         cell.titleForRowInDataItems = { _, row in
@@ -401,12 +415,12 @@ extension AddSubscriptionController: UITableViewDataSource {
         }
         cell.isSetBottomLine = true
         cell.pickerView.selectRow(subscriptionNotificationDaysPeriod - 1, inComponent: 0, animated: false)
-        cell.cellValueTextField.text = String(format: NSLocalizedString("in %d days", comment: ""), subscriptionNotificationDaysPeriod)
+        cell.cellValueTextField.text = String(format: NSLocalizedString("in %d days (notify)", comment: ""), subscriptionNotificationDaysPeriod)
         
         cell.onValueChange = { pickerView in
             let selectedNumber = cell.pickerViewDataItems[0][pickerView.selectedRow(inComponent: 0)] as! Int
             self.subscriptionNotificationDaysPeriod = Int(selectedNumber)
-            cell.cellValueTextField.text = String(format: NSLocalizedString("in %d days", comment: ""), selectedNumber)
+            cell.cellValueTextField.text = String(format: NSLocalizedString("in %d days (notify)", comment: ""), selectedNumber)
         }
         cell.doneToolbarButtonColor = color
         cell.cellValueTextField.delegate = self
@@ -436,6 +450,7 @@ extension AddSubscriptionController: UITableViewDataSource {
     
     private func configurePeriodCell(_ cell: PickerCell) -> PickerCell {
         cell.cellTitleLabel.text = NSLocalizedString("payment period", comment: "")
+        cell.cellValueTextField.disableAllActions()
         cell.pickerComponentsCount = 2
         cell.pickerViewDataItems = [
             Array(1...30),
@@ -477,6 +492,7 @@ extension AddSubscriptionController: UITableViewDataSource {
     
     private func configureDateCell(_ cell: DatePickerCell) -> DatePickerCell {
         cell.cellTitleLabel.text = NSLocalizedString("next_payment", comment: "")
+        cell.cellValueTextField.disableAllActions()
         cell.isSetBottomLine = true
         cell.doneToolbarButtonColor = color
         cell.datePicker.date = subscriptionNextPaymentDate
@@ -496,6 +512,7 @@ extension AddSubscriptionController: UITableViewDataSource {
     
     private func configureCurrencyCell(_ cell: PickerCell) -> PickerCell {
         cell.cellTitleLabel.text = NSLocalizedString("currency", comment: "")
+        cell.cellValueTextField.disableAllActions()
         cell.pickerComponentsCount = 1
         cell.pickerViewDataItems = [currencies]
         cell.titleForRowInDataItems = { _, row in
@@ -523,6 +540,7 @@ extension AddSubscriptionController: UITableViewDataSource {
     
     private func configureAmountCell(_ cell: TextFieldCell) -> TextFieldCell {
         cell.cellTitleLabel.text = NSLocalizedString("amount", comment: "")
+        cell.cellValueTextField.disableAllActions()
         cell.cellValueTextField.placeholder = "0.00"
         cell.cellValueTextField.text = getAmountFormattedString(String(subscriptionAmount))
         cell.cellValueTextField.keyboardType = .numberPad
