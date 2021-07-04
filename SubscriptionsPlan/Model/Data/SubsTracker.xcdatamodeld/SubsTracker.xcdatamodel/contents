@@ -7,6 +7,7 @@
         <attribute name="title" attributeType="String"/>
         <relationship name="subscriptions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SubscriptionEntity" inverseName="currency" inverseEntity="SubscriptionEntity"/>
     </entity>
+    <entity name="Entity" representedClassName="Entity" syncable="YES" codeGenerationType="class"/>
     <entity name="ServiceEntity" representedClassName="ServiceEntity" syncable="YES" codeGenerationType="category">
         <attribute name="colorHEX" attributeType="String"/>
         <attribute name="identifier" attributeType="String"/>
@@ -31,5 +32,6 @@
         <element name="CurrencyEntity" positionX="-63" positionY="18" width="128" height="118"/>
         <element name="ServiceEntity" positionX="-63" positionY="-18" width="128" height="133"/>
         <element name="SubscriptionEntity" positionX="-63" positionY="27" width="128" height="193"/>
+        <element name="Entity" positionX="-54" positionY="90" width="128" height="43"/>
     </elements>
 </model>

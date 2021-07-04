@@ -3,9 +3,9 @@
 import UIKit
 import CoreData
 
-protocol ServiceStorageCoordinatorProtocol: BaseCoordinator, Transmitter, Receiver {}
+protocol ServiceCoordinatorProtocol: BaseCoordinator, Transmitter, Receiver {}
 
-class ServiceStorageCoordinator: BaseCoordinator, ServiceStorageCoordinatorProtocol {
+class ServiceCoordinator: BaseCoordinator, ServiceCoordinatorProtocol {
     
     // MARK: - CoreData
     

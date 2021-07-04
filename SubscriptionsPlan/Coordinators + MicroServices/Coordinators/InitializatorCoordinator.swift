@@ -31,7 +31,6 @@ class InitializatorCoordinator: BasePresenter, InitializatorCoordinatorProtocol 
     // флаг необходимости проведения инициализации
     lazy var isInitializationNeed: Bool = {
         let signal = SettingSignal.getLastInitializationAppVersion
-        let answerSignal = self.broadcast(signalWithReturnAnswer: signal)
         guard let answerSignal = self.broadcast(signalWithReturnAnswer: signal).first as? SettingSignal, case SettingSignal.lastInitializationAppVersion(let version) = answerSignal else {
             return true
         }

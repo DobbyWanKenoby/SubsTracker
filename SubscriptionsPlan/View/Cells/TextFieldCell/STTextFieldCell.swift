@@ -7,22 +7,41 @@
 
 import UIKit
 
-class TextFieldCell: CellWithBottomLine {
+protocol STTextFieldCellProtocol: STCellProtocol {
+    var title: String { get set }
+    var text: String { get set }
+    var accentColor: UIColor { get set }
+    var onValueChange: ((UITextField) -> Void)? { get set }
+}
+
+class STTextFieldCell: UITableViewCell, STTextFieldCellProtocol {
     
-    @IBOutlet var cellTitleLabel: UILabel!
-    @IBOutlet var cellValueTextField: TextField!
-    
-    var onValueChange: ((UITextField) -> Void)?
-    
-    var doneToolbarButtonColor: UIColor! {
+    var title: String = "" {
         didSet {
-            cellValueTextField.inputAccessoryView?.tintColor = doneToolbarButtonColor
+            titleLabel.text = title
         }
     }
+    
+    var text: String = "" {
+        didSet {
+            textField.text = title
+        }
+    }
+    
+    var accentColor: UIColor = UIColor.clear {
+        didSet {
+            textField.inputAccessoryView?.tintColor = accentColor
+        }
+    }
+    
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var textField: UITextField!
+    
+    var onValueChange: ((UITextField) -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        cellValueTextField.inputAccessoryView = getToolBar()
+        textField.inputAccessoryView = getToolBar()
     }
     
     func getToolBar() -> UIToolbar{
@@ -38,8 +57,8 @@ class TextFieldCell: CellWithBottomLine {
     }
     
     @objc func donePressed() {
-        onValueChange?(cellValueTextField)
-        cellValueTextField.resignFirstResponder()
+        onValueChange?(textField)
+        textField.resignFirstResponder()
     }
     
     @IBAction func textFieldEditingEnded(_ sender: UITextField) {

@@ -3,9 +3,9 @@
 import Foundation
 import CoreData
 
-protocol SubscriptionStorageCoordinatorProtocol: BaseCoordinator, Transmitter, Receiver {}
+protocol SubscriptionCoordinatorProtocol: BaseCoordinator, Transmitter, Receiver {}
 
-class SubscriptionStorageCoordinator: BaseCoordinator, SubscriptionStorageCoordinatorProtocol {
+class SubscriptionCoordinator: BaseCoordinator, SubscriptionCoordinatorProtocol {
     
     // MARK: - CoreData
     

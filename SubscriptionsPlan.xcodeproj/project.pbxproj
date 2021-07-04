@@ -12,6 +12,11 @@
 		845294872668B32C0086148F /* CurrencyEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845294852668B3190086148F /* CurrencyEntity+CoreDataClass.swift */; };
 		849E768D2689FA1A0024AEC6 /* StandardElementsSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E768C2689FA1A0024AEC6 /* StandardElementsSizes.swift */; };
 		84A3102D2670D91200F822DC /* SubscriptionEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A3102B2670D90600F822DC /* SubscriptionEntity+CoreDataClass.swift */; };
+		84B6DD2E268E026500FA0FFE /* PaymentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B6DD2D268E026500FA0FFE /* PaymentCoordinator.swift */; };
+		84B6DD32268E062300FA0FFE /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B6DD31268E062300FA0FFE /* Payment.swift */; };
+		84B6DD3A268EEAB200FA0FFE /* CellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B6DD39268EEAB200FA0FFE /* CellFactory.swift */; };
+		84B6DD3E268EEABF00FA0FFE /* CellProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B6DD3D268EEABF00FA0FFE /* CellProtocols.swift */; };
+		84B6DD41268EEB5D00FA0FFE /* DefaultCellImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B6DD40268EEB5D00FA0FFE /* DefaultCellImplementation.swift */; };
 		84DE2103267CC236003B7862 /* FunctionalCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE2102267CC236003B7862 /* FunctionalCoordinator.swift */; };
 		E01EDEBC25A9ECED009E1B36 /* AddSubsTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01EDEBB25A9ECED009E1B36 /* AddSubsTransitionManager.swift */; };
 		E01EDEC025A9F22B009E1B36 /* AddSubscriptionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E01EDEBF25A9F22B009E1B36 /* AddSubscriptionController.xib */; };
@@ -20,7 +25,7 @@
 		E01EDECD25AA0487009E1B36 /* AddSubAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01EDECC25AA0487009E1B36 /* AddSubAnimationController.swift */; };
 		E0205B5326445DC700A355E6 /* ServiceSignals.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0205B5226445DC700A355E6 /* ServiceSignals.swift */; };
 		E0205B5526445DF200A355E6 /* SubscriptionSignals.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0205B5426445DF200A355E6 /* SubscriptionSignals.swift */; };
-		E0205B5726445F3E00A355E6 /* SubscriptionStorageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0205B5626445F3E00A355E6 /* SubscriptionStorageCoordinator.swift */; };
+		E0205B5726445F3E00A355E6 /* SubscriptionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0205B5626445F3E00A355E6 /* SubscriptionCoordinator.swift */; };
 		E022C29126405BDC0051C90E /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022C29026405BDC0051C90E /* Helpers.swift */; };
 		E022C294264067CE0051C90E /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022C293264067CE0051C90E /* Protocols.swift */; };
 		E022C2982640700B0051C90E /* ControllersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022C2972640700B0051C90E /* ControllersList.swift */; };
@@ -29,24 +34,23 @@
 		E022C2A0264125440051C90E /* Services.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E022C29F264125440051C90E /* Services.xcassets */; };
 		E022C2A226412A970051C90E /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022C2A126412A970051C90E /* UIColor.swift */; };
 		E0238DD7267BE65900158E5C /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0238DD6267BE65900158E5C /* Errors.swift */; };
-		E0349F232645AFCC007DD2CD /* CurrencyStorageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0349F222645AFCC007DD2CD /* CurrencyStorageCoordinator.swift */; };
+		E0349F232645AFCC007DD2CD /* CurrencyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0349F222645AFCC007DD2CD /* CurrencyCoordinator.swift */; };
 		E0349F252645B044007DD2CD /* Currencies.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0349F242645B044007DD2CD /* Currencies.plist */; };
 		E0349F272645B262007DD2CD /* CurrencySignals.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0349F262645B262007DD2CD /* CurrencySignals.swift */; };
 		E039B93125A1D42F0096B23A /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E039B93025A1D42F0096B23A /* ApplicationCoordinator.swift */; };
 		E039B93625A1D5EE0096B23A /* Implementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E039B93525A1D5EE0096B23A /* Implementations.swift */; };
-		E03AB4102642A33D00869617 /* ServiceStorageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03AB40F2642A33D00869617 /* ServiceStorageCoordinator.swift */; };
+		E03AB4102642A33D00869617 /* ServiceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03AB40F2642A33D00869617 /* ServiceCoordinator.swift */; };
 		E044E21325A1EBBB00267459 /* SubscriptionListBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E21225A1EBBB00267459 /* SubscriptionListBaseController.swift */; };
 		E044E21825A1ED3300267459 /* ServicesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E21725A1ED3300267459 /* ServicesListController.swift */; };
 		E044E22325A1EFA000267459 /* ServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E22125A1EFA000267459 /* ServiceCell.swift */; };
 		E044E22425A1EFA000267459 /* ServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E044E22225A1EFA000267459 /* ServiceCell.xib */; };
 		E044E22725A1F36C00267459 /* AddSubscriptionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E22625A1F36C00267459 /* AddSubscriptionCoordinator.swift */; };
 		E044E22A25A1F3C800267459 /* AddSubscriptionBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E22925A1F3C800267459 /* AddSubscriptionBaseController.swift */; };
-		E044E23E25A4715500267459 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E23C25A4715500267459 /* TextFieldCell.swift */; };
-		E044E23F25A4715500267459 /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E044E23D25A4715500267459 /* TextFieldCell.xib */; };
+		E044E23E25A4715500267459 /* STTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E23C25A4715500267459 /* STTextFieldCell.swift */; };
+		E044E23F25A4715500267459 /* STTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E044E23D25A4715500267459 /* STTextFieldCell.xib */; };
 		E044E24325A4785000267459 /* CellTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E24225A4785000267459 /* CellTitleLabel.swift */; };
 		E044E24725A4B80B00267459 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E24625A4B80B00267459 /* Currency.swift */; };
-		E044E25225A4BAA800267459 /* PickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E25025A4BAA800267459 /* PickerCell.swift */; };
-		E044E25325A4BAA800267459 /* PickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E044E25125A4BAA800267459 /* PickerCell.xib */; };
+		E044E25225A4BAA800267459 /* STPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E25025A4BAA800267459 /* STPickerCell.swift */; };
 		E044E25625A4BF6100267459 /* CellWithBottomLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E25525A4BF6100267459 /* CellWithBottomLine.swift */; };
 		E044E25B25A4C83E00267459 /* SettingsSharedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E25A25A4C83E00267459 /* SettingsSharedCoordinator.swift */; };
 		E044E26C25A62BE800267459 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E26A25A62BE800267459 /* DatePickerCell.swift */; };
@@ -96,6 +100,11 @@
 		845294852668B3190086148F /* CurrencyEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		849E768C2689FA1A0024AEC6 /* StandardElementsSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardElementsSizes.swift; sourceTree = "<group>"; };
 		84A3102B2670D90600F822DC /* SubscriptionEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubscriptionEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		84B6DD2D268E026500FA0FFE /* PaymentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCoordinator.swift; sourceTree = "<group>"; };
+		84B6DD31268E062300FA0FFE /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
+		84B6DD39268EEAB200FA0FFE /* CellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellFactory.swift; sourceTree = "<group>"; };
+		84B6DD3D268EEABF00FA0FFE /* CellProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellProtocols.swift; sourceTree = "<group>"; };
+		84B6DD40268EEB5D00FA0FFE /* DefaultCellImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCellImplementation.swift; sourceTree = "<group>"; };
 		84DE2102267CC236003B7862 /* FunctionalCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionalCoordinator.swift; sourceTree = "<group>"; };
 		E01EDEBB25A9ECED009E1B36 /* AddSubsTransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubsTransitionManager.swift; sourceTree = "<group>"; };
 		E01EDEBF25A9F22B009E1B36 /* AddSubscriptionController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubscriptionController.xib; sourceTree = "<group>"; };
@@ -104,7 +113,7 @@
 		E01EDECC25AA0487009E1B36 /* AddSubAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubAnimationController.swift; sourceTree = "<group>"; };
 		E0205B5226445DC700A355E6 /* ServiceSignals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceSignals.swift; sourceTree = "<group>"; };
 		E0205B5426445DF200A355E6 /* SubscriptionSignals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionSignals.swift; sourceTree = "<group>"; };
-		E0205B5626445F3E00A355E6 /* SubscriptionStorageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionStorageCoordinator.swift; sourceTree = "<group>"; };
+		E0205B5626445F3E00A355E6 /* SubscriptionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionCoordinator.swift; sourceTree = "<group>"; };
 		E022C29026405BDC0051C90E /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		E022C293264067CE0051C90E /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		E022C2972640700B0051C90E /* ControllersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllersList.swift; sourceTree = "<group>"; };
@@ -113,24 +122,23 @@
 		E022C29F264125440051C90E /* Services.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Services.xcassets; sourceTree = "<group>"; };
 		E022C2A126412A970051C90E /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		E0238DD6267BE65900158E5C /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
-		E0349F222645AFCC007DD2CD /* CurrencyStorageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyStorageCoordinator.swift; sourceTree = "<group>"; };
+		E0349F222645AFCC007DD2CD /* CurrencyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCoordinator.swift; sourceTree = "<group>"; };
 		E0349F242645B044007DD2CD /* Currencies.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Currencies.plist; sourceTree = "<group>"; };
 		E0349F262645B262007DD2CD /* CurrencySignals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySignals.swift; sourceTree = "<group>"; };
 		E039B93025A1D42F0096B23A /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		E039B93525A1D5EE0096B23A /* Implementations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Implementations.swift; sourceTree = "<group>"; };
-		E03AB40F2642A33D00869617 /* ServiceStorageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceStorageCoordinator.swift; sourceTree = "<group>"; };
+		E03AB40F2642A33D00869617 /* ServiceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCoordinator.swift; sourceTree = "<group>"; };
 		E044E21225A1EBBB00267459 /* SubscriptionListBaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionListBaseController.swift; sourceTree = "<group>"; };
 		E044E21725A1ED3300267459 /* ServicesListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesListController.swift; sourceTree = "<group>"; };
 		E044E22125A1EFA000267459 /* ServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCell.swift; sourceTree = "<group>"; };
 		E044E22225A1EFA000267459 /* ServiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceCell.xib; sourceTree = "<group>"; };
 		E044E22625A1F36C00267459 /* AddSubscriptionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionCoordinator.swift; sourceTree = "<group>"; };
 		E044E22925A1F3C800267459 /* AddSubscriptionBaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionBaseController.swift; sourceTree = "<group>"; };
-		E044E23C25A4715500267459 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
-		E044E23D25A4715500267459 /* TextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldCell.xib; sourceTree = "<group>"; };
+		E044E23C25A4715500267459 /* STTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STTextFieldCell.swift; sourceTree = "<group>"; };
+		E044E23D25A4715500267459 /* STTextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = STTextFieldCell.xib; sourceTree = "<group>"; };
 		E044E24225A4785000267459 /* CellTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTitleLabel.swift; sourceTree = "<group>"; };
 		E044E24625A4B80B00267459 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
-		E044E25025A4BAA800267459 /* PickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerCell.swift; sourceTree = "<group>"; };
-		E044E25125A4BAA800267459 /* PickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerCell.xib; sourceTree = "<group>"; };
+		E044E25025A4BAA800267459 /* STPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STPickerCell.swift; sourceTree = "<group>"; };
 		E044E25525A4BF6100267459 /* CellWithBottomLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithBottomLine.swift; sourceTree = "<group>"; };
 		E044E25A25A4C83E00267459 /* SettingsSharedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSharedCoordinator.swift; sourceTree = "<group>"; };
 		E044E26725A62B3900267459 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -208,13 +216,22 @@
 			path = Subscription;
 			sourceTree = "<group>";
 		};
+		84B6DD30268E060D00FA0FFE /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				84B6DD31268E062300FA0FFE /* Payment.swift */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
 		E0205B5826445F5800A355E6 /* MicroServices */ = {
 			isa = PBXGroup;
 			children = (
-				E03AB40F2642A33D00869617 /* ServiceStorageCoordinator.swift */,
-				E0349F222645AFCC007DD2CD /* CurrencyStorageCoordinator.swift */,
-				E0205B5626445F3E00A355E6 /* SubscriptionStorageCoordinator.swift */,
+				E03AB40F2642A33D00869617 /* ServiceCoordinator.swift */,
+				E0349F222645AFCC007DD2CD /* CurrencyCoordinator.swift */,
+				E0205B5626445F3E00A355E6 /* SubscriptionCoordinator.swift */,
 				E0BAFC76265EBCAC0042CFAD /* CoreDataCoordinator.swift */,
+				84B6DD2D268E026500FA0FFE /* PaymentCoordinator.swift */,
 				E090F3B2268CE9B400C7AEE4 /* SettingCoordinator.swift */,
 			);
 			path = MicroServices;
@@ -319,8 +336,8 @@
 		E044E23B25A4713900267459 /* TextFieldCell */ = {
 			isa = PBXGroup;
 			children = (
-				E044E23C25A4715500267459 /* TextFieldCell.swift */,
-				E044E23D25A4715500267459 /* TextFieldCell.xib */,
+				E044E23C25A4715500267459 /* STTextFieldCell.swift */,
+				E044E23D25A4715500267459 /* STTextFieldCell.xib */,
 			);
 			path = TextFieldCell;
 			sourceTree = "<group>";
@@ -338,8 +355,7 @@
 		E044E24F25A4BA5800267459 /* PickerCell */ = {
 			isa = PBXGroup;
 			children = (
-				E044E25025A4BAA800267459 /* PickerCell.swift */,
-				E044E25125A4BAA800267459 /* PickerCell.xib */,
+				E044E25025A4BAA800267459 /* STPickerCell.swift */,
 			);
 			path = PickerCell;
 			sourceTree = "<group>";
@@ -367,6 +383,7 @@
 		E0668977265EE5E800CB8386 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				84B6DD30268E060D00FA0FFE /* Payment */,
 				84A3102A2670D72300F822DC /* Subscription */,
 				840588BC2668AD9C006351B7 /* Currency */,
 				E0668978265EE60700CB8386 /* Service */,
@@ -533,9 +550,12 @@
 		E0C12447259F736100ABC79F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				84B6DD39268EEAB200FA0FFE /* CellFactory.swift */,
+				84B6DD3D268EEABF00FA0FFE /* CellProtocols.swift */,
+				84B6DD40268EEB5D00FA0FFE /* DefaultCellImplementation.swift */,
+				E044E24F25A4BA5800267459 /* PickerCell */,
 				E06D59D125AF491700CA8394 /* SwitchCell */,
 				E044E26925A62BC000267459 /* DatePickerCell */,
-				E044E24F25A4BA5800267459 /* PickerCell */,
 				E044E23B25A4713900267459 /* TextFieldCell */,
 				E044E22025A1EF8800267459 /* ServiceCell */,
 				E0C1244D259F739F00ABC79F /* SubscriptionCell */,
@@ -664,11 +684,10 @@
 				E044E22425A1EFA000267459 /* ServiceCell.xib in Resources */,
 				E01EDEC025A9F22B009E1B36 /* AddSubscriptionController.xib in Resources */,
 				E0EE432525A0B12D00CA0F6F /* SubscriptionCell.xib in Resources */,
-				E044E25325A4BAA800267459 /* PickerCell.xib in Resources */,
 				E022C2A0264125440051C90E /* Services.xcassets in Resources */,
 				E0C12458259F782A00ABC79F /* SF-Pro-Rounded-Regular.otf in Resources */,
 				E0C12451259F758700ABC79F /* SF-Pro-Rounded-Semibold.otf in Resources */,
-				E044E23F25A4715500267459 /* TextFieldCell.xib in Resources */,
+				E044E23F25A4715500267459 /* STTextFieldCell.xib in Resources */,
 				E0AEC18A25B4DA9A009231C3 /* Main.storyboard in Resources */,
 				E044E26D25A62BE800267459 /* DatePickerCell.xib in Resources */,
 			);
@@ -704,6 +723,7 @@
 				E022C29126405BDC0051C90E /* Helpers.swift in Sources */,
 				E044E26C25A62BE800267459 /* DatePickerCell.swift in Sources */,
 				E039B93625A1D5EE0096B23A /* Implementations.swift in Sources */,
+				84B6DD2E268E026500FA0FFE /* PaymentCoordinator.swift in Sources */,
 				E0BAFC79265EBD810042CFAD /* CoreDataSignals.swift in Sources */,
 				E022C2982640700B0051C90E /* ControllersList.swift in Sources */,
 				E0C12420259DFA9400ABC79F /* AppDelegate.swift in Sources */,
@@ -712,28 +732,32 @@
 				E0C1244A259F739400ABC79F /* SubscriptionCell.swift in Sources */,
 				E044E24725A4B80B00267459 /* Currency.swift in Sources */,
 				E044E22A25A1F3C800267459 /* AddSubscriptionBaseController.swift in Sources */,
+				84B6DD3A268EEAB200FA0FFE /* CellFactory.swift in Sources */,
 				E01EDEC825A9FA35009E1B36 /* OverlayPresentationController.swift in Sources */,
-				E044E23E25A4715500267459 /* TextFieldCell.swift in Sources */,
+				E044E23E25A4715500267459 /* STTextFieldCell.swift in Sources */,
 				E044E21825A1ED3300267459 /* ServicesListController.swift in Sources */,
 				E090F3B3268CE9B400C7AEE4 /* SettingCoordinator.swift in Sources */,
 				E022C2A226412A970051C90E /* UIColor.swift in Sources */,
 				E01EDEC325A9F394009E1B36 /* AddSubscriptionController.swift in Sources */,
 				E0C12422259DFA9400ABC79F /* SceneDelegate.swift in Sources */,
-				E044E25225A4BAA800267459 /* PickerCell.swift in Sources */,
+				E044E25225A4BAA800267459 /* STPickerCell.swift in Sources */,
 				E044E25B25A4C83E00267459 /* SettingsSharedCoordinator.swift in Sources */,
+				84B6DD41268EEB5D00FA0FFE /* DefaultCellImplementation.swift in Sources */,
 				E022C294264067CE0051C90E /* Protocols.swift in Sources */,
 				E0205B5526445DF200A355E6 /* SubscriptionSignals.swift in Sources */,
 				E044E21325A1EBBB00267459 /* SubscriptionListBaseController.swift in Sources */,
 				E044E25625A4BF6100267459 /* CellWithBottomLine.swift in Sources */,
 				E044E24325A4785000267459 /* CellTitleLabel.swift in Sources */,
-				E0349F232645AFCC007DD2CD /* CurrencyStorageCoordinator.swift in Sources */,
+				84B6DD3E268EEABF00FA0FFE /* CellProtocols.swift in Sources */,
+				E0349F232645AFCC007DD2CD /* CurrencyCoordinator.swift in Sources */,
 				E0C7D71525A1E07600E71476 /* CoordinatorFactory.swift in Sources */,
-				E0205B5726445F3E00A355E6 /* SubscriptionStorageCoordinator.swift in Sources */,
+				E0205B5726445F3E00A355E6 /* SubscriptionCoordinator.swift in Sources */,
 				84DE2103267CC236003B7862 /* FunctionalCoordinator.swift in Sources */,
 				E044E22725A1F36C00267459 /* AddSubscriptionCoordinator.swift in Sources */,
 				E09CAED1265A94860042099B /* InitializatorCoordinator.swift in Sources */,
 				E0349F272645B262007DD2CD /* CurrencySignals.swift in Sources */,
-				E03AB4102642A33D00869617 /* ServiceStorageCoordinator.swift in Sources */,
+				E03AB4102642A33D00869617 /* ServiceCoordinator.swift in Sources */,
+				84B6DD32268E062300FA0FFE /* Payment.swift in Sources */,
 				E090F3B1268CE03F00C7AEE4 /* TextField.swift in Sources */,
 				E0BAFC77265EBCAC0042CFAD /* CoreDataCoordinator.swift in Sources */,
 				E06D59D425AF493A00CA8394 /* SwitchCell.swift in Sources */,

@@ -24,15 +24,17 @@ final class ApplicationCoordinator: BasePresenter, ApplicationCoordinatorProtoco
         
         // МикроСервис с настройками приложения
         // Настройки пользователя + Системные настройки
-        CoordinatorFactory.getSettingCoordinator(rootCoordinator: self)
+        CoordinatorFactory.getSettingMicroService(rootCoordinator: self)
         // МикроСервис для работы с CoreData
         CoordinatorFactory.getCoreDataMicroService(rootCoordinator: self)
         // МикроСервис для работы с сущностью Currency
-        CoordinatorFactory.getCurrencyStorageMicroService(rootCoordinator: self)
+        CoordinatorFactory.getCurrencyMicroService(rootCoordinator: self)
         // МикроСервис для работы с сущностью Service
-        CoordinatorFactory.getServiceStorageMicroService(rootCoordinator: self)
+        CoordinatorFactory.getServiceMicroService(rootCoordinator: self)
         // МикроСервис для работы с сущностью Subscription
-        CoordinatorFactory.getSubscriptionStorageMicroService(rootCoordinator: self)
+        CoordinatorFactory.getSubscriptionMicroService(rootCoordinator: self)
+        // МикроСервис для работы с сущностью Payment
+        CoordinatorFactory.getPaymentMicroService(rootCoordinator: self)
         
         // Запускаем координатор Инициализации
         let initializator = CoordinatorFactory.getInitializatorCoordinator(rootCoordinator: self)
@@ -49,9 +51,6 @@ final class ApplicationCoordinator: BasePresenter, ApplicationCoordinatorProtoco
             }
                       
         }
-        
-        // Микросервис-Синглтон для доступа к важным базовым настройкам
-        //Settings.shared = Settings(rootCoordinator: self)
 
     }
 }

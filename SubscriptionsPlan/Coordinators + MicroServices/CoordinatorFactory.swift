@@ -38,18 +38,23 @@ class CoordinatorFactory {
     // MARK: - MicroServices Coordinators
     
     @discardableResult
-    static func getSettingCoordinator(rootCoordinator: Coordinator?) -> SettingCoordinatorProtocol {
+    static func getSettingMicroService(rootCoordinator: Coordinator?) -> SettingCoordinatorProtocol {
         return SettingCoordinator(rootCoordinator: rootCoordinator)
     }
     
     @discardableResult
-    static func getCurrencyStorageMicroService(rootCoordinator: Coordinator?) -> CurrencyStorageCoordinatorProtocol {
-        return CurrencyStorageCoordinator(rootCoordinator: rootCoordinator)
+    static func getCurrencyMicroService(rootCoordinator: Coordinator?) -> CurrencyCoordinatorProtocol {
+        return CurrencyCoordinator(rootCoordinator: rootCoordinator)
     }
     
     @discardableResult
-    static func getServiceStorageMicroService(rootCoordinator: Coordinator?) -> ServiceStorageCoordinatorProtocol {
-        return ServiceStorageCoordinator(rootCoordinator: rootCoordinator)
+    static func getServiceMicroService(rootCoordinator: Coordinator?) -> ServiceCoordinatorProtocol {
+        return ServiceCoordinator(rootCoordinator: rootCoordinator)
+    }
+    
+    @discardableResult
+    static func getPaymentMicroService(rootCoordinator: Coordinator?) -> PaymentsCoordinatorProtocol {
+        return PaymentsCoordinator(rootCoordinator: rootCoordinator)
     }
     
     @discardableResult
@@ -58,8 +63,8 @@ class CoordinatorFactory {
     }
     
     @discardableResult
-    static func getSubscriptionStorageMicroService(rootCoordinator: Coordinator?) -> SubscriptionStorageCoordinatorProtocol {
-        return SubscriptionStorageCoordinator(rootCoordinator: rootCoordinator)
+    static func getSubscriptionMicroService(rootCoordinator: Coordinator?) -> SubscriptionCoordinatorProtocol {
+        return SubscriptionCoordinator(rootCoordinator: rootCoordinator)
     }
 
 }

@@ -135,6 +135,10 @@ class AddSubscriptionController: UIViewController, AddSubscriptionControllerProt
     var subscriptionCurrency: CurrencyProtocol!
     var subscriptionAmount: Float = 0
     
+    lazy var cellFactory: CellFactory = {
+        CellFactory(forTableView: self.tableView)
+    }()
+    
     // MARK: Outlets
     @IBOutlet var backButton: UIButton!
     @IBOutlet var saveButton: UIButton!
@@ -146,7 +150,7 @@ class AddSubscriptionController: UIViewController, AddSubscriptionControllerProt
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerCells()
+        setupCellFactory()
         addKeyboardObserver()
     }
     
@@ -191,9 +195,23 @@ class AddSubscriptionController: UIViewController, AddSubscriptionControllerProt
         tableView.contentInset = tableViewDefaultInset
     }
     
+    private var statusBar: UIView!
+    
     private func configureNavigationBar() {
         if displayType == .inNavigationController {
-            navigationController?.navigationBar.layer.opacity = 0
+            navigationController?.navigationBar.shadowImage = UIImage()
+            navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+            //navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+            navigationController?.navigationBar.tintColor = color.withAlphaComponent(0)
+
+//            navigationController?.navigationItem.hidesBackButton = true
+//            navigationController?.navigationItem.title = service?.title
+            
+//            statusBar = UIView()
+//            statusBar.frame = StatusBar.instance.statusBarFrame
+//            statusBar.backgroundColor = UIColor.white.withAlphaComponent(1)
+//            
+//            self.view.addSubview(statusBar)
         }
     }
     
@@ -221,14 +239,19 @@ class AddSubscriptionController: UIViewController, AddSubscriptionControllerProt
         
         let opacityIndex = (1 / (minOpacityWhenHeightIs - maxOpacityWhenHeightIs) ) * (currentTableViewOffset + 150)
         
-        if opacityIndex <= 0 {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.navigationController?.navigationBar.layer.opacity = 0
-            })
-            
-        } else {
-            navigationController?.navigationBar.layer.opacity = 1
-        }
+        navigationController?.navigationBar.backgroundColor = UIColor.white.withAlphaComponent(opacityIndex)
+        navigationController?.navigationBar.tintColor = color.withAlphaComponent(opacityIndex)
+
+        //statusBar?.backgroundColor = UIColor.white.withAlphaComponent(opacityIndex)
+        
+//        if opacityIndex <= 0 {
+//            UIView.animate(withDuration: 0.2, animations: {
+//                self.navigationController?.navigationBar.layer.opacity = 0
+//            })
+//
+//        } else {
+//            navigationController?.navigationBar.layer.opacity = 1
+//        }
 
         return
     }
@@ -250,12 +273,14 @@ class AddSubscriptionController: UIViewController, AddSubscriptionControllerProt
         )
     }
     
-    private func registerCells(){
-        tableView.register(UINib(nibName: "TextFieldCell", bundle: nil), forCellReuseIdentifier: "TextFieldCell")
-        tableView.register(UINib(nibName: "PickerCell", bundle: nil), forCellReuseIdentifier: "PickerCell")
-        tableView.register(UINib(nibName: "DatePickerCell", bundle: nil), forCellReuseIdentifier: "DatePickerCell")
-        tableView.register(UINib(nibName: "SwitchCell", bundle: nil), forCellReuseIdentifier: "SwitchCell")
-        tableView.register(UINib(nibName: "ServiceCell", bundle: nil), forCellReuseIdentifier: "ServiceCell")
+    private func setupCellFactory(){
+        cellFactory.registerCell(type: .picker)
+        cellFactory.registerCell(type: .textField)
+//        tableView.register(UINib(nibName: "TextFieldCell", bundle: nil), forCellReuseIdentifier: "TextFieldCell")
+//        tableView.register(UINib(nibName: "STPickerCell", bundle: nil), forCellReuseIdentifier: "PickerCell")
+//        tableView.register(UINib(nibName: "DatePickerCell", bundle: nil), forCellReuseIdentifier: "DatePickerCell")
+//        tableView.register(UINib(nibName: "SwitchCell", bundle: nil), forCellReuseIdentifier: "SwitchCell")
+//        tableView.register(UINib(nibName: "ServiceCell", bundle: nil), forCellReuseIdentifier: "ServiceCell")
     }
     
     // отодвигаем текстовое поле, чтобы его было видно над клавиатурой
@@ -298,20 +323,30 @@ class AddSubscriptionController: UIViewController, AddSubscriptionControllerProt
     
     // MARK: Actions
     @IBAction func dismissController() {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.navigationController?.navigationBar.layer.opacity = 1
-        })
-        
+        removeNavigationArtefacts()
         onCancelScene?(subscription)
     }
     
     @IBAction func dismissControllerWithSuccess() {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.navigationController?.navigationBar.layer.opacity = 1
-        })
+        removeNavigationArtefacts()
         let newSubscription = getSubscriptionObject()
         onSaveSubscription?(newSubscription, false)
-        //self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        if isMovingFromParent {
+            removeNavigationArtefacts()
+        }
+    }
+    
+    private func removeNavigationArtefacts() {
+        navigationController?.navigationBar.backgroundColor = .red
+        if displayType == .inNavigationController {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.navigationController?.navigationBar.backgroundColor = UIColor.white.withAlphaComponent(1)
+                self.navigationController?.navigationBar.tintColor = self.color.withAlphaComponent(1)
+            })
+        }
     }
     
     private func getSubscriptionObject() -> SubscriptionProtocol {
@@ -338,7 +373,7 @@ extension AddSubscriptionController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return 2
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -401,29 +436,29 @@ extension AddSubscriptionController: UITableViewDataSource {
 //    }
     
     private func getNotificationPeriodCell() -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PickerCell") as! PickerCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PickerCell") as! STPickerCell
         return configureNotificationPeriodCell(cell)
     }
     
-    private func configureNotificationPeriodCell(_ cell: PickerCell) -> PickerCell {
-        cell.cellTitleLabel.text = NSLocalizedString("notification period", comment: "")
-        cell.cellValueTextField.disableAllActions()
-        cell.pickerComponentsCount = 1
-        cell.pickerViewDataItems = [Array(1...31)]
-        cell.titleForRowInDataItems = { _, row in
-            return String(cell.pickerViewDataItems[0][row] as! Int)
-        }
-        cell.isSetBottomLine = true
-        cell.pickerView.selectRow(subscriptionNotificationDaysPeriod - 1, inComponent: 0, animated: false)
-        cell.cellValueTextField.text = String(format: NSLocalizedString("in %d days (notify)", comment: ""), subscriptionNotificationDaysPeriod)
-        
-        cell.onValueChange = { pickerView in
-            let selectedNumber = cell.pickerViewDataItems[0][pickerView.selectedRow(inComponent: 0)] as! Int
-            self.subscriptionNotificationDaysPeriod = Int(selectedNumber)
-            cell.cellValueTextField.text = String(format: NSLocalizedString("in %d days (notify)", comment: ""), selectedNumber)
-        }
-        cell.doneToolbarButtonColor = color
-        cell.cellValueTextField.delegate = self
+    private func configureNotificationPeriodCell(_ cell: STPickerCell) -> STPickerCell {
+        //cell.cellTitleLabel.text = NSLocalizedString("notification period", comment: "")
+//        //cell.cellValueTextField.disableAllActions()
+//        cell.pickerComponentsCount = 1
+//        cell.pickerViewDataItems = [Array(1...31)]
+//        cell.titleForRowInDataItems = { _, row in
+//            return String(cell.pickerViewDataItems[0][row] as! Int)
+//        }
+//        cell.isSetBottomLine = true
+//        //cell.pickerView.selectRow(subscriptionNotificationDaysPeriod - 1, inComponent: 0, animated: false)
+//        //cell.cellValueTextField.text = String(format: NSLocalizedString("in %d days (notify)", comment: ""), subscriptionNotificationDaysPeriod)
+//        
+//        cell.onValueChange = { pickerView in
+//            let selectedNumber = cell.pickerViewDataItems[0][pickerView.selectedRow(inComponent: 0)] as! Int
+//            self.subscriptionNotificationDaysPeriod = Int(selectedNumber)
+//           // cell.cellValueTextField.text = String(format: NSLocalizedString("in %d days (notify)", comment: ""), selectedNumber)
+//        }
+//        cell.tintColor = color
+//        //cell.cellValueTextField.delegate = self
         return cell
     }
     
@@ -444,43 +479,43 @@ extension AddSubscriptionController: UITableViewDataSource {
     }
     
     private func getPeriodCell() -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PickerCell") as! PickerCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PickerCell") as! STPickerCell
         return configurePeriodCell(cell)
     }
     
-    private func configurePeriodCell(_ cell: PickerCell) -> PickerCell {
-        cell.cellTitleLabel.text = NSLocalizedString("payment period", comment: "")
-        cell.cellValueTextField.disableAllActions()
-        cell.pickerComponentsCount = 2
-        cell.pickerViewDataItems = [
-            Array(1...30),
-            PeriodType.allCases
-        ]
-        cell.titleForRowInDataItems = { components, row in
-            let resultString: String
-            switch components {
-            case 0:
-                resultString = String(cell.pickerViewDataItems[0][row] as! Int)
-            case 1:
-                resultString = (cell.pickerViewDataItems[1][row] as! PeriodType).getLocaleTitle()
-            default:
-                resultString = ""
-            }
-            return resultString
-        }
-        cell.isSetBottomLine = true
-        let defaultValueIndexComponent1 = (cell.pickerViewDataItems[1] as! [PeriodType]).firstIndex(of: subscriptionPaymentPeriod.1)
-        cell.pickerView.selectRow(subscriptionPaymentPeriod.0 - 1, inComponent: 0, animated: false)
-        cell.pickerView.selectRow(defaultValueIndexComponent1!, inComponent: 1, animated: false)
-        cell.cellValueTextField.text = "\(NSLocalizedString("every", comment: "")) \(self.subscriptionPaymentPeriod.0) \(self.subscriptionPaymentPeriod.1.getLocaleTitle())"
-        cell.onValueChange = { pickerView in
-            let selectedNumber = cell.pickerViewDataItems[0][pickerView.selectedRow(inComponent: 0)] as! Int
-            let selectedPeriodType = cell.pickerViewDataItems[1][pickerView.selectedRow(inComponent: 1)] as! PeriodType
-            self.subscriptionPaymentPeriod = (selectedNumber, selectedPeriodType)
-            cell.cellValueTextField.text = "\(NSLocalizedString("every", comment: "")) \(self.subscriptionPaymentPeriod.0) \(self.subscriptionPaymentPeriod.1.getLocaleTitle())"
-        }
-        cell.doneToolbarButtonColor = color
-        cell.cellValueTextField.delegate = self
+    private func configurePeriodCell(_ cell: STPickerCell) -> STPickerCell {
+        //cell.cellTitleLabel.text = NSLocalizedString("payment period", comment: "")
+        //cell.cellValueTextField.disableAllActions()
+//        cell.pickerComponentsCount = 2
+//        cell.pickerViewDataItems = [
+//            Array(1...30),
+//            PeriodType.allCases
+//        ]
+//        cell.titleForRowInDataItems = { components, row in
+//            let resultString: String
+//            switch components {
+//            case 0:
+//                resultString = String(cell.pickerViewDataItems[0][row] as! Int)
+//            case 1:
+//                resultString = (cell.pickerViewDataItems[1][row] as! PeriodType).getLocaleTitle()
+//            default:
+//                resultString = ""
+//            }
+//            return resultString
+//        }
+//        cell.isSetBottomLine = true
+//        let defaultValueIndexComponent1 = (cell.pickerViewDataItems[1] as! [PeriodType]).firstIndex(of: subscriptionPaymentPeriod.1)
+//        //cell.pickerView.selectRow(subscriptionPaymentPeriod.0 - 1, inComponent: 0, animated: false)
+//        //cell.pickerView.selectRow(defaultValueIndexComponent1!, inComponent: 1, animated: false)
+//       // cell.cellValueTextField.text = "\(NSLocalizedString("every", comment: "")) \(self.subscriptionPaymentPeriod.0) \(self.subscriptionPaymentPeriod.1.getLocaleTitle())"
+//        cell.onValueChange = { pickerView in
+//            let selectedNumber = cell.pickerViewDataItems[0][pickerView.selectedRow(inComponent: 0)] as! Int
+//            let selectedPeriodType = cell.pickerViewDataItems[1][pickerView.selectedRow(inComponent: 1)] as! PeriodType
+//            self.subscriptionPaymentPeriod = (selectedNumber, selectedPeriodType)
+//            //cell.cellValueTextField.text = "\(NSLocalizedString("every", comment: "")) \(self.subscriptionPaymentPeriod.0) \(self.subscriptionPaymentPeriod.1.getLocaleTitle())"
+//        }
+//        cell.tintColor = color
+        //cell.cellValueTextField.delegate = self
         return cell
     }
     
@@ -506,49 +541,48 @@ extension AddSubscriptionController: UITableViewDataSource {
     }
     
     private func getCurrencyCell() -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PickerCell") as! PickerCell
-        return configureCurrencyCell(cell)
-    }
-    
-    private func configureCurrencyCell(_ cell: PickerCell) -> PickerCell {
-        cell.cellTitleLabel.text = NSLocalizedString("currency", comment: "")
-        cell.cellValueTextField.disableAllActions()
-        cell.pickerComponentsCount = 1
-        cell.pickerViewDataItems = [currencies]
-        cell.titleForRowInDataItems = { _, row in
-            let resultString = "\((cell.pickerViewDataItems[0][row] as! CurrencyProtocol).title) (\((cell.pickerViewDataItems[0][row] as! CurrencyProtocol).symbol))"
-            return resultString
+        // данные для отображения в picker
+        var currencyDataForPicker: [(pickerRowTitle: String, instance: Any)] = []
+        var selectedRow = 0
+        for (index, currency) in currencies.enumerated() {
+            let title = "\(currency.title) (\(currency.symbol))"
+            currencyDataForPicker.append((pickerRowTitle: title, instance: currency))
+            if subscriptionCurrency.identifier == currency.identifier {
+                selectedRow = index
+            }
         }
-        cell.isSetBottomLine = true
-        let indexOfDefaultValue = currencies.firstIndex(where: {$0.identifier == subscriptionCurrency.identifier})!
-        cell.pickerView.selectRow(Int(indexOfDefaultValue), inComponent: 0, animated: false)
-        cell.cellValueTextField.text = "\(subscriptionCurrency.title) (\(subscriptionCurrency.symbol))"
-        cell.doneToolbarButtonColor = color
-        cell.onValueChange = { pickerView in
-            self.subscriptionCurrency = cell.pickerViewDataItems[0][pickerView.selectedRow(inComponent: 0)] as? CurrencyProtocol
-            cell.cellValueTextField.text = "\(self.subscriptionCurrency.title) (\(self.subscriptionCurrency.symbol))"
+        
+        let cell = cellFactory.getPickerCell(title: NSLocalizedString("currency", comment: ""),
+                                         pickerViewData: [currencyDataForPicker],
+                                         selectedRowsInSections: [selectedRow])
+        cell.onValueChange = { [weak self] pickerView in
+            self?.subscriptionCurrency = cell.pickerViewData[0][pickerView.selectedRow(inComponent: 0)].instance as? CurrencyProtocol
         }
-        cell.cellValueTextField.delegate = self
+        cell.accentColor = color
+        
         return cell
     }
     
     private func getAmounCell() -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldCell") as! TextFieldCell
-        cell.cellValueTextField.delegate = self
-        return configureAmountCell(cell)
-    }
-    
-    private func configureAmountCell(_ cell: TextFieldCell) -> TextFieldCell {
-        cell.cellTitleLabel.text = NSLocalizedString("amount", comment: "")
-        cell.cellValueTextField.disableAllActions()
-        cell.cellValueTextField.placeholder = "0.00"
-        cell.cellValueTextField.text = getAmountFormattedString(String(subscriptionAmount))
-        cell.cellValueTextField.keyboardType = .numberPad
-        cell.cellValueTextField.addTarget(nil, action: #selector(amountTextFieldValueDidChanged(_:)), for: .editingChanged)
-        cell.isSetBottomLine = true
-        cell.doneToolbarButtonColor = color
+        let cell = cellFactory.getTextFieldCell(title: NSLocalizedString("amount", comment: ""),
+                                                text: getAmountFormattedString(String(subscriptionAmount)))
+        cell.textField.placeholder = "0.00"
+        cell.textField.keyboardType = .decimalPad
+        cell.accentColor = color
         return cell
     }
+    
+//    private func configureAmountCell(_ cell: TextFieldCell) -> TextFieldCell {
+//        cell.cellTitleLabel.text = NSLocalizedString("amount", comment: "")
+//        //cell.cellValueTextField.disableAllActions()
+//        cell.textField placeholder = "0.00"
+//        cell.cellValueTextField.text = getAmountFormattedString(String(subscriptionAmount))
+//        cell.cellValueTextField.keyboardType = .numberPad
+//        cell.cellValueTextField.addTarget(nil, action: #selector(amountTextFieldValueDidChanged(_:)), for: .editingChanged)
+//        cell.isSetBottomLine = true
+//        cell.doneToolbarButtonColor = color
+//        return cell
+//    }
     
     @objc func amountTextFieldValueDidChanged(_ textField: UITextField) {
         guard let textFieldValue = textField.text else {
@@ -570,20 +604,20 @@ extension AddSubscriptionController: UITableViewDataSource {
     }
     
     private func getNoticeCell() -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldCell") as! TextFieldCell
-        cell.cellTitleLabel.text = NSLocalizedString("notice", comment: "")
-        cell.cellTitleLabel.text = NSLocalizedString("notice", comment: "")
-        cell.cellValueTextField.placeholder = NSLocalizedString("notice", comment: "")
-        cell.isSetBottomLine = true
-        cell.cellValueTextField.delegate = self
-        cell.cellValueTextField.text = subscriptionDescription
-        cell.onValueChange = { textField in
-            guard let textNotice = textField.text else {
-                self.subscriptionDescription = ""
-                return
-            }
-            self.subscriptionDescription = textNotice
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldCell") as! STTextFieldCell
+//        cell.cellTitleLabel.text = NSLocalizedString("notice", comment: "")
+//        cell.cellTitleLabel.text = NSLocalizedString("notice", comment: "")
+//        cell.cellValueTextField.placeholder = NSLocalizedString("notice", comment: "")
+//        cell.isSetBottomLine = true
+//        cell.cellValueTextField.delegate = self
+//        cell.cellValueTextField.text = subscriptionDescription
+//        cell.onValueChange = { textField in
+//            guard let textNotice = textField.text else {
+//                self.subscriptionDescription = ""
+//                return
+//            }
+//            self.subscriptionDescription = textNotice
+//        }
         return cell
     }
 }

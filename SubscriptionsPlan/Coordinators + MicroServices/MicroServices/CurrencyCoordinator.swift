@@ -4,9 +4,9 @@ import UIKit
 import CoreData
 
 
-protocol CurrencyStorageCoordinatorProtocol: BaseCoordinator, Transmitter, Receiver {}
+protocol CurrencyCoordinatorProtocol: BaseCoordinator, Transmitter, Receiver {}
 
-class CurrencyStorageCoordinator: BaseCoordinator, CurrencyStorageCoordinatorProtocol {
+class CurrencyCoordinator: BaseCoordinator, CurrencyCoordinatorProtocol {
     
     // MARK: - CoreData
     
