@@ -31,10 +31,15 @@ final class ApplicationCoordinator: BasePresenter, ApplicationCoordinatorProtoco
         CoordinatorFactory.getCurrencyMicroService(rootCoordinator: self)
         // МикроСервис для работы с сущностью Service
         CoordinatorFactory.getServiceMicroService(rootCoordinator: self)
-        // МикроСервис для работы с сущностью Subscription
-        CoordinatorFactory.getSubscriptionMicroService(rootCoordinator: self)
         // МикроСервис для работы с сущностью Payment
-        CoordinatorFactory.getPaymentMicroService(rootCoordinator: self)
+        let paymentCoordinator = CoordinatorFactory.getPaymentMicroService(rootCoordinator: self)
+        // МикроСервис для работы с сущностью Subscription
+        // !!! родительским для SubCoord является PayCoord
+        //  это сделано для того, чтобы при создании подписки
+        //  автоматически проверялась дата следующего платежа
+        //  и при необходимости подменялась и создавались записи о прошедших платежах
+        CoordinatorFactory.getSubscriptionMicroService(rootCoordinator: paymentCoordinator)
+        
         
         // Запускаем координатор Инициализации
         let initializator = CoordinatorFactory.getInitializatorCoordinator(rootCoordinator: self)

@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol STTextFieldCellProtocol: STCellProtocol {
+protocol STTextFieldCellProtocol: STInputCellProtocol {
     var title: String { get set }
-    var text: String { get set }
+    var value: String { get set }
     var accentColor: UIColor { get set }
-    var onValueChange: ((UITextField) -> Void)? { get set }
+    var didValueChanged: ((UITextField) -> Void)? { get set }
 }
 
 class STTextFieldCell: UITableViewCell, STTextFieldCellProtocol {
@@ -22,7 +22,7 @@ class STTextFieldCell: UITableViewCell, STTextFieldCellProtocol {
         }
     }
     
-    var text: String = "" {
+    var value: String = "" {
         didSet {
             textField.text = title
         }
@@ -34,10 +34,17 @@ class STTextFieldCell: UITableViewCell, STTextFieldCellProtocol {
         }
     }
     
+    var onSelectAnyCellElement: (() -> Void)?
+    
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        onSelectAnyCellElement?()
+        return super.hitTest(point, with: event)
+    }
+    
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var textField: UITextField!
     
-    var onValueChange: ((UITextField) -> Void)?
+    var didValueChanged: ((UITextField) -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -48,7 +55,7 @@ class STTextFieldCell: UITableViewCell, STTextFieldCellProtocol {
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
         toolBar.isTranslucent = true
-        let doneButton = UIBarButtonItem(title: "Готово", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.donePressed))
+        let doneButton = UIBarButtonItem(title: NSLocalizedString("done", comment: ""), style: UIBarButtonItem.Style.done, target: self, action: #selector(self.donePressed))
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         toolBar.setItems([spaceButton,spaceButton,doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true
@@ -57,12 +64,12 @@ class STTextFieldCell: UITableViewCell, STTextFieldCellProtocol {
     }
     
     @objc func donePressed() {
-        onValueChange?(textField)
+        didValueChanged?(textField)
         textField.resignFirstResponder()
     }
     
     @IBAction func textFieldEditingEnded(_ sender: UITextField) {
-        onValueChange?(sender)
+        didValueChanged?(sender)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

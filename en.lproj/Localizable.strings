@@ -5,7 +5,10 @@
   Created by Vasily Usov on 06.01.2021.
   
 */
-
+"attention" = "Attention";
+"you must set amount" = "You must set amount of subscription";
+"ok" = "Ok";
+"new service" = "New service";
 "next_payment" = "Next Payment";
 "currency" = "Currency";
 "amount" = "Amount";
@@ -13,6 +16,7 @@
 "payment period" = "Period";
 "every" = "Every";
 "day" = "Day";
+"day(s)" = "Day(s)";
 "week" = "Week";
 "month" = "Month";
 "year" = "Year";
@@ -21,6 +25,7 @@
 "notify" = "Notify";
 "notification period" = "Notifications period";
 "in %d days (notify)" = "In %d day(s)";
+"in (notify)" = "In";
 "in %d days (pay)" = "In %d day(s)";
 "in %d weeks (pay)" = "In %d week(s)";
 "in %d months (pay)" = "In %d month(s)";

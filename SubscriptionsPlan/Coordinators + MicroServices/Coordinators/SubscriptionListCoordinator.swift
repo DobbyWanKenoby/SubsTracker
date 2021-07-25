@@ -28,15 +28,15 @@ class SubscriptionListCoordinator: BasePresenter, SubscriptionListCoordinatorPro
         let controller = ControllerFactory.getSubscriptionsListController()
         controller.onSelectSubscription = { subscription in
             let nextController = self.getEditSubscriptionConfiguredController(subscription: subscription)
-            self.route(from: self.presenter!, to: nextController, method: .navigationPush)
+            self.route(from: self.presenter!, to: nextController, method: .presentCard)
         }
         return controller
     }
     
-    // Возвращает готовый контроллер создания подписки на определенный сервис
+    // Возвращает готовый контроллер редактирования существующей подписки
     private func getEditSubscriptionConfiguredController(subscription: SubscriptionProtocol) -> UIViewController {
         let addSubController = ControllerFactory.getAddSubscriptionController()
-        (addSubController as? AddSubscriptionController)?.displayType = .inNavigationController
+        addSubController.displayType = .editSubscription
         
         // редактируема подписка
         addSubController.subscription = subscription
@@ -49,13 +49,13 @@ class SubscriptionListCoordinator: BasePresenter, SubscriptionListCoordinatorPro
             addSubController.currencies = currencies
         }
         
-        // Дефолтная фвалюта
+        // Дефолтная валюта
         addSubController.currentCurrency = subscription.currency
         addSubController.onCancelScene = { inputData in
-            self.disroute(controller: self.presenter!, method: .navigationPop)
+            self.disroute(controller: self.presenter!, method: .dismiss)
         }
         addSubController.onSaveSubscription = { [self] newSubscription, _ in
-            self.disroute(controller: self.presenter!, method: .navigationPop)
+            self.disroute(controller: self.presenter!, method: .dismiss)
 
             // Уведомление
             let notificationController = ControllerFactory.getNotificationAlertController()

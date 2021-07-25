@@ -13,11 +13,10 @@ class NotificationAlertTransitionManager: NSObject, SCKTransitionDelegate {
         return NotificationAlertPresentationController(presentedViewController: presented, presenting: presenting)
     }
 
-//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        let controller = AddSubsAnimationDismissController()
-//        controller.finishPoint = startPoint
-//        return controller
-//    }
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let controller = NotificationAlertDismissAnimationController()
+        return controller
+    }
 
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let controller = NotificationAlertAnimationController()

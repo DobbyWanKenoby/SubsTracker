@@ -31,6 +31,17 @@ public class SubscriptionEntity: NSManagedObject, EntityInstanceProvider {
         return subscriptionFromStorage as! Self
     }
     
+    static func getEntity(byIdentifier: String, context: NSManagedObjectContext) -> Self? {
+        let fetch = NSFetchRequest<SubscriptionEntity>(entityName: "SubscriptionEntity")
+        fetch.predicate = NSPredicate(format: "identifier = %@", byIdentifier)
+        fetch.fetchBatchSize = 1
+        guard let subscriptionsFromStorage = try? context.fetch(fetch),
+              let subscriptionFromStorage = subscriptionsFromStorage.first else {
+            return nil
+        }
+        return subscriptionFromStorage as! Self
+    }
+    
     func updateEntity(from subscription: SubscriptionProtocol, context: NSManagedObjectContext) {
         self.identifier = subscription.identifier
         self.about = subscription.description
@@ -39,7 +50,7 @@ public class SubscriptionEntity: NSManagedObject, EntityInstanceProvider {
         self.amount = subscription.amount
         self.isNotificationable = subscription.isNotificationable
         self.notificationDaysPeriod = Int16(subscription.notificationDaysPeriod)
-        self.firstPaymentDate = subscription.firstPaymentDate
+        self.firstPaymentDate = subscription.nextPaymentDate
         self.paymentPeriodInt = Int16(subscription.paymentPeriod.0)
         self.paymentPeriodType = subscription.paymentPeriod.1.rawValue
     }
@@ -50,7 +61,7 @@ public class SubscriptionEntity: NSManagedObject, EntityInstanceProvider {
                         amount: self.amount,
                         currency: self.currency!.convertEntityToInstance(),
                         description: self.about!,
-                        firstPaymentDate: self.firstPaymentDate!,
+                        nextPaymentDate: self.firstPaymentDate!,
                         paymentPeriod: (Int(self.paymentPeriodInt), PeriodType.init(rawValue: self.paymentPeriodType!)!),
                         isNotificationable: self.isNotificationable,
                         notificationDaysPeriod: Int(self.notificationDaysPeriod))

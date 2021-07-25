@@ -37,3 +37,24 @@ class NotificationAlertAnimationController: NSObject, UIViewControllerAnimatedTr
         return
     }
 }
+
+class NotificationAlertDismissAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
+
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return 0.2
+    }
+    
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        
+        let presentingView = transitionContext.view(forKey: .from)!
+        transitionContext.containerView.addSubview(presentingView)
+        
+        UIView.animate(withDuration: self.transitionDuration(using: transitionContext), animations: {
+            presentingView.layer.opacity = 0
+            presentingView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        }, completion: { _ in
+            transitionContext.completeTransition(true)
+        })
+
+    }
+}

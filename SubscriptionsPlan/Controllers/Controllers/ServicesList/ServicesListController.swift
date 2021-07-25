@@ -23,7 +23,7 @@ class ServicesListController: UIViewController, ServicesListControllerProtocol, 
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: "ServiceCell", bundle: nil), forCellReuseIdentifier: "ServiceCell")
+        tableView.register(UINib(nibName: "STServiceCell", bundle: nil), forCellReuseIdentifier: "STServiceCell")
         configureView()
         tableView.clipsToBounds = false
     }
@@ -53,7 +53,7 @@ extension ServicesListController: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return services.count
+        return services.count + 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,17 +61,29 @@ extension ServicesListController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let currentService = services[indexPath.section]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ServiceCell") as! ServiceCell
+        if indexPath.section == 0 {
+            return getCellForCustomService(indexPath, tableView)
+        } else {
+            return getCellForService(indexPath, tableView)
+        }
+    }
+    
+    private func getCellForCustomService(_ indexPath: IndexPath, _ tableView: UITableView) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "STServiceCell") as! STServiceCell
+        //cell.logoImageView.image = currentService.logo
+        cell.titleLabel.text = NSLocalizedString("new service", comment: "")
+        cell.contentView.backgroundColor = .systemGray2
+        cell.selectionStyle = .none
+        return cell
+    }
+    
+    private func getCellForService(_ indexPath: IndexPath, _ tableView: UITableView) -> UITableViewCell {
+        let currentService = services[indexPath.section-1]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "STServiceCell") as! STServiceCell
         cell.logoImageView.image = currentService.logo
         cell.titleLabel.text = currentService.title
         cell.contentView.backgroundColor = currentService.color
         cell.selectionStyle = .none
-//        cell.contentView.layer.shadowOpacity = 0.5
-//        cell.contentView.layer.shadowColor = UIColor.black.cgColor
-//        cell.contentView.layer.shadowRadius = 5
-//        cell.contentView.layer.shadowOffset = CGSize(width: 0, height: 0)
-//        cell.contentView.clipsToBounds = false
         return cell
     }
 }
@@ -83,7 +95,7 @@ extension ServicesListController: UITableViewDelegate {
         guard let selectedCell = tableView.cellForRow(at: indexPath) else {
             return
         }
-        let selectedService = services[indexPath.section]
+        let selectedService = services[indexPath.section-1]
         onSelectService?(selectedService, selectedCell)
     }
     

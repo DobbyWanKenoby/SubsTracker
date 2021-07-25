@@ -47,6 +47,7 @@ class SubscriptionsListController: UITableViewController, SubscriptionsListContr
         self.navigationItem.title = NSLocalizedString("subscriptions", comment: "")
         self.navigationItem.largeTitleDisplayMode = .always
         self.tableView.separatorStyle = .none
+        self.tableView.allowsSelection = false
     }
 
     // MARK: - Table view data source
@@ -104,6 +105,25 @@ class SubscriptionsListController: UITableViewController, SubscriptionsListContr
         }
         
         return text
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .normal, title: "") {_,_,_ in
+            
+        }
+        deleteAction.backgroundColor = UIColor.systemBackground
+        let configurator = UIImage.SymbolConfiguration(pointSize: 40)
+        deleteAction.image = UIImage(systemName: "trash.circle.fill", withConfiguration: configurator)!.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
+        
+        let editAction = UIContextualAction(style: .normal, title: "") {[unowned self] _,_,complete in
+            self.onSelectSubscription?(sortedSubscriptions[indexPath.row])
+            complete(true)
+        }
+        editAction.backgroundColor = UIColor.systemBackground
+        let color = sortedSubscriptions[indexPath.row].service.color
+        editAction.image = UIImage(systemName: "pencil.circle.fill", withConfiguration: configurator)!.withTintColor(color, renderingMode: .alwaysOriginal)
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction,editAction])
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

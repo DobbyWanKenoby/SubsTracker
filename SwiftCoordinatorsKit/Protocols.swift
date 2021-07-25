@@ -124,9 +124,16 @@ protocol Transmitter where Self: Coordinator {
     // Передача данных в связанные координаторы и контроллеры
     // При таком запросе координатор ожидает и обабатывает полученный ответ inline
     func broadcast(signalWithReturnAnswer: Signal) -> [Signal]
+    
+    // Преобразование данные для их дальнейшей передачи
+    func edit(signal: Signal) -> Signal
 }
 
 extension Transmitter {
+    
+    func edit(signal: Signal) -> Signal {
+        return signal
+    }
     
     func broadcast(signalWithReturnAnswer signal: Signal) -> [Signal] {
         var coordinators: [Coordinator] = []
@@ -146,11 +153,13 @@ extension Transmitter {
     
     // Дальнейшая передача данных, но с учетом списка координаторов, которые уже обработали данный сигнал
     // Используется, чтобы исключить повторную обратную передачу
-    private func send(signal: Signal, handledCoordinators: inout [Coordinator], resultSignals: inout [Signal]) {
+    private func send(signal inputSignal: Signal, handledCoordinators: inout [Coordinator], resultSignals: inout [Signal]) {
         guard handledCoordinators.firstIndex(where: { $0 === self }) == nil else {
             return
         }
         handledCoordinators.append(self)
+        
+        let signal = edit(signal: inputSignal)
         
         // передача в дочерние контроллеры
         if let presenter = self as? Presenter {

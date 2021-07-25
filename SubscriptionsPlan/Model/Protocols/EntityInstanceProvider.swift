@@ -11,7 +11,7 @@ import CoreData
 protocol EntityInstanceProvider {
     /// связанный с данным Entity тип модели
     associatedtype AssociatedInstanceType
-    /// вовзращает Entity, соответсвующий переданному from
+    /// возвращает Entity, соответсвующий переданному from
     /// создает новый Entity или получает существующий из базы
     @discardableResult
     static func getEntity(from: AssociatedInstanceType, context: NSManagedObjectContext, updateEntityPropertiesIfNeeded: Bool) -> Self

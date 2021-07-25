@@ -33,7 +33,7 @@ protocol SubscriptionProtocol {
     /// Описание/примечание
     var description: String { get set }
     /// Дата первого платежа
-    var firstPaymentDate: Date { get set }
+    var nextPaymentDate: Date { get set }
     var nextPayment: (date: Date, daysRemain: Int) { get }
     /// Как часто платить по подписке
     var paymentPeriod: (Int, PeriodType) { get set }
@@ -50,20 +50,24 @@ struct Subscription: SubscriptionProtocol {
     var amount: Float
     var currency: CurrencyProtocol
     var description: String
-    var firstPaymentDate: Date
+    var nextPaymentDate: Date
     var paymentPeriod: (Int, PeriodType)
     var isNotificationable: Bool
     var notificationDaysPeriod: Int
     
     var nextPayment: (date: Date, daysRemain: Int) {
         let todayDateComponents = Calendar.current.dateComponents([.day,.month,.year], from: Date())
-        var nextDateComponents = Calendar.current.dateComponents([.day,.month,.year], from: firstPaymentDate)
+        var nextDateComponents = Calendar.current.dateComponents([.day,.month,.year], from: nextPaymentDate)
         
         var daysRemain = Calendar.current.dateComponents([.day], from: todayDateComponents, to: nextDateComponents).day!
         
         if daysRemain >= 0 {
             return (Calendar.current.date(from: nextDateComponents)!, daysRemain)
         }
+        
+        // после изменения поля firstPaymentDate на nextPayment код далее выполняться не будет
+        // так как PaymentCoordinator контролирует значение этого свойства
+        // но на всякий случай оставлю
         
         repeat {
             var dateComponents = DateComponents()

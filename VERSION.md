@@ -1,12 +1,21 @@
-**toDo:** Change TextField in PickerCell & DatePickerCell to Label 
-**toDO:** Remove characters in amount text field && Update Logic on amount Text Field
 **toDO:** Add function of remove Subscription
 **toDO:** Add function of create payments for Subscriptions (after create/update Sub and during initialization app)
+**toDo:** Add alert during editing subscription when Next Payment Date < current date
+**toDo:** On Create/Edit SubscriptionScreen title on next payment cell must be NEXT PAYMENT during editing and FIRST PAYMENT during creating
+
+
+### 0.2.4
+- Full update layout of Add Scbscription Screen
+- Updated all cells (include to CellFactory). Change TextField in PickerCell & DatePickerCell to Label 
+- Fix logic of autochanging tableView insets when keyboard show
+- Updated SCK to version 0.3.1
+- Update structure of Coordinators
+- Added autoupdate of subscriptions nexPaymentDate during save and update subscription instance
+- Added new instance Payment (struct & CoreData Entity)
+- Added new PaymentMicroService
 
 ### 0.2.3
 - Renamed MicroServices
-- Added new instance Payment (struct & CoreData Entity)
-- Added new PaymentMicroService
 - Updated Create TableViewCells system. Added CellFactory and Protocols
 - Updated Picker Cell (now using Label except text Field)
 - Updated TextField Cell

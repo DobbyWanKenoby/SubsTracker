@@ -5,7 +5,10 @@
   Created by Vasily Usov on 06.01.2021.
   
 */
-
+"attention" = "Внимание";
+"you must set amount" = "Необходимо ввести стоимость подписки";
+"ok" = "Ок";
+"new service" = "Новый сервис";
 "next_payment" = "Следующий платеж";
 "currency" = "Валюта";
 "amount" = "Стоимость";
@@ -13,6 +16,7 @@
 "payment period" = "Период оплаты";
 "every" = "Каждый";
 "day" = "День";
+"day(s)" = "Дн.";
 "week" = "Неделя";
 "month" = "Месяц";
 "year" = "Год";
@@ -21,6 +25,7 @@
 "notify" = "Уведомлять";
 "notification period" = "Период уведомлений";
 "in %d days (notify)" = "За %d дн.";
+"in (notify)" = "За";
 "in %d days (pay)" = "Через %d дн.";
 "in %d weeks (pay)" = "Через %d нед.";
 "in %d months (pay)" = "Через %d мес.";
