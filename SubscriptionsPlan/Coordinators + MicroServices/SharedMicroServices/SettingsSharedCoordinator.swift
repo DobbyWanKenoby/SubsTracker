@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import SwiftCoordinatorsKit
 
-class Settings: BaseCoordinator, Transmitter {
+class Settings: BaseCoordinator, Transmitter {    
 
     static var shared: Settings!
     

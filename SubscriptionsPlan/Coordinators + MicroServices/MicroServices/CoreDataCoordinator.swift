@@ -4,6 +4,7 @@
 
 import Foundation
 import CoreData
+import SwiftCoordinatorsKit
 
 protocol CoreDataCoordinatorProtocol: BaseCoordinator, Receiver {}
 

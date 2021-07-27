@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import SwiftCoordinatorsKit
 
 protocol PaymentsCoordinatorProtocol: BaseCoordinator, Transmitter, Receiver {}
 

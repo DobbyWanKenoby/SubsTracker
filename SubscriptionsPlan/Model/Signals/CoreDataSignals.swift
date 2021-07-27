@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import SwiftCoordinatorsKit
 
 enum CoreDataSignal: Signal {
     case getDefaultContext

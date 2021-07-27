@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftCoordinatorsKit
 
 protocol AddSubscriptionCoordinatorProtocol: BasePresenter, Transmitter, Receiver {}
 

@@ -2,6 +2,7 @@
 
 import Foundation
 import CoreData
+import SwiftCoordinatorsKit
 
 protocol SubscriptionCoordinatorProtocol: BaseCoordinator, Transmitter, Receiver {}
 

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftCoordinatorsKit
 
 enum PaymentSignal: Signal {
     // создание новой/обновление существующей записи о платеже

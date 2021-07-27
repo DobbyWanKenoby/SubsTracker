@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import SwiftCoordinatorsKit
 
 protocol InitializatorCoordinatorProtocol: BasePresenter, Transmitter {}
 

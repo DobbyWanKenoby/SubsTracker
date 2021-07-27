@@ -2,6 +2,8 @@
 // Данные о действиях над сущностью "Подписка"
 //
 
+import SwiftCoordinatorsKit
+
 enum SubscriptionSignal: Signal {
     // создание/обновление подписок
     // broadcastActualSubscriptionsList - необходимость рассылки списка актуальных подписок после создания/обновления

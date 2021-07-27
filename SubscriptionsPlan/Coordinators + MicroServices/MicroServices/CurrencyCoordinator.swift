@@ -2,7 +2,7 @@
 
 import UIKit
 import CoreData
-
+import SwiftCoordinatorsKit
 
 protocol CurrencyCoordinatorProtocol: BaseCoordinator, Transmitter, Receiver {}
 

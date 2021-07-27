@@ -2,6 +2,7 @@
 
 import UIKit
 import CoreData
+import SwiftCoordinatorsKit
 
 protocol ServiceCoordinatorProtocol: BaseCoordinator, Transmitter, Receiver {}
 

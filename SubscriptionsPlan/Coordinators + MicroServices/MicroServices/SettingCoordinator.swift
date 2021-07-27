@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftCoordinatorsKit
 
 protocol SettingCoordinatorProtocol: BaseCoordinator, Receiver {}
 

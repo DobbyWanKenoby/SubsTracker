@@ -1,1 +1,0 @@
-typealias FinishCompletionHandler = () -> Void

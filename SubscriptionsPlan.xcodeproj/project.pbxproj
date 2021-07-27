@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -29,10 +29,7 @@
 		E0205B5326445DC700A355E6 /* ServiceSignals.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0205B5226445DC700A355E6 /* ServiceSignals.swift */; };
 		E0205B5526445DF200A355E6 /* SubscriptionSignals.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0205B5426445DF200A355E6 /* SubscriptionSignals.swift */; };
 		E0205B5726445F3E00A355E6 /* SubscriptionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0205B5626445F3E00A355E6 /* SubscriptionCoordinator.swift */; };
-		E022C29126405BDC0051C90E /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022C29026405BDC0051C90E /* Helpers.swift */; };
-		E022C294264067CE0051C90E /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022C293264067CE0051C90E /* Protocols.swift */; };
 		E022C2982640700B0051C90E /* ControllersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022C2972640700B0051C90E /* ControllersList.swift */; };
-		E022C29A264072410051C90E /* ViewControllerLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022C299264072410051C90E /* ViewControllerLoader.swift */; };
 		E022C29E264124E00051C90E /* Services.plist in Resources */ = {isa = PBXBuildFile; fileRef = E022C29D264124E00051C90E /* Services.plist */; };
 		E022C2A0264125440051C90E /* Services.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E022C29F264125440051C90E /* Services.xcassets */; };
 		E022C2A226412A970051C90E /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022C2A126412A970051C90E /* UIColor.swift */; };
@@ -41,7 +38,6 @@
 		E0349F252645B044007DD2CD /* Currencies.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0349F242645B044007DD2CD /* Currencies.plist */; };
 		E0349F272645B262007DD2CD /* CurrencySignals.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0349F262645B262007DD2CD /* CurrencySignals.swift */; };
 		E039B93125A1D42F0096B23A /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E039B93025A1D42F0096B23A /* ApplicationCoordinator.swift */; };
-		E039B93625A1D5EE0096B23A /* Implementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E039B93525A1D5EE0096B23A /* Implementations.swift */; };
 		E03AB4102642A33D00869617 /* ServiceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03AB40F2642A33D00869617 /* ServiceCoordinator.swift */; };
 		E044E21325A1EBBB00267459 /* SubscriptionListBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E21225A1EBBB00267459 /* SubscriptionListBaseController.swift */; };
 		E044E21825A1ED3300267459 /* ServicesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E21725A1ED3300267459 /* ServicesListController.swift */; };
@@ -69,6 +65,7 @@
 		E06D5A0225B0742500CA8394 /* NotificationAlertAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06D5A0125B0742500CA8394 /* NotificationAlertAnimationController.swift */; };
 		E08630C726B0784600D1FF1B /* ACIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84946B1C26B038CA0037AF42 /* ACIdentifier.swift */; };
 		E08630C826B07AAA00D1FF1B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E044E2A825A634E200267459 /* Localizable.strings */; };
+		E08630F726B0A7E900D1FF1B /* SwiftCoordinatorsKit in Frameworks */ = {isa = PBXBuildFile; productRef = E08630F626B0A7E900D1FF1B /* SwiftCoordinatorsKit */; };
 		E08ACDB126712D3E003FB1C9 /* EntityInstanceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08ACDB026712D3E003FB1C9 /* EntityInstanceProvider.swift */; };
 		E08E993A264B0D3300F112FD /* ServicesListController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E08E9939264B0D3300F112FD /* ServicesListController.storyboard */; };
 		E090F3B1268CE03F00C7AEE4 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E090F3B0268CE03F00C7AEE4 /* TextField.swift */; };
@@ -133,10 +130,7 @@
 		E0205B5226445DC700A355E6 /* ServiceSignals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceSignals.swift; sourceTree = "<group>"; };
 		E0205B5426445DF200A355E6 /* SubscriptionSignals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionSignals.swift; sourceTree = "<group>"; };
 		E0205B5626445F3E00A355E6 /* SubscriptionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionCoordinator.swift; sourceTree = "<group>"; };
-		E022C29026405BDC0051C90E /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		E022C293264067CE0051C90E /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		E022C2972640700B0051C90E /* ControllersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllersList.swift; sourceTree = "<group>"; };
-		E022C299264072410051C90E /* ViewControllerLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerLoader.swift; sourceTree = "<group>"; };
 		E022C29D264124E00051C90E /* Services.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Services.plist; sourceTree = "<group>"; };
 		E022C29F264125440051C90E /* Services.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Services.xcassets; sourceTree = "<group>"; };
 		E022C2A126412A970051C90E /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -145,7 +139,6 @@
 		E0349F242645B044007DD2CD /* Currencies.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Currencies.plist; sourceTree = "<group>"; };
 		E0349F262645B262007DD2CD /* CurrencySignals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySignals.swift; sourceTree = "<group>"; };
 		E039B93025A1D42F0096B23A /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
-		E039B93525A1D5EE0096B23A /* Implementations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Implementations.swift; sourceTree = "<group>"; };
 		E03AB40F2642A33D00869617 /* ServiceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCoordinator.swift; sourceTree = "<group>"; };
 		E044E21225A1EBBB00267459 /* SubscriptionListBaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionListBaseController.swift; sourceTree = "<group>"; };
 		E044E21725A1ED3300267459 /* ServicesListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesListController.swift; sourceTree = "<group>"; };
@@ -176,6 +169,7 @@
 		E06D59FE25B0705800CA8394 /* NotificationAlertTransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAlertTransitionManager.swift; sourceTree = "<group>"; };
 		E06D5A0125B0742500CA8394 /* NotificationAlertAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAlertAnimationController.swift; sourceTree = "<group>"; };
 		E08630C926B0839D00D1FF1B /* VERSION.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = VERSION.md; sourceTree = "<group>"; };
+		E08630F826B0AC7A00D1FF1B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E08ACDB026712D3E003FB1C9 /* EntityInstanceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityInstanceProvider.swift; sourceTree = "<group>"; };
 		E08E9939264B0D3300F112FD /* ServicesListController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServicesListController.storyboard; sourceTree = "<group>"; };
 		E090F3B0268CE03F00C7AEE4 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
@@ -218,6 +212,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E08630F726B0A7E900D1FF1B /* SwiftCoordinatorsKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,17 +274,6 @@
 				E090F3B2268CE9B400C7AEE4 /* SettingCoordinator.swift */,
 			);
 			path = MicroServices;
-			sourceTree = "<group>";
-		};
-		E022C28F26405AAD0051C90E /* SwiftCoordinatorsKit */ = {
-			isa = PBXGroup;
-			children = (
-				E022C293264067CE0051C90E /* Protocols.swift */,
-				E039B93525A1D5EE0096B23A /* Implementations.swift */,
-				E022C299264072410051C90E /* ViewControllerLoader.swift */,
-				E022C29026405BDC0051C90E /* Helpers.swift */,
-			);
-			path = SwiftCoordinatorsKit;
 			sourceTree = "<group>";
 		};
 		E022C29B264072B90051C90E /* Controllers */ = {
@@ -526,9 +510,9 @@
 		E0C12413259DFA9400ABC79F = {
 			isa = PBXGroup;
 			children = (
-				E022C28F26405AAD0051C90E /* SwiftCoordinatorsKit */,
 				E044E2A825A634E200267459 /* Localizable.strings */,
 				E08630C926B0839D00D1FF1B /* VERSION.md */,
+				E08630F826B0AC7A00D1FF1B /* README.md */,
 				E044E26725A62B3900267459 /* MyPlayground.playground */,
 				E0C1241E259DFA9400ABC79F /* SubscriptionsPlan */,
 				843A866E26AFFD4F00FF9372 /* SubscriptionsPlanUITests */,
@@ -693,6 +677,9 @@
 			dependencies = (
 			);
 			name = SubscriptionsPlan;
+			packageProductDependencies = (
+				E08630F626B0A7E900D1FF1B /* SwiftCoordinatorsKit */,
+			);
 			productName = SubscriptionsPlan;
 			productReference = E0C1241C259DFA9400ABC79F /* SubscriptionsPlan.app */;
 			productType = "com.apple.product-type.application";
@@ -725,6 +712,9 @@
 				ru,
 			);
 			mainGroup = E0C12413259DFA9400ABC79F;
+			packageReferences = (
+				E08630F526B0A7E900D1FF1B /* XCRemoteSwiftPackageReference "SwiftCoordinatorsKit" */,
+			);
 			productRefGroup = E0C1241D259DFA9400ABC79F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -789,7 +779,6 @@
 				E0205B5326445DC700A355E6 /* ServiceSignals.swift in Sources */,
 				84A3102D2670D91200F822DC /* SubscriptionEntity+CoreDataClass.swift in Sources */,
 				E090F3B5268CE9FE00C7AEE4 /* SettingSignals.swift in Sources */,
-				E022C29A264072410051C90E /* ViewControllerLoader.swift in Sources */,
 				E0C7D71B25A1E85A00E71476 /* SubscriptionListCoordinator.swift in Sources */,
 				E044E2B525A7103D00267459 /* Localization.swift in Sources */,
 				E0C1243D259DFB8400ABC79F /* Subscription.swift in Sources */,
@@ -807,9 +796,7 @@
 				E06D59F725B0640E00CA8394 /* NotificationAlertCoordinator.swift in Sources */,
 				E0EE4307259F7A3800CA0F6F /* ControllerFactory.swift in Sources */,
 				842F02612667824500EB14C9 /* ServiceEntity+CoreDataClass.swift in Sources */,
-				E022C29126405BDC0051C90E /* Helpers.swift in Sources */,
 				E044E26C25A62BE800267459 /* STDatePickerCell.swift in Sources */,
-				E039B93625A1D5EE0096B23A /* Implementations.swift in Sources */,
 				84B6DD2E268E026500FA0FFE /* PaymentCoordinator.swift in Sources */,
 				E0BAFC79265EBD810042CFAD /* CoreDataSignals.swift in Sources */,
 				E022C2982640700B0051C90E /* ControllersList.swift in Sources */,
@@ -829,7 +816,6 @@
 				E0C12422259DFA9400ABC79F /* SceneDelegate.swift in Sources */,
 				E044E25225A4BAA800267459 /* STPickerCell.swift in Sources */,
 				E044E25B25A4C83E00267459 /* SettingsSharedCoordinator.swift in Sources */,
-				E022C294264067CE0051C90E /* Protocols.swift in Sources */,
 				E0205B5526445DF200A355E6 /* SubscriptionSignals.swift in Sources */,
 				E044E21325A1EBBB00267459 /* SubscriptionListBaseController.swift in Sources */,
 				E044E25625A4BF6100267459 /* CellWithBottomLine.swift in Sources */,
@@ -1122,6 +1108,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E08630F526B0A7E900D1FF1B /* XCRemoteSwiftPackageReference "SwiftCoordinatorsKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/DobbyWanKenoby/SwiftCoordinatorsKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E08630F626B0A7E900D1FF1B /* SwiftCoordinatorsKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E08630F526B0A7E900D1FF1B /* XCRemoteSwiftPackageReference "SwiftCoordinatorsKit" */;
+			productName = SwiftCoordinatorsKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		84514199266625A400F4345B /* SubsTracker.xcdatamodeld */ = {

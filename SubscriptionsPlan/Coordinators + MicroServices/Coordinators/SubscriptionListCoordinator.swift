@@ -1,4 +1,5 @@
 import UIKit
+import SwiftCoordinatorsKit
 
 protocol SubscriptionListCoordinatorProtocol: BasePresenter, Transmitter, Receiver {}
 

@@ -2,6 +2,8 @@
 // Данные о действиях над сущностью "Валюта"
 //
 
+import SwiftCoordinatorsKit
+
 enum CurrencySignal: Signal {
     
     // сохранение валюты в долговременно хранилище

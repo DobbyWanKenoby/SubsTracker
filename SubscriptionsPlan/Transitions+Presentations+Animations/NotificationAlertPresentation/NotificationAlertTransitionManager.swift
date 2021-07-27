@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftCoordinatorsKit
 
 class NotificationAlertTransitionManager: NSObject, SCKTransitionDelegate {
     

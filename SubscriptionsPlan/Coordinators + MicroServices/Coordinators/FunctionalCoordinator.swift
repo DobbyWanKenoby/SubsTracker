@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftCoordinatorsKit
 
 protocol FunctionalCoordinatorProtocol: BasePresenter, Transmitter {}
 
