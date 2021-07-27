@@ -108,12 +108,14 @@ class STPickerCell: UITableViewCell, STPickerCellProtocol {
     private func createConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 15),
+            //titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+            
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
 
             titleLabel.bottomAnchor.constraint(equalTo: valueLabel.topAnchor, constant: -20),
             valueLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            valueLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+            valueLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             valueLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
         ])
     }

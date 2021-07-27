@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,19 +23,19 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="НАЗВАНИЕ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMI-l3-2nz" customClass="CellTitleLabel" customModule="SubscriptionsPlan" customModuleProvider="target">
-                        <rect key="frame" x="16" y="15" width="304" height="29"/>
+                        <rect key="frame" x="20" y="15" width="280" height="29"/>
                         <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="srX-eX-yu0">
-                        <rect key="frame" x="255" y="15" width="51" height="31"/>
+                        <rect key="frame" x="251" y="15" width="51" height="31"/>
                     </switch>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="srX-eX-yu0" secondAttribute="trailing" id="AjU-By-n6b"/>
-                    <constraint firstAttribute="trailing" secondItem="GMI-l3-2nz" secondAttribute="trailing" id="Ane-T1-auC"/>
-                    <constraint firstItem="GMI-l3-2nz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="JgA-zC-KpS"/>
+                    <constraint firstAttribute="right" secondItem="srX-eX-yu0" secondAttribute="right" constant="20" id="AjU-By-n6b"/>
+                    <constraint firstAttribute="right" secondItem="GMI-l3-2nz" secondAttribute="right" constant="20" id="Ane-T1-auC"/>
+                    <constraint firstItem="GMI-l3-2nz" firstAttribute="left" secondItem="H2p-sc-9uM" secondAttribute="left" constant="20" id="JgA-zC-KpS"/>
                     <constraint firstItem="GMI-l3-2nz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="aQB-rc-wAK"/>
                     <constraint firstItem="GMI-l3-2nz" firstAttribute="height" secondItem="srX-eX-yu0" secondAttribute="height" multiplier="0.935484" id="sNX-z6-CX8"/>
                     <constraint firstAttribute="bottom" secondItem="GMI-l3-2nz" secondAttribute="bottom" constant="35" id="st6-YO-bwt"/>

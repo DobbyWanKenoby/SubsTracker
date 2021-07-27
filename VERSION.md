@@ -6,6 +6,9 @@
 
 ### 0.2.5
 - Added UITests Target
+- Added UITest for testing creation of subscription
+- Added first Accessibilities
+- Added ACIdentifier enum and setAccessibility function for set accessibilities of UI elements
 
 ### 0.2.4
 - Full update layout of Add Scbscription Screen

@@ -304,6 +304,7 @@ extension AddSubscriptionController: UITableViewDataSource {
         } else {
             cell = getCell_subscriptionCreate_ServiceExist(indexPath: indexPath)
         }
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -508,6 +509,7 @@ extension AddSubscriptionController: UITableViewDataSource {
             self?.selectedCell = cell
         }
         
+        setAccessibilities(cell, with: .cellCurrency)
         return cell
     }
     
@@ -516,6 +518,7 @@ extension AddSubscriptionController: UITableViewDataSource {
                                                 text: getAmountFormattedString(String(subscriptionAmount)))
         cell.textField.placeholder = "0.00"
         cell.textField.keyboardType = .decimalPad
+        
         cell.accentColor = color
         cell.didValueChanged = { [unowned self] textField in
             let amount = self.getAmountFormattedString(textField.text ?? "")
@@ -531,6 +534,7 @@ extension AddSubscriptionController: UITableViewDataSource {
         
         // хак, чтобы корректно менять инсеты при появлении клавиатуры
         //(cell as? STTextFieldCell)?.textField.addTarget(self, action: #selector(selectCell), for: .editingDidBegin)
+        setAccessibilities(cell, with: .cellAmount)
         return cell
     }
     
@@ -586,6 +590,7 @@ extension AddSubscriptionController: UITableViewDataSource {
 extension AddSubscriptionController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //selectedCell = tableView.cellForRow(at: indexPath)
+        tableView.deselectRow(at: indexPath, animated: false)
         tableView.cellForRow(at: indexPath)?.viewWithTag(1)?.becomeFirstResponder()
     }
 }

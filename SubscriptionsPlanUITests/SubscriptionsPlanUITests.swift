@@ -7,6 +7,7 @@
 
 import XCTest
 import SubscriptionsPlan
+import Foundation
 
 class SubscriptionsPlanUITests: XCTestCase {
     
@@ -41,14 +42,24 @@ class SubscriptionsPlanUITests: XCTestCase {
         var serviceTitle = "" // будет заполнено позже
         
         // переход к экрану создания подписки
-        //tap(elementWithText: "New subscription", in: app.buttons)
+        // и заполняем форму
         tap(elementWithText: ACIdentifier.newSubscriptionTab.rawValue, in: app.buttons)
         serviceTitle = app.cells.element(boundBy: 1).staticTexts.firstMatch.label
         tap(elementWithText: serviceTitle, in: app.staticTexts)
-        tap(elementWithText: "AMOUNT", in: app.staticTexts)
+        // стоимость
+        tap(elementWithText: ACIdentifier.cellAmount.rawValue, in: app.cells)
         for char in priceWrite {
-            keyboardTap(button: String(char))
+            keyboardKeyTap(button: String(char))
         }
+        // валюта
+        tap(elementWithText: ACIdentifier.cellCurrency.rawValue, in: app.cells)
+        swipe(.up, on: app.pickerWheels.firstMatch)
+        guard let symbol = getCurrencySymbol(in: app.pickerWheels.firstMatch.value as! String) else {
+            XCTAssertTrue(false)
+            return
+        }
+        currencySymbol = symbol
+
         
         //tap(elementWithText: "Done", in: app.buttons)
         
@@ -94,6 +105,19 @@ class SubscriptionsPlanUITests: XCTestCase {
         
         
     }
+    
+    private func getCurrencySymbol(in sourceString: String) -> String? {
+        let range = NSRange(location: 0, length: sourceString.utf16.count)
+        let regexp = try! NSRegularExpression(pattern: "\\(.*\\)")
+        let result = regexp.firstMatch(in: sourceString, options: [], range: range)
+        guard let range = result?.range else {
+            return nil
+        }
+        let start = sourceString.index(sourceString.startIndex, offsetBy: range.lowerBound+1)
+        let end = sourceString.index(sourceString.startIndex, offsetBy: range.upperBound-1)
+        return String(sourceString[start..<end])
+        
+    }
 
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
@@ -104,8 +128,11 @@ class SubscriptionsPlanUITests: XCTestCase {
         }
     }
     
-    // MARK: - Helpers
-    
+}
+
+// MARK: - UI Helpers
+
+extension SubscriptionsPlanUITests {
     // Тап по конкретному элементу
     private func tap(_ element: XCUIElement) {
         element.tap()
@@ -116,13 +143,31 @@ class SubscriptionsPlanUITests: XCTestCase {
         rootElement[text].tap()
     }
     
+    // Сделать свайп
+    private func swipe(_ direction: SwipeDirection, on element: XCUIElement) {
+        switch direction {
+        case .up:
+            element.swipeUp()
+        case .down:
+            element.swipeDown()
+        }
+    }
+    
     // Написать текст
     private func write(text: String, to element: XCUIElement) {
         
     }
     
     // Нажать кнопки на клавиатуре
-    private func keyboardTap(button: String) {
-        _ = app.keyboards.firstMatch.keys[button].tap()
+    private func keyboardKeyTap(button: String) {
+        app.keyboards.firstMatch.keys[button].tap()
     }
+    
 }
+
+enum SwipeDirection {
+    case up
+    case down
+}
+
+

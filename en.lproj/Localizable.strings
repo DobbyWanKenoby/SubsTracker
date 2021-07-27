@@ -54,4 +54,6 @@
 "set value" = "Set value";
 
 "Accessebility doneButton" = "Done";
-"Accessebility newSubscriptionTab" = "New subscription";
+"Accessebility newSubscriptionTab" = "Create new subscription";
+"Accessibility cellAmount" = "Amount of subscription";
+"Accessibility cellCurrency" = "Currency of subscription";

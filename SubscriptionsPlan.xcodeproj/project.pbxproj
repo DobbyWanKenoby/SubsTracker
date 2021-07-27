@@ -67,6 +67,8 @@
 		E06D59FB25B06FD300CA8394 /* NotificationAlertPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06D59FA25B06FD300CA8394 /* NotificationAlertPresentationController.swift */; };
 		E06D59FF25B0705800CA8394 /* NotificationAlertTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06D59FE25B0705800CA8394 /* NotificationAlertTransitionManager.swift */; };
 		E06D5A0225B0742500CA8394 /* NotificationAlertAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06D5A0125B0742500CA8394 /* NotificationAlertAnimationController.swift */; };
+		E08630C726B0784600D1FF1B /* ACIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84946B1C26B038CA0037AF42 /* ACIdentifier.swift */; };
+		E08630C826B07AAA00D1FF1B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E044E2A825A634E200267459 /* Localizable.strings */; };
 		E08ACDB126712D3E003FB1C9 /* EntityInstanceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08ACDB026712D3E003FB1C9 /* EntityInstanceProvider.swift */; };
 		E08E993A264B0D3300F112FD /* ServicesListController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E08E9939264B0D3300F112FD /* ServicesListController.storyboard */; };
 		E090F3B1268CE03F00C7AEE4 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E090F3B0268CE03F00C7AEE4 /* TextField.swift */; };
@@ -173,6 +175,7 @@
 		E06D59FA25B06FD300CA8394 /* NotificationAlertPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAlertPresentationController.swift; sourceTree = "<group>"; };
 		E06D59FE25B0705800CA8394 /* NotificationAlertTransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAlertTransitionManager.swift; sourceTree = "<group>"; };
 		E06D5A0125B0742500CA8394 /* NotificationAlertAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAlertAnimationController.swift; sourceTree = "<group>"; };
+		E08630C926B0839D00D1FF1B /* VERSION.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = VERSION.md; sourceTree = "<group>"; };
 		E08ACDB026712D3E003FB1C9 /* EntityInstanceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityInstanceProvider.swift; sourceTree = "<group>"; };
 		E08E9939264B0D3300F112FD /* ServicesListController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServicesListController.storyboard; sourceTree = "<group>"; };
 		E090F3B0268CE03F00C7AEE4 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
@@ -525,6 +528,7 @@
 			children = (
 				E022C28F26405AAD0051C90E /* SwiftCoordinatorsKit */,
 				E044E2A825A634E200267459 /* Localizable.strings */,
+				E08630C926B0839D00D1FF1B /* VERSION.md */,
 				E044E26725A62B3900267459 /* MyPlayground.playground */,
 				E0C1241E259DFA9400ABC79F /* SubscriptionsPlan */,
 				843A866E26AFFD4F00FF9372 /* SubscriptionsPlanUITests */,
@@ -736,6 +740,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E08630C826B07AAA00D1FF1B /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -772,6 +777,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E08630C726B0784600D1FF1B /* ACIdentifier.swift in Sources */,
 				843A867026AFFD4F00FF9372 /* SubscriptionsPlanUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -886,6 +892,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 34E923QGF6;
 				INFOPLIST_FILE = SubscriptionsPlanUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -895,6 +902,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.swiftme.SubscriptionsPlanUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = SubscriptionsPlan;
@@ -905,6 +913,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 34E923QGF6;
 				INFOPLIST_FILE = SubscriptionsPlanUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -914,6 +923,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.swiftme.SubscriptionsPlanUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = SubscriptionsPlan;
@@ -1051,7 +1061,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.2;
+				MARKETING_VERSION = 0.2.5;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.swiftme.SubsTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1073,7 +1083,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.2;
+				MARKETING_VERSION = 0.2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.swiftme.SubsTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

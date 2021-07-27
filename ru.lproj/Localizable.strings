@@ -52,3 +52,7 @@
 "tomorrow" = "Завтра";
 "day after tomorrow" = "Послезавтра";
 "set value" = "Укажите значение";
+
+"Accessibility doneButton" = "Готово";
+"Accessibility newSubscriptionTab" = "Создать новую подписку";
+"Accessibility cellAmount" = "Стоимость подписки";

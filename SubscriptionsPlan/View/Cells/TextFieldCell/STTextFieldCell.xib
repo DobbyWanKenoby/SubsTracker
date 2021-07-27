@@ -23,13 +23,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="НАЗВАНИЕ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tos-Lz-eG6" customClass="CellTitleLabel" customModule="SubscriptionsPlan" customModuleProvider="target">
-                        <rect key="frame" x="16" y="15" width="288" height="16"/>
+                        <rect key="frame" x="20" y="15" width="284" height="16"/>
                         <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="PLACEHOLDER" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hfT-5v-TEQ">
-                        <rect key="frame" x="16" y="46" width="288" height="39"/>
+                        <rect key="frame" x="20" y="46" width="280" height="39"/>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                         <connections>
@@ -41,10 +41,10 @@
                     <constraint firstAttribute="trailingMargin" secondItem="Tos-Lz-eG6" secondAttribute="trailing" id="KfA-rI-Agr"/>
                     <constraint firstAttribute="bottom" secondItem="hfT-5v-TEQ" secondAttribute="bottom" constant="15" id="MLl-91-4Xe"/>
                     <constraint firstItem="hfT-5v-TEQ" firstAttribute="top" secondItem="Tos-Lz-eG6" secondAttribute="bottom" constant="15" id="h9m-rd-o8C"/>
-                    <constraint firstItem="Tos-Lz-eG6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="jy9-Tf-bZE"/>
-                    <constraint firstItem="hfT-5v-TEQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="kqr-XB-Z0k"/>
+                    <constraint firstItem="Tos-Lz-eG6" firstAttribute="left" secondItem="H2p-sc-9uM" secondAttribute="left" constant="20" id="jy9-Tf-bZE"/>
+                    <constraint firstItem="hfT-5v-TEQ" firstAttribute="left" secondItem="H2p-sc-9uM" secondAttribute="left" constant="20" id="kqr-XB-Z0k"/>
                     <constraint firstItem="Tos-Lz-eG6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="rkb-4F-3XF"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="hfT-5v-TEQ" secondAttribute="trailing" id="yNT-yv-Hqp"/>
+                    <constraint firstAttribute="right" secondItem="hfT-5v-TEQ" secondAttribute="right" constant="20" id="yNT-yv-Hqp"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
