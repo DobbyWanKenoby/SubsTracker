@@ -163,6 +163,7 @@ class STLabelDatePickerInputView: UILabel {
     
     override var inputView: UIView? {
         let datePicker = UIDatePicker()
+        datePicker.timeZone = TimeZone(abbreviation: "UTC")
         
         datePicker.datePickerMode = .date
         if #available(iOS 13.4, *) {

@@ -11,9 +11,15 @@ enum SubscriptionSignal: Signal {
     // получение всех подписок
     // -> subscriptions
     case getAll
+    
     // передача подписок
     // может содержать не все подписки, а только запрошенные
     case subscriptions([SubscriptionProtocol])
+    
+    // запрашивает запрос актуальных подписок
+    // broadcastActualSubscriptionsList - необходимость рассылки списка актуальных подписок
+    // -> actualSubscriptions
+    case getActualSubscriptions(broadcastActualSubscriptionsList: Bool)
     
     // список актуальных подписок
     // всегда содержит все действующие подписки

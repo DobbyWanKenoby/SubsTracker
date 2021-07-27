@@ -15,7 +15,7 @@ class CurrencyCoordinator: BaseCoordinator, CurrencyCoordinatorProtocol {
         if case CoreDataSignal.context(let context) = signalAnswer {
             return context
         } else {
-            fatalError("Can't get a Core Data context during app initialization process")
+            fatalError("Can't get a Core Data context in Currency Coordinator")
         }
     }()
     

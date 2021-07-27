@@ -17,12 +17,15 @@ protocol SubscriptionsListControllerProtocol: UIViewController {
     var sortType: SubscriptionSortType { get set }
     
     // Output callbacks
-    var onSelectSubscription: ((SubscriptionProtocol) -> Void)? { get set }
+    var onActivateEditSubscription: ((SubscriptionProtocol) -> Void)? { get set }
+    var onSuccessNextPayment: ((SubscriptionProtocol) -> Void)? { get set }
+    // var onDeleteSubscription: ((SubscriptionProtocol) -> Void)? { get set }
 }
 
 class SubscriptionsListController: UITableViewController, SubscriptionsListControllerProtocol {
     
-    var onSelectSubscription: ((SubscriptionProtocol) -> Void)?
+    var onActivateEditSubscription: ((SubscriptionProtocol) -> Void)?
+    var onSuccessNextPayment: ((SubscriptionProtocol) -> Void)?
     
     var subscriptions: [SubscriptionProtocol]! {
         didSet {
@@ -44,7 +47,7 @@ class SubscriptionsListController: UITableViewController, SubscriptionsListContr
     }
     
     private func configureView() {
-        self.navigationItem.title = NSLocalizedString("subscriptions", comment: "")
+        self.navigationItem.title = NSLocalizedString("payments", comment: "")
         self.navigationItem.largeTitleDisplayMode = .always
         self.tableView.separatorStyle = .none
         self.tableView.allowsSelection = false
@@ -116,7 +119,7 @@ class SubscriptionsListController: UITableViewController, SubscriptionsListContr
         deleteAction.image = UIImage(systemName: "trash.circle.fill", withConfiguration: configurator)!.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
         
         let editAction = UIContextualAction(style: .normal, title: "") {[unowned self] _,_,complete in
-            self.onSelectSubscription?(sortedSubscriptions[indexPath.row])
+            self.onActivateEditSubscription?(sortedSubscriptions[indexPath.row])
             complete(true)
         }
         editAction.backgroundColor = UIColor.systemBackground
@@ -125,12 +128,26 @@ class SubscriptionsListController: UITableViewController, SubscriptionsListContr
         
         return UISwipeActionsConfiguration(actions: [deleteAction,editAction])
     }
+    
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let configurator = UIImage.SymbolConfiguration(pointSize: 40)
+        let successPaymentAction = UIContextualAction(style: .normal, title: "") {[unowned self] _,_,complete in
+            self.onSuccessNextPayment?(sortedSubscriptions[indexPath.row])
+
+            complete(true)
+        }
+        successPaymentAction.backgroundColor = UIColor.systemBackground
+        let color = sortedSubscriptions[indexPath.row].service.color
+        successPaymentAction.image = UIImage(systemName: "pencil.circle", withConfiguration: configurator)!.withTintColor(color, renderingMode: .alwaysOriginal)
+        
+        return UISwipeActionsConfiguration(actions: [successPaymentAction])
+    }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        guard let selectedCell = tableView.cellForRow(at: indexPath) else {
 //            return
 //        }
-        onSelectSubscription?(sortedSubscriptions[indexPath.row])
+        onActivateEditSubscription?(sortedSubscriptions[indexPath.row])
     }
     
 //    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?

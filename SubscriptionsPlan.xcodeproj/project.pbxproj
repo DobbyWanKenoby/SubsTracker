@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8427631126982570009C0265 /* PaymentSignals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8427631026982570009C0265 /* PaymentSignals.swift */; };
 		842F02612667824500EB14C9 /* ServiceEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842F025E2667823E00EB14C9 /* ServiceEntity+CoreDataClass.swift */; };
+		843A867026AFFD4F00FF9372 /* SubscriptionsPlanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843A866F26AFFD4F00FF9372 /* SubscriptionsPlanUITests.swift */; };
 		8451419B266625A400F4345B /* SubsTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84514199266625A400F4345B /* SubsTracker.xcdatamodeld */; };
 		845294872668B32C0086148F /* CurrencyEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845294852668B3190086148F /* CurrencyEntity+CoreDataClass.swift */; };
 		8466BED326973D9700AF1818 /* PaymentEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466BED226973D9700AF1818 /* PaymentEntity+CoreDataClass.swift */; };
+		84946B1D26B038CA0037AF42 /* ACIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84946B1C26B038CA0037AF42 /* ACIdentifier.swift */; };
 		849E768D2689FA1A0024AEC6 /* StandardElementsSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E768C2689FA1A0024AEC6 /* StandardElementsSizes.swift */; };
 		84A3102D2670D91200F822DC /* SubscriptionEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A3102B2670D90600F822DC /* SubscriptionEntity+CoreDataClass.swift */; };
 		84B6DD2E268E026500FA0FFE /* PaymentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B6DD2D268E026500FA0FFE /* PaymentCoordinator.swift */; };
@@ -93,11 +96,26 @@
 		E0EE432525A0B12D00CA0F6F /* SubscriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0EE432425A0B12D00CA0F6F /* SubscriptionCell.xib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		843A867226AFFD4F00FF9372 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E0C12414259DFA9400ABC79F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E0C1241B259DFA9400ABC79F;
+			remoteInfo = SubscriptionsPlan;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		8427631026982570009C0265 /* PaymentSignals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSignals.swift; sourceTree = "<group>"; };
 		842F025E2667823E00EB14C9 /* ServiceEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		843A866D26AFFD4F00FF9372 /* SubscriptionsPlanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SubscriptionsPlanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		843A866F26AFFD4F00FF9372 /* SubscriptionsPlanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsPlanUITests.swift; sourceTree = "<group>"; };
+		843A867126AFFD4F00FF9372 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8451419A266625A400F4345B /* SubsTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SubsTracker.xcdatamodel; sourceTree = "<group>"; };
 		845294852668B3190086148F /* CurrencyEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8466BED226973D9700AF1818 /* PaymentEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PaymentEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		84946B1C26B038CA0037AF42 /* ACIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACIdentifier.swift; sourceTree = "<group>"; };
 		849E768C2689FA1A0024AEC6 /* StandardElementsSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardElementsSizes.swift; sourceTree = "<group>"; };
 		84A3102B2670D90600F822DC /* SubscriptionEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubscriptionEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		84B6DD2D268E026500FA0FFE /* PaymentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCoordinator.swift; sourceTree = "<group>"; };
@@ -186,6 +204,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		843A866A26AFFD4F00FF9372 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E0C12419259DFA9400ABC79F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -203,6 +228,23 @@
 				845294852668B3190086148F /* CurrencyEntity+CoreDataClass.swift */,
 			);
 			path = Currency;
+			sourceTree = "<group>";
+		};
+		843A866E26AFFD4F00FF9372 /* SubscriptionsPlanUITests */ = {
+			isa = PBXGroup;
+			children = (
+				843A866F26AFFD4F00FF9372 /* SubscriptionsPlanUITests.swift */,
+				843A867126AFFD4F00FF9372 /* Info.plist */,
+			);
+			path = SubscriptionsPlanUITests;
+			sourceTree = "<group>";
+		};
+		84946B1B26B0388E0037AF42 /* Accessibility */ = {
+			isa = PBXGroup;
+			children = (
+				84946B1C26B038CA0037AF42 /* ACIdentifier.swift */,
+			);
+			path = Accessibility;
 			sourceTree = "<group>";
 		};
 		84A3102A2670D72300F822DC /* Subscription */ = {
@@ -275,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				E0205B5226445DC700A355E6 /* ServiceSignals.swift */,
+				8427631026982570009C0265 /* PaymentSignals.swift */,
 				E0349F262645B262007DD2CD /* CurrencySignals.swift */,
 				E0205B5426445DF200A355E6 /* SubscriptionSignals.swift */,
 				E0BAFC78265EBD810042CFAD /* CoreDataSignals.swift */,
@@ -484,6 +527,7 @@
 				E044E2A825A634E200267459 /* Localizable.strings */,
 				E044E26725A62B3900267459 /* MyPlayground.playground */,
 				E0C1241E259DFA9400ABC79F /* SubscriptionsPlan */,
+				843A866E26AFFD4F00FF9372 /* SubscriptionsPlanUITests */,
 				E0C1241D259DFA9400ABC79F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -492,6 +536,7 @@
 			isa = PBXGroup;
 			children = (
 				E0C1241C259DFA9400ABC79F /* SubscriptionsPlan.app */,
+				843A866D26AFFD4F00FF9372 /* SubscriptionsPlanUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -504,6 +549,7 @@
 				E0EE432A25A1154C00CA0F6F /* Controllers */,
 				E0C12444259F72E300ABC79F /* View */,
 				E0C12437259DFAB000ABC79F /* Model */,
+				84946B1B26B0388E0037AF42 /* Accessibility */,
 				E044E2B325A7102D00267459 /* Helpers */,
 				E0C1242B259DFA9500ABC79F /* Assets.xcassets */,
 				E022C29F264125440051C90E /* Services.xcassets */,
@@ -612,6 +658,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		843A866C26AFFD4F00FF9372 /* SubscriptionsPlanUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 843A867626AFFD4F00FF9372 /* Build configuration list for PBXNativeTarget "SubscriptionsPlanUITests" */;
+			buildPhases = (
+				843A866926AFFD4F00FF9372 /* Sources */,
+				843A866A26AFFD4F00FF9372 /* Frameworks */,
+				843A866B26AFFD4F00FF9372 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				843A867326AFFD4F00FF9372 /* PBXTargetDependency */,
+			);
+			name = SubscriptionsPlanUITests;
+			productName = SubscriptionsPlanUITests;
+			productReference = 843A866D26AFFD4F00FF9372 /* SubscriptionsPlanUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		E0C1241B259DFA9400ABC79F /* SubscriptionsPlan */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E0C12433259DFA9500ABC79F /* Build configuration list for PBXNativeTarget "SubscriptionsPlan" */;
@@ -635,9 +699,13 @@
 		E0C12414259DFA9400ABC79F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1230;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1230;
 				TargetAttributes = {
+					843A866C26AFFD4F00FF9372 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = E0C1241B259DFA9400ABC79F;
+					};
 					E0C1241B259DFA9400ABC79F = {
 						CreatedOnToolsVersion = 12.3;
 					};
@@ -658,11 +726,19 @@
 			projectRoot = "";
 			targets = (
 				E0C1241B259DFA9400ABC79F /* SubscriptionsPlan */,
+				843A866C26AFFD4F00FF9372 /* SubscriptionsPlanUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		843A866B26AFFD4F00FF9372 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E0C1241A259DFA9400ABC79F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -692,6 +768,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		843A866926AFFD4F00FF9372 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				843A867026AFFD4F00FF9372 /* SubscriptionsPlanUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E0C12418259DFA9400ABC79F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -744,6 +828,8 @@
 				E044E21325A1EBBB00267459 /* SubscriptionListBaseController.swift in Sources */,
 				E044E25625A4BF6100267459 /* CellWithBottomLine.swift in Sources */,
 				E044E24325A4785000267459 /* CellTitleLabel.swift in Sources */,
+				8427631126982570009C0265 /* PaymentSignals.swift in Sources */,
+				84946B1D26B038CA0037AF42 /* ACIdentifier.swift in Sources */,
 				84B6DD3E268EEABF00FA0FFE /* CellProtocols.swift in Sources */,
 				E0349F232645AFCC007DD2CD /* CurrencyCoordinator.swift in Sources */,
 				E0C7D71525A1E07600E71476 /* CoordinatorFactory.swift in Sources */,
@@ -765,6 +851,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		843A867326AFFD4F00FF9372 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E0C1241B259DFA9400ABC79F /* SubscriptionsPlan */;
+			targetProxy = 843A867226AFFD4F00FF9372 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E044E2A825A634E200267459 /* Localizable.strings */ = {
@@ -788,6 +882,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		843A867426AFFD4F00FF9372 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SubscriptionsPlanUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.swiftme.SubscriptionsPlanUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SubscriptionsPlan;
+			};
+			name = Debug;
+		};
+		843A867526AFFD4F00FF9372 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SubscriptionsPlanUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.swiftme.SubscriptionsPlanUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SubscriptionsPlan;
+			};
+			name = Release;
+		};
 		E0C12431259DFA9500ABC79F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -952,6 +1084,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		843A867626AFFD4F00FF9372 /* Build configuration list for PBXNativeTarget "SubscriptionsPlanUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				843A867426AFFD4F00FF9372 /* Debug */,
+				843A867526AFFD4F00FF9372 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E0C12417259DFA9400ABC79F /* Build configuration list for PBXProject "SubscriptionsPlan" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

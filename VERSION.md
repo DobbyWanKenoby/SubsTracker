@@ -4,6 +4,9 @@
 **toDo:** On Create/Edit SubscriptionScreen title on next payment cell must be NEXT PAYMENT during editing and FIRST PAYMENT during creating
 
 
+### 0.2.5
+- Added UITests Target
+
 ### 0.2.4
 - Full update layout of Add Scbscription Screen
 - Updated all cells (include to CellFactory). Change TextField in PickerCell & DatePickerCell to Label 
@@ -13,6 +16,8 @@
 - Added autoupdate of subscriptions nexPaymentDate during save and update subscription instance
 - Added new instance Payment (struct & CoreData Entity)
 - Added new PaymentMicroService
+- Added Payment Success function
+- Fixed problem with TimeZone and payment's date
 
 ### 0.2.3
 - Renamed MicroServices

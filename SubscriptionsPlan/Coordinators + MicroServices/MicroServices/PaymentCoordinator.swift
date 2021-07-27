@@ -6,48 +6,95 @@
 //
 
 import Foundation
+import CoreData
 
-protocol PaymentsCoordinatorProtocol: BaseCoordinator, Transmitter {}
-
-// MARK: - Receiver
+protocol PaymentsCoordinatorProtocol: BaseCoordinator, Transmitter, Receiver {}
 
 class PaymentsCoordinator: BaseCoordinator, PaymentsCoordinatorProtocol {
+    
+    // MARK: CoreData
+    
+    lazy var context: NSManagedObjectContext = {
+        let signalAnswer = broadcast(signalWithReturnAnswer: CoreDataSignal.getDefaultContext).first as! CoreDataSignal
+        if case CoreDataSignal.context(let context) = signalAnswer {
+            return context
+        } else {
+            fatalError("Can't get a Core Data context in Payment Coordinator")
+        }
+    }()
+    
+    func savePersistance() {
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                fatalError("Error during saving Payments to Storage. Error message: \(error)")
+            }
+        }
+    }
+    
+}
 
+// MARK: - Coordinator Logic
+
+extension PaymentsCoordinator {
+    
     func receive(signal: Signal) -> Signal? {
-        if case SubscriptionSignal.checkSubscriptionOnPayments(var subscription) = signal {
+        switch signal {
+        case SubscriptionSignal.checkSubscriptionOnPayments(var subscription):
             if isNeedCreatePayments(for: subscription) {
                 let payments = getNewPayments(for: &subscription)
+                //
+                // ...
+                //
             }
-            return nil
+        case PaymentSignal.createPayments(count: let count, forSubscription: var subscription, editSubscription: let isEdit):
+            for _ in 1...count {
+                let payment = getNextPayment(for: &subscription, addPeriodToNextPaymentDate: isEdit)
+                self.createUpdate(from: payment)
+            }
+            if isEdit {
+                let signal = SubscriptionSignal.createUpdate(subscriptions: [subscription], broadcastActualSubscriptionsList: false)
+                self.broadcast(signal: signal, withAnswerToReceiver: nil)
+            }
+        default:
+            break
         }
         return nil
     }
     
     func edit(signal: Signal) -> Signal {
         var updatedSignal = signal
-        // Проверка подписки, не прошел ли срок следующего платежа
-        // И при необходимости создается запись о платеже
+        
+        // С помощью обработки этого сигнала координатор перехватывает данные о подписках
+        // и заменяет данные о сроке следующего платеже + создает записи о проведенных платежах
         if case SubscriptionSignal.createUpdate(subscriptions: var subscriptions, broadcastActualSubscriptionsList: let broadcast) = signal {
             for var (subscriptionIndex, subscriptionItem) in subscriptions.enumerated() {
-                print(222)
                 while isNeedCreatePayments(for: subscriptionItem) {
-                    let nextPayment = getNextPayment(for: &subscriptionItem, addPeriodToSubscriptionNextPaymentDate: true)
-                    print(nextPayment)
+                    let nextPayment = getNextPayment(for: &subscriptionItem, addPeriodToNextPaymentDate: true)
+                    createUpdate(from: nextPayment)
                 }
-                print(111)
                 subscriptions[subscriptionIndex] = subscriptionItem
             }
             updatedSignal = SubscriptionSignal.createUpdate(subscriptions: subscriptions, broadcastActualSubscriptionsList: broadcast)
+        } else if case PaymentSignal.createUpdate(let payments) = signal {
+            payments.forEach{ paymentItem in
+                self.createUpdate(from: paymentItem)
+            }
         }
         
         return updatedSignal
     }
 }
 
-// MARK: - Payments Stroage Logic
+// MARK: - Payments Storage Logic
 
 extension PaymentsCoordinator {
     
+    fileprivate func createUpdate(from payment: PaymentProtocol) {
+        PaymentEntity.getEntity(from: payment, context: context, updateEntityPropertiesIfNeeded: true)
+        savePersistance()
+    }
 }
 
 // MARK: - Payments Logic
@@ -63,7 +110,7 @@ extension PaymentsCoordinator {
     
     // Возвращает ОДИН новый платеж для подписки
     // Его дата соответствует дате следующего платежа
-    fileprivate func getNextPayment(for subscription: inout SubscriptionProtocol, addPeriodToSubscriptionNextPaymentDate isEdit: Bool = true) -> PaymentProtocol {
+    fileprivate func getNextPayment(for subscription: inout SubscriptionProtocol, addPeriodToNextPaymentDate isEdit: Bool = true) -> PaymentProtocol {
         let payment = Payment(identifier: UUID(),
                               forSubscription: subscription,
                               date: subscription.nextPaymentDate,

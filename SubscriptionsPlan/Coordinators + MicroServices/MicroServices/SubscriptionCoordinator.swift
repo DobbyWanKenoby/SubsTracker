@@ -14,7 +14,7 @@ class SubscriptionCoordinator: BaseCoordinator, SubscriptionCoordinatorProtocol 
         if case CoreDataSignal.context(let context) = signalAnswer {
             return context
         } else {
-            fatalError("Can't get a Core Data context during app initialization process")
+            fatalError("Can't get a Core Data context in Subscription Coordinator")
         }
     }()
     
@@ -40,15 +40,22 @@ class SubscriptionCoordinator: BaseCoordinator, SubscriptionCoordinatorProtocol 
                 createUpdate(from: subscription)
             }
             if needBroadcastSubscriptions {
-                let subscriptions = getSubscriptions()
+                let subscriptions = getActualSubscriptions()
                 let signal = SubscriptionSignal.actualSubscriptions(subscriptions)
                 self.broadcast(signal: signal, withAnswerToReceiver: nil)
             }
             
         case SubscriptionSignal.getAll:
-            let signal = SubscriptionSignal.subscriptions(getSubscriptions())
+            let signal = SubscriptionSignal.subscriptions(getActualSubscriptions())
             return signal
             
+        case SubscriptionSignal.getActualSubscriptions(broadcastActualSubscriptionsList: let needBroadcastSubscriptions):
+            let subscriptions = getActualSubscriptions()
+            if needBroadcastSubscriptions {
+                let signal = SubscriptionSignal.actualSubscriptions(subscriptions)
+                self.broadcast(signal: signal, withAnswerToReceiver: nil)
+            }
+            return signal
         default:
             break
         }
@@ -61,8 +68,8 @@ class SubscriptionCoordinator: BaseCoordinator, SubscriptionCoordinatorProtocol 
         savePersistance()
     }
     
-    // получение списка Подписок
-    private func getSubscriptions() -> [SubscriptionProtocol] {
+    // получение списка актуальных Подписок
+    private func getActualSubscriptions() -> [SubscriptionProtocol] {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "SubscriptionEntity")
 
         do {

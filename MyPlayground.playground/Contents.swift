@@ -1,7 +1,5 @@
 import UIKit
 
-
-
 //1
 typealias Coordinates = (alpha: Character?, num: Int?)
 //2

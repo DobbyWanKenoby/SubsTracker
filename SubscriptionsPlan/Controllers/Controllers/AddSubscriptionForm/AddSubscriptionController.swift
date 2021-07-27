@@ -167,6 +167,7 @@ class AddSubscriptionController: UIViewController, AddSubscriptionControllerProt
         super.viewDidLoad()
         setupCellFactory()
         addKeyboardObserver()
+        print(subscriptionNextPaymentDate)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -260,7 +261,7 @@ class AddSubscriptionController: UIViewController, AddSubscriptionControllerProt
     fileprivate func getSubscriptionObject() -> SubscriptionProtocol {
         let subscriptionService = service ?? Service(identifier: UUID().uuidString, title: "empty", colorHEX: "#fff")
         let newSubscription = Subscription(identifier: subscription?.identifier ?? UUID(),
-                                        service: subscriptionService ,
+                                        service: subscriptionService,
                                         amount: subscriptionAmount,
                                         currency: subscriptionCurrency,
                                         description: subscriptionDescription,
@@ -455,10 +456,21 @@ extension AddSubscriptionController: UITableViewDataSource {
     }
     
     private func getDateCell() -> UITableViewCell {
-
-        let cell = cellFactory.getDatePickerCell(title: NSLocalizedString("next_payment", comment: ""),
-                                                 selectedDate: subscriptionNextPaymentDate)
+        let cell: STDatePickerCellProtocol
+        if subscription == nil {
+            cell = cellFactory.getDatePickerCell(title: NSLocalizedString("first payment", comment: ""),
+                                                     selectedDate: subscriptionNextPaymentDate)
+        } else {
+            cell = cellFactory.getDatePickerCell(title: NSLocalizedString("next_payment", comment: ""),
+                                                     selectedDate: subscriptionNextPaymentDate)
+        }
+        
         cell.didDateChanged = { [weak self] date in
+            print(date)
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+            
+            //dateFormatter.da
             self!.subscriptionNextPaymentDate = date
         }
         cell.accentColor = color

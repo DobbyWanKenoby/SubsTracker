@@ -7,13 +7,24 @@
 */
 "attention" = "Attention";
 "you must set amount" = "You must set amount of subscription";
-"ok" = "Ok";
 "new service" = "New service";
+
+"ok" = "Ok";
+"yes" = "Yes";
+"cancel" = "Cancel";
+"done" = "Done";
+
+"first payment" = "First payment";
 "next_payment" = "Next Payment";
+"payment period" = "Pay";
+"payments" = "Payments";
+"do payment now %@" = "Do you want to pay subscription '%@' now? Another way it will pay automatically on";
+"success payment" = "Success payment";
+
 "currency" = "Currency";
 "amount" = "Amount";
 "notice" = "Description";
-"payment period" = "Period";
+
 "every" = "Every";
 "day" = "Day";
 "day(s)" = "Day(s)";
@@ -40,5 +51,7 @@
 "today" = "Today";
 "tomorrow" = "Tomorrow";
 "day after tomorrow" = "Day after tomorrow";
-"done" = "Done";
 "set value" = "Set value";
+
+"Accessebility doneButton" = "Done";
+"Accessebility newSubscriptionTab" = "New subscription";

@@ -12,7 +12,7 @@ class SubscriptionListBaseController: UINavigationController, SubscriptionsBaseC
     private func getBarIcon() -> UITabBarItem {
         let symbolConfigaration = UIImage.SymbolConfiguration(weight: .heavy)
         let icon = UIImage(systemName: "line.horizontal.3", withConfiguration: symbolConfigaration)
-        let iconTabBarItem = UITabBarItem(title: NSLocalizedString("subscriptions", comment: ""), image: icon, tag: 0)
+        let iconTabBarItem = UITabBarItem(title: NSLocalizedString("payments", comment: ""), image: icon, tag: 0)
         return iconTabBarItem
     }
  

@@ -20,6 +20,8 @@ class AddSubscriptionNavigationController: UINavigationController, AddSubscripti
         let symbolConfigaration = UIImage.SymbolConfiguration(weight: .heavy)
         let icon = UIImage(systemName: "plus.square.fill", withConfiguration: symbolConfigaration)
         let iconTabBarItem = UITabBarItem(title: NSLocalizedString("new_subscription", comment: ""), image: icon, tag: 0)
+        iconTabBarItem.accessibilityIdentifier = ACIdentifier.newSubscriptionTab.rawValue
+        iconTabBarItem.accessibilityLabel = NSLocalizedString(ACIdentifier.newSubscriptionTab.rawValue, comment: "")
         return iconTabBarItem
     }
 }

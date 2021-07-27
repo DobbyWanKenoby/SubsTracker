@@ -26,9 +26,31 @@ class SubscriptionListCoordinator: BasePresenter, SubscriptionListCoordinatorPro
     
     private func loadSubscriptionsListController() -> SubscriptionsListControllerProtocol {
         let controller = ControllerFactory.getSubscriptionsListController()
-        controller.onSelectSubscription = { subscription in
+        controller.onActivateEditSubscription = { subscription in
             let nextController = self.getEditSubscriptionConfiguredController(subscription: subscription)
             self.route(from: self.presenter!, to: nextController, method: .presentCard)
+        }
+        controller.onSuccessNextPayment = { subscription in
+            var dateComponents = DateComponents()
+            dateComponents.day = 1
+            let nextDayAfterPayment = Calendar.current.date(byAdding: dateComponents, to: subscription.nextPaymentDate) ?? Date()
+            let alert = UIAlertController(title: NSLocalizedString("success payment", comment: ""),
+                                          message: String(format: NSLocalizedString("do payment now %@", comment: ""), subscription.service.title) + " \(getDateLocaleFormat(nextDayAfterPayment))",
+                                          preferredStyle: .alert)
+            let okAction = UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: { _ in
+                // отправляем запрос на создание платежей
+                let signalNewPayments = PaymentSignal.createPayments(count: 1, forSubscription: subscription, editSubscription: true)
+                self.broadcast(signal: signalNewPayments, withAnswerToReceiver: nil)
+                // просим разослать актуальный список подписок по всей структуре приложения
+                let signalActualSubs = SubscriptionSignal.getActualSubscriptions(broadcastActualSubscriptionsList: true)
+                self.broadcast(signal: signalActualSubs, withAnswerToReceiver: nil)
+            })
+            let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+                return
+            })
+            alert.addAction(cancelAction)
+            alert.addAction(okAction)
+            self.route(from: self.presenter!, to: alert, method: .presentCard)
         }
         return controller
     }
