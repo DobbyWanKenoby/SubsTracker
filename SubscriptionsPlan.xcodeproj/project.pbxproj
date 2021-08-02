@@ -51,7 +51,6 @@
 		E044E24725A4B80B00267459 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E24625A4B80B00267459 /* Currency.swift */; };
 		E044E25225A4BAA800267459 /* STPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E25025A4BAA800267459 /* STPickerCell.swift */; };
 		E044E25625A4BF6100267459 /* CellWithBottomLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E25525A4BF6100267459 /* CellWithBottomLine.swift */; };
-		E044E25B25A4C83E00267459 /* SettingsSharedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E25A25A4C83E00267459 /* SettingsSharedCoordinator.swift */; };
 		E044E26C25A62BE800267459 /* STDatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E26A25A62BE800267459 /* STDatePickerCell.swift */; };
 		E044E2A625A634E200267459 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E044E2A825A634E200267459 /* Localizable.strings */; };
 		E044E2B525A7103D00267459 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E2B425A7103D00267459 /* Localization.swift */; };
@@ -152,7 +151,6 @@
 		E044E24625A4B80B00267459 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		E044E25025A4BAA800267459 /* STPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STPickerCell.swift; sourceTree = "<group>"; };
 		E044E25525A4BF6100267459 /* CellWithBottomLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithBottomLine.swift; sourceTree = "<group>"; };
-		E044E25A25A4C83E00267459 /* SettingsSharedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSharedCoordinator.swift; sourceTree = "<group>"; };
 		E044E26725A62B3900267459 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E044E26A25A62BE800267459 /* STDatePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STDatePickerCell.swift; sourceTree = "<group>"; };
 		E044E27625A630CA00267459 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -483,14 +481,6 @@
 			path = Initializator;
 			sourceTree = "<group>";
 		};
-		E09CAED7265AAEA60042099B /* SharedMicroServices */ = {
-			isa = PBXGroup;
-			children = (
-				E044E25A25A4C83E00267459 /* SettingsSharedCoordinator.swift */,
-			);
-			path = SharedMicroServices;
-			sourceTree = "<group>";
-		};
 		E0AEC18125B4D9CB009231C3 /* SubscriptionsBaseContoller */ = {
 			isa = PBXGroup;
 			children = (
@@ -620,7 +610,6 @@
 				E0C7D71425A1E07600E71476 /* CoordinatorFactory.swift */,
 				E03AB40E2642A04C00869617 /* Coordinators */,
 				E0205B5826445F5800A355E6 /* MicroServices */,
-				E09CAED7265AAEA60042099B /* SharedMicroServices */,
 			);
 			path = "Coordinators + MicroServices";
 			sourceTree = "<group>";
@@ -815,7 +804,6 @@
 				E01EDEC325A9F394009E1B36 /* AddSubscriptionController.swift in Sources */,
 				E0C12422259DFA9400ABC79F /* SceneDelegate.swift in Sources */,
 				E044E25225A4BAA800267459 /* STPickerCell.swift in Sources */,
-				E044E25B25A4C83E00267459 /* SettingsSharedCoordinator.swift in Sources */,
 				E0205B5526445DF200A355E6 /* SubscriptionSignals.swift in Sources */,
 				E044E21325A1EBBB00267459 /* SubscriptionListBaseController.swift in Sources */,
 				E044E25625A4BF6100267459 /* CellWithBottomLine.swift in Sources */,
@@ -1115,7 +1103,7 @@
 			repositoryURL = "https://github.com/DobbyWanKenoby/SwiftCoordinatorsKit";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.3.2;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

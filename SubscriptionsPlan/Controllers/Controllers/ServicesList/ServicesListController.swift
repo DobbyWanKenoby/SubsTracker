@@ -109,6 +109,7 @@ extension ServicesListController: UITableViewDelegate {
 }
 
 extension ServicesListController: Receiver {
+    
     func receive(signal: Signal) -> Signal? {
         if case ServiceSignal.services(let servicesList) = signal {
             services = servicesList

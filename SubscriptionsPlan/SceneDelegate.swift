@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         window.windowScene = windowScene
         
-        let appCoordinator = CoordinatorFactory.getApplicationCoordinator()
+        let appCoordinator = CoordinatorFactory.getApplicationCoordinator(options: [.isolateMode])
         appCoordinator.startFlow()
         window.rootViewController = appCoordinator.presenter
         window.makeKeyAndVisible()

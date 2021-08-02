@@ -5,68 +5,68 @@ class CoordinatorFactory {
     // MARK: - Main App Coordinator
     
     @discardableResult
-    static func getApplicationCoordinator() -> ApplicationCoordinatorProtocol {
+    static func getApplicationCoordinator(options: [CoordinatorOption] = []) -> ApplicationCoordinatorProtocol {
         let controller = ControllerFactory.getDefaultController(byType: .tabBar)
-        return ApplicationCoordinator(presenter: controller)
+        return ApplicationCoordinator(presenter: controller, options: options)
     }
     
     // MARK: - Presenters
     
     @discardableResult
-    static func getInitializatorCoordinator(rootCoordinator: Coordinator?) -> InitializatorCoordinatorProtocol {
+    static func getInitializatorCoordinator(rootCoordinator: Coordinator?, options: [CoordinatorOption] = []) -> InitializatorCoordinatorProtocol {
         let controller = ControllerFactory.getInitializatorController()
-        return InitializatorCoordinator(presenter: controller, rootCoordinator: rootCoordinator)
+        return InitializatorCoordinator(presenter: controller, rootCoordinator: rootCoordinator, options: options)
     }
     
     @discardableResult
-    static func getIFunctionalCoordinator(rootCoordinator: Coordinator?) -> FunctionalCoordinatorProtocol {
+    static func getIFunctionalCoordinator(rootCoordinator: Coordinator?, options: [CoordinatorOption] = []) -> FunctionalCoordinatorProtocol {
         let controller = ControllerFactory.getFunctionalController()
-        return FunctionalCoordinator(presenter: controller, rootCoordinator: rootCoordinator)
+        return FunctionalCoordinator(presenter: controller, rootCoordinator: rootCoordinator, options: options)
     }
     
     @discardableResult
-    static func getAddSubscriptionCoordinator(rootCoordinator: Coordinator?) -> AddSubscriptionCoordinatorProtocol {
+    static func getAddSubscriptionCoordinator(rootCoordinator: Coordinator?, options: [CoordinatorOption] = []) -> AddSubscriptionCoordinatorProtocol {
         let controller = ControllerFactory.getAddSubscriptionBaseController()
-        return AddSubscriptionCoordinator(presenter: controller, rootCoordinator: rootCoordinator)
+        return AddSubscriptionCoordinator(presenter: controller, rootCoordinator: rootCoordinator, options: options)
     }
     
     @discardableResult
-    static func getSubscriptionListCoordinator(rootCoordinator: Coordinator?) -> SubscriptionListCoordinatorProtocol {
+    static func getSubscriptionListCoordinator(rootCoordinator: Coordinator?, options: [CoordinatorOption] = []) -> SubscriptionListCoordinatorProtocol {
         let сontroller = ControllerFactory.getSubscriptionListBaseController()
-        return SubscriptionListCoordinator(presenter: сontroller, rootCoordinator: rootCoordinator)
+        return SubscriptionListCoordinator(presenter: сontroller, rootCoordinator: rootCoordinator, options: options)
     }
 
     
     // MARK: - MicroServices Coordinators
     
     @discardableResult
-    static func getSettingMicroService(rootCoordinator: Coordinator?) -> SettingCoordinatorProtocol {
-        return SettingCoordinator(rootCoordinator: rootCoordinator)
+    static func getSettingMicroService(rootCoordinator: Coordinator?, options: [CoordinatorOption] = []) -> SettingCoordinatorProtocol {
+        return SettingCoordinator(rootCoordinator: rootCoordinator, options: options)
     }
     
     @discardableResult
-    static func getCurrencyMicroService(rootCoordinator: Coordinator?) -> CurrencyCoordinatorProtocol {
-        return CurrencyCoordinator(rootCoordinator: rootCoordinator)
+    static func getCurrencyMicroService(rootCoordinator: Coordinator?, options: [CoordinatorOption] = []) -> CurrencyCoordinatorProtocol {
+        return CurrencyCoordinator(rootCoordinator: rootCoordinator, options: options)
     }
     
     @discardableResult
-    static func getServiceMicroService(rootCoordinator: Coordinator?) -> ServiceCoordinatorProtocol {
-        return ServiceCoordinator(rootCoordinator: rootCoordinator)
+    static func getServiceMicroService(rootCoordinator: Coordinator?, options: [CoordinatorOption] = []) -> ServiceCoordinatorProtocol {
+        return ServiceCoordinator(rootCoordinator: rootCoordinator, options: options)
     }
     
     @discardableResult
-    static func getPaymentMicroService(rootCoordinator: Coordinator?) -> PaymentsCoordinatorProtocol {
-        return PaymentsCoordinator(rootCoordinator: rootCoordinator)
+    static func getPaymentMicroService(rootCoordinator: Coordinator?, options: [CoordinatorOption] = []) -> PaymentsCoordinatorProtocol {
+        return PaymentsCoordinator(rootCoordinator: rootCoordinator, options: options)
     }
     
     @discardableResult
-    static func getCoreDataMicroService(rootCoordinator: Coordinator?) -> CoreDataCoordinatorProtocol {
-        return CoreDataCoordinator(rootCoordinator: rootCoordinator)
+    static func getCoreDataMicroService(rootCoordinator: Coordinator?, options: [CoordinatorOption] = []) -> CoreDataCoordinatorProtocol {
+        return CoreDataCoordinator(rootCoordinator: rootCoordinator, options: options)
     }
     
     @discardableResult
-    static func getSubscriptionMicroService(rootCoordinator: Coordinator?) -> SubscriptionCoordinatorProtocol {
-        return SubscriptionCoordinator(rootCoordinator: rootCoordinator)
+    static func getSubscriptionMicroService(rootCoordinator: Coordinator?, options: [CoordinatorOption] = []) -> SubscriptionCoordinatorProtocol {
+        return SubscriptionCoordinator(rootCoordinator: rootCoordinator, options: options)
     }
 
 }

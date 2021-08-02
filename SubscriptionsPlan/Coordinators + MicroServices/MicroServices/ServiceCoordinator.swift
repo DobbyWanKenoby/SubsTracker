@@ -33,7 +33,6 @@ class ServiceCoordinator: BaseCoordinator, ServiceCoordinatorProtocol {
     
     func receive(signal: Signal) -> Signal? {
         switch signal {
-        
         // Запрос Сервиса по идентификатору
         case ServiceSignal.getServiceByIdentifier(let identifier):
             if let service = getServiceBy(identifier: identifier) {

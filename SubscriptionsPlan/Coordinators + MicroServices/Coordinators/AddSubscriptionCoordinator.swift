@@ -10,7 +10,7 @@ import SwiftCoordinatorsKit
 
 protocol AddSubscriptionCoordinatorProtocol: BasePresenter, Transmitter, Receiver {}
 
-class AddSubscriptionCoordinator: BasePresenter, AddSubscriptionCoordinatorProtocol {
+class AddSubscriptionCoordinator: BasePresenter, AddSubscriptionCoordinatorProtocol, Receiver {
     
     private var navigationPresenter: UINavigationController? {
         return presenter as? UINavigationController

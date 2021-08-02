@@ -1,13 +1,13 @@
 // Сервис, обеспечивающий работу с сущностью "Валюта/Currency"
 
-import UIKit
+import Foundation
 import CoreData
 import SwiftCoordinatorsKit
 
 protocol CurrencyCoordinatorProtocol: BaseCoordinator, Transmitter, Receiver {}
 
 class CurrencyCoordinator: BaseCoordinator, CurrencyCoordinatorProtocol {
-    
+
     // MARK: - CoreData
     
     lazy var context: NSManagedObjectContext = {
@@ -27,38 +27,6 @@ class CurrencyCoordinator: BaseCoordinator, CurrencyCoordinatorProtocol {
                 fatalError("Error during saving Currencies to Storage. Error message: \(error)")
             }
         }
-    }
-    
-    // MARK: - Receiver
-    
-    func receive(signal: Signal) -> Signal? {
-        switch signal {
-        
-        // создание/обновление Валюты
-        case CurrencySignal.createUpdateIfNeeded(let currencies):
-            currencies.forEach{ currency in
-                createUpdateIfNeeded(from: currency)
-            }
-            
-        // запрос списка валют
-        case CurrencySignal.getCurrencies:
-            let currencies = loadCurrencies()
-            let signal = CurrencySignal.currencies(currencies)
-            return signal
-        
-        // запрос дефолтной валюты
-        case CurrencySignal.getDefaultCurrency:
-            guard let currency = getCurrentCurrency() else {
-                return nil
-            }
-            let signal = CurrencySignal.currency(currency)
-            return signal
-            
-        default:
-            break
-        }
-        
-        return nil
     }
     
     private func createUpdateIfNeeded(from currency: CurrencyProtocol) {
@@ -121,6 +89,41 @@ class CurrencyCoordinator: BaseCoordinator, CurrencyCoordinatorProtocol {
         } catch {
             fatalError("Error during load Current CurrencyEntity")
         }
+    }
+}
+
+// MARK: - Receiver
+
+extension CurrencyCoordinator: Receiver {
+    
+    func receive(signal: Signal) -> Signal? {
+        switch signal {
+        
+        // создание/обновление Валюты
+        case CurrencySignal.createUpdateIfNeeded(let currencies):
+            currencies.forEach{ currency in
+                createUpdateIfNeeded(from: currency)
+            }
+            
+        // запрос списка валют
+        case CurrencySignal.getCurrencies:
+            let currencies = loadCurrencies()
+            let signal = CurrencySignal.currencies(currencies)
+            return signal
+        
+        // запрос дефолтной валюты
+        case CurrencySignal.getDefaultCurrency:
+            guard let currency = getCurrentCurrency() else {
+                return nil
+            }
+            let signal = CurrencySignal.currency(currency)
+            return signal
+            
+        default:
+            break
+        }
+        
+        return nil
     }
     
 }

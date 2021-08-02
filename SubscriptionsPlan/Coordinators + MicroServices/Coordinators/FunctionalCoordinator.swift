@@ -11,7 +11,7 @@ import SwiftCoordinatorsKit
 protocol FunctionalCoordinatorProtocol: BasePresenter, Transmitter {}
 
 class FunctionalCoordinator: BasePresenter, FunctionalCoordinatorProtocol {
-    
+
     private var tabBarPresenter: UITabBarController {
         presenter as! UITabBarController
     }

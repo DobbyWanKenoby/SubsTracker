@@ -11,6 +11,7 @@ protocol CoreDataCoordinatorProtocol: BaseCoordinator, Receiver {}
 // MARK: - Receiver
 
 class CoreDataCoordinator: BaseCoordinator, CoreDataCoordinatorProtocol {
+    
     lazy var persistanceContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "SubsTracker")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
