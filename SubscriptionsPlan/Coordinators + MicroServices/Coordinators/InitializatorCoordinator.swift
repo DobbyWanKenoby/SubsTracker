@@ -12,6 +12,7 @@ import SwiftCoordinatorsKit
 protocol InitializatorCoordinatorProtocol: BasePresenter, Transmitter {}
 
 class InitializatorCoordinator: BasePresenter, InitializatorCoordinatorProtocol {
+    var edit: ((Signal) -> Signal)?
     
     lazy private var currentAppVersion: String = {
         Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String ?? "unknownVersion"
@@ -43,8 +44,8 @@ class InitializatorCoordinator: BasePresenter, InitializatorCoordinatorProtocol 
     
     // MARK: - Coordinator Life Cycle
     
-    override func startFlow(finishCompletion: (() -> Void)? = nil) {
-        super.startFlow(finishCompletion: finishCompletion)
+    override func startFlow(withWork work: (() -> Void)? = nil, finishCompletion: (() -> Void)? = nil) {
+        super.startFlow(withWork: work, finishCompletion: finishCompletion)
         (self.presenter as? InitializatorControllerProtocol)?.initializationDidEnd = {
             self.finishFlow()
         }

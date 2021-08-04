@@ -7,6 +7,7 @@ import SwiftCoordinatorsKit
 protocol SubscriptionCoordinatorProtocol: BaseCoordinator, Transmitter, Receiver {}
 
 class SubscriptionCoordinator: BaseCoordinator, SubscriptionCoordinatorProtocol {
+    var edit: ((Signal) -> Signal)?
     
     // MARK: - CoreData
     

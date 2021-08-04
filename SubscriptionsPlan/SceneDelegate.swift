@@ -6,12 +6,16 @@
 //
 
 import UIKit
+import SwiftCoordinatorsKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
+    var coordinator: SceneCoordinator!
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: UIScreen.main.bounds)
         guard let window = window else {
@@ -19,10 +23,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         window.windowScene = windowScene
         
-        let appCoordinator = CoordinatorFactory.getApplicationCoordinator(options: [.isolateMode])
-        appCoordinator.startFlow()
-        window.rootViewController = appCoordinator.presenter
+        coordinator = CoordinatorFactory.getSceneCoordinator(appCoordinator: (UIApplication.shared.delegate as! AppDelegate).coordinator, window: window)
+        let mainFlowCoordinator = CoordinatorFactory.getMainFlowCoordinator(rootCoordinator: self.coordinator)
+        mainFlowCoordinator.startFlow()
         window.makeKeyAndVisible()
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

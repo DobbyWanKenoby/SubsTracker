@@ -11,6 +11,7 @@ import SwiftCoordinatorsKit
 protocol AddSubscriptionCoordinatorProtocol: BasePresenter, Transmitter, Receiver {}
 
 class AddSubscriptionCoordinator: BasePresenter, AddSubscriptionCoordinatorProtocol, Receiver {
+    var edit: ((Signal) -> Signal)?
     
     private var navigationPresenter: UINavigationController? {
         return presenter as? UINavigationController
@@ -19,8 +20,8 @@ class AddSubscriptionCoordinator: BasePresenter, AddSubscriptionCoordinatorProto
     // strong ссылки на менеджеры перехода
     var transitionManagers: [UIViewControllerTransitioningDelegate] = []
     
-    override func startFlow(finishCompletion: (() -> Void)? = nil) {
-        super.startFlow(finishCompletion: finishCompletion)
+    override func startFlow(withWork work: (() -> Void)? = nil, finishCompletion: (() -> Void)? = nil) {
+        super.startFlow(withWork: work, finishCompletion: finishCompletion)
         navigationPresenter?.navigationBar.prefersLargeTitles = true
         navigationPresenter?.pushViewController(getServiceListConfiguredController(), animated: false)
     }

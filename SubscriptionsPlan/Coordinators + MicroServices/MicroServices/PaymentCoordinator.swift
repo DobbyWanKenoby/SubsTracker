@@ -12,6 +12,7 @@ import SwiftCoordinatorsKit
 protocol PaymentsCoordinatorProtocol: BaseCoordinator, Transmitter, Receiver {}
 
 class PaymentsCoordinator: BaseCoordinator, PaymentsCoordinatorProtocol {
+    var edit: ((Signal) -> Signal)?
     
     // MARK: CoreData
     

@@ -11,13 +11,14 @@ import SwiftCoordinatorsKit
 protocol FunctionalCoordinatorProtocol: BasePresenter, Transmitter {}
 
 class FunctionalCoordinator: BasePresenter, FunctionalCoordinatorProtocol {
+    var edit: ((Signal) -> Signal)?
 
     private var tabBarPresenter: UITabBarController {
         presenter as! UITabBarController
     }
     
-    override func startFlow(finishCompletion: (() -> Void)? = nil) {
-        super.startFlow(finishCompletion: finishCompletion)
+    override func startFlow(withWork work: (() -> Void)? = nil, finishCompletion: (() -> Void)? = nil) {
+        super.startFlow(withWork: work, finishCompletion: finishCompletion)
         setupPresenter()
         startChildCoordinators()
     }

@@ -7,6 +7,7 @@ import SwiftCoordinatorsKit
 protocol CurrencyCoordinatorProtocol: BaseCoordinator, Transmitter, Receiver {}
 
 class CurrencyCoordinator: BaseCoordinator, CurrencyCoordinatorProtocol {
+    var edit: ((Signal) -> Signal)?
 
     // MARK: - CoreData
     

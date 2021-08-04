@@ -1,18 +1,35 @@
-//
-//  AppDelegate.swift
-//  SubscriptionsPlan
-//
-//  Created by Vasily Usov on 31.12.2020.
-//
-
 import UIKit
-import CoreData
+import SwiftCoordinatorsKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    var coordinator: AppCoordinator!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        coordinator = CoordinatorFactory.getAppCoordinator()
+        coordinator.startFlow(withWork: {
+            // Подключение Приемников (МикроСервисов)
+            
+            // МикроСервис с настройками приложения
+            // Настройки пользователя + Системные настройки
+            CoordinatorFactory.getSettingMicroService(rootCoordinator: self.coordinator, options: [.shared])
+            // МикроСервис для работы с CoreData
+            CoordinatorFactory.getCoreDataMicroService(rootCoordinator: self.coordinator, options: [.shared])
+            // МикроСервис для работы с сущностью Currency
+            CoordinatorFactory.getCurrencyMicroService(rootCoordinator: self.coordinator, options: [.shared])
+            // МикроСервис для работы с сущностью Service
+            CoordinatorFactory.getServiceMicroService(rootCoordinator: self.coordinator, options: [.shared])
+            // МикроСервис для работы с сущностью Payment
+            let paymentCoordinator = CoordinatorFactory.getPaymentMicroService(rootCoordinator: self.coordinator, options: [.shared])
+            // МикроСервис для работы с сущностью Subscription
+            // !!! родительским для SubCoord является PayCoord
+            //  это сделано для того, чтобы при создании подписки
+            //  автоматически проверялась дата следующего платежа
+            //  и при необходимости подменялась и создавались записи о прошедших платежах
+            CoordinatorFactory.getSubscriptionMicroService(rootCoordinator: paymentCoordinator, options: [.shared])
+        }, finishCompletion: nil)
         return true
     }
 
@@ -29,5 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+
+
 }
 

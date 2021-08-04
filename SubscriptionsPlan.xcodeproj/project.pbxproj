@@ -37,7 +37,7 @@
 		E0349F232645AFCC007DD2CD /* CurrencyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0349F222645AFCC007DD2CD /* CurrencyCoordinator.swift */; };
 		E0349F252645B044007DD2CD /* Currencies.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0349F242645B044007DD2CD /* Currencies.plist */; };
 		E0349F272645B262007DD2CD /* CurrencySignals.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0349F262645B262007DD2CD /* CurrencySignals.swift */; };
-		E039B93125A1D42F0096B23A /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E039B93025A1D42F0096B23A /* ApplicationCoordinator.swift */; };
+		E039B93125A1D42F0096B23A /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E039B93025A1D42F0096B23A /* MainFlowCoordinator.swift */; };
 		E03AB4102642A33D00869617 /* ServiceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03AB40F2642A33D00869617 /* ServiceCoordinator.swift */; };
 		E044E21325A1EBBB00267459 /* SubscriptionListBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E21225A1EBBB00267459 /* SubscriptionListBaseController.swift */; };
 		E044E21825A1ED3300267459 /* ServicesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044E21725A1ED3300267459 /* ServicesListController.swift */; };
@@ -137,7 +137,7 @@
 		E0349F222645AFCC007DD2CD /* CurrencyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCoordinator.swift; sourceTree = "<group>"; };
 		E0349F242645B044007DD2CD /* Currencies.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Currencies.plist; sourceTree = "<group>"; };
 		E0349F262645B262007DD2CD /* CurrencySignals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySignals.swift; sourceTree = "<group>"; };
-		E039B93025A1D42F0096B23A /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
+		E039B93025A1D42F0096B23A /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
 		E03AB40F2642A33D00869617 /* ServiceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCoordinator.swift; sourceTree = "<group>"; };
 		E044E21225A1EBBB00267459 /* SubscriptionListBaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionListBaseController.swift; sourceTree = "<group>"; };
 		E044E21725A1ED3300267459 /* ServicesListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesListController.swift; sourceTree = "<group>"; };
@@ -314,7 +314,7 @@
 		E03AB40E2642A04C00869617 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				E039B93025A1D42F0096B23A /* ApplicationCoordinator.swift */,
+				E039B93025A1D42F0096B23A /* MainFlowCoordinator.swift */,
 				E09CAED0265A94860042099B /* InitializatorCoordinator.swift */,
 				84DE2102267CC236003B7862 /* FunctionalCoordinator.swift */,
 				E044E22625A1F36C00267459 /* AddSubscriptionCoordinator.swift */,
@@ -771,7 +771,7 @@
 				E0C7D71B25A1E85A00E71476 /* SubscriptionListCoordinator.swift in Sources */,
 				E044E2B525A7103D00267459 /* Localization.swift in Sources */,
 				E0C1243D259DFB8400ABC79F /* Subscription.swift in Sources */,
-				E039B93125A1D42F0096B23A /* ApplicationCoordinator.swift in Sources */,
+				E039B93125A1D42F0096B23A /* MainFlowCoordinator.swift in Sources */,
 				E0C12460259F792B00ABC79F /* SubscriptionsListController.swift in Sources */,
 				E06D59FF25B0705800CA8394 /* NotificationAlertTransitionManager.swift in Sources */,
 				849E768D2689FA1A0024AEC6 /* StandardElementsSizes.swift in Sources */,
@@ -1035,7 +1035,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.5;
+				MARKETING_VERSION = 0.3.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.swiftme.SubsTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1057,7 +1057,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.5;
+				MARKETING_VERSION = 0.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.swiftme.SubsTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1102,8 +1102,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/DobbyWanKenoby/SwiftCoordinatorsKit";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

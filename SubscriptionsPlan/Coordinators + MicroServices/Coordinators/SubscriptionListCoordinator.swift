@@ -4,6 +4,7 @@ import SwiftCoordinatorsKit
 protocol SubscriptionListCoordinatorProtocol: BasePresenter, Transmitter, Receiver {}
 
 class SubscriptionListCoordinator: BasePresenter, SubscriptionListCoordinatorProtocol {
+    var edit: ((Signal) -> Signal)?
     
     var listController: SubscriptionsListControllerProtocol!
     // strong ссылки на менеджеры перехода
@@ -13,8 +14,8 @@ class SubscriptionListCoordinator: BasePresenter, SubscriptionListCoordinatorPro
         return presenter as? UINavigationController
     }
     
-    override func startFlow(finishCompletion: (() -> Void)? = nil) {
-        super.startFlow(finishCompletion: finishCompletion)
+    override func startFlow(withWork work: (() -> Void)? = nil, finishCompletion: (() -> Void)? = nil) {
+        super.startFlow(withWork: work, finishCompletion: finishCompletion)
         navigationPresenter?.navigationBar.prefersLargeTitles = true
         
         // Контроллер со списком подписок

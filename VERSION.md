@@ -4,8 +4,13 @@
 **toDo:** On Create/Edit SubscriptionScreen title on next payment cell must be NEXT PAYMENT during editing and FIRST PAYMENT during creating
 
 
+### 0.3.1
+- Updated SCK core version to 1.0.6
+- Integrated SCK App & Scene Coordinators
+- Fixed bugs (after updating SCK)
+
 ### 0.3.0
-- Update SCK core version to 1.0.2
+- Updated SCK core version to 1.0.2
 - AppCoordinator & SceneCoordinator added
 
 ### 0.2.5

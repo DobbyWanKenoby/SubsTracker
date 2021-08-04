@@ -1,13 +1,26 @@
+import UIKit
 import SwiftCoordinatorsKit
 
 class CoordinatorFactory {
     
-    // MARK: - Main App Coordinator
+    // MARK: Главный координатор приложения
+    @discardableResult
+    static func getAppCoordinator(options: [CoordinatorOption] = []) -> AppCoordinator {
+        return AppCoordinator(options: options)
+    }
+    
+    // MARK: Координатор сцены
+    @discardableResult
+    static func getSceneCoordinator(appCoordinator: AppCoordinator, window: UIWindow, options: [CoordinatorOption] = []) -> SceneCoordinator {
+        return SceneCoordinator(appCoordinator: appCoordinator, window: window, options: options)
+    }
+    
+    // MARK: - Main Flow Coordinator
     
     @discardableResult
-    static func getApplicationCoordinator(options: [CoordinatorOption] = []) -> ApplicationCoordinatorProtocol {
+    static func getMainFlowCoordinator(rootCoordinator: Coordinator, options: [CoordinatorOption] = []) -> MainFlowCoordinatorProtocol {
         let controller = ControllerFactory.getDefaultController(byType: .tabBar)
-        return ApplicationCoordinator(presenter: controller, options: options)
+        return MainFlowCoordinator(presenter: controller, rootCoordinator: rootCoordinator, options: options)
     }
     
     // MARK: - Presenters
@@ -19,7 +32,7 @@ class CoordinatorFactory {
     }
     
     @discardableResult
-    static func getIFunctionalCoordinator(rootCoordinator: Coordinator?, options: [CoordinatorOption] = []) -> FunctionalCoordinatorProtocol {
+    static func getFunctionalCoordinator(rootCoordinator: Coordinator?, options: [CoordinatorOption] = []) -> FunctionalCoordinatorProtocol {
         let controller = ControllerFactory.getFunctionalController()
         return FunctionalCoordinator(presenter: controller, rootCoordinator: rootCoordinator, options: options)
     }
