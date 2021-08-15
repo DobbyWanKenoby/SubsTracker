@@ -13,8 +13,8 @@ protocol PaymentProtocol {
     var subscriptionIdentifier: String { get }
     var date: Date { get }
     var currency: CurrencyProtocol { get }
-    var amount: Float { get set }
-    init(identifier: UUID, forSubscription: SubscriptionProtocol, date: Date, currency: CurrencyProtocol, amount: Float)
+    var amount: Decimal { get set }
+    init(identifier: UUID, forSubscription: SubscriptionProtocol, date: Date, currency: CurrencyProtocol, amount: Decimal)
 }
 
 struct Payment: PaymentProtocol {
@@ -24,9 +24,9 @@ struct Payment: PaymentProtocol {
     var subscriptionIdentifier: String
     var date: Date
     var currency: CurrencyProtocol
-    var amount: Float
+    var amount: Decimal
     
-    init(identifier: UUID, forSubscription: SubscriptionProtocol, date: Date, currency: CurrencyProtocol, amount: Float) {
+    init(identifier: UUID, forSubscription: SubscriptionProtocol, date: Date, currency: CurrencyProtocol, amount: Decimal) {
         self.identifier = identifier
         self.subscriptionIdentifier = forSubscription.identifier.uuidString
         self.service = forSubscription.service

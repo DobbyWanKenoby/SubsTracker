@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20C69" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CurrencyEntity" representedClassName="CurrencyEntity" syncable="YES" codeGenerationType="category">
         <attribute name="identifier" attributeType="String"/>
         <attribute name="isCurrent" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
@@ -9,7 +9,7 @@
         <relationship name="subscriptions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SubscriptionEntity" inverseName="currency" inverseEntity="SubscriptionEntity"/>
     </entity>
     <entity name="PaymentEntity" representedClassName="PaymentEntity" syncable="YES" codeGenerationType="category">
-        <attribute name="amount" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="amount" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="identifier" optional="YES" attributeType="String"/>
         <relationship name="currency" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CurrencyEntity" inverseName="payments" inverseEntity="CurrencyEntity"/>
@@ -27,7 +27,7 @@
     </entity>
     <entity name="SubscriptionEntity" representedClassName="SubscriptionEntity" syncable="YES" codeGenerationType="category">
         <attribute name="about" optional="YES" attributeType="String"/>
-        <attribute name="amount" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="amount" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="firstPaymentDate" attributeType="Date" defaultDateTimeInterval="662677200" usesScalarValueType="NO"/>
         <attribute name="identifier" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isNotificationable" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -40,8 +40,8 @@
     </entity>
     <elements>
         <element name="CurrencyEntity" positionX="-63" positionY="18" width="128" height="133"/>
-        <element name="PaymentEntity" positionX="-54" positionY="90" width="128" height="133"/>
+        <element name="PaymentEntity" positionX="-54" positionY="90" width="128" height="119"/>
         <element name="ServiceEntity" positionX="-63" positionY="-18" width="128" height="148"/>
-        <element name="SubscriptionEntity" positionX="-63" positionY="27" width="128" height="208"/>
+        <element name="SubscriptionEntity" positionX="-63" positionY="27" width="128" height="194"/>
     </elements>
 </model>

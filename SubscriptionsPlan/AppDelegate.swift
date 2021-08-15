@@ -6,6 +6,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var coordinator: AppCoordinator!
 
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        return true
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         coordinator = CoordinatorFactory.getAppCoordinator()
@@ -24,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // МикроСервис для работы с сущностью Payment
             let paymentCoordinator = CoordinatorFactory.getPaymentMicroService(rootCoordinator: self.coordinator, options: [.shared])
             // МикроСервис для работы с сущностью Subscription
-            // !!! родительским для SubCoord является PayCoord
+            // !!! Родительским для SubCoord является PayCoord
             //  это сделано для того, чтобы при создании подписки
             //  автоматически проверялась дата следующего платежа
             //  и при необходимости подменялась и создавались записи о прошедших платежах

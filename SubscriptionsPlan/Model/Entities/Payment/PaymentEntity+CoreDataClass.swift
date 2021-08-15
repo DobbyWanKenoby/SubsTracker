@@ -32,7 +32,7 @@ public class PaymentEntity: NSManagedObject, EntityInstanceProvider {
     
     func updateEntity(from payment: PaymentProtocol, context: NSManagedObjectContext) {
         self.identifier = payment.identifier.uuidString
-        self.amount = payment.amount
+        self.amount = NSDecimalNumber(decimal: payment.amount)
         self.currency = CurrencyEntity.getEntity(from: payment.currency, context: context)
         self.date = payment.date
         self.service = ServiceEntity.getEntity(from: payment.service, context: context)
@@ -47,7 +47,7 @@ public class PaymentEntity: NSManagedObject, EntityInstanceProvider {
                 forSubscription: self.subscription!.convertEntityToInstance(),
                 date: self.date!,
                 currency: self.currency!.convertEntityToInstance(),
-                amount: self.amount)
+                amount: self.amount! as Decimal)
     }
     
 }

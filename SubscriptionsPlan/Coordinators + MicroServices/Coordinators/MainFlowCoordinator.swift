@@ -13,10 +13,8 @@ protocol MainFlowCoordinatorProtocol: BasePresenter, Transmitter {}
 final class MainFlowCoordinator: BasePresenter, MainFlowCoordinatorProtocol {
     var edit: ((Signal) -> Signal)?
     
-    // координатор ориентирован на работу с TabBar
-    // поэтому сделаем вспомогательное свойства
-    private var tabBarPresenter: UITabBarController? {
-        return presenter as? UITabBarController
+    convenience init(rootCoordinator: Coordinator, options: [CoordinatorOption] = []) {
+        self.init(presenter: nil, rootCoordinator: rootCoordinator, options: options)
     }
     
     override var presenter: UIViewController? {

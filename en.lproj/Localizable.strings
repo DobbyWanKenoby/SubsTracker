@@ -20,6 +20,7 @@
 "payments" = "Payments";
 "do payment now %@" = "Do you want to pay subscription '%@' now? Another way it will pay automatically on";
 "success payment" = "Success payment";
+"next payment before now" = "The date entered for the first payment is in the past. The program will automatically calculate and create all past payments and set the date of the next payment";
 
 "currency" = "Currency";
 "amount" = "Amount";

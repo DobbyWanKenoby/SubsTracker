@@ -39,7 +39,7 @@ public class SubscriptionEntity: NSManagedObject, EntityInstanceProvider {
               let subscriptionFromStorage = subscriptionsFromStorage.first else {
             return nil
         }
-        return subscriptionFromStorage as! Self
+        return (subscriptionFromStorage as! Self)
     }
     
     func updateEntity(from subscription: SubscriptionProtocol, context: NSManagedObjectContext) {
@@ -47,7 +47,7 @@ public class SubscriptionEntity: NSManagedObject, EntityInstanceProvider {
         self.about = subscription.description
         self.currency = CurrencyEntity.getEntity(from: subscription.currency, context: context)
         self.service = ServiceEntity.getEntity(from: subscription.service, context: context)
-        self.amount = subscription.amount
+        self.amount = NSDecimalNumber(decimal: subscription.amount)
         self.isNotificationable = subscription.isNotificationable
         self.notificationDaysPeriod = Int16(subscription.notificationDaysPeriod)
         self.firstPaymentDate = subscription.nextPaymentDate
@@ -58,7 +58,7 @@ public class SubscriptionEntity: NSManagedObject, EntityInstanceProvider {
     func convertEntityToInstance() -> SubscriptionProtocol {
         Subscription(identifier: self.identifier!,
                         service: self.service!.convertEntityToInstance(),
-                        amount: self.amount,
+                        amount: self.amount! as Decimal,
                         currency: self.currency!.convertEntityToInstance(),
                         description: self.about!,
                         nextPaymentDate: self.firstPaymentDate!,

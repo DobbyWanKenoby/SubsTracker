@@ -12,6 +12,8 @@ protocol STTextFieldCellProtocol: STInputCellProtocol {
     var value: String { get set }
     var accentColor: UIColor { get set }
     var didValueChanged: ((UITextField) -> Void)? { get set }
+    var didEditingEnd: ((UITextField) -> Void)? { get set }
+    var didEditingBegin: ((UITextField) -> Void)? { get set }
 }
 
 class STTextFieldCell: UITableViewCell, STTextFieldCellProtocol {
@@ -34,6 +36,10 @@ class STTextFieldCell: UITableViewCell, STTextFieldCellProtocol {
         }
     }
     
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     var onSelectAnyCellElement: (() -> Void)?
     
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
@@ -45,6 +51,8 @@ class STTextFieldCell: UITableViewCell, STTextFieldCellProtocol {
     @IBOutlet var textField: UITextField!
     
     var didValueChanged: ((UITextField) -> Void)?
+    var didEditingEnd: ((UITextField) -> Void)?
+    var didEditingBegin: ((UITextField) -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -68,8 +76,15 @@ class STTextFieldCell: UITableViewCell, STTextFieldCellProtocol {
         textField.resignFirstResponder()
     }
     
-    @IBAction func textFieldEditingEnded(_ sender: UITextField) {
+    @IBAction func textFieldDidValueChanged(_ sender: UITextField) {
         didValueChanged?(sender)
+    }
+    
+    @IBAction func textFieldEditingEnded(_ sender: UITextField) {
+        didEditingEnd?(sender)
+    }
+    @IBAction func textFieldEditingBegin(_ sender: UITextField) {
+        didEditingBegin?(sender)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

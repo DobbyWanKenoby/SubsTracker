@@ -147,7 +147,7 @@ class AddSubscriptionController: UIViewController, AddSubscriptionControllerProt
     var subscriptionNextPaymentDate = Date()
     var subscriptionDescription: String = ""
     var subscriptionCurrency: CurrencyProtocol!
-    var subscriptionAmount: Float = 0
+    var subscriptionAmount: Decimal? = nil
     
     lazy var cellFactory: CellFactory = {
         CellFactory(forTableView: self.tableView)
@@ -168,7 +168,10 @@ class AddSubscriptionController: UIViewController, AddSubscriptionControllerProt
         super.viewDidLoad()
         setupCellFactory()
         addKeyboardObserver()
-        print(subscriptionNextPaymentDate)
+        
+        // хак, чтобы изменить время на 12 часов
+        // toDO: После тестов красиво обернуть, так как данный код используется еще и ниже в коде
+        self.subscriptionNextPaymentDate = Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: self.subscriptionNextPaymentDate) ?? self.subscriptionNextPaymentDate
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -249,21 +252,38 @@ class AddSubscriptionController: UIViewController, AddSubscriptionControllerProt
     }
     
     @IBAction func dismissControllerWithSuccess() {
-        if subscriptionAmount == 0 {
+        // если не введена сумма платежа
+        
+        guard subscriptionAmount != nil else {
             let alert = UIAlertController(title: NSLocalizedString("attention", comment: ""), message: NSLocalizedString("you must set amount", comment: ""), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "").uppercased(), style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        let newSubscription = getSubscriptionObject()
+        // если дата первого платежа до сегодняшней даты
+        if Calendar.current.compare(Date(), to: newSubscription.nextPaymentDate, toGranularity: .day) == .orderedDescending {
+        //if newSubscription.nextPaymentDate < Date() {
+            let alert = UIAlertController(title: NSLocalizedString("attention", comment: ""), message: NSLocalizedString("next payment before now", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "").uppercased(), style: .default, handler: {_ in
+                self.onSaveSubscription?(newSubscription, false)
+                })
+            )
+            alert.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        // если все ОК
         } else {
-            let newSubscription = getSubscriptionObject()
             onSaveSubscription?(newSubscription, false)
         }
+
     }
     
     fileprivate func getSubscriptionObject() -> SubscriptionProtocol {
         let subscriptionService = service ?? Service(identifier: UUID().uuidString, title: "empty", colorHEX: "#fff")
         let newSubscription = Subscription(identifier: subscription?.identifier ?? UUID(),
                                         service: subscriptionService,
-                                        amount: subscriptionAmount,
+                                        amount: subscriptionAmount ?? 0,
                                         currency: subscriptionCurrency,
                                         description: subscriptionDescription,
                                         nextPaymentDate: subscriptionNextPaymentDate,
@@ -388,7 +408,7 @@ extension AddSubscriptionController: UITableViewDataSource {
         }
         let daysSection: [(pickerRowTitle: String, instance: Any)] = [(NSLocalizedString("day(s)", comment: ""), "")]
         
-        let cell = cellFactory.getPickerCell(title: NSLocalizedString("payment period", comment: ""),
+        let cell = cellFactory.getPickerCell(title: NSLocalizedString("notification period", comment: ""),
                                          pickerViewData: [inSection, numbersPicker, daysSection],
                                          selectedRowsInSections: selectedRows)
         cell.didValueChanged = { [unowned self] pickerView in
@@ -468,13 +488,12 @@ extension AddSubscriptionController: UITableViewDataSource {
         }
         
         cell.didDateChanged = { [weak self] date in
-            print(date)
-            let dateFormatter = DateFormatter()
-            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-            
-            //dateFormatter.da
-            self!.subscriptionNextPaymentDate = date
+            // Изменяем время на 12 часов, чтобы потенциально избежать проблема с часоввыми поясами
+            // toDO: Найти лучшее решение, чтобы выбранная сегодня дата в часовом поясе UTC+7 нормально определяла дату в UTC-7
+            // В общем попробовать различные варианты
+            self!.subscriptionNextPaymentDate = Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: date) ?? date
         }
+        
         cell.accentColor = color
         cell.onSelectAnyCellElement = { [weak self] in
             self?.selectedCell = cell
@@ -515,16 +534,27 @@ extension AddSubscriptionController: UITableViewDataSource {
     }
     
     private func getAmounCell() -> UITableViewCell {
+        
+        let cellText: String
+        if subscriptionAmount == nil {
+            cellText = ""
+        } else {
+            cellText = getAmount(fromRawValue: subscriptionAmount).text ?? ""
+        }
         let cell = cellFactory.getTextFieldCell(title: NSLocalizedString("amount", comment: ""),
-                                                text: getAmountFormattedString(String(subscriptionAmount)))
-        cell.textField.placeholder = "0.00"
+                                                text: cellText)
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        cell.textField.placeholder = "0\(numberFormatter.decimalSeparator ?? ".")00"
         cell.textField.keyboardType = .decimalPad
         
         cell.accentColor = color
-        cell.didValueChanged = { [unowned self] textField in
-            let amount = self.getAmountFormattedString(textField.text ?? "")
-            textField.text = amount
-            self.subscriptionAmount = Float(amount) ?? 0
+        cell.didEditingEnd = { [unowned self] textField in
+            textField.text = self.getAmount(fromRawValue: textField.text ?? "").text
+            self.subscriptionAmount = self.getAmount(fromRawValue: textField.text ?? "").number ?? 0
+        }
+        cell.didEditingBegin = { [unowned self] textField in
+            textField.text = textField.text?.replacingOccurrences(of: numberFormatter.groupingSeparator, with: "")
         }
         if subscription == nil {
             cell.value = ""
@@ -544,30 +574,89 @@ extension AddSubscriptionController: UITableViewDataSource {
 //        tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .none)
 //    }
     
-    private func getAmountFormattedString(_ value: String) -> String {
-        var resultText = ""
-        let correctValue = value.replacingOccurrences(of: ",", with: ".")
-        let valueSections = value.split(separator: ".")
-        if valueSections.count == 1 && correctValue.first(where: { $0 == "." }) != nil {
-            resultText = "\(String(valueSections.first!))."
-            return resultText
+    // Возвращает отформатированное значение стоимости подписки из сырой строки
+    // Сырая строка - это текущее значение в текстовом поле
+    // Там может быть количество знаков впосле сепаратора больше, чем требуется
+    // !!! Если на вход поступает String, то он должен быть отформатирован в соответствии с локалью
+    private func getAmount<T: Equatable>(fromRawValue rawValue: T) -> (text: String?, number: Decimal?) {
+        
+        var resultText: String? = nil
+        var resultNumber: Decimal? = nil
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.maximumFractionDigits = 2
+        numberFormatter.minimumFractionDigits = 0
+        
+        if let decimalValue = rawValue as? Decimal {
+            let nsNumber = NSDecimalNumber(decimal: decimalValue)
+            let separator = numberFormatter.decimalSeparator ?? "."
+            print(numberFormatter.string(from: nsNumber))
+            resultText = numberFormatter.string(from: nsNumber) ?? "0\(separator)0"
+            resultNumber = nsNumber.decimalValue
+        } else if var stringValue = rawValue as? String {
+            
+            if stringValue != "" {
+                //  удаляем все разделите групп
+                stringValue = stringValue.replacingOccurrences(of: numberFormatter.groupingSeparator, with: "")
+                let nsNumber = numberFormatter.number(from: stringValue) ?? 0
+                let separator = numberFormatter.decimalSeparator!
+                resultText = numberFormatter.string(from: nsNumber) ?? "0\(separator)0"
+                if stringValue.last == Character(separator), resultText != nil {
+                    resultText! += "\(separator)"
+                }
+                resultNumber = nsNumber.decimalValue
+            }
+            
+        }
+        
+        return (resultText, resultNumber)
+    }
+    
+//    private func formatStringAmount(_ value) -> (String?, Float?) {
+//
+//    }
+    
+//    private func getNumberWithTwoNumbersAfterSeparator(_ value: Decimal) -> Decimal {
+//        return Decimal(Int(value * 100)) / 100
+////        var doubleNumber = Double(value)
+////        doubleNumber = Double(Int(doubleNumber * 100)) / 100
+////        return Float(doubleNumber)
+//    }
+    
+    private func getAmountFormatted(_ value: String) -> (string: String, number: Float) {
+        
+        
+        var resultAmountString = ""
+        var resultAmountFloat: Float = 0
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        let separator = formatter.currencyDecimalSeparator!
+        let valueSections = value.split(separator: Character(formatter.currencyDecimalSeparator))
+
+        if valueSections.count == 1 && value.first(where: { $0 == Character(separator) }) != nil {
+            resultAmountString = "\(String(valueSections.first!))\(separator)"
+            resultAmountFloat = formatter.number(from: value) as! Float
+            return (resultAmountString, resultAmountFloat)
         }
         
         for (index, section) in valueSections.enumerated() {
             if index == 0 {
-                resultText = "\(section)"
+                resultAmountString = "\(section)"
             } else if index == 1 {
                 var _section = section
                 while _section.count > 2 {
                     _section.removeLast()
                 }
-                resultText += ".\(_section)"
+                resultAmountString += "\(separator)\(_section)"
             } else if index > 1 {
                 break
             }
         }
-
-        return resultText
+        
+        resultAmountFloat = Float(truncating: formatter.number(from: resultAmountString) ?? 0)
+        return (resultAmountString, resultAmountFloat)
     }
     
     private func getNoticeCell() -> UITableViewCell {

@@ -1,8 +1,15 @@
 **toDO:** Add function of remove Subscription
-**toDO:** Add function of create payments for Subscriptions (after create/update Sub and during initialization app)
-**toDo:** Add alert during editing subscription when Next Payment Date < current date
-**toDo:** On Create/Edit SubscriptionScreen title on next payment cell must be NEXT PAYMENT during editing and FIRST PAYMENT during creating
+**toDO:** Add function of create payments for Subscriptions during initialization of app
 
+
+### 0.3.2
+- Updated SCK core version to 1.0.7
+- A lot of fix with internationalization and localization 
+- Fixed input amount field (added Locals formats with "." and ",")
+- Fixed work of currency adn number formatter
+- Amount (price) now is a Decimal value
+- Added alert during editing subscription when Next/First Payment Date < current date
+- Another fixes
 
 ### 0.3.1
 - Updated SCK core version to 1.0.6

@@ -70,10 +70,18 @@ class SubscriptionsListController: UITableViewController, SubscriptionsListContr
         cell.headerView.backgroundColor = currentSubscription.service.color
         cell.titleLabel.text = currentSubscription.service.title
         cell.logoImageView.image = currentSubscription.service.logo
-        cell.priceLabel.text = "\(currentSubscription.currency.symbol) \(currentSubscription.amount)"
+        //cell.priceLabel.text = "\(currentSubscription.currency.symbol) \(currentSubscription.amount)"
+        cell.priceLabel.text = getFormattedLocalPrice(symbol: currentSubscription.currency.symbol, amount: currentSubscription.amount)
         cell.timeRemain.text = timeRemainText(toRemainDays: currentSubscription.nextPayment.daysRemain)
         cell.descriptionLabel.text = currentSubscription.description
         return cell
+    }
+    
+    private func getFormattedLocalPrice(symbol: String, amount: Decimal) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencySymbol = symbol
+        return formatter.string(from: NSDecimalNumber(decimal: amount)) ?? ""
     }
     
     private func timeRemainText(toRemainDays days: Int) -> String {
@@ -138,7 +146,7 @@ class SubscriptionsListController: UITableViewController, SubscriptionsListContr
         }
         successPaymentAction.backgroundColor = UIColor.systemBackground
         let color = sortedSubscriptions[indexPath.row].service.color
-        successPaymentAction.image = UIImage(systemName: "pencil.circle", withConfiguration: configurator)!.withTintColor(color, renderingMode: .alwaysOriginal)
+        successPaymentAction.image = UIImage(systemName: "arrow.counterclockwise.circle.fill", withConfiguration: configurator)!.withTintColor(color, renderingMode: .alwaysOriginal)
         
         return UISwipeActionsConfiguration(actions: [successPaymentAction])
     }

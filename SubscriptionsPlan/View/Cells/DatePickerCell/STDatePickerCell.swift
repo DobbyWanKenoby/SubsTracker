@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: Picker Cell Protocol
 
-protocol STDatePickerCellProtocol: UITableViewCell, STInputCellProtocol {
+protocol STDatePickerCellProtocol: STInputCellProtocol {
     
     var title: String { get set }
     var accentColor: UIColor? { get set }
@@ -163,12 +163,12 @@ class STLabelDatePickerInputView: UILabel {
     
     override var inputView: UIView? {
         let datePicker = UIDatePicker()
-        datePicker.timeZone = TimeZone(abbreviation: "UTC")
         
         datePicker.datePickerMode = .date
         if #available(iOS 13.4, *) {
             datePicker.preferredDatePickerStyle = .wheels
         }
+
         datePicker.locale = Locale.current
         datePicker.addTarget(self, action: #selector(changeDate(_:)), for: .valueChanged)
         datePicker.setDate(selectedDate, animated: true)

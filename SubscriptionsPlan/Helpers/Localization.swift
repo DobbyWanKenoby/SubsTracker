@@ -13,6 +13,6 @@ func getDateLocaleFormat(_ date: Date) -> String {
     let localeDateFormat = DateFormatter.dateFormat(fromTemplate: template, options: 0, locale: Locale.current)!
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = localeDateFormat
-    dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+    //dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
     return dateFormatter.string(from: date)
 }

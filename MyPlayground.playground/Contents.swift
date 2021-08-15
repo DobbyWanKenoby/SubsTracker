@@ -1,4 +1,22 @@
-import UIKit
+import Foundation
+
+// исходная строка
+var string = "3 123 349."
+// форматирование и перевод в числа
+let numberFormatter = NumberFormatter()
+//numberFormatter.locale = Locale(identifier: "ru_RU")
+numberFormatter.numberStyle = .decimal
+var nsNumber = numberFormatter.number(from: string)!
+var floatNumber = Float(truncating: nsNumber)
+floatNumber = Float(Int(floatNumber * 100)) / 100
+nsNumber = NSNumber(value: floatNumber)
+// перевод обратно в строку
+string = numberFormatter.string(from: nsNumber) ?? "0\(separator)0"
+
+Float("123,33")
+
+let rawValue = 123.456
+let textNumber = String(format: "%.2f", rawValue) // 123.46
 
 //1
 typealias Coordinates = (alpha: Character?, num: Int?)

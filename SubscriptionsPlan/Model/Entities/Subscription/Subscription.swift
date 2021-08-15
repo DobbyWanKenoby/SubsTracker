@@ -27,7 +27,7 @@ protocol SubscriptionProtocol {
     /// На какой сервис осуществляется подписка
     var service: ServiceProtocol { get set }
     /// Сумма подписки
-    var amount: Float { get set }
+    var amount: Decimal { get set }
     /// Валюта
     var currency: CurrencyProtocol { get set }
     /// Описание/примечание
@@ -47,7 +47,7 @@ struct Subscription: SubscriptionProtocol {
     
     var identifier: UUID
     var service: ServiceProtocol
-    var amount: Float
+    var amount: Decimal
     var currency: CurrencyProtocol
     var description: String
     var nextPaymentDate: Date

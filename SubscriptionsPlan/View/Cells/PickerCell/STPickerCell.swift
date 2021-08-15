@@ -15,7 +15,7 @@ typealias PickerComponentData = [(pickerRowTitle: String, instance: Any)]
 
 // MARK: Picker Cell Protocol
 
-protocol STPickerCellProtocol: UITableViewCell, STInputCellProtocol {
+protocol STPickerCellProtocol: STInputCellProtocol {
     
     var title: String { get set }
     var accentColor: UIColor? { get set }

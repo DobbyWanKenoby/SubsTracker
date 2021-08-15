@@ -19,8 +19,7 @@ class CoordinatorFactory {
     
     @discardableResult
     static func getMainFlowCoordinator(rootCoordinator: Coordinator, options: [CoordinatorOption] = []) -> MainFlowCoordinatorProtocol {
-        let controller = ControllerFactory.getDefaultController(byType: .tabBar)
-        return MainFlowCoordinator(presenter: controller, rootCoordinator: rootCoordinator, options: options)
+        return MainFlowCoordinator(rootCoordinator: rootCoordinator, options: options)
     }
     
     // MARK: - Presenters

@@ -33,11 +33,11 @@ class SubscriptionListCoordinator: BasePresenter, SubscriptionListCoordinatorPro
             self.route(from: self.presenter!, to: nextController, method: .presentCard)
         }
         controller.onSuccessNextPayment = { subscription in
-            var dateComponents = DateComponents()
-            dateComponents.day = 1
-            let nextDayAfterPayment = Calendar.current.date(byAdding: dateComponents, to: subscription.nextPaymentDate) ?? Date()
+            //var dateComponents = DateComponents()
+            //dateComponents.day = 1
+            //let nextDayAfterPayment = Calendar.current.date(byAdding: dateComponents, to: subscription.nextPaymentDate) ?? Date()
             let alert = UIAlertController(title: NSLocalizedString("success payment", comment: ""),
-                                          message: String(format: NSLocalizedString("do payment now %@", comment: ""), subscription.service.title) + " \(getDateLocaleFormat(nextDayAfterPayment))",
+                                          message: String(format: NSLocalizedString("do payment now %@", comment: ""), subscription.service.title) + " \(getDateLocaleFormat(subscription.nextPaymentDate))",
                                           preferredStyle: .alert)
             let okAction = UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: { _ in
                 // отправляем запрос на создание платежей
