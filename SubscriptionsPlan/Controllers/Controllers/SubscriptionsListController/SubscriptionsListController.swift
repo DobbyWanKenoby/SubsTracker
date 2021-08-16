@@ -18,20 +18,31 @@ protocol SubscriptionsListControllerProtocol: UIViewController {
     
     // Output callbacks
     var onActivateEditSubscription: ((SubscriptionProtocol) -> Void)? { get set }
+    // При нажатии кнопки удаления подписки
+    var onPressDeleteSubscription: ((SubscriptionProtocol) -> Void)? { get set }
+    func doAfterDelete(subscription: SubscriptionProtocol) -> Void
+    // При нажатии кнопки подтверждения оплаты по подписке
     var onSuccessNextPayment: ((SubscriptionProtocol) -> Void)? { get set }
     // var onDeleteSubscription: ((SubscriptionProtocol) -> Void)? { get set }
+    
+    
 }
 
 class SubscriptionsListController: UITableViewController, SubscriptionsListControllerProtocol {
     
     var onActivateEditSubscription: ((SubscriptionProtocol) -> Void)?
+    var onPressDeleteSubscription: ((SubscriptionProtocol) -> Void)?
     var onSuccessNextPayment: ((SubscriptionProtocol) -> Void)?
     
     var subscriptions: [SubscriptionProtocol]! {
         didSet {
-            tableView.reloadData()
+            if _needUpdateRows {
+                tableView.reloadData()
+            }
         }
     }
+    // флаг определяет нужно ли обновлять всю таблицу после изменения данных в свойстве subscriptions
+    private var _needUpdateRows: Bool = true
     
     var sortedSubscriptions: [SubscriptionProtocol] {
         let s = subscriptions.sorted{ $0.nextPayment.1 < $1.nextPayment.1 }
@@ -39,6 +50,17 @@ class SubscriptionsListController: UITableViewController, SubscriptionsListContr
     }
     
     var sortType: SubscriptionSortType = .time
+    
+    func doAfterDelete(subscription deletedSubscription: SubscriptionProtocol) -> Void {
+        for (index, subscription) in subscriptions.enumerated() {
+            if subscription.identifier == deletedSubscription.identifier {
+                _needUpdateRows.toggle()
+                subscriptions.remove(at: index)
+                _needUpdateRows.toggle()
+                tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,15 +141,16 @@ class SubscriptionsListController: UITableViewController, SubscriptionsListContr
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .normal, title: "") {_,_,_ in
-            
+        let deleteAction = UIContextualAction(style: .normal, title: "") { [unowned self]_,_,complete in
+            onPressDeleteSubscription?(sortedSubscriptions[indexPath.row])
+            complete(true)
         }
         deleteAction.backgroundColor = UIColor.systemBackground
         let configurator = UIImage.SymbolConfiguration(pointSize: 40)
         deleteAction.image = UIImage(systemName: "trash.circle.fill", withConfiguration: configurator)!.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
         
         let editAction = UIContextualAction(style: .normal, title: "") {[unowned self] _,_,complete in
-            self.onActivateEditSubscription?(sortedSubscriptions[indexPath.row])
+            onActivateEditSubscription?(sortedSubscriptions[indexPath.row])
             complete(true)
         }
         editAction.backgroundColor = UIColor.systemBackground

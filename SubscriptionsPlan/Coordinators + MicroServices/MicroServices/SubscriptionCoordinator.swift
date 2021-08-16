@@ -25,7 +25,7 @@ class SubscriptionCoordinator: BaseCoordinator, SubscriptionCoordinatorProtocol 
             do {
                 try context.save()
             } catch {
-                fatalError("Error during saving Currencies to Storage. Error message: \(error)")
+                fatalError("Error during saving context in SubscriptionCoordinator. Error message: \(error)")
             }
         }
     }
@@ -40,21 +40,37 @@ class SubscriptionCoordinator: BaseCoordinator, SubscriptionCoordinatorProtocol 
         case SubscriptionSignal.createUpdate(let subscriptions, let needBroadcastSubscriptions):
             subscriptions.forEach{ subscription in
                 createUpdate(from: subscription)
+                if Calendar.current.compare(Date(), to: subscription.nextPaymentDate, toGranularity: .day) == .orderedDescending {
+                    let signal = SubscriptionSignal.checkSubscriptionsOnPayments([subscription])
+                    self.broadcast(signal: signal, withAnswerToReceiver: nil)
+                }
             }
+            
             if needBroadcastSubscriptions {
                 let subscriptions = getActualSubscriptions()
                 let signal = SubscriptionSignal.actualSubscriptions(subscriptions)
                 self.broadcast(signal: signal, withAnswerToReceiver: nil)
             }
             
-        case SubscriptionSignal.getAll:
-            let signal = SubscriptionSignal.subscriptions(getActualSubscriptions())
-            return signal
+        // Удаление подписок
+        case SubscriptionSignal.removeSubscription(id: let removingSubID, removePayments: let doRemovePayments):
+            if doRemovePayments {
+                let signal = PaymentSignal.removePayments(forSubscriptionID: removingSubID)
+                self.broadcast(signal: signal, withAnswerToReceiver: nil)
+            }
+            removeSubscription(withID: removingSubID)
+            break
             
+        // Получение всех подписок
+//        case SubscriptionSignal.getAll:
+//            let signal = SubscriptionSignal.subscriptions(getActualSubscriptions())
+//            return signal
+        
+        // Получение актуальных подписок
         case SubscriptionSignal.getActualSubscriptions(broadcastActualSubscriptionsList: let needBroadcastSubscriptions):
             let subscriptions = getActualSubscriptions()
+            let signal = SubscriptionSignal.actualSubscriptions(subscriptions)
             if needBroadcastSubscriptions {
-                let signal = SubscriptionSignal.actualSubscriptions(subscriptions)
                 self.broadcast(signal: signal, withAnswerToReceiver: nil)
             }
             return signal
@@ -68,6 +84,19 @@ class SubscriptionCoordinator: BaseCoordinator, SubscriptionCoordinatorProtocol 
     private func createUpdate(from currency: SubscriptionProtocol) {
         SubscriptionEntity.getEntity(from: currency, context: context, updateEntityPropertiesIfNeeded: true)
         savePersistance()
+    }
+    
+    // удаление определенной подписки
+    private func removeSubscription(withID id: UUID) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "SubscriptionEntity")
+        fetchRequest.predicate = NSPredicate(format: "identifier = %@", id.uuidString)
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try context.execute(batchDeleteRequest)
+            self.savePersistance()
+        } catch {
+            fatalError("Error message: \(error)")
+        }
     }
     
     // получение списка актуальных Подписок

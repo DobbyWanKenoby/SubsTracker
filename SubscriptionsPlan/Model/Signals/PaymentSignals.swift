@@ -13,4 +13,7 @@ enum PaymentSignal: Signal {
     case createUpdate(payment: [PaymentProtocol])
     // создание платежей для подписки
     case createPayments(count: Int, forSubscription: SubscriptionProtocol, editSubscription: Bool = true)
+    
+    // удаление платежей для определенной подписки
+    case removePayments(forSubscriptionID: UUID)
 }

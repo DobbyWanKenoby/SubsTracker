@@ -2,6 +2,10 @@
 **toDO:** Add function of create payments for Subscriptions during initialization of app
 
 
+### 0.3.3
+- Added function of subscription removing
+- Added function of payment removing
+
 ### 0.3.2
 - Updated SCK core version to 1.0.7
 - A lot of fix with internationalization and localization 

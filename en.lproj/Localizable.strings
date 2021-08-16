@@ -21,6 +21,10 @@
 "do payment now %@" = "Do you want to pay subscription '%@' now? Another way it will pay automatically on";
 "success payment" = "Success payment";
 "next payment before now" = "The date entered for the first payment is in the past. The program will automatically calculate and create all past payments and set the date of the next payment";
+"subscription delete" = "Removing a subscription";
+"success delete subscription %@" = "Do you want to delete subscription on %@?";
+"delete only subscription" = "Delete only subscription";
+"delete subscription and payments" = "Delete the subscription and its payments";
 
 "currency" = "Currency";
 "amount" = "Amount";

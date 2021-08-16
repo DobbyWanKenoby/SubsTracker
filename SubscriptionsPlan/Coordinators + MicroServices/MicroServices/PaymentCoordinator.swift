@@ -43,11 +43,25 @@ extension PaymentsCoordinator {
     
     func receive(signal: Signal) -> Signal? {
         switch signal {
-        case SubscriptionSignal.checkSubscriptionOnPayments(var subscription):
-            if isNeedCreatePayments(for: subscription) {
-                let subsPayments = getNewPayments(for: &subscription, addPeriodToNextPaymentDate: true)
-                createUpdate(payments: subsPayments)
+        
+        // удаление платежей для определенной подписки
+        case PaymentSignal.removePayments(forSubscriptionID: let subID):
+            let removedPayments = getPaymentsFor(subscriptionID: subID)
+        
+            removedPayments.forEach { payment in
+                self.removePayment(withID: payment.identifier)
             }
+            
+        case SubscriptionSignal.checkSubscriptionsOnPayments(var subscriptions):
+            for (subscriptionIndex, var subscription) in subscriptions.enumerated() {
+                if isNeedCreatePayments(for: subscription) {
+                    let subsPayments = getNewPayments(for: &subscription, addPeriodToNextPaymentDate: true)
+                    createUpdate(payments: subsPayments)
+                    subscriptions[subscriptionIndex] = subscription
+                }
+            }
+            let updatedSubSignal = SubscriptionSignal.createUpdate(subscriptions: subscriptions, broadcastActualSubscriptionsList: false)
+            self.broadcast(signal: updatedSubSignal, withAnswerToReceiver: nil)
         case PaymentSignal.createPayments(count: let count, forSubscription: var subscription, editSubscription: let isEdit):
             for _ in 1...count {
                 let payment = getNextPayment(for: &subscription, addPeriodToNextPaymentDate: isEdit)
@@ -63,28 +77,26 @@ extension PaymentsCoordinator {
         return nil
     }
     
-    func edit(signal: Signal) -> Signal {
-        var updatedSignal = signal
-        
-        // С помощью обработки этого сигнала координатор перехватывает данные о подписках
-        // и заменяет данные о сроке следующего платеже + создает записи о проведенных платежах
-        if case SubscriptionSignal.createUpdate(subscriptions: var subscriptions, broadcastActualSubscriptionsList: let broadcast) = signal {
-            for (subscriptionIndex, var subscriptionItem) in subscriptions.enumerated() {
-                let subsPayments = getNewPayments(for: &subscriptionItem, addPeriodToNextPaymentDate: true)
-                print(subsPayments)
-                print(subscriptionItem)
-                createUpdate(payments: subsPayments)
-                subscriptions[subscriptionIndex] = subscriptionItem
-            }
-            updatedSignal = SubscriptionSignal.createUpdate(subscriptions: subscriptions, broadcastActualSubscriptionsList: broadcast)
-        } else if case PaymentSignal.createUpdate(let payments) = signal {
-            payments.forEach{ paymentItem in
-                self.createUpdate(payments: [paymentItem])
-            }
-        }
-        
-        return updatedSignal
-    }
+//    func edit(signal: Signal) -> Signal {
+//        var updatedSignal = signal
+//        
+//        // С помощью обработки этого сигнала координатор перехватывает данные о подписках
+//        // и заменяет данные о сроке следующего платеже + создает записи о проведенных платежах
+//        if case SubscriptionSignal.createUpdate(subscriptions: var subscriptions, broadcastActualSubscriptionsList: let broadcast) = signal {
+//            for (subscriptionIndex, var subscriptionItem) in subscriptions.enumerated() {
+//                let subsPayments = getNewPayments(for: &subscriptionItem, addPeriodToNextPaymentDate: true)
+//                createUpdate(payments: subsPayments)
+//                subscriptions[subscriptionIndex] = subscriptionItem
+//            }
+//            updatedSignal = SubscriptionSignal.createUpdate(subscriptions: subscriptions, broadcastActualSubscriptionsList: broadcast)
+//        } else if case PaymentSignal.createUpdate(let payments) = signal {
+//            payments.forEach{ paymentItem in
+//                self.createUpdate(payments: [paymentItem])
+//            }
+//        }
+//        
+//        return updatedSignal
+//    }
 }
 
 // MARK: - Payments Storage Logic
@@ -95,6 +107,35 @@ extension PaymentsCoordinator {
         payments.forEach { payment in
             PaymentEntity.getEntity(from: payment, context: context, updateEntityPropertiesIfNeeded: true)
             savePersistance()
+        }
+    }
+    
+    // удаление определенного платежа
+    fileprivate func removePayment(withID id: UUID) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "PaymentEntity")
+        fetchRequest.predicate = NSPredicate(format: "identifier = %@", id.uuidString)
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try context.execute(batchDeleteRequest)
+            self.savePersistance()
+        } catch {
+            fatalError("Error message: \(error)")
+        }
+    }
+    
+    fileprivate func getPaymentsFor(subscriptionID id: UUID) -> [PaymentProtocol] {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "PaymentEntity")
+        fetchRequest.predicate = NSPredicate(format: "subscription.identifier = %@", id.uuidString)
+        do {
+            var resultPaymentArray: [PaymentProtocol] = []
+            let entities = try context.fetch(fetchRequest)
+            entities.forEach { entity in
+                let instance = (entity as! PaymentEntity).convertEntityToInstance()
+                resultPaymentArray.append(instance)
+            }
+            return resultPaymentArray
+        } catch {
+            fatalError("Error message: \(error)")
         }
     }
 }
@@ -124,7 +165,6 @@ extension PaymentsCoordinator {
         }
         return payment
     }
-    
     
     /// Добавляет указанное количество определенного периода (день, неделя ... ) к указанной дате
     private func add(_ count: Int, _ periodType: PeriodType, to date: Date) -> Date {

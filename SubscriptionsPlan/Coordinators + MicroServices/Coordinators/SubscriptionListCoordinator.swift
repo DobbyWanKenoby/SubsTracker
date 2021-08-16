@@ -28,10 +28,38 @@ class SubscriptionListCoordinator: BasePresenter, SubscriptionListCoordinatorPro
     
     private func loadSubscriptionsListController() -> SubscriptionsListControllerProtocol {
         let controller = ControllerFactory.getSubscriptionsListController()
+        
+        // действие при вызове функции редактирования подписки
         controller.onActivateEditSubscription = { subscription in
             let nextController = self.getEditSubscriptionConfiguredController(subscription: subscription)
             self.route(from: self.presenter!, to: nextController, method: .presentCard)
         }
+        
+        // действие при нажатии кнопки удаления подписки
+        controller.onPressDeleteSubscription = { subscription in
+            let alert = UIAlertController(title: NSLocalizedString("subscription delete", comment: ""),
+                                          message: String(format: NSLocalizedString("success delete subscription %@", comment: ""), subscription.service.title),
+                                          preferredStyle: .actionSheet)
+            let onlySub = UIAlertAction(title: NSLocalizedString("delete only subscription", comment: ""), style: .default, handler: { _ in
+                let subDeleteSignal = SubscriptionSignal.removeSubscription(id: subscription.identifier, removePayments: false)
+                controller.doAfterDelete(subscription: subscription)
+                self.broadcast(signal: subDeleteSignal, withAnswerToReceiver: nil)
+            })
+            let subAndPayments = UIAlertAction(title: NSLocalizedString("delete subscription and payments", comment: ""), style: .default, handler: { _ in
+                let subDeleteSignal = SubscriptionSignal.removeSubscription(id: subscription.identifier, removePayments: true)
+                controller.doAfterDelete(subscription: subscription)
+                self.broadcast(signal: subDeleteSignal, withAnswerToReceiver: nil)
+            })
+            let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+                return
+            })
+            alert.addAction(cancelAction)
+            alert.addAction(onlySub)
+            alert.addAction(subAndPayments)
+            self.route(from: self.presenter!, to: alert, method: .presentCard)
+        }
+        
+        // действие при вызове подтверждения платежа
         controller.onSuccessNextPayment = { subscription in
             //var dateComponents = DateComponents()
             //dateComponents.day = 1
@@ -99,9 +127,9 @@ class SubscriptionListCoordinator: BasePresenter, SubscriptionListCoordinatorPro
     
     // загрузка подписок
     private func getSubscriptions() -> [SubscriptionProtocol] {
-        let signal = SubscriptionSignal.getAll
+        let signal = SubscriptionSignal.getActualSubscriptions(broadcastActualSubscriptionsList: false)
         guard let signalAnswer = self.broadcast(signalWithReturnAnswer: signal).first,
-              case SubscriptionSignal.subscriptions(let subscriptions) = signalAnswer else {
+              case SubscriptionSignal.actualSubscriptions(let subscriptions) = signalAnswer else {
             return []
         }
         return subscriptions

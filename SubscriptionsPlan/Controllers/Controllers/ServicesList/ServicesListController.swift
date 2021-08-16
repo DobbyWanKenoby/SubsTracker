@@ -19,6 +19,9 @@ class ServicesListController: UIViewController, ServicesListControllerProtocol, 
     @IBOutlet var tableView: UITableView!
 
     var services: [ServiceProtocol] = []
+    var filteredServices: [ServiceProtocol] {
+        return services.sorted(by: { $0.title < $1.title })
+    }
     var onSelectService: ((ServiceProtocol, UITableViewCell) -> Void)?
     
     // MARK: Lifecycle
@@ -54,7 +57,7 @@ extension ServicesListController: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return services.count + 1
+        return filteredServices.count + 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -79,7 +82,7 @@ extension ServicesListController: UITableViewDataSource {
     }
     
     private func getCellForService(_ indexPath: IndexPath, _ tableView: UITableView) -> UITableViewCell {
-        let currentService = services[indexPath.section-1]
+        let currentService = filteredServices[indexPath.section-1]
         let cell = tableView.dequeueReusableCell(withIdentifier: "STServiceCell") as! STServiceCell
         cell.logoImageView.image = currentService.logo
         cell.titleLabel.text = currentService.title
@@ -96,7 +99,7 @@ extension ServicesListController: UITableViewDelegate {
         guard let selectedCell = tableView.cellForRow(at: indexPath) else {
             return
         }
-        let selectedService = services[indexPath.section-1]
+        let selectedService = filteredServices[indexPath.section-1]
         onSelectService?(selectedService, selectedCell)
     }
     
